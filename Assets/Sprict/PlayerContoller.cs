@@ -11,13 +11,14 @@ public class PlayerContoller : MonoBehaviour
     Animator m_animator;
 
     [SerializeField] GroundChack groundChack;
-    [SerializeField] public GameObject m_attack;
+
+    [SerializeField] public float m_attackPower = 0;
 
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
-        m_attack.SetActive(false);
+        
     }
 
     void Update()
@@ -34,6 +35,12 @@ public class PlayerContoller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             m_animator.SetTrigger("Attack");
+            //m_animator.SetTrigger("Attack");
+            //float a = m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            //if (a == 1)
+            //{
+
+            //}
         }
     }
 
@@ -60,22 +67,4 @@ public class PlayerContoller : MonoBehaviour
 
         m_rigidbody.velocity = new Vector2(playerSpeed, m_rigidbody.velocity.y);
     }
-
-    void AttackStart()
-    {
-        if (m_attack)
-        {
-            m_attack.SetActive(true);
-        }
-    }
-
-    void AttackEnd()
-    {
-        if (m_attack)
-        {
-            m_attack.SetActive(false);
-        }
-    }
-    
-
 }
