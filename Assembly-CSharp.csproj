@@ -63,11 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FrogContoller.cs" />
     <Compile Include="Assets\ItemContoller.cs" />
     <Compile Include="Assets\Sprict\AttackContoller.cs" />
     <Compile Include="Assets\Sprict\AttakCheck.cs" />
-    <Compile Include="Assets\Sprict\EnemyContoller.cs" />
+    <Compile Include="Assets\Sprict\EnemyManager.cs" />
     <Compile Include="Assets\Sprict\GroundChack.cs" />
+    <Compile Include="Assets\Sprict\OpossumContoller.cs" />
     <Compile Include="Assets\Sprict\PlayerContoller.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\BattleSpriteAction.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\EmoteSpriteAction.cs" />
@@ -680,6 +682,12 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/vantan/OneDrive/ドキュメント/Action2D/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>C:/Users/vantan/OneDrive/ドキュメント/Action2D/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>C:/Users/vantan/OneDrive/ドキュメント/Action2D/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

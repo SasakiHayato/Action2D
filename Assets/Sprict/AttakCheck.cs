@@ -6,10 +6,10 @@ public class AttakCheck : MonoBehaviour
 {
     [SerializeField] PlayerContoller player;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        EnemyContoller enemy;
-        enemy = collision.GetComponent<EnemyContoller>();
+        EnemyManager enemy;
+        enemy = collision.gameObject.GetComponent<EnemyManager>();
 
         if (collision.gameObject.CompareTag("Enemy"))
         {

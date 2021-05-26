@@ -17,8 +17,7 @@ public class PlayerContoller : MonoBehaviour
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
-        m_animator = GetComponent<Animator>();
-        
+        m_animator = GetComponent<Animator>();  
     }
 
     void Update()
