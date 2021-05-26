@@ -31,16 +31,12 @@ public class PlayerContoller : MonoBehaviour
                 m_rigidbody.AddForce(transform.up * m_playerJump, ForceMode2D.Impulse);
             }
         }
+
         Move();
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            //Attack
             m_animator.SetTrigger("Attack");
-            //m_animator.SetTrigger("Attack");
-            //float a = m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-            //if (a == 1)
-            //{
-
-            //}
         }
     }
 
