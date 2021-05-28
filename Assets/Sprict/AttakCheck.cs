@@ -13,7 +13,7 @@ public class AttakCheck : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            enemy.Damage(player.m_attackPower);
+            enemy.EnemyDamage(player.m_attackPower);
         }
     }
 }

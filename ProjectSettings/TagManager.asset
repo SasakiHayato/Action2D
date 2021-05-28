@@ -7,6 +7,8 @@ TagManager:
   - DamageObject
   - Ground
   - Enemy
+  - Attack2
+  - Gem
   layers:
   - Default
   - TransparentFX

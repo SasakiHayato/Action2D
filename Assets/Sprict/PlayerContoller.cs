@@ -6,6 +6,7 @@ public class PlayerContoller : MonoBehaviour
 {
     [SerializeField]private float m_playerSpeed = 0;
     [SerializeField]private float m_playerJump = 0;
+    [SerializeField] private int m_Hp = 0;
 
     Rigidbody2D m_rigidbody;
     Animator m_animator;
@@ -17,7 +18,9 @@ public class PlayerContoller : MonoBehaviour
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
-        m_animator = GetComponent<Animator>();  
+        m_animator = GetComponent<Animator>();
+
+        Debug.Log(m_attackPower);
     }
 
     void Update()
@@ -61,5 +64,24 @@ public class PlayerContoller : MonoBehaviour
         }
 
         m_rigidbody.velocity = new Vector2(playerSpeed, m_rigidbody.velocity.y);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Damage();
+        }
+    }
+
+    private void Damage()
+    {
+        m_Hp--;
+        Debug.Log(m_Hp);
+
+        if (m_Hp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
