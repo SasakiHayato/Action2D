@@ -71,6 +71,7 @@
     <Compile Include="Assets\Sprict\GroundChack.cs" />
     <Compile Include="Assets\Sprict\OpossumContoller.cs" />
     <Compile Include="Assets\Sprict\PlayerContoller.cs" />
+    <Compile Include="Assets\Uicontroller.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\BattleSpriteAction.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\EmoteSpriteAction.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\SpriteAction.cs" />
