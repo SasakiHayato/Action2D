@@ -63,15 +63,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FrogContoller.cs" />
-    <Compile Include="Assets\ItemContoller.cs" />
-    <Compile Include="Assets\Sprict\AttackAnimContller.cs" />
-    <Compile Include="Assets\Sprict\AttakCheck.cs" />
-    <Compile Include="Assets\Sprict\EnemyManager.cs" />
-    <Compile Include="Assets\Sprict\GroundChack.cs" />
-    <Compile Include="Assets\Sprict\OpossumContoller.cs" />
-    <Compile Include="Assets\Sprict\PlayerContoller.cs" />
-    <Compile Include="Assets\Uicontroller.cs" />
+    <Compile Include="Assets\Script\Enemy\EagleController.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyManager.cs" />
+    <Compile Include="Assets\Script\Enemy\FrogContoller.cs" />
+    <Compile Include="Assets\Script\Enemy\OpossumContoller.cs" />
+    <Compile Include="Assets\Script\GroundChack.cs" />
+    <Compile Include="Assets\Script\ItemContoller.cs" />
+    <Compile Include="Assets\Script\Player\AttackAnimContller.cs" />
+    <Compile Include="Assets\Script\Player\AttakCheck.cs" />
+    <Compile Include="Assets\Script\Player\PlayerContoller.cs" />
+    <Compile Include="Assets\Script\Uicontroller.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\BattleSpriteAction.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\EmoteSpriteAction.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\SpriteAction.cs" />
