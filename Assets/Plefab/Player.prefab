@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGround: 0
+  plyerJumpCount: 0
 --- !u!1 &7877773810309519707
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +210,7 @@ GameObject:
   - component: {fileID: 4825109048972237548}
   - component: {fileID: 4825109049443748427}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321,7 +322,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!70 &4825109048972237549
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -350,11 +351,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e44614fa72ff29409f25d1ec55881a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerSpeed: 6
-  m_playerJump: 5
+  speed: 0
+  jumpPower: 0
   m_Hp: 1
-  groundChack: {fileID: 4825109050645077556}
   m_attackPower: 1
+  groundChack: {fileID: 4825109050645077556}
 --- !u!114 &4825109049443748427
 MonoBehaviour:
   m_ObjectHideFlags: 0
