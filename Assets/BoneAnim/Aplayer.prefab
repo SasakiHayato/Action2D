@@ -137,8 +137,8 @@ GameObject:
   - component: {fileID: 8996461708285247550}
   - component: {fileID: 8996461708285247553}
   - component: {fileID: 8274370936191261722}
-  - component: {fileID: -6501009818432940358}
   - component: {fileID: 1845635244962561207}
+  - component: {fileID: 7337810750644672951}
   m_Layer: 0
   m_Name: Aplayer
   m_TagString: Untagged
@@ -289,22 +289,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 15.33421, y: 12.315214}
   m_EdgeRadius: 0
---- !u!114 &-6501009818432940358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8996461708285247552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e44614fa72ff29409f25d1ec55881a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpPower: 0
-  m_Hp: 0
-  m_attackPower: 0
-  groundChack: {fileID: 0}
 --- !u!50 &1845635244962561207
 Rigidbody2D:
   serializedVersion: 4
@@ -326,6 +310,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7337810750644672951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996461708285247552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e44614fa72ff29409f25d1ec55881a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpPower: 0
+  m_Hp: 0
+  m_attackPower: 0
+  groundChack: {fileID: 0}
 --- !u!1 &8996461708546040851
 GameObject:
   m_ObjectHideFlags: 0

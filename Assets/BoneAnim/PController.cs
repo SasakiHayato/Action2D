@@ -17,7 +17,8 @@ public class PController : MonoBehaviour
     private float Playerspeed = 0;
     void Update()
     {
-        MoveTransFrom();
+        //MoveTransFrom();
+        MoveVelocity();
     }
 
     void MoveTransFrom()

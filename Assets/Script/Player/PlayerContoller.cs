@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerContoller : MonoBehaviour
 {
-    //[SerializeField] private float speed = 0;
+    [SerializeField] private float speed = 0;
     [SerializeField] private float jumpPower = 0;
     
     [SerializeField] public int m_Hp = 0;
     [SerializeField] public int m_attackPower = 0;
 
     [SerializeField] GroundChack groundChack;
-    //Rigidbody2D m_rigidbody;
+    Rigidbody2D m_rigidbody;
     Animator m_animator;
     //==================================================================
 
@@ -20,7 +20,7 @@ public class PlayerContoller : MonoBehaviour
     //==================================================================
     void Start()
     {
-        //m_rigidbody = GetComponent<Rigidbody2D>();
+        m_rigidbody = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
 
         transform.position = this.transform.position;
@@ -28,10 +28,10 @@ public class PlayerContoller : MonoBehaviour
 
     void Update()
     {
-        TMove();
+        //TMove();
         
         //========================
-        //Move();
+        Move();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
@@ -77,40 +77,40 @@ public class PlayerContoller : MonoBehaviour
     private float playerSpeed = 0;
     void Move()
     {
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    playerSpeed += speed;
+        if (Input.GetKey(KeyCode.D))
+        {
+            playerSpeed += speed;
 
-        //    m_animator.Play("Player_Run");
-        //    transform.localScale = new Vector2(0.15f, 0.15f);
-        //}
-        //else if (Input.GetKey(KeyCode.A))
-        //{
-        //    playerSpeed -= speed;
+            m_animator.Play("Player_Run");
+            transform.localScale = new Vector2(0.15f, 0.15f);
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            playerSpeed -= speed;
 
-        //    m_animator.Play("Player_Run");
-        //    transform.localScale = new Vector2(-0.15f, 0.15f);
-        //}
-        //else if (Input.GetKey(KeyCode.S))
-        //{
-        //    m_animator.Play("Player_Crouch");
-        //}
-        //else
-        //{
-        //    playerSpeed = 0;
-        //    m_animator.Play("Player_Idle_anim");
-        //}
+            m_animator.Play("Player_Run");
+            transform.localScale = new Vector2(-0.15f, 0.15f);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            m_animator.Play("Player_Crouch");
+        }
+        else
+        {
+            playerSpeed = 0;
+            m_animator.Play("Player_Idle_anim");
+        }
 
-        //m_rigidbody.velocity = new Vector2(playerSpeed, m_rigidbody.velocity.y);
+        m_rigidbody.velocity = new Vector2(playerSpeed, m_rigidbody.velocity.y);
     }
 
     void Jump()
     {
-        //if (groundChack.isGround == true || groundChack.plyerJumpCount > 0)
-        //{
-        //    m_rigidbody.AddForce(transform.up * jumpPower, ForceMode2D.Impulse);
-        //    groundChack.plyerJumpCount--;
-        //}
+        if (groundChack.isGround == true || groundChack.plyerJumpCount > 0)
+        {
+            m_rigidbody.AddForce(transform.up * jumpPower, ForceMode2D.Impulse);
+            groundChack.plyerJumpCount--;
+        }
     }
 
     public void PlayerDamage(int damage)
