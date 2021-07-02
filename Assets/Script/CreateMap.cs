@@ -82,7 +82,6 @@ public class CreateMap : MonoBehaviour
 
             if (x == 0 && y == 0 || x != 0 && y != 0)
             {
-                Debug.Log("a");
                 continue;
             }
             check = false;
@@ -97,7 +96,7 @@ public class CreateMap : MonoBehaviour
                 
                 Vector2 vector = new Vector2(x, y);
                 vec = vec - vector;
-                
+                Debug.Log(vec);
                 CreateLoad(vec, horizontal - x, verticl - y);
             }
         }

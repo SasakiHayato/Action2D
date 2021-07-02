@@ -6,18 +6,15 @@ public class PlayerContoller : MonoBehaviour
 {
     [SerializeField] private float speed = 0;
     [SerializeField] private float jumpPower = 0;
-    
+    private bool attackBool;
+
     [SerializeField] public int m_Hp = 0;
     [SerializeField] public int m_attackPower = 0;
 
     [SerializeField] GroundChack groundChack;
     Rigidbody2D m_rigidbody;
     Animator m_animator;
-    //==================================================================
-
-    private float g = -9.81f;
-
-    //==================================================================
+    
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
@@ -28,80 +25,52 @@ public class PlayerContoller : MonoBehaviour
 
     void Update()
     {
-        //TMove();
         
-        //========================
+
         Move();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
             Jump();
         }
 
         //Attack
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetButtonDown("Fire1"))
         {
             m_animator.Play("Player_Attack");
         }
     }
 
-    void TMove()
+    void Move()
     {
         if (attackBool) return;
+
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+
         if (h == 0 && v == 0)
         {
             m_animator.Play("Player_Idle_anim");
         }
-        else if (v < 0)
+
+        if (h != 0)
         {
-            m_animator.Play("Player_Crouch");
-        }
-        else
-        {
-            if (h < 0)
-            {
-                transform.localScale = new Vector2(-0.15f, 0.15f);
-            }
+            m_animator.Play("Player_Run");
             if (h > 0)
             {
                 transform.localScale = new Vector2(0.15f, 0.15f);
             }
-
-            m_animator.Play("Player_Run");
+            if (h < 0)
+            {
+                transform.localScale = new Vector2(-0.15f, 0.15f);
+            }
+            
         }
-
-        transform.Translate(h / 10, 0, 0);
-    }
-
-    private float playerSpeed = 0;
-    void Move()
-    {
-        if (Input.GetKey(KeyCode.D))
-        {
-            playerSpeed += speed;
-
-            m_animator.Play("Player_Run");
-            transform.localScale = new Vector2(0.15f, 0.15f);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            playerSpeed -= speed;
-
-            m_animator.Play("Player_Run");
-            transform.localScale = new Vector2(-0.15f, 0.15f);
-        }
-        else if (Input.GetKey(KeyCode.S))
+        if (v < 0)
         {
             m_animator.Play("Player_Crouch");
         }
-        else
-        {
-            playerSpeed = 0;
-            m_animator.Play("Player_Idle_anim");
-        }
 
-        m_rigidbody.velocity = new Vector2(playerSpeed, m_rigidbody.velocity.y);
+        m_rigidbody.velocity = new Vector2(h * speed, m_rigidbody.velocity.y);
     }
 
     void Jump()
@@ -123,14 +92,17 @@ public class PlayerContoller : MonoBehaviour
         }
     }
     //攻撃中に入力をうけつけない
-    private bool attackBool;
-    private void StartAttack()
+    private bool Freeze()
     {
-        attackBool = true;
-    }
+        if (attackBool)
+        {
+            attackBool = false;
+        }
+        else
+        {
+            attackBool = true;
+        }
 
-    private void EndAttack()
-    {
-        attackBool = false;
+        return attackBool;
     }
 }
