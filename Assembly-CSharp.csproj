@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BoneAnim\PController.cs" />
     <Compile Include="Assets\Script\CreateMap.cs" />
     <Compile Include="Assets\Script\Enemy\EagleController.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyManager.cs" />

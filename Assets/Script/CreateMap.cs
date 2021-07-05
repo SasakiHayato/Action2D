@@ -2,79 +2,64 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MapState
-{ 
-   None,
-
-   Wall,
-   Load,
-   Start,
+public enum State
+{
+    Wall,
+    Load,
+    StartPos,
+    EndPos,
 }
 
 public class CreateMap : MonoBehaviour
 {
-    [SerializeField] private GameObject StartPrefab;
-    [SerializeField] private GameObject LoadPrefab;
-    [SerializeField] private GameObject NonePrefab;
-    /// <summary>
-    /// マップ全体の広さ
-    /// </summary>
-    const int mapHeight = 10;
-    const int mapWidth = 10;
+    [SerializeField] private GameObject cell;
 
-    private MapState[,] mapArray = new MapState[mapHeight, mapWidth];
+    const int height = 10;
+    const int width = 10;
+
+    State[,] state = new State[width, height];
+
+    private int m_x, m_y;
+
+    // x が横軸, y が縦軸
     void Start()
     {
-        // Map_Reset
-        for (int i = 0; i < mapHeight; i++)
+        for (int x = 0; x < width; x++)
         {
-            for (int j = 0; j < mapWidth; j++)
+            for (int y = 0; y < height; y++)
             {
-                mapArray[i, j] = MapState.None;
-                Instantiate(NonePrefab, new Vector2(j - mapWidth / 2, i - mapHeight / 2), Quaternion.identity);
+                state[x, y] = State.Wall;
             }
         }
-        // StartPosition
-        int horizontal = Random.Range(1, mapHeight - 1);
-        int vertical = Random.Range(1, mapWidth - 1);
 
-        StartPositionSet(horizontal, vertical);
-    }
+        StartPos();
+        Select(m_x, m_y);
 
-    void StartPositionSet(int horizontal, int verticl)
-    {
-        mapArray[horizontal, verticl] = MapState.Start;
+        EndPos();
 
-        for (int i = 0; i < mapHeight; i++)
+        //MapCreate
+        for (int x = 0; x < width; x++)
         {
-            for (int j = 0; j < mapWidth; j++)
+            for (int y = 0; y < height; y++)
             {
-                if (mapArray[horizontal, verticl] == mapArray[i, j])
-                {
-                    Vector2 vector = new Vector2(j - mapWidth / 2, i - mapHeight / 2);
-                    
-                    CreateLoad(vector, horizontal, verticl);
-                    SelectLoad(vector, horizontal, verticl);
-                }
+                Create(x, y);
             }
         }
     }
 
-    private void CreateLoad(Vector2 vector, int horizontal, int verticl)
+    private void StartPos()
     {
-        if (mapArray[horizontal, verticl] == MapState.Load)
-        {
-            Instantiate(LoadPrefab, vector, Quaternion.identity);
-        }
-        if (mapArray[horizontal, verticl] == MapState.Start)
-        {
-            Instantiate(StartPrefab, vector, Quaternion.identity);
-        }
+        int x = Random.Range(3, height - 3);
+        int y = Random.Range(3, width - 3);
+
+        m_x = x;
+        m_y = y;
+        state[x, y] = State.StartPos;
     }
 
-    private bool check = true;
-    void SelectLoad(Vector2 vec, int horizontal, int verticl)
+    private void Select(int i, int j)
     {
+        bool check = true;
         while (check)
         {
             int x = Random.Range(-1, 2);
@@ -85,20 +70,62 @@ public class CreateMap : MonoBehaviour
                 continue;
             }
             check = false;
-            
-            x *= 2;
-            y *= 2;
 
-            if (mapArray[x + horizontal, y + verticl] == MapState.None)
+            // 2つ先を調べる。
+            Debug.Log(i + x * 2);
+            Debug.Log(j + y * 2);
+            if (i + x * 2 < 0 || i + x * 2 >= width)
             {
-                x /= 2;
-                y /= 2;
-                
-                Vector2 vector = new Vector2(x, y);
-                vec = vec - vector;
-                Debug.Log(vec);
-                CreateLoad(vec, horizontal - x, verticl - y);
+                continue;
+            }
+            else if (j + y * 2 < 0 || j + y * 2 >= height)
+            {
+                continue;
+            }
+
+            Debug.Log(state[i + x * 2, j + y * 2]);
+            if (state[i + x * 2, j + y * 2] == State.Wall)
+            {
+                state[i + x, j + y] = State.Load;
+
+                Select(i + x, j + y);
+            }
+            else if (state[i + x * 2, j + y * 2] != State.Wall)
+            {
+                Select(i + x, j + y);
             }
         }
+    }
+
+    private void EndPos()
+    {
+        int x = Random.Range(1, height - 1);
+        int y = Random.Range(1, width - 1);
+
+        m_x = x;
+        m_y = y;
+        state[x, y] = State.EndPos;
+    }
+
+    // Wall = 黒, Load = 白, Start = 青, Goal = 緑,
+    private void Create(int i, int j)
+    {
+        if (state[i, j] == State.Wall)
+        {
+            cell.gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+        }
+        else if (state[i, j] == State.Load)
+        {
+            cell.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        else if (state[i, j] == State.StartPos)
+        {
+            cell.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+        }
+        else if (state[i, j] == State.EndPos)
+        {
+            cell.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+        }
+        Instantiate(cell, new Vector2(i - height / 2, j - width / 2), Quaternion.identity);
     }
 }
