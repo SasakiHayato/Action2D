@@ -68,9 +68,10 @@
     <Compile Include="Assets\Script\Enemy\EnemyManager.cs" />
     <Compile Include="Assets\Script\Enemy\FrogContoller.cs" />
     <Compile Include="Assets\Script\Enemy\OpossumContoller.cs" />
-    <Compile Include="Assets\Script\GroundChack.cs" />
+    <Compile Include="Assets\Script\EnemyHuman\EnemyController.cs" />
     <Compile Include="Assets\Script\ItemContoller.cs" />
     <Compile Include="Assets\Script\Player\AttackCheck.cs" />
+    <Compile Include="Assets\Script\Player\GroundChack.cs" />
     <Compile Include="Assets\Script\Player\PlayerContoller.cs" />
     <Compile Include="Assets\Script\Uicontroller.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\BattleSpriteAction.cs" />

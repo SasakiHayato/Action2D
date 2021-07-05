@@ -13,7 +13,6 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] public int m_Hp = 0;
     [SerializeField] public int m_attackPower = 0;
 
-    private float m_time = 2;
     private int m_num = 1;
 
     [SerializeField] GroundChack m_groundChack;
@@ -21,23 +20,18 @@ public class PlayerContoller : MonoBehaviour
     Rigidbody2D m_rigidbody;
     Animator m_animator;
 
-    GameObject m_attack1;
-    GameObject m_attack2;
-    GameObject m_attack3;
+    GameObject[] m_attack = new GameObject[3];
 
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
 
-        m_attack1 = transform.GetChild(0).gameObject;
-        m_attack1.SetActive(m_active);
-
-        m_attack2 = transform.GetChild(1).gameObject;
-        m_attack2.SetActive(m_active);
-
-        m_attack3 = transform.GetChild(2).gameObject;
-        m_attack3.SetActive(m_active);
+        for (int i = 0; i < m_attack.Length; i++)
+        {
+            m_attack[i] = transform.GetChild(i).gameObject;
+            m_attack[i].SetActive(m_active);
+        }
 
         transform.position = this.transform.position;
     }
@@ -45,6 +39,7 @@ public class PlayerContoller : MonoBehaviour
     void Update()
     {
         Move();
+
         if (Input.GetButtonDown("Jump"))
         {
             Jump();
@@ -52,13 +47,6 @@ public class PlayerContoller : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            m_time -= Time.deltaTime;
-
-            if (m_time < 0)
-            {
-                m_num = 1;
-                m_time = 2;
-            }
             Attack();
         }
         
@@ -161,32 +149,6 @@ public class PlayerContoller : MonoBehaviour
         {
             m_active = false;
         }
-        m_attack1.SetActive(m_active);
-    }
-
-    private void SetCollider2()
-    {
-        if (!m_active)
-        {
-            m_active = true;
-        }
-        else
-        {
-            m_active = false;
-        }
-        m_attack2.SetActive(m_active);
-    }
-
-    private void SetCollider3()
-    {
-        if (!m_active)
-        {
-            m_active = true;
-        }
-        else
-        {
-            m_active = false;
-        }
-        m_attack2.SetActive(m_active);
+        m_attack[m_num - 1].SetActive(m_active);
     }
 }

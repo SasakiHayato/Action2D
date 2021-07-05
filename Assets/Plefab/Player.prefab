@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 969712452822700092}
   - component: {fileID: 7098117184375635248}
+  - component: {fileID: 7124584415112422613}
   m_Layer: 0
   m_Name: Attack3
   m_TagString: Untagged
@@ -47,6 +48,19 @@ CircleCollider2D:
   m_Offset: {x: 16.85, y: 2.3}
   serializedVersion: 2
   m_Radius: 8.1
+--- !u!114 &7124584415112422613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910576353786512538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0272aa562d1926244ab63da4706e9c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_player: {fileID: 3802455910096961722}
 --- !u!1 &1528240742126843558
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,8 +622,8 @@ MonoBehaviour:
   - {fileID: 5502969240052426521}
   - {fileID: 5502969241290198234}
   m_Bounds:
-    m_Center: {x: 9.904998, y: -0.85044336, z: 0}
-    m_Extent: {x: 12.871728, y: 5.9877844, z: 0}
+    m_Center: {x: 1.1923976, y: -0.038722515, z: 0}
+    m_Extent: {x: 7.667105, y: 6.157607, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &5502969240865247189
@@ -659,11 +673,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e44614fa72ff29409f25d1ec55881a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0
-  m_jumpPower: 0
+  m_speed: 7
+  m_jumpPower: 5
   m_Hp: 100
   m_attackPower: 10
-  m_groundChack: {fileID: 0}
+  m_groundChack: {fileID: 1960455495721186133}
 --- !u!50 &640548192603645237
 Rigidbody2D:
   serializedVersion: 4
