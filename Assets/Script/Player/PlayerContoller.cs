@@ -6,20 +6,26 @@ public class PlayerContoller : MonoBehaviour
 {
     [SerializeField] private float speed = 0;
     [SerializeField] private float jumpPower = 0;
-    private bool attackBool;
+    
+    private bool m_freeze;
+    private bool m_bool = false;
 
     [SerializeField] public int m_Hp = 0;
     [SerializeField] public int m_attackPower = 0;
 
     [SerializeField] GroundChack groundChack;
+    
     Rigidbody2D m_rigidbody;
     Animator m_animator;
-    
+
+    GameObject attackCollider;
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
 
+        attackCollider = transform.GetChild(0).gameObject;
+        attackCollider.SetActive(m_bool);
         transform.position = this.transform.position;
     }
 
@@ -42,7 +48,7 @@ public class PlayerContoller : MonoBehaviour
 
     void Move()
     {
-        if (attackBool) return;
+        if (m_freeze) return;
 
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
@@ -94,15 +100,29 @@ public class PlayerContoller : MonoBehaviour
     //攻撃中に入力をうけつけない
     private bool Freeze()
     {
-        if (attackBool)
+        if (m_freeze)
         {
-            attackBool = false;
+            m_freeze = false;
         }
         else
         {
-            attackBool = true;
+            m_freeze = true;
         }
 
-        return attackBool;
+        return m_freeze;
+    }
+
+    private void SetCollider()
+    {
+        if (!m_bool)
+        {
+            m_bool = true;
+        }
+        else
+        {
+            m_bool = false;
+        }
+        attackCollider.SetActive(m_bool);
+        
     }
 }

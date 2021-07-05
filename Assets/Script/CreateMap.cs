@@ -14,8 +14,8 @@ public class CreateMap : MonoBehaviour
 {
     [SerializeField] private GameObject cell;
 
-    const int height = 10;
-    const int width = 10;
+    const int height = 20;
+    const int width = 20;
 
     State[,] state = new State[width, height];
 
@@ -72,8 +72,6 @@ public class CreateMap : MonoBehaviour
             check = false;
 
             // 2つ先を調べる。
-            Debug.Log(i + x * 2);
-            Debug.Log(j + y * 2);
             if (i + x * 2 < 0 || i + x * 2 >= width)
             {
                 continue;
@@ -83,7 +81,6 @@ public class CreateMap : MonoBehaviour
                 continue;
             }
 
-            Debug.Log(state[i + x * 2, j + y * 2]);
             if (state[i + x * 2, j + y * 2] == State.Wall)
             {
                 state[i + x, j + y] = State.Load;

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttakCheck : MonoBehaviour
+public class AttackCheck : MonoBehaviour
 {
-    [SerializeField] PlayerContoller player;
+    [SerializeField] PlayerContoller m_player;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -13,7 +13,7 @@ public class AttakCheck : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            enemy.EnemyDamage(player.m_attackPower);
+            enemy.EnemyDamage(m_player.m_attackPower);
         }
     }
 }
