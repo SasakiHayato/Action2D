@@ -13,7 +13,9 @@ public class PlayerContoller : MonoBehaviour
     [System.NonSerialized] public int m_Hp = 100;
     [SerializeField] public int m_attackPower = 0;
 
-    private int m_num = 1;
+    private int m_attackCombo = 1;
+    public int m_subAttack = 0;
+
 
     [SerializeField] GroundChack m_groundChack;
     
@@ -48,6 +50,11 @@ public class PlayerContoller : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Attack();
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            SubAttack();
         }
     }
 
@@ -95,21 +102,35 @@ public class PlayerContoller : MonoBehaviour
 
     void Attack()
     {
-        switch (m_num)
+        switch (m_attackCombo)
         {
             case 1:
                 m_animator.Play("Player_Attack");
-                m_num = 2;
+                m_attackCombo = 2;
                 break;
 
             case 2:
                 m_animator.Play("Player_Attack2");
-                m_num = 3;
+                m_attackCombo = 3;
                 break;
 
             case 3:
                 m_animator.Play("Player_Attack3");
-                m_num = 1;
+                m_attackCombo = 1;
+                break;
+        }
+    }
+
+    private void SubAttack()
+    {
+        switch (m_subAttack)
+        {
+            case 1:
+                m_animator.Play("Player_Shield");
+                break;
+
+            case 2:
+                m_animator.Play("Player_Magic");
                 break;
         }
     }
@@ -150,6 +171,6 @@ public class PlayerContoller : MonoBehaviour
         {
             m_active = false;
         }
-        m_attack[m_num - 1].SetActive(m_active);
+        m_attack[m_attackCombo - 1].SetActive(m_active);
     }
 }
