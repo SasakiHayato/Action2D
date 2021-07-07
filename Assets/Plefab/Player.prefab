@@ -91,7 +91,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 5502969240865247144}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1960455495721186133
 MonoBehaviour:
@@ -161,7 +161,37 @@ Transform:
   m_LocalScale: {x: 6.666666, y: 6.666666, z: 0}
   m_Children: []
   m_Father: {fileID: 5502969240865247144}
-  m_RootOrder: 4
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4197846402832065177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 181976246825756474}
+  m_Layer: 0
+  m_Name: Nozzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &181976246825756474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197846402832065177}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.9, y: 0.83, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 5502969240865247144}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4505799132280310507
 GameObject:
@@ -284,7 +314,7 @@ Transform:
   m_Children:
   - {fileID: 5502969239993626078}
   m_Father: {fileID: 5502969240865247144}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5502969239871961379
 GameObject:
@@ -499,7 +529,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5502969240865247144}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -120.829}
 --- !u!1 &5502969240865247188
 GameObject:
@@ -537,6 +567,7 @@ Transform:
   - {fileID: 4165480658216805751}
   - {fileID: 2240654994579478539}
   - {fileID: 969712452822700092}
+  - {fileID: 181976246825756474}
   - {fileID: 7970383931708928763}
   - {fileID: 3120886390031156680}
   - {fileID: 5502969239650594488}
@@ -673,11 +704,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e44614fa72ff29409f25d1ec55881a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 7
   m_jumpPower: 5
-  m_Hp: 100
   m_attackPower: 10
+  m_subAttack: 0
   m_groundChack: {fileID: 1960455495721186133}
+  m_nozzle: {fileID: 181976246825756474}
+  m_bulletPlefab: {fileID: 5699198724430078598, guid: 1e8fb0e27604776488b5fc026482cf4e,
+    type: 3}
 --- !u!50 &640548192603645237
 Rigidbody2D:
   serializedVersion: 4

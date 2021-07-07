@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerContoller : MonoBehaviour
 {
-    [System.NonSerialized] private float m_speed = 7;
+    private float m_speed = 7;
     [SerializeField] private float m_jumpPower = 0;
     
     private bool m_freeze;
@@ -23,6 +23,9 @@ public class PlayerContoller : MonoBehaviour
     private Animator m_animator;
 
     private GameObject[] m_attack = new GameObject[3];
+
+    [SerializeField] private Transform m_nozzle = null;
+    [SerializeField] private GameObject m_bulletPlefab = null;
 
     void Start()
     {
@@ -172,5 +175,10 @@ public class PlayerContoller : MonoBehaviour
             m_active = false;
         }
         m_attack[m_attackCombo - 1].SetActive(m_active);
+    }
+
+    private void SetBullet()
+    {
+        Instantiate(m_bulletPlefab, m_nozzle);
     }
 }
