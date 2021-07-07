@@ -6,8 +6,11 @@ public enum State
 {
     Wall,
     Load,
+
     StartPos,
     EndPos,
+
+    Shop,
 }
 
 public class CreateMap : MonoBehaviour
@@ -35,6 +38,7 @@ public class CreateMap : MonoBehaviour
         StartPos();
         Select(m_x, m_y);
 
+        SelectShop();
         EndPos();
 
         //MapCreate
@@ -83,8 +87,11 @@ public class CreateMap : MonoBehaviour
 
             if (state[i + x * 2, j + y * 2] == State.Wall)
             {
-                state[i + x, j + y] = State.Load;
-
+                if (state[i + x, j + y] != State.StartPos)
+                {
+                    state[i + x, j + y] = State.Load;
+                }
+                
                 Select(i + x, j + y);
             }
             else if (state[i + x * 2, j + y * 2] != State.Wall)
@@ -94,17 +101,34 @@ public class CreateMap : MonoBehaviour
         }
     }
 
+    private void SelectShop()
+    {
+        int x = Random.Range(1, height - 1);
+        int y = Random.Range(1, width - 1);
+
+        if (state[x, y] == State.Load)
+        {
+            state[x, y] = State.Shop;
+            return;
+        }
+
+        SelectShop();
+    }
+
     private void EndPos()
     {
         int x = Random.Range(1, height - 1);
         int y = Random.Range(1, width - 1);
 
-        m_x = x;
-        m_y = y;
-        state[x, y] = State.EndPos;
+        if (state[x, y] == State.Load)
+        {
+            state[x, y] = State.EndPos;
+            return;
+        }
+        EndPos();
     }
 
-    // Wall = 黒, Load = 白, Start = 青, Goal = 緑,
+    // Wall = 黒, Load = 白, Start = 青, Goal = 緑, Shop = 赤,
     private void Create(int i, int j)
     {
         if (state[i, j] == State.Wall)
@@ -115,6 +139,10 @@ public class CreateMap : MonoBehaviour
         {
             cell.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
+        else if (state[i, j] == State.Shop)
+        {
+            cell.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        }
         else if (state[i, j] == State.StartPos)
         {
             cell.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
@@ -123,6 +151,8 @@ public class CreateMap : MonoBehaviour
         {
             cell.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
         }
+
+
         Instantiate(cell, new Vector2(i - height / 2, j - width / 2), Quaternion.identity);
     }
 }

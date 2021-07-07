@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class PlayerContoller : MonoBehaviour
 {
-    [SerializeField] private float m_speed = 0;
+    [System.NonSerialized] private float m_speed = 7;
     [SerializeField] private float m_jumpPower = 0;
     
     private bool m_freeze;
     private bool m_active = false;
 
-    [SerializeField] public int m_Hp = 0;
+    [System.NonSerialized] public int m_Hp = 100;
     [SerializeField] public int m_attackPower = 0;
 
     private int m_num = 1;
 
     [SerializeField] GroundChack m_groundChack;
     
-    Rigidbody2D m_rigidbody;
-    Animator m_animator;
+    [System.NonSerialized] public Rigidbody2D m_rigidbody;
+    private Animator m_animator;
 
-    GameObject[] m_attack = new GameObject[3];
+    private GameObject[] m_attack = new GameObject[3];
 
     void Start()
     {
@@ -49,7 +49,6 @@ public class PlayerContoller : MonoBehaviour
         {
             Attack();
         }
-        
     }
 
     void Move()
@@ -118,12 +117,13 @@ public class PlayerContoller : MonoBehaviour
     public void PlayerDamage(int damage)
     {
         m_Hp -= damage;
-        
+        m_animator.Play("Player_Damage");
         if (m_Hp <= 0)
         {
             Destroy(this.gameObject);
         }
     }
+
     //攻撃中に入力をうけつけない
     private bool Freeze()
     {
@@ -139,6 +139,7 @@ public class PlayerContoller : MonoBehaviour
         return m_freeze;
     }
 
+    // 攻撃時の Collider の SetActive
     private void SetCollider()
     {
         if (!m_active)
