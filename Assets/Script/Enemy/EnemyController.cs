@@ -7,7 +7,8 @@ public class EnemyController : MonoBehaviour
     private bool m_attackBool = false;
     private bool m_freeze = false;
 
-    private float m_speed = 2;
+    [SerializeField] private float m_speed = 0;
+    [SerializeField] private float m_hp = 0;
 
     Rigidbody2D m_rigidbody;
     Animator m_animator;
@@ -63,7 +64,7 @@ public class EnemyController : MonoBehaviour
         {
             player = collision.GetComponent<PlayerContoller>();
             player.m_rigidbody.AddForce(transform.up * 2, ForceMode2D.Impulse);
-            player.PlayerDamage(5);
+            player.PlayerDamage(0);
         }
     }
 
@@ -114,6 +115,17 @@ public class EnemyController : MonoBehaviour
         }
 
         return m_freeze;
+    }
+
+    public void EnemyDamage(float damage)
+    {
+        m_hp -= damage;
+        Debug.Log(m_hp);
+
+        if (m_hp < 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void SetCollision()

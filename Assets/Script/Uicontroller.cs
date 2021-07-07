@@ -31,7 +31,6 @@ public class Uicontroller : MonoBehaviour
     }
 
     private float seconds = 0;
-    //private float minutes = 0;
     private void Timer()
     {
         seconds += Time.deltaTime;

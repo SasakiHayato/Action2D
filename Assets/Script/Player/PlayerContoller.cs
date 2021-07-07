@@ -7,14 +7,15 @@ public class PlayerContoller : MonoBehaviour
     private float m_speed = 7;
     [SerializeField] private float m_jumpPower = 0;
     
-    private bool m_freeze;
+    private bool m_freeze = false;
     private bool m_active = false;
+    private bool m_crouch = false;
 
     [System.NonSerialized] public int m_Hp = 100;
     [SerializeField] public int m_attackPower = 0;
 
     private int m_attackCombo = 1;
-    public int m_subAttack = 0;
+    [System.NonSerialized] public int m_subAttack = 0;
 
 
     [SerializeField] GroundChack m_groundChack;
@@ -25,6 +26,8 @@ public class PlayerContoller : MonoBehaviour
     private GameObject[] m_attack = new GameObject[3];
 
     [SerializeField] private Transform m_nozzle = null;
+    [SerializeField] private Transform m_crouchNuzzle = null;
+
     [SerializeField] private GameObject m_bulletPlefab = null;
 
     void Start()
@@ -60,7 +63,7 @@ public class PlayerContoller : MonoBehaviour
             SubAttack();
         }
     }
-
+    
     void Move()
     {
         if (m_freeze) return;
@@ -71,6 +74,7 @@ public class PlayerContoller : MonoBehaviour
         if (h == 0 && v == 0)
         {
             m_animator.Play("Player_Idle_anim");
+            m_crouch = false;
         }
 
         if (h != 0)
@@ -89,6 +93,7 @@ public class PlayerContoller : MonoBehaviour
         if (v < 0)
         {
             m_animator.Play("Player_Crouch");
+            m_crouch = true;
         }
 
         m_rigidbody.velocity = new Vector2(h * m_speed, m_rigidbody.velocity.y);
@@ -133,6 +138,12 @@ public class PlayerContoller : MonoBehaviour
                 break;
 
             case 2:
+                if (m_crouch)
+                {
+                    m_animator.Play("Player_Magic_crouch");
+                    break;
+                }
+
                 m_animator.Play("Player_Magic");
                 break;
         }
@@ -180,5 +191,10 @@ public class PlayerContoller : MonoBehaviour
     private void SetBullet()
     {
         Instantiate(m_bulletPlefab, m_nozzle);
+    }
+
+    private void SetBulletCrouch()
+    {
+        Instantiate(m_bulletPlefab, m_crouchNuzzle);
     }
 }

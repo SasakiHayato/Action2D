@@ -6,22 +6,12 @@ public class AttackCheck : MonoBehaviour
 {
     [SerializeField] PlayerContoller m_player;
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    EnemyManager enemy;
-    //    enemy = collision.gameObject.GetComponent<EnemyManager>();
-
-    //    if (collision.gameObject.CompareTag("Enemy"))
-    //    {
-    //        enemy.EnemyDamage(m_player.m_attackPower);
-    //    }
-    //}
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        EnemyController enemy = collision.GetComponent<EnemyController>();
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("a");
+            enemy.EnemyDamage(m_player.m_attackPower);
         }
     }
 }
