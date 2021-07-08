@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class ZombieController : MonoBehaviour
 {
     private bool m_attackBool = false;
     private bool m_freeze = false;

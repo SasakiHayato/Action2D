@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StatusSelect : MonoBehaviour
 {
-    GameObject[] m_selectObject = new GameObject[2];
+    GameObject[] m_selectObject = new GameObject[3];
 
     Vector2 m_selectScale;
     Vector2 m_scale;
@@ -29,16 +29,23 @@ public class StatusSelect : MonoBehaviour
 
     void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-
-        if (h > 0)
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            m_selectNum = 1;
+            m_selectNum ++;
+            if (m_selectNum >= m_selectObject.Length)
+            {
+                m_selectNum--;
+            }
         }
-        else if (h < 0)
+        else if (Input.GetKeyDown(KeyCode.A))
         {
-            m_selectNum = 0;
+            m_selectNum --;
+            if (m_selectNum < 0)
+            {
+                m_selectNum++;
+            }
         }
+        
         Select();
 
         if (Input.GetButtonUp("Jump"))

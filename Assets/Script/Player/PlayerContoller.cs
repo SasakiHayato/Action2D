@@ -15,6 +15,7 @@ public class PlayerContoller : MonoBehaviour
 
     [System.NonSerialized] public int m_attackPower = 10;
     [System.NonSerialized] public int m_magicPower = 10;
+    [System.NonSerialized] public int m_shieldPower = 10; 
 
     private int m_attackCombo = 1;
     [System.NonSerialized] public int m_subAttack = 0;

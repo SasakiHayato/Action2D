@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class ItemStatus : MonoBehaviour
 {
-    GameObject m_canvas;
     PlayerContoller m_player;
     Uicontroller m_ui;
 
-    void Start()
+    private void Start()
     {
         m_ui = FindObjectOfType<Uicontroller>();
-
-        m_canvas = transform.GetChild(0).gameObject;
-        m_canvas.SetActive(false);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -23,7 +19,8 @@ public class ItemStatus : MonoBehaviour
             m_player = collision.GetComponent<PlayerContoller>();
             if (Input.GetButtonDown("Submit1"))
             {
-                m_canvas.SetActive(true);
+                m_ui.m_freeze = true;
+                m_ui.m_slectCanvas.SetActive(true);
                 m_player.m_freeze = true;
             }
         }
@@ -38,11 +35,18 @@ public class ItemStatus : MonoBehaviour
         }
         else if (set == 1)
         {
+            m_player.m_shieldPower += 20;
+            m_ui.m_shieldPoint++;
+        }
+        else if (set == 2)
+        {
             m_player.m_attackPower += 20;
             m_ui.m_attackPoint++;
         }
-
-        m_canvas.SetActive(false);
+        
         m_player.m_freeze = false;
+        m_ui.m_freeze = false;
+        m_ui.m_slectCanvas.SetActive(false);
+        Destroy(this.gameObject);
     }
 }
