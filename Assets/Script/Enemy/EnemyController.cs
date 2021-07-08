@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float m_speed = 0;
     [SerializeField] private float m_hp = 0;
 
-    Rigidbody2D m_rigidbody;
+    [System.NonSerialized] public Rigidbody2D m_rigidbody;
     Animator m_animator;
 
     GameObject m_attckCollider;

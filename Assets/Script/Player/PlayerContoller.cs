@@ -7,12 +7,14 @@ public class PlayerContoller : MonoBehaviour
     private float m_speed = 7;
     [SerializeField] private float m_jumpPower = 0;
     
-    private bool m_freeze = false;
+    [System.NonSerialized] public bool m_freeze = false;
     private bool m_active = false;
     private bool m_crouch = false;
 
     [System.NonSerialized] public int m_Hp = 100;
-    [SerializeField] public int m_attackPower = 0;
+
+    [System.NonSerialized] public int m_attackPower = 10;
+    [System.NonSerialized] public int m_magicPower = 10;
 
     private int m_attackCombo = 1;
     [System.NonSerialized] public int m_subAttack = 0;
@@ -38,6 +40,7 @@ public class PlayerContoller : MonoBehaviour
         for (int i = 0; i < m_attack.Length; i++)
         {
             m_attack[i] = transform.GetChild(i).gameObject;
+            //Debug.Log(m_attack[i]);
             m_attack[i].SetActive(m_active);
         }
 

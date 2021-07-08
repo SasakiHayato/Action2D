@@ -73,6 +73,7 @@
     <Compile Include="Assets\Script\Player\GroundChack.cs" />
     <Compile Include="Assets\Script\Player\PlayerContoller.cs" />
     <Compile Include="Assets\Script\Uicontroller.cs" />
+    <Compile Include="Assets\StatusSelect.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\BattleSpriteAction.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\EmoteSpriteAction.cs" />
     <Compile Include="Assets\UnityChan\2DUnitychan\Scenes\Scripts\SpriteAction.cs" />

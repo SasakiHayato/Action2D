@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletContoller : MonoBehaviour
+public class BulletContoller : PlayerContoller
 {
-    [SerializeField] private float speed = 0;
+    private float speed = 3;
 
     private float m_time = 0;
     void Update()
@@ -19,9 +19,13 @@ public class BulletContoller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        EnemyController enemy;
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(this.gameObject);
+            enemy = collision.GetComponent<EnemyController>();
+            enemy.EnemyDamage(m_magicPower);
+            enemy.m_rigidbody.AddForce(transform.up * 3, ForceMode2D.Impulse);
+            //Destroy(this.gameObject);
         }
     }
 }

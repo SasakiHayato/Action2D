@@ -10,7 +10,7 @@ public class ItemMagic : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             player = collision.GetComponent<PlayerContoller>();
-            if (Input.GetButtonDown("Submit"))
+            if (Input.GetButtonDown("Submit1"))
             {
                 player.m_subAttack = 2;
 
