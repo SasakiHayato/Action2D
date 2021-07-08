@@ -41,7 +41,7 @@ public class StatusSelect : MonoBehaviour
         }
         Select();
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonUp("Jump"))
         {
             m_item.SetStatus(m_selectNum);
         }

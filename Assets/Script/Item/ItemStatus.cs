@@ -6,9 +6,12 @@ public class ItemStatus : MonoBehaviour
 {
     GameObject m_canvas;
     PlayerContoller m_player;
+    Uicontroller m_ui;
 
     void Start()
     {
+        m_ui = FindObjectOfType<Uicontroller>();
+
         m_canvas = transform.GetChild(0).gameObject;
         m_canvas.SetActive(false);
     }
@@ -31,12 +34,13 @@ public class ItemStatus : MonoBehaviour
         if (set == 0)
         {
             m_player.m_magicPower += 20;
+            m_ui.m_magicPoint++;
         }
         else if (set == 1)
         {
             m_player.m_attackPower += 20;
+            m_ui.m_attackPoint++;
         }
-        Debug.Log(m_player.m_attackPower);
 
         m_canvas.SetActive(false);
         m_player.m_freeze = false;

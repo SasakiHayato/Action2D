@@ -40,7 +40,6 @@ public class PlayerContoller : MonoBehaviour
         for (int i = 0; i < m_attack.Length; i++)
         {
             m_attack[i] = transform.GetChild(i).gameObject;
-            //Debug.Log(m_attack[i]);
             m_attack[i].SetActive(m_active);
         }
 
@@ -137,6 +136,7 @@ public class PlayerContoller : MonoBehaviour
         switch (m_subAttack)
         {
             case 1:
+                Freeze();
                 m_animator.Play("Player_Shield");
                 break;
 
