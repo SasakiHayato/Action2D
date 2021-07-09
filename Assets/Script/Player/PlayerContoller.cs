@@ -24,6 +24,7 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] GroundChack m_groundChack;
     
     [System.NonSerialized] public Rigidbody2D m_rigidbody;
+    [System.NonSerialized] public Collider2D m_collider;
     private Animator m_animator;
 
     private GameObject[] m_attack = new GameObject[3];
@@ -36,6 +37,7 @@ public class PlayerContoller : MonoBehaviour
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
+        m_collider = GetComponent<Collider2D>();
         m_animator = GetComponent<Animator>();
 
         for (int i = 0; i < m_attack.Length; i++)

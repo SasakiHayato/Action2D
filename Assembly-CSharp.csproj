@@ -63,9 +63,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HitExplosion.cs" />
     <Compile Include="Assets\Script\CreateMap.cs" />
     <Compile Include="Assets\Script\Enemy\BomContoller.cs" />
     <Compile Include="Assets\Script\Enemy\BommerController.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyBase.cs" />
     <Compile Include="Assets\Script\Enemy\ZombieController.cs" />
     <Compile Include="Assets\Script\Item\ItemMagic.cs" />
     <Compile Include="Assets\Script\Item\ItemShield.cs" />

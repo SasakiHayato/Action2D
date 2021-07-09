@@ -2,18 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BommerController : MonoBehaviour
+public class BommerController : EnemyBase
 {
     private Rigidbody2D m_rigidbody;
     private Animator m_animator;
 
-    private bool m_freeze = false;
     public bool m_attackBool = false;
-
-    [SerializeField] private float m_speed = 0;
-
-    [SerializeField] private Vector2 m_ray = Vector2.zero;
-    [SerializeField] private LayerMask m_layer = 0;
 
     [SerializeField] private Transform m_nozzle = null;
     [SerializeField] private GameObject m_bomPlefab = null;
@@ -28,6 +22,7 @@ public class BommerController : MonoBehaviour
     {
         Move();
         PlayerCheck();
+        WallCheck();
     }
 
     private void Move()
@@ -48,7 +43,7 @@ public class BommerController : MonoBehaviour
 
     private void PlayerCheck()
     {
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, m_ray, m_ray.magnitude, m_layer);
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, m_playerRay, m_playerRay.magnitude, m_playerLayer);
         if (hit.collider)
         {
             Attack();
