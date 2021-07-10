@@ -18,12 +18,13 @@ public class StatusSelect : MonoBehaviour
     {
         m_item = FindObjectOfType<ItemStatus>();
 
-        m_scale = this.transform.localScale;
-        m_selectScale = new Vector2(1.5f, 1.5f);
+        m_selectScale = new Vector2(1.2f, 1.2f);
 
         for (int i = 0; i < m_selectObject.Length; i++)
         {
             m_selectObject[i] = transform.GetChild(i).gameObject;
+            Debug.Log(m_selectObject[i]);
+            m_scale = m_selectObject[i].transform.localScale;
         }
     }
 
@@ -50,7 +51,7 @@ public class StatusSelect : MonoBehaviour
         Debug.Log(m_selectNum);
         if (Input.GetButtonUp("Jump"))
         {
-            m_item.SetStatus(m_selectNum);
+            m_item.SetStatus(ref m_selectNum);
         }
     }
 

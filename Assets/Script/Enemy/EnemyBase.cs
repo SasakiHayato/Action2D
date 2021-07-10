@@ -40,6 +40,17 @@ public class EnemyBase : MonoBehaviour
 
     }
 
+    public void EnemyDamage(float damage)
+    {
+        m_hp -= damage;
+        Debug.Log(m_hp);
+
+        if (m_hp < 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     private bool Freeze()
     {
         if (!m_freeze)

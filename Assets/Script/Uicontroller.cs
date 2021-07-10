@@ -20,14 +20,16 @@ public class Uicontroller : MonoBehaviour
     [System.NonSerialized] public int m_attackPoint = 1;
     [System.NonSerialized] public int m_shieldPoint = 1;
 
-    public bool m_freeze = false;
+    private float m_seconds = 0;
+
+    [System.NonSerialized] public bool m_freeze = false;
 
     void Start()
     {
         m_slider = GameObject.Find("Slider").GetComponent<Slider>();
         player = FindObjectOfType<PlayerContoller>();
 
-        m_slectCanvas = GameObject.Find("Select");
+        m_slectCanvas = GameObject.Find("SelectCanvas");
         m_slectCanvas.SetActive(false);
     }
 
@@ -45,13 +47,12 @@ public class Uicontroller : MonoBehaviour
         hpText.text = player.m_Hp.ToString("00" + "/１００");
     }
 
-    private float seconds = 0;
     private void Timer()
     {
         if (m_freeze) return;
-        seconds += Time.deltaTime;
+        m_seconds += Time.deltaTime;
         
-        timeText.text = seconds.ToString("0s");
+        timeText.text = m_seconds.ToString("0s");
     }
 
     private void StatuUp()

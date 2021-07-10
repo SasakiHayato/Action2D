@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemShield : MonoBehaviour
+public class ItemShield : ItemBase
 {
     private void OnTriggerStay2D(Collider2D collision)
     {
-        PlayerContoller player;
         if (collision.gameObject.CompareTag("Player"))
         {
-            player = collision.GetComponent<PlayerContoller>();
             if (Input.GetButtonDown("Submit1"))
             {
-                player.m_subAttack = 1;
-
+                CheckEnum();
                 Destroy(this.gameObject);
             }
         }
