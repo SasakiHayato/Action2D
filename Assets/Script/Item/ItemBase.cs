@@ -13,8 +13,8 @@ public class ItemBase : MonoBehaviour
 
     [SerializeField] private ItemStatus m_status;
 
-    public PlayerContoller m_player;
-    public Uicontroller m_ui;
+    [System.NonSerialized] public PlayerContoller m_player;
+    [System.NonSerialized] public Uicontroller m_ui;
 
     void Start()
     {
@@ -36,6 +36,8 @@ public class ItemBase : MonoBehaviour
         if (m_status == ItemStatus.StatusUp)
         {
             m_ui.m_slectCanvas.SetActive(true);
+            m_ui.m_freeze = true;
+            m_player.m_freeze = true;
         }
     }
 

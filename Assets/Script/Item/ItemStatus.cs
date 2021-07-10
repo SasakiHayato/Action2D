@@ -6,7 +6,6 @@ public class ItemStatus : ItemBase
 {
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
         if (collision.gameObject.CompareTag("Player"))
         {
             if (Input.GetButtonDown("Submit1"))
