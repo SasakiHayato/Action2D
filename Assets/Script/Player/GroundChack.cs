@@ -21,6 +21,7 @@ public class GroundChack : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGround = false;
+            plyerJumpCount = 1;
         }
     }
 }

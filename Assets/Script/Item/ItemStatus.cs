@@ -11,8 +11,6 @@ public class ItemStatus : ItemBase
             if (Input.GetButtonDown("Submit1"))
             {
                 CheckEnum();
-                m_ui.m_freeze = true;
-                m_player.m_freeze = true;
                 Destroy(this.gameObject);
             }
         }

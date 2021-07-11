@@ -58,6 +58,7 @@ public class CreateMap : MonoBehaviour
 
         m_x = x;
         m_y = y;
+
         state[x, y] = State.StartPos;
     }
 
@@ -151,7 +152,6 @@ public class CreateMap : MonoBehaviour
         {
             cell.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
         }
-
 
         Instantiate(cell, new Vector2(i - height / 2, j - width / 2), Quaternion.identity);
     }

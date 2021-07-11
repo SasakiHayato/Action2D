@@ -10,8 +10,8 @@ public class ItemMagic : ItemBase
         {
             if (Input.GetButtonDown("Submit1"))
             {
-
                 CheckEnum();
+                m_player.ItemCheck(this.gameObject);
                 Destroy(this.gameObject);
             }
         }

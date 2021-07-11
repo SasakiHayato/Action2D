@@ -8,18 +8,18 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private float m_jumpPower = 0;
     
     [System.NonSerialized] public bool m_freeze = false;
-    private bool m_active = false;
+    private bool m_attackActive = false;
     private bool m_crouch = false;
 
     [System.NonSerialized] public int m_Hp = 100;
 
     [System.NonSerialized] public int m_attackPower = 10;
     [System.NonSerialized] public int m_magicPower = 10;
-    [System.NonSerialized] public int m_shieldPower = 10; 
+    [System.NonSerialized] public int m_shieldPower = 10;
 
+    private int m_avoidance = 1;
     private int m_attackCombo = 1;
     [System.NonSerialized] public int m_subAttack = 0;
-
 
     [SerializeField] GroundChack m_groundChack;
     
@@ -31,8 +31,10 @@ public class PlayerContoller : MonoBehaviour
 
     [SerializeField] private Transform m_nozzle = null;
     [SerializeField] private Transform m_crouchNuzzle = null;
+    private Vector2 m_avoidanceTrans = Vector2.zero;
 
     [SerializeField] private GameObject m_bulletPlefab = null;
+    [System.NonSerialized] public GameObject m_itemSeve = null;
 
     void Start()
     {
@@ -43,10 +45,13 @@ public class PlayerContoller : MonoBehaviour
         for (int i = 0; i < m_attack.Length; i++)
         {
             m_attack[i] = transform.GetChild(i).gameObject;
-            m_attack[i].SetActive(m_active);
+            m_attack[i].SetActive(m_attackActive);
         }
 
         transform.position = this.transform.position;
+        m_avoidanceTrans = this.transform.position;
+
+        Debug.Log(m_itemSeve);
     }
 
     void Update()
@@ -67,6 +72,13 @@ public class PlayerContoller : MonoBehaviour
         {
             SubAttack();
         }
+
+        if (Input.GetButtonDown("Fire3"))
+        {
+            Avoidance();
+        }
+
+        Debug.Log(m_itemSeve);
     }
     
     void Move()
@@ -88,12 +100,13 @@ public class PlayerContoller : MonoBehaviour
             if (h > 0)
             {
                 transform.localScale = new Vector2(0.15f, 0.15f);
+                m_avoidance = 1;
             }
             if (h < 0)
             {
                 transform.localScale = new Vector2(-0.15f, 0.15f);
+                m_avoidance = 2;
             }
-            
         }
         if (v < 0)
         {
@@ -155,6 +168,20 @@ public class PlayerContoller : MonoBehaviour
         }
     }
 
+    private void Avoidance()
+    {
+        switch (m_avoidance)
+        {
+            case 1:
+                transform.Translate(4, 0, 0);
+                break;
+
+            case 2:
+                transform.Translate(-4, 0, 0);
+                break;
+        }
+    }
+
     public void PlayerDamage(int damage)
     {
         m_Hp -= damage;
@@ -162,6 +189,19 @@ public class PlayerContoller : MonoBehaviour
         if (m_Hp <= 0)
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    public void ItemCheck(GameObject item)
+    {
+        if (m_itemSeve == null)
+        {
+            m_itemSeve = item;
+            Debug.Log(m_itemSeve);
+        }
+        else
+        {
+            Debug.Log("アイテムあり");
         }
     }
 
@@ -183,15 +223,15 @@ public class PlayerContoller : MonoBehaviour
     // 攻撃時の Collider の SetActive
     private void SetCollider()
     {
-        if (!m_active)
+        if (!m_attackActive)
         {
-            m_active = true;
+            m_attackActive = true;
         }
         else
         {
-            m_active = false;
+            m_attackActive = false;
         }
-        m_attack[m_attackCombo - 1].SetActive(m_active);
+        m_attack[m_attackCombo - 1].SetActive(m_attackActive);
     }
 
     private void SetBullet()

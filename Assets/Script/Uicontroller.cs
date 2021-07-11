@@ -12,9 +12,18 @@ public class Uicontroller : MonoBehaviour
     [SerializeField] Text m_attackText;
     [SerializeField] Text m_shieldText;
 
-    Slider m_slider;
+    [SerializeField] public Sprite m_magicSprite;
+    [SerializeField] public Sprite m_shieldSprite;
+
+    [SerializeField] private Image m_image;
+
+    [System.NonSerialized] public Sprite m_setSprite = null;
+
+    private Slider m_slider;
+
     [System.NonSerialized] public GameObject m_slectCanvas;
-    PlayerContoller player;
+
+    private PlayerContoller player;
 
     [System.NonSerialized] public int m_magicPoint = 1;
     [System.NonSerialized] public int m_attackPoint = 1;
@@ -38,7 +47,7 @@ public class Uicontroller : MonoBehaviour
         SliderHp();
         Timer();
         StatuUp();
-        
+        SetSprite();
     }
 
     private void SliderHp()
@@ -60,5 +69,10 @@ public class Uicontroller : MonoBehaviour
         m_magicText.text = m_magicPoint.ToString();
         m_attackText.text = m_attackPoint.ToString();
         m_shieldText.text = m_shieldPoint.ToString();
+    }
+
+    private void SetSprite()
+    {
+        m_image.sprite = m_setSprite;
     }
 }

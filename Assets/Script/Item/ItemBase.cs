@@ -27,10 +27,12 @@ public class ItemBase : MonoBehaviour
         if (m_status == ItemStatus.Magic)
         {
             m_player.m_subAttack = 2;
+            m_ui.m_setSprite = m_ui.m_magicSprite;
         }
         else if (m_status == ItemStatus.Shield)
         {
             m_player.m_subAttack = 1;
+            m_ui.m_setSprite = m_ui.m_shieldSprite;
         }
 
         if (m_status == ItemStatus.StatusUp)

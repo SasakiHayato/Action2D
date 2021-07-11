@@ -23,7 +23,6 @@ public class StatusSelect : MonoBehaviour
         for (int i = 0; i < m_selectObject.Length; i++)
         {
             m_selectObject[i] = transform.GetChild(i).gameObject;
-            Debug.Log(m_selectObject[i]);
             m_scale = m_selectObject[i].transform.localScale;
         }
     }
