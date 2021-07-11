@@ -6,6 +6,7 @@ public class EnemyBase : MonoBehaviour
 {
     [SerializeField] public float m_speed = 0;
     [SerializeField] public float m_hp = 0;
+    [System.NonSerialized] public float m_dSpeed;
 
     [SerializeField] public Vector2 m_playerRay = Vector2.zero;
     [SerializeField] public LayerMask m_playerLayer = 0;
@@ -23,6 +24,8 @@ public class EnemyBase : MonoBehaviour
         {
             m_speed = 0;
             StartCoroutine(StartWalk(50));
+            m_playerRay *= -1;
+            m_wallRay *= -1;
         }
     }
 
@@ -32,12 +35,22 @@ public class EnemyBase : MonoBehaviour
         {
             yield return null;
         }
+        
+        MoveCheck();
+    }
 
-        m_speed = 2;
-        m_speed *= -1;
-        m_playerRay *= -1;
-        transform.localScale = new Vector2(-0.15f, 0.15f);
-
+    private void MoveCheck()
+    {
+        if (transform.localScale.x < 0)
+        {
+            transform.localScale = new Vector2(0.15f, 0.15f);
+            m_speed = m_dSpeed;
+        }
+        else
+        {
+            transform.localScale = new Vector2(-0.15f, 0.15f);
+            m_speed = -m_dSpeed;
+        }
     }
 
     public void EnemyDamage(float damage)

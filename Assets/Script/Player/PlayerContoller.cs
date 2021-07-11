@@ -50,8 +50,6 @@ public class PlayerContoller : MonoBehaviour
 
         transform.position = this.transform.position;
         m_avoidanceTrans = this.transform.position;
-
-        Debug.Log(m_itemSeve);
     }
 
     void Update()
@@ -77,8 +75,6 @@ public class PlayerContoller : MonoBehaviour
         {
             Avoidance();
         }
-
-        Debug.Log(m_itemSeve);
     }
     
     void Move()

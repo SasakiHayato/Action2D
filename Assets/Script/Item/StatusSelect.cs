@@ -47,7 +47,6 @@ public class StatusSelect : MonoBehaviour
         }
         
         Select();
-        Debug.Log(m_selectNum);
         if (Input.GetButtonUp("Jump"))
         {
             m_item.SetStatus(ref m_selectNum);

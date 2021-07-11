@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\CreateMap.cs" />
+    <Compile Include="Assets\Script\Enemy\ArcheryController.cs" />
     <Compile Include="Assets\Script\Enemy\BomContoller.cs" />
     <Compile Include="Assets\Script\Enemy\BommerController.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyBase.cs" />
