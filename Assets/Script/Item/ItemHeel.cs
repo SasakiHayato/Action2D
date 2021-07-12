@@ -10,8 +10,15 @@ public class ItemHeel : ItemBase
         {
             if (Input.GetButtonDown("Submit1"))
             {
-                CheckEnum();
-                Destroy(this.gameObject);
+                if (m_player.m_Hp == 100)
+                {
+                    Debug.Log("無理");
+                }
+                else
+                {
+                    CheckEnum();
+                    Destroy(this.gameObject);
+                }
             }
         }
     }

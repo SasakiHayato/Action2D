@@ -43,7 +43,14 @@ public class ItemBase : MonoBehaviour
         }
         else if (m_status == ItemStatus.Heel)
         {
-            m_player.m_Hp += 30;
+            if (m_player.m_Hp < m_player.m_maxHp)
+            {
+                m_player.m_Hp += 30;
+                if (m_player.m_Hp > 100)
+                {
+                    m_player.m_Hp = 100;
+                }
+            }
         }
     }
 

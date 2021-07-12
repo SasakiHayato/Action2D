@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 5612574671708056805}
   m_Layer: 0
   m_Name: Bommer
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -541,6 +541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 0
   m_hp: 0
+  m_attackPower: 0
   m_playerRay: {x: 8, y: 0}
   m_playerLayer:
     serializedVersion: 2
@@ -549,6 +550,8 @@ MonoBehaviour:
   m_wallLayer:
     serializedVersion: 2
     m_Bits: 1024
+  m_bloodPrefub: {fileID: 2747617401634751992, guid: 324cfdfe08761574ba2f20263579feba,
+    type: 3}
   m_freeze: 0
   m_attackBool: 0
   m_nozzle: {fileID: 5612574671878208616}

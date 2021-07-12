@@ -12,6 +12,7 @@ public class PlayerContoller : MonoBehaviour
     private bool m_crouch = false;
 
     [System.NonSerialized] public int m_Hp = 100;
+    [System.NonSerialized] public int m_maxHp = 100;
 
     [System.NonSerialized] public int m_attackPower = 10;
     [System.NonSerialized] public int m_magicPower = 10;

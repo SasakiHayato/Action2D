@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 9110643881165171482}
   m_Layer: 0
   m_Name: Archery
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1144,8 +1144,8 @@ MonoBehaviour:
   - {fileID: 9110643881273028292}
   - {fileID: 9110643880939894675}
   m_Bounds:
-    m_Center: {x: 2.8504949, y: 0.64681816, z: 0}
-    m_Extent: {x: 5.9062696, y: 7.093467, z: 0}
+    m_Center: {x: 1.7746396, y: 0.14025164, z: 0}
+    m_Extent: {x: 7.995464, y: 6.3857546, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &9110643881165171478
@@ -1217,7 +1217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 1
-  m_hp: 0
+  m_hp: 1
+  m_attackPower: 0
   m_playerRay: {x: 12.5, y: 0}
   m_playerLayer:
     serializedVersion: 2
@@ -1226,6 +1227,8 @@ MonoBehaviour:
   m_wallLayer:
     serializedVersion: 2
     m_Bits: 1024
+  m_bloodPrefub: {fileID: 2747617401634751992, guid: 324cfdfe08761574ba2f20263579feba,
+    type: 3}
   m_freeze: 0
   m_nozzle: {fileID: 4319249720731990119}
   m_bow: {fileID: 3868141988888537458, guid: aa3a478115209334e9aeba31566f15ba, type: 3}
