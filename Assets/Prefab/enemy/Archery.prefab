@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &946211973381317314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4319249720731990119}
+  m_Layer: 0
+  m_Name: Nozzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4319249720731990119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946211973381317314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.9, y: 2.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110643881165171481}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1773043303213653767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5808247000925756845}
+  m_Layer: 0
+  m_Name: ====Bone====
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5808247000925756845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773043303213653767}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.7746383, y: 0.1402515, z: 0}
+  m_LocalScale: {x: 6.666666, y: 6.666666, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9110643881165171481}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9110643879376190310
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +338,7 @@ Transform:
   m_Children:
   - {fileID: 9110643880106079572}
   m_Father: {fileID: 9110643881165171481}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9110643879853448297
 GameObject:
@@ -431,7 +491,7 @@ Transform:
   - {fileID: 9110643879642056438}
   - {fileID: 9110643879738342527}
   m_Father: {fileID: 9110643881165171481}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -113.41}
 --- !u!1 &9110643880106079571
 GameObject:
@@ -993,6 +1053,8 @@ Transform:
   m_LocalPosition: {x: -4.86, y: -0.51, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
+  - {fileID: 4319249720731990119}
+  - {fileID: 5808247000925756845}
   - {fileID: 9110643879811971302}
   - {fileID: 9110643879991239836}
   m_Father: {fileID: 0}
@@ -1082,8 +1144,8 @@ MonoBehaviour:
   - {fileID: 9110643881273028292}
   - {fileID: 9110643880939894675}
   m_Bounds:
-    m_Center: {x: 1.7746396, y: 0.14025164, z: 0}
-    m_Extent: {x: 7.995464, y: 6.3857546, z: 0}
+    m_Center: {x: 2.8504949, y: 0.64681816, z: 0}
+    m_Extent: {x: 5.9062696, y: 7.093467, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &9110643881165171478
@@ -1165,6 +1227,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   m_freeze: 0
+  m_nozzle: {fileID: 4319249720731990119}
+  m_bow: {fileID: 3868141988888537458, guid: aa3a478115209334e9aeba31566f15ba, type: 3}
 --- !u!1 &9110643881183711712
 GameObject:
   m_ObjectHideFlags: 0

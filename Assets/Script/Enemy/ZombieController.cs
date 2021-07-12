@@ -19,12 +19,22 @@ public class ZombieController : EnemyBase
 
         m_attckCollider = transform.GetChild(0).gameObject;
         m_attckCollider.SetActive(m_attackBool);
+
+        StartPos();
+        m_dSpeed = m_speed;
+        m_nowHp = m_hp;
     }
 
     void Update()
     {
         if (m_freeze) return;
         Move();
+
+        if (m_hp < m_nowHp)
+        {
+            DamageMotion();
+            m_nowHp = m_hp; 
+        }
 
         WallCheck();
         PlayerCheck();
@@ -49,6 +59,11 @@ public class ZombieController : EnemyBase
         m_animator.Play("Enemy_Attack");
     }
 
+    private void DamageMotion()
+    {
+        m_animator.Play("Enemy_Damage");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerContoller player;
@@ -56,7 +71,7 @@ public class ZombieController : EnemyBase
         {
             player = collision.GetComponent<PlayerContoller>();
             player.m_rigidbody.AddForce(transform.up * 2, ForceMode2D.Impulse);
-            player.PlayerDamage(0);
+            player.PlayerDamage(m_attackPower);
         }
     }
 

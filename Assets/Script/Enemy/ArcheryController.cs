@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ArcheryController : EnemyBase
 {
+    [SerializeField] private Transform m_nozzle;
+    [SerializeField] private GameObject m_bow;
+
     Rigidbody2D m_rigidbody;
     Animator m_animator;
 
@@ -13,6 +16,8 @@ public class ArcheryController : EnemyBase
         m_animator = GetComponent<Animator>();
 
         m_dSpeed = m_speed;
+
+        StartPos();
     }
 
     void Update()
@@ -50,5 +55,10 @@ public class ArcheryController : EnemyBase
     private void Attack()
     {
         m_animator.Play("Archery_Attack");
+    }
+
+    private void SetNozzle()
+    {
+        Instantiate(m_bow, m_nozzle);
     }
 }

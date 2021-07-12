@@ -8,7 +8,7 @@ public class AttackCheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ZombieController enemy = collision.GetComponent<ZombieController>();
+        EnemyBase enemy = collision.GetComponent<EnemyBase>();
         if (collision.gameObject.CompareTag("Enemy"))
         {
             enemy.EnemyDamage(m_player.m_attackPower);

@@ -16,6 +16,8 @@ public class BommerController : EnemyBase
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
+
+        StartPos();
     }
 
     void Update()

@@ -9,6 +9,7 @@ public class ItemBase : MonoBehaviour
         Magic,
         Shield,
         StatusUp,
+        Heel,
     }
 
     [SerializeField] private ItemStatus m_status;
@@ -34,12 +35,15 @@ public class ItemBase : MonoBehaviour
             m_player.m_subAttack = 1;
             m_ui.m_setSprite = m_ui.m_shieldSprite;
         }
-
-        if (m_status == ItemStatus.StatusUp)
+        else if (m_status == ItemStatus.StatusUp)
         {
             m_ui.m_slectCanvas.SetActive(true);
             m_ui.m_freeze = true;
             m_player.m_freeze = true;
+        }
+        else if (m_status == ItemStatus.Heel)
+        {
+            m_player.m_Hp += 30;
         }
     }
 

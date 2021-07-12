@@ -53,7 +53,7 @@ public class PlayerContoller : MonoBehaviour
     }
 
     void Update()
-    {
+    { 
         Move();
 
         if (Input.GetButtonDown("Jump"))
