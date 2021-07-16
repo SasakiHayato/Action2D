@@ -153,12 +153,19 @@ MonoBehaviour:
   m_wallCell: {fileID: 7690519100384764356, guid: 1dde8a1d57c4298449ac325ccc0fa093,
     type: 3}
   m_grid: {fileID: 1082453023}
-  m_mapTips:
-  - {fileID: 1243172010436065496, guid: c375f7220496eda42bd375fe3c7d3a93, type: 3}
+  m_tipsVertical:
   - {fileID: 3784446751445559261, guid: ef6b869bd48871f468c88496ea5dde8d, type: 3}
-  - {fileID: 3494100113876991379, guid: 96c544a2141abdf40a3901ff82e77712, type: 3}
   - {fileID: 9082726830578932401, guid: 7d529fdf44723504893073568efde766, type: 3}
   - {fileID: 8787281972913712308, guid: 903c97ed4823b194480cfde6119da20a, type: 3}
+  m_tipsHorizontal:
+  - {fileID: 1243172010436065496, guid: c375f7220496eda42bd375fe3c7d3a93, type: 3}
+  - {fileID: 3494100113876991379, guid: 96c544a2141abdf40a3901ff82e77712, type: 3}
+  - {fileID: 4558596354030456702, guid: e6065cc92dbe7884aac7a94efd9c0f36, type: 3}
+  m_tipsCorner:
+  - {fileID: 7950423439852557122, guid: d5f97c61796a99040a3fa93a989ab2a6, type: 3}
+  - {fileID: 6494514782901813038, guid: 333292c5545420e4980ea97f5d2d3b49, type: 3}
+  - {fileID: 2001142895714162041, guid: 7eb5b355360205b4a91a33cd1f359681, type: 3}
+  - {fileID: 3939763279464828307, guid: 5f4e6a1d12968744980e4f45dbb7cff3, type: 3}
 --- !u!4 &87207911
 Transform:
   m_ObjectHideFlags: 0

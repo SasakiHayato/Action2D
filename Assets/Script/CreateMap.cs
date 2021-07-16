@@ -6,8 +6,6 @@ public enum MapStatus
 {
     Wall,
     Load,
-
-    Start,
 }
 
 public class CreateMap : MonoBehaviour
@@ -15,7 +13,9 @@ public class CreateMap : MonoBehaviour
     [SerializeField] private GameObject m_wallCell = null;
     [SerializeField] private GameObject m_grid = null;
 
-    [SerializeField] private GameObject[] m_mapTips = null;
+    [SerializeField] private GameObject[] m_tipsVertical = null;
+    [SerializeField] private GameObject[] m_tipsHorizontal = null;
+    [SerializeField] private GameObject[] m_tipsCorner = null;
 
     private const int m_mapHeight = 7;
     private const int m_mapWide = 7;
@@ -55,7 +55,7 @@ public class CreateMap : MonoBehaviour
 
     private void SetStartCell()
     {
-        m_maps[m_startX, m_startY] = MapStatus.Start;
+        m_maps[m_startX, m_startY] = MapStatus.Load;
 
         DirectionCheck(m_startX, m_startY);
     }
@@ -153,12 +153,7 @@ public class CreateMap : MonoBehaviour
             setVec = new Vector3(vector.x, vector.y, 1);
             setCell = SetMapTip(x, y);
         }
-        else if (m_maps[x, y] == MapStatus.Start)
-        {
-            setVec = new Vector3(vector.x, vector.y, 0);
-            setCell = m_mapTips[1];
-        }
-
+        
         GameObject cell = Instantiate(setCell, setVec, Quaternion.identity);
         cell.transform.SetParent(m_grid.transform);
     }
@@ -192,37 +187,65 @@ public class CreateMap : MonoBehaviour
             left = true;
         }
 
-
         GameObject set = new GameObject();
 
-        if (right && left)
+        // 左右判定
+        if (right && left && !up && !down)
         {
-            set = m_mapTips[0];
+            set = m_tipsHorizontal[0];
             return set;
         }
-        else if (right)
+        else if (right && !left && !up && !down)
         {
-            set = m_mapTips[2];
+            set = m_tipsHorizontal[1];
             return set;
         }
-        if (up && down)
+        else if (left && !right && !up && !down)
         {
-            set = m_mapTips[1];
+            set = m_tipsHorizontal[2];
             return set;
         }
-        else if (up)
+
+        // 上下判定
+        if (up && down && !right && !left)
         {
-            set = m_mapTips[3];
+            set = m_tipsVertical[0];
             return set;
         }
-        else if (down)
+        else if (up && !down && !right && !left)
         {
-            set = m_mapTips[4];
+            set = m_tipsVertical[1];
+            return set;
+        }
+        else if (down && !up && !right && !left)
+        {
+            set = m_tipsVertical[2];
+            return set;
+        }
+
+        //角判定
+        if (right && down && !left && !up)
+        {
+            set = m_tipsCorner[1];
+            return set;
+        }
+        else if (right && up && !left && !down)
+        {
+            set = m_tipsCorner[3];
+            return set;
+        }
+        else if (left && up && !right && !down)
+        {
+            set = m_tipsCorner[2];
+            return set;
+        }
+        else if (left && down && !right && !up)
+        {
+            set = m_tipsCorner[0];
             return set;
         }
         else
         {
-            set = m_wallCell;
             return set;
         }
     }
