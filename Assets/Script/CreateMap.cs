@@ -14,6 +14,7 @@ public class CreateMap : MonoBehaviour
 {
     [SerializeField] private GameObject m_wallCell = null;
     [SerializeField] private GameObject m_grid = null;
+
     [SerializeField] private GameObject[] m_mapTips = null;
 
     private const int m_mapHeight = 7;
@@ -25,8 +26,6 @@ public class CreateMap : MonoBehaviour
     private int m_startY = 1;
 
     private int m_checkCount = 10;
-
-    //private GameObject m_setTip = new GameObject();
 
     void Start()
     {
@@ -166,50 +165,59 @@ public class CreateMap : MonoBehaviour
 
     private GameObject SetMapTip(int mapX, int mapY)
     {
-        int countY = 0;
-        int countX = 0;
+        bool right = false;
+        bool left = false;
+
+        bool up = false;
+        bool down = false;
 
         //上
         if (m_maps[mapX, mapY + 1] == MapStatus.Load)
         {
-            countY++;
+            up = true;
         }
         //下
         if (m_maps[mapX, mapY - 1] == MapStatus.Load)
         {
-            countY--;
+            down = true;
         }
         //右
         if (m_maps[mapX + 1, mapY] == MapStatus.Load)
         {
-            countX++;
+            right = true;
         }
         //左
         if (m_maps[mapX - 1, mapY] == MapStatus.Load)
         {
-            countX--;
+            left = true;
         }
+
 
         GameObject set = new GameObject();
 
-        if (countX == 0)
+        if (right && left)
         {
             set = m_mapTips[0];
             return set;
         }
-        else if (countX == 1)
+        else if (right)
         {
             set = m_mapTips[2];
             return set;
         }
-        if (countY == 0)
+        if (up && down)
         {
             set = m_mapTips[1];
             return set;
         }
-        else if (countY == 1)
+        else if (up)
         {
             set = m_mapTips[3];
+            return set;
+        }
+        else if (down)
+        {
+            set = m_mapTips[4];
             return set;
         }
         else
@@ -217,6 +225,5 @@ public class CreateMap : MonoBehaviour
             set = m_wallCell;
             return set;
         }
-        //return set;
     }
 }
