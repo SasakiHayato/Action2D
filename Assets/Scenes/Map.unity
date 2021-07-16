@@ -150,12 +150,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 759d1f46d7a790d498453148c6f6d0e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cell: {fileID: 1243172010436065496, guid: c375f7220496eda42bd375fe3c7d3a93, type: 3}
-  m_wallCell: {fileID: 1366385252121650675, guid: 297cb32ff282b6d4ea3529d1971e3df6,
+  m_wallCell: {fileID: 7690519100384764356, guid: 1dde8a1d57c4298449ac325ccc0fa093,
     type: 3}
   m_player: {fileID: 5502969240865247188, guid: 9f80b385de8d93640a26f6cb72e80a23,
     type: 3}
   m_grid: {fileID: 1082453023}
+  m_mapTips:
+  - {fileID: 1243172010436065496, guid: c375f7220496eda42bd375fe3c7d3a93, type: 3}
+  - {fileID: 3784446751445559261, guid: ef6b869bd48871f468c88496ea5dde8d, type: 3}
 --- !u!4 &87207911
 Transform:
   m_ObjectHideFlags: 0

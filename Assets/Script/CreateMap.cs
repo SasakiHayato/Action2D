@@ -12,10 +12,7 @@ public enum MapStatus
 
 public class CreateMap : MonoBehaviour
 {
-    //[SerializeField] private GameObject m_cell = null;
     [SerializeField] private GameObject m_wallCell = null;
-    [SerializeField] private GameObject m_player = null;
-
     [SerializeField] private GameObject m_grid = null;
     [SerializeField] private GameObject[] m_mapTips = null;
 
@@ -24,17 +21,15 @@ public class CreateMap : MonoBehaviour
 
     MapStatus[,] m_maps = new MapStatus[m_mapHeight, m_mapWide];
 
-    SpriteRenderer m_cellRenderer = null;
-
     private int m_startX = 1;
     private int m_startY = 1;
 
-    private int count = 10;
+    private int m_checkCount = 10;
+
+    //private GameObject m_setTip = new GameObject();
 
     void Start()
     {
-        //m_cellRenderer = m_cell.GetComponent<SpriteRenderer>();
-
         CellReset();
 
         SetStartCell();
@@ -44,17 +39,6 @@ public class CreateMap : MonoBehaviour
             for (int y = 0; y < m_mapHeight; y++)
             {
                 CreateMapCell(x, y);
-            }
-        }
-
-        for (int x = 0; x < m_mapWide; x++)
-        {
-            for (int y = 0; y < m_mapHeight; y++)
-            {
-                if (m_maps[x, y] == MapStatus.Load)
-                {
-                    SetMapTip(x, y);
-                }
             }
         }
     }
@@ -82,8 +66,8 @@ public class CreateMap : MonoBehaviour
         bool check = true;
         while (check)
         {
-            count--;
-            if (count < 0)
+            m_checkCount--;
+            if (m_checkCount < 0)
             {
                 break;
             }
@@ -100,7 +84,7 @@ public class CreateMap : MonoBehaviour
 
                 if (m_maps[x, y + directionY[randomY]] == MapStatus.Wall)
                 {
-                    count = 10;
+                    m_checkCount = 10;
                     check = false;
                     SetStatus(x, y + directionY[randomY], 0, directionY[randomY]);
 
@@ -116,7 +100,7 @@ public class CreateMap : MonoBehaviour
 
                 if (m_maps[x + directionX[randomX], y] == MapStatus.Wall)
                 {
-                    count = 10;
+                    m_checkCount = 10;
                     check = false;
                     SetStatus(x + directionX[randomX], y, directionX[randomX], 0);
 
@@ -154,57 +138,85 @@ public class CreateMap : MonoBehaviour
         DirectionCheck(x, y);
     }
 
-    private void SetMapTip(int mapX, int mapY)
-    {
-        int count = 0;
-        MapStatus targetMap = m_maps[mapX, mapY];
-        for (int x = mapX - 1; x <= mapX + 1; x++)
-        {
-            for (int y = mapY - 1; y <= mapY + 1; y++)
-            {
-                if (x < 0 || x >= m_mapWide)
-                {
-                    continue;
-                }
-                else if (y < 0 || y >= m_mapHeight)
-                {
-                    continue;
-                }
-                if (targetMap == m_maps[x, y])
-                {
-                    count++;
-                }
-            }
-        }
-
-        Debug.Log(count);
-    }
-
     private void CreateMapCell(int x, int y)
     {
         GameObject setCell = new GameObject();
-        Vector3 vector = new Vector3();
-        Vector2 vec = new Vector2(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2);
+        Vector3 setVec = new Vector3();
+        Vector2 vector = new Vector2(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2);
 
         if (m_maps[x, y] == MapStatus.Wall)
         {
-            vector = new Vector3(vec.x, vec.y, 0);
+            setVec = new Vector3(vector.x, vector.y, 0);
             setCell = m_wallCell;
         }
         if (m_maps[x, y] == MapStatus.Load)
         {
-            //m_cellRenderer.color = Color.white;
-            vector = new Vector3(vec.x, vec.y, 1);
-            setCell = m_mapTips[0];
+            setVec = new Vector3(vector.x, vector.y, 1);
+            setCell = SetMapTip(x, y);
         }
         else if (m_maps[x, y] == MapStatus.Start)
         {
-            vector = new Vector3(vec.x, vec.y, 0);
-            //setCell = m_player;
+            setVec = new Vector3(vector.x, vector.y, 0);
             setCell = m_mapTips[1];
         }
 
-        GameObject cell = Instantiate(setCell, vector, Quaternion.identity);
+        GameObject cell = Instantiate(setCell, setVec, Quaternion.identity);
         cell.transform.SetParent(m_grid.transform);
+    }
+
+    private GameObject SetMapTip(int mapX, int mapY)
+    {
+        int countY = 0;
+        int countX = 0;
+
+        //上
+        if (m_maps[mapX, mapY + 1] == MapStatus.Load)
+        {
+            countY++;
+        }
+        //下
+        if (m_maps[mapX, mapY - 1] == MapStatus.Load)
+        {
+            countY--;
+        }
+        //右
+        if (m_maps[mapX + 1, mapY] == MapStatus.Load)
+        {
+            countX++;
+        }
+        //左
+        if (m_maps[mapX - 1, mapY] == MapStatus.Load)
+        {
+            countX--;
+        }
+
+        GameObject set = new GameObject();
+
+        if (countX == 0)
+        {
+            set = m_mapTips[0];
+            return set;
+        }
+        else if (countX == 1)
+        {
+            set = m_mapTips[2];
+            return set;
+        }
+        if (countY == 0)
+        {
+            set = m_mapTips[1];
+            return set;
+        }
+        else if (countY == 1)
+        {
+            set = m_mapTips[3];
+            return set;
+        }
+        else
+        {
+            set = m_wallCell;
+            return set;
+        }
+        //return set;
     }
 }
