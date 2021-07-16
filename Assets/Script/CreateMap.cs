@@ -6,11 +6,18 @@ public enum MapStatus
 {
     Wall,
     Load,
+
+    Start,
 }
 
 public class CreateMap : MonoBehaviour
 {
-    [SerializeField] private GameObject m_cell = null;
+    //[SerializeField] private GameObject m_cell = null;
+    [SerializeField] private GameObject m_wallCell = null;
+    [SerializeField] private GameObject m_player = null;
+
+    [SerializeField] private GameObject m_grid = null;
+    [SerializeField] private GameObject[] m_mapTips = null;
 
     private const int m_mapHeight = 7;
     private const int m_mapWide = 7;
@@ -26,7 +33,7 @@ public class CreateMap : MonoBehaviour
 
     void Start()
     {
-        m_cellRenderer = m_cell.GetComponent<SpriteRenderer>();
+        //m_cellRenderer = m_cell.GetComponent<SpriteRenderer>();
 
         CellReset();
 
@@ -65,7 +72,7 @@ public class CreateMap : MonoBehaviour
 
     private void SetStartCell()
     {
-        m_maps[m_startX, m_startY] = MapStatus.Load;
+        m_maps[m_startX, m_startY] = MapStatus.Start;
 
         DirectionCheck(m_startX, m_startY);
     }
@@ -175,16 +182,29 @@ public class CreateMap : MonoBehaviour
 
     private void CreateMapCell(int x, int y)
     {
+        GameObject setCell = new GameObject();
+        Vector3 vector = new Vector3();
+        Vector2 vec = new Vector2(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2);
+
         if (m_maps[x, y] == MapStatus.Wall)
         {
-            m_cellRenderer.color = Color.black;
+            vector = new Vector3(vec.x, vec.y, 0);
+            setCell = m_wallCell;
         }
         if (m_maps[x, y] == MapStatus.Load)
         {
-            m_cellRenderer.color = Color.white;
+            //m_cellRenderer.color = Color.white;
+            vector = new Vector3(vec.x, vec.y, 1);
+            setCell = m_mapTips[0];
+        }
+        else if (m_maps[x, y] == MapStatus.Start)
+        {
+            vector = new Vector3(vec.x, vec.y, 0);
+            //setCell = m_player;
+            setCell = m_mapTips[1];
         }
 
-        GameObject cell = Instantiate(m_cell, new Vector2(x * 2 - m_mapWide / 2, y * 2 - m_mapHeight / 2), Quaternion.identity);
-        cell.transform.SetParent(this.transform);
+        GameObject cell = Instantiate(setCell, vector, Quaternion.identity);
+        cell.transform.SetParent(m_grid.transform);
     }
 }
