@@ -2,157 +2,189 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum State
+public enum MapStatus
 {
     Wall,
     Load,
-
-    StartPos,
-    EndPos,
-
-    Shop,
 }
 
 public class CreateMap : MonoBehaviour
 {
-    [SerializeField] private GameObject cell;
+    [SerializeField] private GameObject m_cell = null;
 
-    const int height = 20;
-    const int width = 20;
+    private const int m_mapHeight = 7;
+    private const int m_mapWide = 7;
 
-    State[,] state = new State[width, height];
+    MapStatus[,] m_maps = new MapStatus[m_mapHeight, m_mapWide];
 
-    private int m_x, m_y;
+    SpriteRenderer m_cellRenderer = null;
 
-    // x が横軸, y が縦軸
+    private int m_startX = 1;
+    private int m_startY = 1;
+
+    private int count = 10;
+
     void Start()
     {
-        for (int x = 0; x < width; x++)
+        m_cellRenderer = m_cell.GetComponent<SpriteRenderer>();
+
+        CellReset();
+
+        SetStartCell();
+
+        for (int x = 0; x < m_mapWide; x++)
         {
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < m_mapHeight; y++)
             {
-                state[x, y] = State.Wall;
+                CreateMapCell(x, y);
             }
         }
 
-        StartPos();
-        Select(m_x, m_y);
-
-        SelectShop();
-        EndPos();
-
-        //MapCreate
-        for (int x = 0; x < width; x++)
+        for (int x = 0; x < m_mapWide; x++)
         {
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < m_mapHeight; y++)
             {
-                Create(x, y);
+                if (m_maps[x, y] == MapStatus.Load)
+                {
+                    SetMapTip(x, y);
+                }
             }
         }
     }
 
-    private void StartPos()
+    private void CellReset()
     {
-        int x = Random.Range(3, height - 3);
-        int y = Random.Range(3, width - 3);
-
-        m_x = x;
-        m_y = y;
-
-        state[x, y] = State.StartPos;
+        for (int x = 0; x < m_mapWide; x++)
+        {
+            for (int y = 0; y < m_mapWide; y++)
+            {
+                m_maps[x, y] = MapStatus.Wall;
+            }
+        }
     }
 
-    private void Select(int i, int j)
+    private void SetStartCell()
+    {
+        m_maps[m_startX, m_startY] = MapStatus.Load;
+
+        DirectionCheck(m_startX, m_startY);
+    }
+
+    private void DirectionCheck(int x, int y)
     {
         bool check = true;
         while (check)
         {
-            int x = Random.Range(-1, 2);
-            int y = Random.Range(-1, 2);
-
-            if (x == 0 && y == 0 || x != 0 && y != 0)
+            count--;
+            if (count < 0)
             {
-                continue;
-            }
-            check = false;
-
-            // 2つ先を調べる。
-            if (i + x * 2 < 0 || i + x * 2 >= width)
-            {
-                continue;
-            }
-            else if (j + y * 2 < 0 || j + y * 2 >= height)
-            {
-                continue;
+                break;
             }
 
-            if (state[i + x * 2, j + y * 2] == State.Wall)
+            int[] directionX = { 0, 2, -2 };
+            int randomX = Random.Range(0, 3);
+
+            if (directionX[randomX] == 0)
             {
-                if (state[i + x, j + y] != State.StartPos)
+                int[] directionY = { 2, -2 };
+                int randomY = Random.Range(0, 2);
+
+                if (y + directionY[randomY] < 0 || y + directionY[randomY] >= m_mapHeight) continue;
+
+                if (m_maps[x, y + directionY[randomY]] == MapStatus.Wall)
                 {
-                    state[i + x, j + y] = State.Load;
+                    count = 10;
+                    check = false;
+                    SetStatus(x, y + directionY[randomY], 0, directionY[randomY]);
+
                 }
-                
-                Select(i + x, j + y);
+                else
+                {
+                    continue;
+                }
             }
-            else if (state[i + x * 2, j + y * 2] != State.Wall)
+            else
             {
-                Select(i + x, j + y);
+                if (x + directionX[randomX] < 0 || x + directionX[randomX] >= m_mapWide) continue;
+
+                if (m_maps[x + directionX[randomX], y] == MapStatus.Wall)
+                {
+                    count = 10;
+                    check = false;
+                    SetStatus(x + directionX[randomX], y, directionX[randomX], 0);
+
+                }
+                else
+                {
+                    continue;
+                }
             }
         }
     }
 
-    private void SelectShop()
+    private void SetStatus(int x, int y, int directionX, int directionY)
     {
-        int x = Random.Range(1, height - 1);
-        int y = Random.Range(1, width - 1);
+        m_maps[x, y] = MapStatus.Load;
 
-        if (state[x, y] == State.Load)
+        if (directionX < 0)
         {
-            state[x, y] = State.Shop;
-            return;
+            m_maps[x + 1, y] = MapStatus.Load;
+        }
+        else if (directionX > 0)
+        {
+            m_maps[x - 1, y] = MapStatus.Load;
         }
 
-        SelectShop();
+        if (directionY < 0)
+        {
+            m_maps[x, y + 1] = MapStatus.Load;
+        }
+        else if (directionY > 0)
+        {
+            m_maps[x, y - 1] = MapStatus.Load;
+        }
+
+        DirectionCheck(x, y);
     }
 
-    private void EndPos()
+    private void SetMapTip(int mapX, int mapY)
     {
-        int x = Random.Range(1, height - 1);
-        int y = Random.Range(1, width - 1);
-
-        if (state[x, y] == State.Load)
+        int count = 0;
+        MapStatus targetMap = m_maps[mapX, mapY];
+        for (int x = mapX - 1; x <= mapX + 1; x++)
         {
-            state[x, y] = State.EndPos;
-            return;
+            for (int y = mapY - 1; y <= mapY + 1; y++)
+            {
+                if (x < 0 || x >= m_mapWide)
+                {
+                    continue;
+                }
+                else if (y < 0 || y >= m_mapHeight)
+                {
+                    continue;
+                }
+                if (targetMap == m_maps[x, y])
+                {
+                    count++;
+                }
+            }
         }
-        EndPos();
+
+        Debug.Log(count);
     }
 
-    // Wall = 黒, Load = 白, Start = 青, Goal = 緑, Shop = 赤,
-    private void Create(int i, int j)
+    private void CreateMapCell(int x, int y)
     {
-        if (state[i, j] == State.Wall)
+        if (m_maps[x, y] == MapStatus.Wall)
         {
-            cell.gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+            m_cellRenderer.color = Color.black;
         }
-        else if (state[i, j] == State.Load)
+        if (m_maps[x, y] == MapStatus.Load)
         {
-            cell.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        }
-        else if (state[i, j] == State.Shop)
-        {
-            cell.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-        }
-        else if (state[i, j] == State.StartPos)
-        {
-            cell.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-        }
-        else if (state[i, j] == State.EndPos)
-        {
-            cell.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+            m_cellRenderer.color = Color.white;
         }
 
-        Instantiate(cell, new Vector2(i - height / 2, j - width / 2), Quaternion.identity);
+        GameObject cell = Instantiate(m_cell, new Vector2(x * 2 - m_mapWide / 2, y * 2 - m_mapHeight / 2), Quaternion.identity);
+        cell.transform.SetParent(this.transform);
     }
 }

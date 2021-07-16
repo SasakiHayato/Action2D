@@ -150,7 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 759d1f46d7a790d498453148c6f6d0e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cell: {fileID: 7414253418700998919, guid: 6a3de0ac0fe8eb340948f5bbc00a9743, type: 3}
+  m_cell: {fileID: 7414253418700998919, guid: 6a3de0ac0fe8eb340948f5bbc00a9743, type: 3}
+  m_maptip: []
 --- !u!4 &87207911
 Transform:
   m_ObjectHideFlags: 0
