@@ -1,37 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public enum MapStatus
 {
     Wall,
     Load,
+
+    Start,
+    Goal,
 }
+
+public enum MapCell
+{
+    Open,
+    Close,
+}
+
 
 public class CreateMap : MonoBehaviour
 {
-    [SerializeField] private GameObject m_wallCell = null;
-    [SerializeField] private GameObject m_grid = null;
+    [SerializeField] private GameObject m_mapWall = null;
 
-    [SerializeField] private GameObject[] m_tipsVertical = null;
-    [SerializeField] private GameObject[] m_tipsHorizontal = null;
-    [SerializeField] private GameObject[] m_tipsCorner = null;
+    [SerializeField] private GameObject[] m_horizontal = null;
+    [SerializeField] private GameObject[] m_vertical = null;
+    [SerializeField] private GameObject[] m_corner = null;
+    [SerializeField] private GameObject[] m_threeDirections = null;
+    [SerializeField] private GameObject m_all = null;
 
-    private const int m_mapHeight = 7;
-    private const int m_mapWide = 7;
+    [SerializeField] private Grid m_grid = null;
+
+    private const int m_mapHeight = 19;
+    private const int m_mapWide = 19;
 
     MapStatus[,] m_maps = new MapStatus[m_mapHeight, m_mapWide];
+    MapCell[,] m_cells = new MapCell[m_mapHeight, m_mapWide];
 
     private int m_startX = 1;
     private int m_startY = 1;
 
-    private int m_checkCount = 10;
+    private List<int> m_xMapList = new List<int>();
+    private List<int> m_yMapList = new List<int>();
+
+    private List<int> m_xCellList = new List<int>();
+    private List<int> m_yCellList = new List<int>();
+
+    private List<int> m_xEndCellList = new List<int>();
+    private List<int> m_yEndCellList = new List<int>();
+
+    private int m_xCount = 0;
+    private int m_yCount = 0;
 
     void Start()
     {
-        CellReset();
+        MapReset();
 
-        SetStartCell();
+        SetStartMap();
+        BackLoad(m_xMapList[m_xCount - 1], m_yMapList[m_yCount - 1]);
+
+        OpenLoadEnum();
+
+        FindLoad(m_startX, m_startY);
+        Debug.Log("a");
+        SetGoalMap();
 
         for (int x = 0; x < m_mapWide; x++)
         {
@@ -40,33 +72,48 @@ public class CreateMap : MonoBehaviour
                 CreateMapCell(x, y);
             }
         }
+
+
+
+        //for (int x = 0; x < m_mapWide; x++)
+        //{
+        //    for (int y = 0; y < m_mapHeight; y++)
+        //    {
+        //        if (m_maps[x, y] == MapStatus.Load)
+        //        {
+        //            SetMapTip(x, y);
+        //        }
+        //    }
+        //}
     }
 
-    private void CellReset()
+    private void MapReset()
     {
         for (int x = 0; x < m_mapWide; x++)
         {
             for (int y = 0; y < m_mapWide; y++)
             {
                 m_maps[x, y] = MapStatus.Wall;
+                m_cells[x, y] = MapCell.Open;
             }
         }
     }
 
-    private void SetStartCell()
+    private void SetStartMap()
     {
-        m_maps[m_startX, m_startY] = MapStatus.Load;
+        m_maps[m_startX, m_startY] = MapStatus.Start;
 
         DirectionCheck(m_startX, m_startY);
     }
 
     private void DirectionCheck(int x, int y)
     {
+        int count = 10;
         bool check = true;
         while (check)
         {
-            m_checkCount--;
-            if (m_checkCount < 0)
+            count--;
+            if (count < 0)
             {
                 break;
             }
@@ -83,8 +130,8 @@ public class CreateMap : MonoBehaviour
 
                 if (m_maps[x, y + directionY[randomY]] == MapStatus.Wall)
                 {
-                    m_checkCount = 10;
                     check = false;
+
                     SetStatus(x, y + directionY[randomY], 0, directionY[randomY]);
 
                 }
@@ -99,10 +146,9 @@ public class CreateMap : MonoBehaviour
 
                 if (m_maps[x + directionX[randomX], y] == MapStatus.Wall)
                 {
-                    m_checkCount = 10;
                     check = false;
-                    SetStatus(x + directionX[randomX], y, directionX[randomX], 0);
 
+                    SetStatus(x + directionX[randomX], y, directionX[randomX], 0);
                 }
                 else
                 {
@@ -110,6 +156,147 @@ public class CreateMap : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void BackLoad(int mapX, int mapY)
+    {
+        m_xCount--;
+        m_yCount--;
+
+        if (m_xCount <= 0 || m_yCount <= 0)
+        {
+            return;
+        }
+
+        DirectionCheck(m_xMapList[m_xCount - 1], m_yMapList[m_yCount - 1]);
+        BackLoad(m_xMapList[m_xCount - 1], m_yMapList[m_yCount - 1]);
+    }
+
+    private void OpenLoadEnum()
+    {
+        for (int x = 0; x < m_mapWide; x++)
+        {
+            for (int y = 0; y < m_mapWide; y++)
+            {
+                if (m_maps[x, y] != MapStatus.Wall)
+                {
+                    m_cells[x, y] = MapCell.Open;
+                }
+                else
+                {
+                    m_cells[x, y] = MapCell.Close;
+                }
+            }
+        }
+    }
+
+    private void FindLoad(int x, int y)
+    {
+        if (m_cells[x, y] != MapCell.Open) return;
+        m_cells[x, y] = MapCell.Close;
+        int count = 0;
+
+        bool right = false;
+        bool left = false;
+        bool up = false;
+        bool down = false;
+
+        if (m_cells[x + 1, y] == MapCell.Open)
+        {
+            count++;
+            right = true;
+        }
+        if (m_cells[x - 1, y] == MapCell.Open)
+        {
+            count++;
+            left = true;
+        }
+        if (m_cells[x, y + 1] == MapCell.Open)
+        {
+            count++;
+            up = true;
+        }
+        if (m_cells[x, y - 1] == MapCell.Open)
+        {
+            count++;
+            down = true;
+        }
+
+        if (count == 1)
+        {
+            if (right)
+            {
+                FindLoad(x + 1, y);
+            }
+            if (left)
+            {
+                FindLoad(x - 1, y);
+            }
+            if (up)
+            {
+                FindLoad(x, y + 1);
+            }
+            if (down)
+            {
+                FindLoad(x, y - 1);
+            }
+        }
+        else if (count == 0)
+        {
+            m_xEndCellList.Add(x);
+            m_yEndCellList.Add(y);
+
+            Debug.Log("END is" + " X" + m_xEndCellList.Last() + " Y" + m_yEndCellList.Last());
+        }
+        else if (count > 1)
+        {
+            SelectLoad(x, y);
+        }
+    }
+
+    private void SelectLoad(int x, int y)
+    {
+        if (m_cells[x + 1, y] == MapCell.Open)
+        {
+            AddCellList(x + 1, y);
+        }
+        if (m_cells[x - 1, y] == MapCell.Open)
+        {
+            AddCellList(x - 1, y);
+        }
+        if (m_cells[x, y + 1] == MapCell.Open)
+        {
+            AddCellList(x, y + 1);
+        }
+        if (m_cells[x, y - 1] == MapCell.Open)
+        {
+            AddCellList(x, y - 1);
+        }
+
+        while (m_yCellList.Count != 0 || m_xCellList.Count != 0)
+        {
+            FindLoad(m_xCellList.First(), m_yCellList.First());
+
+            if (m_yCellList.Count == 0 || m_xCellList.Count == 0)
+            {
+                break;
+            }
+            m_yCellList.Remove(m_yCellList.First());
+            m_xCellList.Remove(m_xCellList.First());
+        }
+    }
+
+    private void AddCellList(int x, int y)
+    {
+        m_xCellList.Add(x);
+        m_yCellList.Add(y);
+    }
+
+    private void SetGoalMap()
+    {
+        int random = Random.Range(0, m_xEndCellList.Count);
+        Debug.Log(random);
+        m_maps[m_xEndCellList[random], m_yEndCellList[random]] = MapStatus.Goal;
     }
 
     private void SetStatus(int x, int y, int directionX, int directionY)
@@ -134,119 +321,155 @@ public class CreateMap : MonoBehaviour
             m_maps[x, y - 1] = MapStatus.Load;
         }
 
+        m_xMapList.Add(x);
+        m_yMapList.Add(y);
+
+        m_xCount++;
+        m_yCount++;
         DirectionCheck(x, y);
-    }
-
-    private void CreateMapCell(int x, int y)
-    {
-        GameObject setCell = new GameObject();
-        Vector3 setVec = new Vector3();
-        Vector2 vector = new Vector2(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2);
-
-        if (m_maps[x, y] == MapStatus.Wall)
-        {
-            setVec = new Vector3(vector.x, vector.y, 0);
-            setCell = m_wallCell;
-        }
-        if (m_maps[x, y] == MapStatus.Load)
-        {
-            setVec = new Vector3(vector.x, vector.y, 1);
-            setCell = SetMapTip(x, y);
-        }
-        
-        GameObject cell = Instantiate(setCell, setVec, Quaternion.identity);
-        cell.transform.SetParent(m_grid.transform);
     }
 
     private GameObject SetMapTip(int mapX, int mapY)
     {
-        bool right = false;
-        bool left = false;
-
+        GameObject set = new GameObject();
         bool up = false;
         bool down = false;
 
+        bool right = false;
+        bool left = false;
         //上
-        if (m_maps[mapX, mapY + 1] == MapStatus.Load)
+        if (m_maps[mapX, mapY + 1] != MapStatus.Wall)
         {
             up = true;
         }
         //下
-        if (m_maps[mapX, mapY - 1] == MapStatus.Load)
+        if (m_maps[mapX, mapY - 1] != MapStatus.Wall)
         {
             down = true;
         }
         //右
-        if (m_maps[mapX + 1, mapY] == MapStatus.Load)
+        if (m_maps[mapX + 1, mapY] != MapStatus.Wall)
         {
             right = true;
         }
         //左
-        if (m_maps[mapX - 1, mapY] == MapStatus.Load)
+        if (m_maps[mapX - 1, mapY] != MapStatus.Wall)
         {
             left = true;
         }
-
-        GameObject set = new GameObject();
-
         // 左右判定
         if (right && left && !up && !down)
         {
-            set = m_tipsHorizontal[0];
-            return set;
+            Debug.Log("左右");
+            set = m_horizontal[0];
         }
         else if (right && !left && !up && !down)
         {
-            set = m_tipsHorizontal[1];
-            return set;
+            Debug.Log("右");
+            set = m_horizontal[2];
+            
         }
         else if (left && !right && !up && !down)
         {
-            set = m_tipsHorizontal[2];
-            return set;
+            Debug.Log("左");
+            set = m_horizontal[1];
+            
         }
 
         // 上下判定
         if (up && down && !right && !left)
         {
-            set = m_tipsVertical[0];
-            return set;
+            Debug.Log("上下");
+            set = m_vertical[0];
+            
         }
         else if (up && !down && !right && !left)
         {
-            set = m_tipsVertical[1];
-            return set;
+            Debug.Log("上");
+            set = m_vertical[1];
         }
         else if (down && !up && !right && !left)
         {
-            set = m_tipsVertical[2];
-            return set;
+            Debug.Log("下");
+            set = m_vertical[2];
         }
 
         //角判定
         if (right && down && !left && !up)
         {
-            set = m_tipsCorner[1];
-            return set;
+            Debug.Log("左上");
+            set = m_corner[1];
         }
         else if (right && up && !left && !down)
         {
-            set = m_tipsCorner[3];
-            return set;
+            Debug.Log("左下");
+            set = m_corner[3];
         }
         else if (left && up && !right && !down)
         {
-            set = m_tipsCorner[2];
-            return set;
+            Debug.Log("右下");
+            set = m_corner[2];
         }
         else if (left && down && !right && !up)
         {
-            set = m_tipsCorner[0];
-            return set;
+            Debug.Log("右上");
+            set = m_corner[0];
         }
-        else
+
+        // 三方向の判定
+        if (right && left && up && !down)
         {
-            return set;
+            Debug.Log("下には行けない");
+            set = m_threeDirections[0];
         }
+        if (right && left && !up && down)
+        {
+            Debug.Log("上には行けない");
+            set = m_threeDirections[1];
+        }
+        if (right && !left && up && down)
+        {
+            Debug.Log("左には行けない");
+            set = m_threeDirections[3];
+        }
+        if (!right && left && up && down)
+        {
+            Debug.Log("右には行けない");
+            set = m_threeDirections[2];
+        }
+
+        // 全方向の判定
+        if (left && right && up && down)
+        {
+            Debug.Log("全方向");
+            set = m_all;
+        }
+
+        return set;
+    }
+
+    private void CreateMapCell(int x, int y)
+    {
+        GameObject set = new GameObject();
+        //Vector2 vector = new Vector2(x * 2 - m_mapWide / 2, y * 2 - m_mapHeight / 2);
+        if (m_maps[x, y] == MapStatus.Wall)
+        {
+            set = m_mapWall;
+        }
+        if (m_maps[x, y] == MapStatus.Load)
+        {
+            set = SetMapTip(x, y);
+        }
+        //if (m_maps[x, y] == MapStatus.Start)
+        //{
+        //    m_cellRenderer.color = Color.green;
+        //}
+        //if (m_maps[x, y] == MapStatus.Goal)
+        //{
+        //    m_cellRenderer.color = Color.blue;
+        //}
+
+        GameObject cell = Instantiate(set, new Vector2(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2), Quaternion.identity);
+        cell.transform.SetParent(m_grid.transform);
     }
 }
