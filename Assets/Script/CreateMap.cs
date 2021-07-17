@@ -18,7 +18,6 @@ public enum MapCell
     Close,
 }
 
-
 public class CreateMap : MonoBehaviour
 {
     [SerializeField] private GameObject m_mapWall = null;
@@ -31,8 +30,8 @@ public class CreateMap : MonoBehaviour
 
     [SerializeField] private Grid m_grid = null;
 
-    private const int m_mapHeight = 19;
-    private const int m_mapWide = 19;
+    private const int m_mapHeight = 15;
+    private const int m_mapWide = 15;
 
     MapStatus[,] m_maps = new MapStatus[m_mapHeight, m_mapWide];
     MapCell[,] m_cells = new MapCell[m_mapHeight, m_mapWide];
@@ -62,7 +61,6 @@ public class CreateMap : MonoBehaviour
         OpenLoadEnum();
 
         FindLoad(m_startX, m_startY);
-        Debug.Log("a");
         SetGoalMap();
 
         for (int x = 0; x < m_mapWide; x++)
@@ -72,19 +70,6 @@ public class CreateMap : MonoBehaviour
                 CreateMapCell(x, y);
             }
         }
-
-
-
-        //for (int x = 0; x < m_mapWide; x++)
-        //{
-        //    for (int y = 0; y < m_mapHeight; y++)
-        //    {
-        //        if (m_maps[x, y] == MapStatus.Load)
-        //        {
-        //            SetMapTip(x, y);
-        //        }
-        //    }
-        //}
     }
 
     private void MapReset()
@@ -451,7 +436,6 @@ public class CreateMap : MonoBehaviour
     private void CreateMapCell(int x, int y)
     {
         GameObject set = new GameObject();
-        //Vector2 vector = new Vector2(x * 2 - m_mapWide / 2, y * 2 - m_mapHeight / 2);
         if (m_maps[x, y] == MapStatus.Wall)
         {
             set = m_mapWall;
@@ -460,10 +444,10 @@ public class CreateMap : MonoBehaviour
         {
             set = SetMapTip(x, y);
         }
-        //if (m_maps[x, y] == MapStatus.Start)
-        //{
-        //    m_cellRenderer.color = Color.green;
-        //}
+        if (m_maps[x, y] == MapStatus.Start)
+        {
+            set = SetMapTip(x, y);
+        }
         //if (m_maps[x, y] == MapStatus.Goal)
         //{
         //    m_cellRenderer.color = Color.blue;

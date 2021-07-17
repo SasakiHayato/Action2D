@@ -35,7 +35,7 @@ public class PlayerContoller : MonoBehaviour
     private Vector2 m_avoidanceTrans = Vector2.zero;
 
     [SerializeField] private GameObject m_bulletPlefab = null;
-    [System.NonSerialized] public GameObject m_itemSeve = null;
+    [System.NonSerialized] public int m_itemSeve = 0;
 
     void Start()
     {
@@ -191,9 +191,9 @@ public class PlayerContoller : MonoBehaviour
         }
     }
 
-    public void ItemCheck(GameObject item)
+    public void ItemCheck(int item)
     {
-        if (m_itemSeve == null)
+        if (m_itemSeve == 0)
         {
             m_itemSeve = item;
             Debug.Log(m_itemSeve);
@@ -201,6 +201,7 @@ public class PlayerContoller : MonoBehaviour
         else
         {
             Debug.Log("アイテムあり");
+            
         }
     }
 

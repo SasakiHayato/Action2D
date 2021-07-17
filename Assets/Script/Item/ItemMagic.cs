@@ -11,7 +11,7 @@ public class ItemMagic : ItemBase
             if (Input.GetButtonDown("Submit1"))
             {
                 CheckEnum();
-                m_player.ItemCheck(this.gameObject);
+                m_player.ItemCheck(1);
                 Destroy(this.gameObject);
             }
         }
