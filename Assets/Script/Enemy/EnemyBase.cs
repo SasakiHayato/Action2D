@@ -20,6 +20,8 @@ public class EnemyBase : MonoBehaviour
 
     public bool m_freeze = false;
 
+    public Rigidbody2D m_rigidbody;
+
     public void WallCheck()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, m_wallRay, m_wallRay.magnitude, m_wallLayer);

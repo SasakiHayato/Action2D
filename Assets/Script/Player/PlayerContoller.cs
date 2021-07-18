@@ -76,8 +76,6 @@ public class PlayerContoller : MonoBehaviour
         {
             Avoidance();
         }
-
-        Debug.Log(m_itemSeve);
     }
     
     void Move()

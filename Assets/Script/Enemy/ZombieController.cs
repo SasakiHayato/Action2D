@@ -6,7 +6,6 @@ public class ZombieController : EnemyBase
 {
     private bool m_attackBool = false;
     
-    [System.NonSerialized] public Rigidbody2D m_rigidbody;
     Animator m_animator;
 
     GameObject m_attckCollider;

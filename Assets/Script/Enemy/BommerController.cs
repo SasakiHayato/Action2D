@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BommerController : EnemyBase
 {
-    private Rigidbody2D m_rigidbody;
     private Animator m_animator;
 
     public bool m_attackBool = false;

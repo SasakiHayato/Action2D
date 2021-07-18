@@ -26,13 +26,14 @@ public class BulletContoller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ZombieController enemy;
+        EnemyBase enemy;
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            enemy = collision.GetComponent<ZombieController>();
+            enemy = collision.GetComponent<EnemyBase>();
+            
             enemy.EnemyDamage(m_player.m_magicPower);
             enemy.m_rigidbody.AddForce(transform.up * 3, ForceMode2D.Impulse);
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

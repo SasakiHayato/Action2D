@@ -7,7 +7,6 @@ public class ArcheryController : EnemyBase
     [SerializeField] private Transform m_nozzle;
     [SerializeField] private GameObject m_bow;
 
-    Rigidbody2D m_rigidbody;
     Animator m_animator;
 
     void Start()

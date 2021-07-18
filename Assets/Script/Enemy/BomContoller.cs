@@ -7,34 +7,25 @@ public class BomContoller : MonoBehaviour
     private Rigidbody2D m_rigidbody;
 
     BommerController m_bommer;
-    PlayerContoller m_playerC;
-    HitExplosion m_hit;
 
     GameObject m_player;
-    GameObject m_hitObject;
 
     void Start()
     {
         m_bommer = FindObjectOfType<BommerController>();
-        m_playerC = FindObjectOfType<PlayerContoller>();
         m_rigidbody = GetComponent<Rigidbody2D>();
-        m_hit = FindObjectOfType<HitExplosion>();
 
         m_player = GameObject.Find("player").gameObject;
-        m_hitObject = transform.GetChild(0).gameObject;
+        
+        Vector2 vector = new Vector2();
 
-        m_hitObject.SetActive(false);
-
-        Vector2 vector = m_player.transform.position - this.transform.position;
-
-        m_rigidbody.AddForce( vector, ForceMode2D.Impulse);
-        Invoke("Explosion", 3.0f);
+        Vector2 force = ProjectileMotion(vector) * 4;
+        m_rigidbody.AddForce(force, ForceMode2D.Impulse);
+        Invoke("Explosion", 5.0f);
     }
 
     private void Explosion()
     {
-        m_hitObject.SetActive(true);
-        m_hit.OnTriggerEnter2D(m_playerC.m_collider);
         DestroyBom();
     }
 
@@ -42,5 +33,28 @@ public class BomContoller : MonoBehaviour
     {
         m_bommer.m_attackBool = false;
         Destroy(this.gameObject);
+    }
+
+    private Vector2 ProjectileMotion(Vector2 vector)
+    {
+        float v0 = 5;
+        float x = m_player.transform.position.x - this.transform.position.x;
+        float t = 3;
+
+        float cos = x / (v0 * t);
+
+        Debug.Log(Mathf.Acos(cos));
+
+        float angle = Mathf.Acos(cos) * (180 / Mathf.PI);
+
+        Debug.Log(angle);
+
+        float rad = angle * Mathf.Deg2Rad;
+
+        vector = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+        Debug.Log(vector);
+
+
+        return vector;
     }
 }
