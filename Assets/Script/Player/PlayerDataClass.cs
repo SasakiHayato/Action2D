@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerDataClass : MonoBehaviour
 {
-    static public PlayerDataClass Instance = new PlayerDataClass();
+    public static PlayerDataClass Instance = new PlayerDataClass();
+    
 
     public float m_speed = 7;
 

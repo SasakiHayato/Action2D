@@ -9,11 +9,6 @@ public class BulletContoller : MonoBehaviour
 
     PlayerDataClass m_playerData;
 
-    void Start()
-    {
-        //m_player = FindObjectOfType<PlayerContoller>();
-    }
-
     void Update()
     {
         transform.Translate(speed / 8, 0, 0);

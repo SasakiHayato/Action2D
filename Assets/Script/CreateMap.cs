@@ -39,11 +39,11 @@ public class CreateMap : MonoBehaviour
     private int m_startX = 1;
     private int m_startY = 1;
 
-    private List<int> m_xMapList = new List<int>();
-    private List<int> m_yMapList = new List<int>();
+    private List<int> m_xMapLoadList = new List<int>();
+    private List<int> m_yMapLoadList = new List<int>();
 
-    private List<int> m_xCellList = new List<int>();
-    private List<int> m_yCellList = new List<int>();
+    private List<int> m_xAddCellList = new List<int>();
+    private List<int> m_yAddCellList = new List<int>();
 
     private List<int> m_xEndCellList = new List<int>();
     private List<int> m_yEndCellList = new List<int>();
@@ -56,7 +56,7 @@ public class CreateMap : MonoBehaviour
         MapReset();
 
         SetStartMap();
-        BackLoad(m_xMapList[m_xCount - 1], m_yMapList[m_yCount - 1]);
+        BackLoad(m_xMapLoadList[m_xCount - 1], m_yMapLoadList[m_yCount - 1]);
 
         OpenLoadEnum();
 
@@ -153,8 +153,8 @@ public class CreateMap : MonoBehaviour
             return;
         }
 
-        DirectionCheck(m_xMapList[m_xCount - 1], m_yMapList[m_yCount - 1]);
-        BackLoad(m_xMapList[m_xCount - 1], m_yMapList[m_yCount - 1]);
+        DirectionCheck(m_xMapLoadList[m_xCount - 1], m_yMapLoadList[m_yCount - 1]);
+        BackLoad(m_xMapLoadList[m_xCount - 1], m_yMapLoadList[m_yCount - 1]);
     }
 
     private void OpenLoadEnum()
@@ -258,23 +258,23 @@ public class CreateMap : MonoBehaviour
             AddCellList(x, y - 1);
         }
 
-        while (m_yCellList.Count != 0 || m_xCellList.Count != 0)
+        while (m_yAddCellList.Count != 0 || m_xAddCellList.Count != 0)
         {
-            FindLoad(m_xCellList.First(), m_yCellList.First());
+            FindLoad(m_xAddCellList.First(), m_yAddCellList.First());
 
-            if (m_yCellList.Count == 0 || m_xCellList.Count == 0)
+            if (m_yAddCellList.Count == 0 || m_xAddCellList.Count == 0)
             {
                 break;
             }
-            m_yCellList.Remove(m_yCellList.First());
-            m_xCellList.Remove(m_xCellList.First());
+            m_yAddCellList.Remove(m_yAddCellList.First());
+            m_xAddCellList.Remove(m_xAddCellList.First());
         }
     }
 
     private void AddCellList(int x, int y)
     {
-        m_xCellList.Add(x);
-        m_yCellList.Add(y);
+        m_xAddCellList.Add(x);
+        m_yAddCellList.Add(y);
     }
 
     private void SetGoalMap()
@@ -306,8 +306,8 @@ public class CreateMap : MonoBehaviour
             m_maps[x, y - 1] = MapStatus.Load;
         }
 
-        m_xMapList.Add(x);
-        m_yMapList.Add(y);
+        m_xMapLoadList.Add(x);
+        m_yMapLoadList.Add(y);
 
         m_xCount++;
         m_yCount++;

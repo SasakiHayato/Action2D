@@ -52,8 +52,8 @@ public class Uicontroller : MonoBehaviour
 
     private void SliderHp()
     {
-        m_slider.value = m_playerData.m_Hp;
-        hpText.text = m_playerData.m_Hp.ToString("00" + "/１００");
+        m_slider.value = PlayerDataClass.Instance.m_Hp;
+        hpText.text = PlayerDataClass.Instance.m_Hp.ToString("00" + "/１００");
     }
 
     private void Timer()
