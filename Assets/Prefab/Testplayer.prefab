@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e44614fa72ff29409f25d1ec55881a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_jumpPower: 5
+  m_jumpPower: 10
   m_groundChack: {fileID: 4753213934187705102}
   m_nozzle: {fileID: 6360388275072804705}
   m_crouchNuzzle: {fileID: 4582478847887201615}

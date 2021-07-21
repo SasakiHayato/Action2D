@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerContoller : MonoBehaviour
 {
-    private float m_speed = 7;
+    private float m_speed = 10;
     [SerializeField] private float m_jumpPower = 0;
     
     [System.NonSerialized] public bool m_freeze = false;

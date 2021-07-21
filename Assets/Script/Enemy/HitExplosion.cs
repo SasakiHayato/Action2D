@@ -7,8 +7,6 @@ public class HitExplosion : MonoBehaviour
     GameObject m_player;
     PlayerContoller m_playerC;
 
-    private bool m_stay = false;
-
     private Vector2 m_vector = new Vector2(10, 10);
 
     public void Hit()
@@ -27,15 +25,8 @@ public class HitExplosion : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision);
         m_player = GameObject.Find("player").gameObject;
         m_playerC = FindObjectOfType<PlayerContoller>();
-        m_stay = true;
         Hit();
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        m_stay = false;
     }
 }

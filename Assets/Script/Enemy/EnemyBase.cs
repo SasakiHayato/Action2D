@@ -20,7 +20,7 @@ public class EnemyBase : MonoBehaviour
 
     public bool m_freeze = false;
 
-    public Rigidbody2D m_rigidbody;
+    [System.NonSerialized] public Rigidbody2D m_rigidbody;
 
     public void WallCheck()
     {

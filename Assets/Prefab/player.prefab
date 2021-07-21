@@ -705,9 +705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e44614fa72ff29409f25d1ec55881a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_jumpPower: 5
-  m_attackPower: 10
-  m_subAttack: 0
+  m_jumpPower: 10
   m_groundChack: {fileID: 1960455495721186133}
   m_nozzle: {fileID: 181976246825756474}
   m_crouchNuzzle: {fileID: 7303181884904920340}

@@ -316,7 +316,7 @@ public class CreateMap : MonoBehaviour
 
     private GameObject SetMapTip(int mapX, int mapY)
     {
-        GameObject set = new GameObject();
+        GameObject set = default;
         bool up = false;
         bool down = false;
 
@@ -435,25 +435,36 @@ public class CreateMap : MonoBehaviour
 
     private void CreateMapCell(int x, int y)
     {
-        GameObject set = new GameObject();
+        GameObject set = default; // new GameObject();
+        Vector2 vector = new Vector2(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2);
+
+        Vector3 setVec = new Vector3();
+
         if (m_maps[x, y] == MapStatus.Wall)
         {
             set = m_mapWall;
+            setVec = new Vector3(vector.x, vector.y, 0);
         }
         if (m_maps[x, y] == MapStatus.Load)
         {
             set = SetMapTip(x, y);
+            setVec = new Vector3(vector.x, vector.y, 1);
         }
         if (m_maps[x, y] == MapStatus.Start)
         {
             set = SetMapTip(x, y);
+            setVec = new Vector3(vector.x, vector.y, 0);
         }
         //if (m_maps[x, y] == MapStatus.Goal)
         //{
         //    m_cellRenderer.color = Color.blue;
         //}
+        if (set == default)
+        {
+            set = new GameObject();
+        }
 
-        GameObject cell = Instantiate(set, new Vector2(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2), Quaternion.identity);
+        GameObject cell = Instantiate(set, setVec, Quaternion.identity);
         cell.transform.SetParent(m_grid.transform);
     }
 }

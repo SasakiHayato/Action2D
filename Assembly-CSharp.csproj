@@ -81,6 +81,7 @@
     <Compile Include="Assets\Script\Player\BulletContoller.cs" />
     <Compile Include="Assets\Script\Player\GroundChack.cs" />
     <Compile Include="Assets\Script\Player\PlayerContoller.cs" />
+    <Compile Include="Assets\Script\RigiExt.cs" />
     <Compile Include="Assets\Script\Uicontroller.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
