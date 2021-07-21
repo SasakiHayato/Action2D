@@ -23,7 +23,7 @@ public class Uicontroller : MonoBehaviour
 
     [System.NonSerialized] public GameObject m_slectCanvas;
 
-    private PlayerContoller player;
+    private PlayerDataClass m_playerData;
 
     [System.NonSerialized] public int m_magicPoint = 1;
     [System.NonSerialized] public int m_attackPoint = 1;
@@ -36,7 +36,7 @@ public class Uicontroller : MonoBehaviour
     void Start()
     {
         m_slider = GameObject.Find("Slider").GetComponent<Slider>();
-        player = FindObjectOfType<PlayerContoller>();
+        //player = FindObjectOfType<PlayerContoller>();
 
         m_slectCanvas = GameObject.Find("SelectCanvas");
         m_slectCanvas.SetActive(false);
@@ -52,8 +52,8 @@ public class Uicontroller : MonoBehaviour
 
     private void SliderHp()
     {
-        m_slider.value = player.m_Hp;
-        hpText.text = player.m_Hp.ToString("00" + "/１００");
+        m_slider.value = m_playerData.m_Hp;
+        hpText.text = m_playerData.m_Hp.ToString("00" + "/１００");
     }
 
     private void Timer()

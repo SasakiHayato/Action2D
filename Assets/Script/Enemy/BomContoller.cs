@@ -40,20 +40,12 @@ public class BomContoller : MonoBehaviour
     private void Explosion()
     {
         PlayerContoller player = m_player.GetComponent<PlayerContoller>();
-        Vector2 m_hitVector = default;
+        Vector2 hitVector = default;
 
-        if (this.transform.position.x < m_player.transform.position.x)
-        {
-            Debug.Log("右");
-            m_hitVector = new Vector2(10, 10);
-}
-        else
-        {
-            Debug.Log("左");
-            m_hitVector = new Vector2(-10, 10);
-        }
-        player.m_rigidbody.AddForce(m_hitVector, ForceMode2D.Impulse);
-        //player.m_rigidbody.AddExplosionForce(10000, this.transform.position, 1000);
+
+        Vector2 force = ExplosionAngle(hitVector) * 8;
+        player.m_rigidbody.AddForce(force, ForceMode2D.Impulse);
+        
         DestroyBom();
     }
 
@@ -80,8 +72,30 @@ public class BomContoller : MonoBehaviour
         float rad = angle * Mathf.Deg2Rad;
 
         vector = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
-        Debug.Log(vector);
+        Debug.Log("Th" + vector);
 
+
+        return vector;
+    }
+
+    private Vector2 ExplosionAngle(Vector2 vector)
+    {
+        float angle;
+        if (this.transform.position.x < m_player.transform.position.x)
+        {
+            Debug.Log("右");
+            angle = 45;
+        }
+        else
+        {
+            Debug.Log("左");
+            angle = 135;
+        }
+        Debug.Log(angle);
+        float rad = angle * Mathf.Deg2Rad;
+
+        vector = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+        Debug.Log("EX " + vector);
 
         return vector;
     }
@@ -91,7 +105,6 @@ public class BomContoller : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Explosion();
-            //collision.rig
         }
     }
 }

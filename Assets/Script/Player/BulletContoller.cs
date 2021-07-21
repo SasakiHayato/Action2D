@@ -7,11 +7,11 @@ public class BulletContoller : MonoBehaviour
     private float speed = 3;
     private float m_time = 0;
 
-    PlayerContoller m_player;
+    PlayerDataClass m_playerData;
 
     void Start()
     {
-        m_player = FindObjectOfType<PlayerContoller>();
+        //m_player = FindObjectOfType<PlayerContoller>();
     }
 
     void Update()
@@ -31,7 +31,7 @@ public class BulletContoller : MonoBehaviour
         {
             enemy = collision.GetComponent<EnemyBase>();
             
-            enemy.EnemyDamage(m_player.m_magicPower);
+            enemy.EnemyDamage(m_playerData.m_magicPower);
             enemy.m_rigidbody.AddForce(transform.up * 3, ForceMode2D.Impulse);
             Destroy(this.gameObject);
         }

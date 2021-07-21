@@ -11,7 +11,7 @@ public class ItemShield : ItemBase
             if (Input.GetButtonDown("Submit1"))
             {
                 CheckEnum();
-                m_player.ItemCheck(2);
+                //m_playerData.ItemCheck(2);
                 Destroy(this.gameObject);
             }
         }

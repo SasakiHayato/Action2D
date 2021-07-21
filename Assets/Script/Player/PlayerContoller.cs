@@ -4,24 +4,14 @@ using UnityEngine;
 
 public class PlayerContoller : MonoBehaviour
 {
-    private float m_speed = 10;
     [SerializeField] private float m_jumpPower = 0;
     
-    [System.NonSerialized] public bool m_freeze = false;
     private bool m_attackActive = false;
     private bool m_crouch = false;
 
-    [System.NonSerialized] public int m_Hp = 100;
-    [System.NonSerialized] public int m_maxHp = 100;
-
-    [System.NonSerialized] public int m_attackPower = 10;
-    [System.NonSerialized] public int m_magicPower = 10;
-    [System.NonSerialized] public int m_shieldPower = 10;
-
     private int m_avoidance = 1;
     private int m_attackCombo = 1;
-    [System.NonSerialized] public int m_subAttack = 0;
-
+    
     [SerializeField] GroundChack m_groundChack;
     
     [System.NonSerialized] public Rigidbody2D m_rigidbody;
@@ -32,17 +22,18 @@ public class PlayerContoller : MonoBehaviour
 
     [SerializeField] private Transform m_nozzle = null;
     [SerializeField] private Transform m_crouchNuzzle = null;
-    private Vector2 m_avoidanceTrans = Vector2.zero;
 
     [SerializeField] private GameObject m_bulletPlefab = null;
     [System.NonSerialized] public int m_itemSeve = 0;
+
+    //PlayerDataClass m_playerdata = new PlayerDataClass();
 
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_collider = GetComponent<Collider2D>();
         m_animator = GetComponent<Animator>();
-
+        
         for (int i = 0; i < m_attack.Length; i++)
         {
             m_attack[i] = transform.GetChild(i).gameObject;
@@ -50,7 +41,12 @@ public class PlayerContoller : MonoBehaviour
         }
 
         transform.position = this.transform.position;
-        m_avoidanceTrans = this.transform.position;
+        Data();
+    }
+    
+    void Data()
+    {
+        Debug.Log(PlayerDataClass.Instance.m_attackPower);
     }
 
     void Update()
@@ -76,11 +72,17 @@ public class PlayerContoller : MonoBehaviour
         {
             Avoidance();
         }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            PlayerDataClass.Instance.m_attackPower++;
+            Debug.Log(PlayerDataClass.Instance.m_attackPower);
+        }
     }
     
     void Move()
     {
-        if (m_freeze) return;
+        if (PlayerDataClass.Instance.m_freeze) return;
 
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
@@ -111,7 +113,7 @@ public class PlayerContoller : MonoBehaviour
             m_crouch = true;
         }
 
-        m_rigidbody.velocity = new Vector2(h * m_speed, m_rigidbody.velocity.y);
+        m_rigidbody.velocity = new Vector2(h * PlayerDataClass.Instance.m_speed, m_rigidbody.velocity.y);
     }
 
     void Jump()
@@ -146,7 +148,7 @@ public class PlayerContoller : MonoBehaviour
 
     private void SubAttack()
     {
-        switch (m_subAttack)
+        switch (PlayerDataClass.Instance.m_subAttack)
         {
             case 1:
                 Freeze();
@@ -181,9 +183,9 @@ public class PlayerContoller : MonoBehaviour
 
     public void PlayerDamage(int damage)
     {
-        m_Hp -= damage;
+        PlayerDataClass.Instance.m_Hp -= damage;
         m_animator.Play("Player_Damage");
-        if (m_Hp <= 0)
+        if (PlayerDataClass.Instance.m_Hp <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -206,16 +208,16 @@ public class PlayerContoller : MonoBehaviour
     //攻撃中に入力をうけつけない
     private bool Freeze()
     {
-        if (m_freeze)
+        if (PlayerDataClass.Instance.m_freeze)
         {
-            m_freeze = false;
+           PlayerDataClass.Instance.m_freeze = false;
         }
         else
         {
-            m_freeze = true;
+           PlayerDataClass.Instance.m_freeze = true;
         }
 
-        return m_freeze;
+        return PlayerDataClass.Instance.m_freeze;
     }
 
     // 攻撃時の Collider の SetActive
