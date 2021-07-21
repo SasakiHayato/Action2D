@@ -10,6 +10,8 @@ public enum MapStatus
 
     Start,
     Goal,
+
+    Teleport,
 }
 
 public enum MapCell
@@ -27,6 +29,8 @@ public class CreateMap : MonoBehaviour
     [SerializeField] private GameObject[] m_corner = null;
     [SerializeField] private GameObject[] m_threeDirections = null;
     [SerializeField] private GameObject m_all = null;
+    [SerializeField] private GameObject m_goal = null;
+    [SerializeField] private GameObject m_teleport = null; 
 
     [SerializeField] private Grid m_grid = null;
 
@@ -45,8 +49,8 @@ public class CreateMap : MonoBehaviour
     private List<int> m_xAddCellList = new List<int>();
     private List<int> m_yAddCellList = new List<int>();
 
-    private List<int> m_xEndCellList = new List<int>();
-    private List<int> m_yEndCellList = new List<int>();
+    public List<int> m_xEndCellList = new List<int>();
+    public List<int> m_yEndCellList = new List<int>();
 
     private int m_xCount = 0;
     private int m_yCount = 0;
@@ -282,6 +286,13 @@ public class CreateMap : MonoBehaviour
         int random = Random.Range(0, m_xEndCellList.Count);
         Debug.Log(random);
         m_maps[m_xEndCellList[random], m_yEndCellList[random]] = MapStatus.Goal;
+        m_xEndCellList.Remove(m_xEndCellList[random]);
+        m_yEndCellList.Remove(m_yEndCellList[random]);
+
+        for (int num = 0; num < m_xEndCellList.Count; num++)
+        {
+            m_maps[m_xEndCellList[num], m_yEndCellList[num]] = MapStatus.Teleport;
+        }
     }
 
     private void SetStatus(int x, int y, int directionX, int directionY)
@@ -317,6 +328,7 @@ public class CreateMap : MonoBehaviour
     private GameObject SetMapTip(int mapX, int mapY)
     {
         GameObject set = default;
+
         bool up = false;
         bool down = false;
 
@@ -453,12 +465,20 @@ public class CreateMap : MonoBehaviour
         if (m_maps[x, y] == MapStatus.Start)
         {
             set = SetMapTip(x, y);
-            setVec = new Vector3(vector.x, vector.y, 0);
+            setVec = new Vector3(vector.x, vector.y, 1);
         }
-        //if (m_maps[x, y] == MapStatus.Goal)
-        //{
-        //    m_cellRenderer.color = Color.blue;
-        //}
+        if (m_maps[x, y] == MapStatus.Goal)
+        {
+            set = SetMapTip(x, y);
+            setVec = new Vector3(vector.x, vector.y, 2);
+            Instantiate(m_goal, setVec, Quaternion.identity);
+        }
+        if (m_maps[x, y] == MapStatus.Teleport)
+        {
+            set = SetMapTip(x, y);
+            setVec = new Vector3(vector.x, vector.y, 2);
+            Instantiate(m_teleport, setVec, Quaternion.identity);
+        }
         if (set == default)
         {
             set = new GameObject();

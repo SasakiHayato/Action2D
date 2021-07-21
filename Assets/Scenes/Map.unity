@@ -171,6 +171,9 @@ MonoBehaviour:
   - {fileID: 7615708065248163135, guid: 2d1fc0ef8ca84a740a3a0d13f1b4481b, type: 3}
   - {fileID: 9141442573450780478, guid: ec1ad3a33be400246b3cfe14cbe52797, type: 3}
   m_all: {fileID: 4702325757130532103, guid: ad9b57eda3937b84696ba3e95a59c46f, type: 3}
+  m_goal: {fileID: 7854122389216636070, guid: 404bff6d4d27f29468e6221a083dfbd9, type: 3}
+  m_teleport: {fileID: 2898806459412491750, guid: a356e6caf209e584cb0a75872fbe9cd0,
+    type: 3}
   m_grid: {fileID: 1082453024}
 --- !u!4 &87207911
 Transform:

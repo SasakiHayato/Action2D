@@ -64,12 +64,12 @@ public class EnemyBase : MonoBehaviour
         if (transform.localScale.x < 0)
         {
             transform.localScale = new Vector2(0.15f, 0.15f);
-            m_speed = m_dSpeed;
+            m_speed = -m_dSpeed;
         }
         else
         {
             transform.localScale = new Vector2(-0.15f, 0.15f);
-            m_speed = -m_dSpeed;
+            m_speed = m_dSpeed;
         }
     }
 

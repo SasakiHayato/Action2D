@@ -7,6 +7,7 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private float m_jumpPower = 0;
     
     private bool m_attackActive = false;
+    private bool m_shieldBool = false;
     private bool m_crouch = false;
 
     private int m_avoidance = 1;
@@ -19,6 +20,7 @@ public class PlayerContoller : MonoBehaviour
     private Animator m_animator;
 
     private GameObject[] m_attack = new GameObject[3];
+    private GameObject m_shield = null;
 
     [SerializeField] private Transform m_nozzle = null;
     [SerializeField] private Transform m_crouchNuzzle = null;
@@ -26,14 +28,14 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private GameObject m_bulletPlefab = null;
     [System.NonSerialized] public int m_itemSeve = 0;
 
-    //PlayerDataClass m_playerdata = new PlayerDataClass();
-
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_collider = GetComponent<Collider2D>();
         m_animator = GetComponent<Animator>();
-        
+
+        m_shield = GameObject.Find("ShieldCollider").gameObject;
+        m_shield.SetActive(m_shieldBool);
         for (int i = 0; i < m_attack.Length; i++)
         {
             m_attack[i] = transform.GetChild(i).gameObject;
@@ -41,12 +43,6 @@ public class PlayerContoller : MonoBehaviour
         }
 
         transform.position = this.transform.position;
-        Data();
-    }
-    
-    void Data()
-    {
-        Debug.Log(PlayerDataClass.Instance.m_attackPower);
     }
 
     void Update()
@@ -66,17 +62,22 @@ public class PlayerContoller : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             SubAttack();
+            if (PlayerDataClass.Instance.m_subAttack == 1)
+            {
+                if (!m_shieldBool)
+                {
+                    m_shieldBool = true;
+                }
+                else
+                {
+                    m_shieldBool = false;
+                }
+            }
         }
 
         if (Input.GetButtonDown("Fire3"))
         {
             Avoidance();
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            PlayerDataClass.Instance.m_attackPower++;
-            Debug.Log(PlayerDataClass.Instance.m_attackPower);
         }
     }
     
