@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerContoller : MonoBehaviour
 {
+    private float m_speed = 7;
     [SerializeField] private float m_jumpPower = 0;
     
     private bool m_attackActive = false;
@@ -114,7 +115,7 @@ public class PlayerContoller : MonoBehaviour
             m_crouch = true;
         }
 
-        m_rigidbody.velocity = new Vector2(h * PlayerDataClass.Instance.m_speed, m_rigidbody.velocity.y);
+        m_rigidbody.velocity = new Vector2(h * m_speed, m_rigidbody.velocity.y);
     }
 
     void Jump()

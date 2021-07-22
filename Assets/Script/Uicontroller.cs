@@ -23,12 +23,6 @@ public class Uicontroller : MonoBehaviour
 
     [System.NonSerialized] public GameObject m_slectCanvas;
 
-    private PlayerDataClass m_playerData;
-
-    [System.NonSerialized] public int m_magicPoint = 1;
-    [System.NonSerialized] public int m_attackPoint = 1;
-    [System.NonSerialized] public int m_shieldPoint = 1;
-
     private float m_seconds = 0;
 
     [System.NonSerialized] public bool m_freeze = false;
@@ -36,8 +30,7 @@ public class Uicontroller : MonoBehaviour
     void Start()
     {
         m_slider = GameObject.Find("Slider").GetComponent<Slider>();
-        //player = FindObjectOfType<PlayerContoller>();
-
+        
         m_slectCanvas = GameObject.Find("SelectCanvas");
         m_slectCanvas.SetActive(false);
     }
@@ -66,9 +59,9 @@ public class Uicontroller : MonoBehaviour
 
     private void StatuUp()
     {
-        m_magicText.text = m_magicPoint.ToString();
-        m_attackText.text = m_attackPoint.ToString();
-        m_shieldText.text = m_shieldPoint.ToString();
+        m_magicText.text = PlayerDataClass.Instance.m_magicPower.ToString();
+        m_attackText.text = PlayerDataClass.Instance.m_attackPower.ToString();
+        m_shieldText.text = PlayerDataClass.Instance.m_shieldPower.ToString();
     }
 
     private void SetSprite()

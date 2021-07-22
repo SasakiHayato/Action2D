@@ -71,6 +71,7 @@
     <Compile Include="Assets\Script\Enemy\EnemyBulletController.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />
     <Compile Include="Assets\Script\Enemy\ZombieController.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Interface.cs" />
     <Compile Include="Assets\Script\Item\ItemBase.cs" />
     <Compile Include="Assets\Script\Item\ItemHeel.cs" />

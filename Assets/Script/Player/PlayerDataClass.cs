@@ -8,9 +8,9 @@ public class PlayerDataClass : MonoBehaviour
 
     public float m_speed = 7;
 
-    [System.NonSerialized] public int m_attackPower = 10;
-    [System.NonSerialized] public int m_magicPower = 10;
-    [System.NonSerialized] public int m_shieldPower = 10;
+    [System.NonSerialized] public int m_attackPower = 1;
+    [System.NonSerialized] public int m_magicPower = 1;
+    [System.NonSerialized] public int m_shieldPower = 1;
 
     [System.NonSerialized] public int m_subAttack = 0;
 

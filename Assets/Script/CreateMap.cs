@@ -30,7 +30,8 @@ public class CreateMap : MonoBehaviour
     [SerializeField] private GameObject[] m_threeDirections = null;
     [SerializeField] private GameObject m_all = null;
     [SerializeField] private GameObject m_goal = null;
-    [SerializeField] private GameObject m_teleport = null; 
+    [SerializeField] private GameObject m_teleport = null;
+    [SerializeField] private GameObject m_player = null;
 
     private const int m_mapHeight = 15;
     private const int m_mapWide = 15;
@@ -282,7 +283,7 @@ public class CreateMap : MonoBehaviour
     private void SetGoalMap()
     {
         int random = Random.Range(0, m_xEndCellList.Count);
-        Debug.Log(random);
+
         m_maps[m_xEndCellList[random], m_yEndCellList[random]] = MapStatus.Goal;
         m_xEndCellList.Remove(m_xEndCellList[random]);
         m_yEndCellList.Remove(m_yEndCellList[random]);
@@ -355,18 +356,15 @@ public class CreateMap : MonoBehaviour
         // 左右判定
         if (right && left && !up && !down)
         {
-            Debug.Log("左右");
             set = m_horizontal[0];
         }
         else if (right && !left && !up && !down)
         {
-            Debug.Log("右");
             set = m_horizontal[2];
             
         }
         else if (left && !right && !up && !down)
         {
-            Debug.Log("左");
             set = m_horizontal[1];
             
         }
@@ -374,69 +372,57 @@ public class CreateMap : MonoBehaviour
         // 上下判定
         if (up && down && !right && !left)
         {
-            Debug.Log("上下");
             set = m_vertical[0];
             
         }
         else if (up && !down && !right && !left)
         {
-            Debug.Log("上");
             set = m_vertical[1];
         }
         else if (down && !up && !right && !left)
         {
-            Debug.Log("下");
             set = m_vertical[2];
         }
 
         //角判定
         if (right && down && !left && !up)
         {
-            Debug.Log("左上");
             set = m_corner[1];
         }
         else if (right && up && !left && !down)
         {
-            Debug.Log("左下");
             set = m_corner[3];
         }
         else if (left && up && !right && !down)
         {
-            Debug.Log("右下");
             set = m_corner[2];
         }
         else if (left && down && !right && !up)
         {
-            Debug.Log("右上");
             set = m_corner[0];
         }
 
         // 三方向の判定
         if (right && left && up && !down)
         {
-            Debug.Log("下には行けない");
             set = m_threeDirections[0];
         }
         if (right && left && !up && down)
         {
-            Debug.Log("上には行けない");
             set = m_threeDirections[1];
         }
         if (right && !left && up && down)
         {
-            Debug.Log("左には行けない");
             set = m_threeDirections[3];
         }
         if (!right && left && up && down)
         {
-            Debug.Log("右には行けない");
             set = m_threeDirections[2];
         }
 
         // 全方向の判定
         if (left && right && up && down)
         {
-            Debug.Log("全方向");
             set = m_all;
         }
 
@@ -464,6 +450,7 @@ public class CreateMap : MonoBehaviour
         {
             set = SetMapTip(x, y);
             setVec = new Vector3(vector.x, vector.y, 1);
+            Instantiate(m_player, new Vector3 (vector.x, vector.y, 0), Quaternion.identity);
         }
         if (m_maps[x, y] == MapStatus.Goal)
         {

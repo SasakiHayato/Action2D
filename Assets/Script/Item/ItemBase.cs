@@ -57,18 +57,15 @@ public class ItemBase : MonoBehaviour
     {
         if (set == 0)
         {
-            PlayerDataClass.Instance.m_magicPower += 20;
-            m_ui.m_magicPoint++;
+            PlayerDataClass.Instance.m_magicPower ++;
         }
         else if (set == 1)
         {
-            PlayerDataClass.Instance.m_shieldPower += 20;
-            m_ui.m_shieldPoint++;
+            PlayerDataClass.Instance.m_shieldPower ++;
         }
         else if (set == 2)
         {
-            PlayerDataClass.Instance.m_attackPower += 20;
-            m_ui.m_attackPoint++;
+            PlayerDataClass.Instance.m_attackPower ++;
         }
         set = 0;
 

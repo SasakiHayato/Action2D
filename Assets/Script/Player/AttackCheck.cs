@@ -11,7 +11,7 @@ public class AttackCheck : MonoBehaviour
         if (iDmage != null)
         {
             Debug.Log("a");
-            iDmage.AddDamage(PlayerDataClass.Instance.m_attackPower);
+            iDmage.AddDamage(PlayerDataClass.Instance.m_attackPower * 10);
         }
     }
 }
