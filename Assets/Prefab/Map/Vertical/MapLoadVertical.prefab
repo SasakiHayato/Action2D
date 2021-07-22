@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 3329232577172259831}
   - component: {fileID: 3657996698345259659}
   - component: {fileID: 8256018900870311340}
+  - component: {fileID: 9061016340960751481}
   m_Layer: 0
   m_Name: MapLoadVertical
   m_TagString: Untagged
@@ -871,6 +872,18 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!156049354 &9061016340960751481
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062185276354088082}
+  m_Enabled: 1
+  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
 --- !u!1 &1847114253396451973
 GameObject:
   m_ObjectHideFlags: 0

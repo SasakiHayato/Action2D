@@ -32,8 +32,6 @@ public class CreateMap : MonoBehaviour
     [SerializeField] private GameObject m_goal = null;
     [SerializeField] private GameObject m_teleport = null; 
 
-    [SerializeField] private Grid m_grid = null;
-
     private const int m_mapHeight = 15;
     private const int m_mapWide = 15;
 
@@ -483,8 +481,7 @@ public class CreateMap : MonoBehaviour
         {
             set = new GameObject();
         }
-
         GameObject cell = Instantiate(set, setVec, Quaternion.identity);
-        cell.transform.SetParent(m_grid.transform);
+        cell.transform.SetParent(this.transform);
     }
 }

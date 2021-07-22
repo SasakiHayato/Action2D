@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4751943257112533340}
   - component: {fileID: 6447557824120904654}
   - component: {fileID: 9006081029388397440}
+  - component: {fileID: 5181747150750833967}
   m_Layer: 0
   m_Name: MapLoadDown
   m_TagString: Untagged
@@ -791,6 +792,18 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!156049354 &5181747150750833967
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138564232572480452}
+  m_Enabled: 1
+  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
 --- !u!1 &6086813836477714309
 GameObject:
   m_ObjectHideFlags: 0
