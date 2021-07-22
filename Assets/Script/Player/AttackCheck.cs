@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class AttackCheck : MonoBehaviour
 {
-    //[SerializeField] PlayerContoller m_player;
-    PlayerDataClass m_playerData;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //PlayerDataClass playerData;
-        EnemyBase enemy = collision.GetComponent<EnemyBase>();
-        if (collision.gameObject.CompareTag("Enemy"))
+        IDamage iDmage = collision.GetComponent<IDamage>();
+        
+        if (iDmage != null)
         {
-            enemy.EnemyDamage(m_playerData.m_attackPower);
+            Debug.Log("a");
+            iDmage.AddDamage(PlayerDataClass.Instance.m_attackPower);
         }
     }
 }

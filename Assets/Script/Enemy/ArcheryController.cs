@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcheryController : EnemyBase
+public class ArcheryController : EnemyBase, IDamage
 {
     [SerializeField] private Transform m_nozzle;
     [SerializeField] private GameObject m_bow;
@@ -38,6 +38,17 @@ public class ArcheryController : EnemyBase
         else
         {
             m_animator.Play("Archery_Walk");
+        }
+    }
+
+    public void AddDamage(int damage)
+    {
+        m_animator.Play("Archery_Damage");
+        m_hp -= damage;
+
+        if (m_hp <= 0)
+        {
+            ThisDie();
         }
     }
 

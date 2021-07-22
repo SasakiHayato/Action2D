@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieController : EnemyBase
+public class ZombieController : EnemyBase, IDamage
 {
     private bool m_attackBool = false;
     
@@ -21,7 +21,6 @@ public class ZombieController : EnemyBase
 
         StartPos();
         m_dSpeed = m_speed;
-        m_nowHp = m_hp;
     }
 
     void Update()
@@ -29,12 +28,7 @@ public class ZombieController : EnemyBase
         if (m_freeze) return;
         Move();
 
-        if (m_hp < m_nowHp)
-        {
-            DamageMotion();
-            m_nowHp = m_hp; 
-        }
-
+        
         WallCheck();
         PlayerCheck();
     }
@@ -53,14 +47,20 @@ public class ZombieController : EnemyBase
         }
     }
 
+    public void AddDamage(int damage)
+    {
+        m_animator.Play("Enemy_Damage");
+        m_hp -= damage;
+        
+        if (m_hp <= 0)
+        {
+            ThisDie();
+        }
+    }
+
     private void Attack()
     {
         m_animator.Play("Enemy_Attack");
-    }
-
-    private void DamageMotion()
-    {
-        m_animator.Play("Enemy_Damage");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

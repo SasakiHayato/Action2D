@@ -73,18 +73,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    public void EnemyDamage(float damage)
-    {
-        m_hp -= damage;
-        Debug.Log(m_hp);
-        if (m_hp <= 0)
-        {
-            DieSpriteSet();
-            Destroy(this.gameObject);
-        }
-    }
-
-    private void DieSpriteSet()
+    public void ThisDie()
     {
         GameObject blood = Instantiate(m_bloodPrefub, this.transform);
         blood.transform.parent = null;
@@ -92,6 +81,8 @@ public class EnemyBase : MonoBehaviour
 
         Vector2 vector = blood.transform.position;
         blood.transform.position = new Vector3(vector.x, vector.y, 1);
+
+        Destroy(this.gameObject);
     }
 
     private bool Freeze()

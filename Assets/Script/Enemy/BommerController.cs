@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BommerController : EnemyBase
+public class BommerController : EnemyBase, IDamage
 {
     private Animator m_animator;
 
@@ -56,6 +56,17 @@ public class BommerController : EnemyBase
         if (!m_attackBool)
         {
             m_animator.Play("Bommer_Attack");
+        }
+    }
+
+    public void AddDamage(int damage)
+    {
+        m_animator.Play("Bommer_Damage");
+        m_hp -= damage;
+
+        if (m_hp <= 0)
+        {
+            ThisDie();
         }
     }
 
