@@ -29,9 +29,12 @@ public class CreateMap : MonoBehaviour
     [SerializeField] private GameObject[] m_corner = null;
     [SerializeField] private GameObject[] m_threeDirections = null;
     [SerializeField] private GameObject m_all = null;
+
     [SerializeField] private GameObject m_goal = null;
     [SerializeField] private GameObject m_teleport = null;
+
     [SerializeField] private GameObject m_player = null;
+    [SerializeField] private GameObject[] m_enemy = null;
 
     private const int m_mapHeight = 15;
     private const int m_mapWide = 15;
@@ -48,8 +51,11 @@ public class CreateMap : MonoBehaviour
     private List<int> m_xAddCellList = new List<int>();
     private List<int> m_yAddCellList = new List<int>();
 
-    public List<int> m_xEndCellList = new List<int>();
-    public List<int> m_yEndCellList = new List<int>();
+    private List<int> m_xEndCellList = new List<int>();
+    private List<int> m_yEndCellList = new List<int>();
+
+    private List<int> m_xEnemySetList = new List<int>();
+    private List<int> m_yEnemySetList = new List<int>();
 
     private int m_xCount = 0;
     private int m_yCount = 0;
@@ -73,6 +79,8 @@ public class CreateMap : MonoBehaviour
                 CreateMapCell(x, y);
             }
         }
+
+        SetEnemy();
     }
 
     private void MapReset()
@@ -356,6 +364,9 @@ public class CreateMap : MonoBehaviour
         // 左右判定
         if (right && left && !up && !down)
         {
+            m_xEnemySetList.Add(mapX);
+            m_yEnemySetList.Add(mapY);
+
             set = m_horizontal[0];
         }
         else if (right && !left && !up && !down)
@@ -470,5 +481,34 @@ public class CreateMap : MonoBehaviour
         }
         GameObject cell = Instantiate(set, setVec, Quaternion.identity);
         cell.transform.SetParent(this.transform);
+    }
+
+    private void SetEnemy()
+    {
+        //Vector2 vector = new Vector2(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2);
+
+        for (int count = 0; count < m_xEnemySetList.Count; count++)
+        {
+            int randomBool = Random.Range(0, 4);
+            if (randomBool < 2)
+            {
+
+            }
+
+            int x = m_xEnemySetList.First();
+            int y = m_yEnemySetList.First();
+
+            m_xEnemySetList.Remove(m_xEnemySetList.First());
+            m_yEnemySetList.Remove(m_yEnemySetList.First());
+
+            int random = Random.Range(0, m_enemy.Length - 1);
+            Instantiate(m_enemy[random], new Vector3 (x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2, 0), Quaternion.identity);
+        }
+
+        //if (m_maps[x, y] == MapStatus.Load && randomBool < 2)
+        //{
+        //    int random = Random.Range(0, m_enemy.Length - 1);
+        //    Instantiate(m_enemy[random], new Vector3(vector.x, vector.y, 1), Quaternion.identity);
+        //}
     }
 }

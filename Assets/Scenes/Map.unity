@@ -174,8 +174,12 @@ MonoBehaviour:
   m_goal: {fileID: 7854122389216636070, guid: 404bff6d4d27f29468e6221a083dfbd9, type: 3}
   m_teleport: {fileID: 2898806459412491750, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
-  m_xEndCellList: 
-  m_yEndCellList: 
+  m_player: {fileID: 9095490895291973861, guid: 8e300500929a0aa4dbf12876d9c63a85,
+    type: 3}
+  m_enemy:
+  - {fileID: 7253916151901160660, guid: f2e8da33f391222449f4e5646f4d623f, type: 3}
+  - {fileID: 5612574671708056806, guid: 4b6b9bce8eaefc24ea41a6ee3d06e7d4, type: 3}
+  - {fileID: 9110643881165171475, guid: 7a0ef4cf22f7c724aa027bfd6f9e17c8, type: 3}
 --- !u!4 &87207911
 Transform:
   m_ObjectHideFlags: 0

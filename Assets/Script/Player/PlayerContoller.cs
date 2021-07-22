@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerContoller : MonoBehaviour
-{
-    private float m_speed = 7;
-    [SerializeField] private float m_jumpPower = 0;
-    
+{   
     private bool m_attackActive = false;
     private bool m_shieldBool = false;
-    private bool m_crouch = false;
 
+    [SerializeField] private float m_jumpPower = 0;
+    private float m_speed = 7;
     private int m_avoidance = 1;
+
+    [SerializeField] GroundChack m_groundChack;
+
+    public bool m_crouch { get; private set; }
+
+
     private int m_attackCombo = 1;
     
-    [SerializeField] GroundChack m_groundChack;
-    
-    [System.NonSerialized] public Rigidbody2D m_rigidbody;
-    [System.NonSerialized] public Collider2D m_collider;
-    private Animator m_animator;
-
     private GameObject[] m_attack = new GameObject[3];
     private GameObject m_shield = null;
 
@@ -28,26 +26,27 @@ public class PlayerContoller : MonoBehaviour
 
     [SerializeField] private GameObject m_bulletPlefab = null;
     [System.NonSerialized] public int m_itemSeve = 0;
+    public Rigidbody2D m_rigidbody { get; set; }
+    private Animator m_animator;
+    //private PlayerMoveClass m_moveClass = new PlayerMoveClass();
 
     void Start()
     {
-        m_rigidbody = GetComponent<Rigidbody2D>();
-        m_collider = GetComponent<Collider2D>();
         m_animator = GetComponent<Animator>();
-
+        m_rigidbody = GetComponent<Rigidbody2D>();
+        //m_animator = GetComponent<Animator>();
         m_shield = GameObject.Find("ShieldCollider").gameObject;
         m_shield.SetActive(m_shieldBool);
+
         for (int i = 0; i < m_attack.Length; i++)
         {
             m_attack[i] = transform.GetChild(i).gameObject;
             m_attack[i].SetActive(m_attackActive);
         }
-
-        transform.position = this.transform.position;
     }
 
     void Update()
-    { 
+    {
         Move();
 
         if (Input.GetButtonDown("Jump"))
@@ -78,11 +77,11 @@ public class PlayerContoller : MonoBehaviour
 
         if (Input.GetButtonDown("Fire3"))
         {
-            Avoidance();
+           Avoidance();
         }
     }
-    
-    void Move()
+
+    public void Move()
     {
         if (PlayerDataClass.Instance.m_freeze) return;
 
@@ -118,7 +117,21 @@ public class PlayerContoller : MonoBehaviour
         m_rigidbody.velocity = new Vector2(h * m_speed, m_rigidbody.velocity.y);
     }
 
-    void Jump()
+    public void Avoidance()
+    {
+        switch (m_avoidance)
+        {
+            case 1:
+                transform.Translate(4, 0, 0);
+                break;
+
+            case 2:
+                transform.Translate(-4, 0, 0);
+                break;
+        }
+    }
+
+    public void Jump()
     {
         if (m_groundChack.isGround == true || m_groundChack.plyerJumpCount > 0)
         {
@@ -126,7 +139,6 @@ public class PlayerContoller : MonoBehaviour
             m_groundChack.plyerJumpCount--;
         }
     }
-
     void Attack()
     {
         switch (m_attackCombo)
@@ -169,19 +181,7 @@ public class PlayerContoller : MonoBehaviour
         }
     }
 
-    private void Avoidance()
-    {
-        switch (m_avoidance)
-        {
-            case 1:
-                transform.Translate(4, 0, 0);
-                break;
 
-            case 2:
-                transform.Translate(-4, 0, 0);
-                break;
-        }
-    }
 
     public void PlayerDamage(int damage)
     {

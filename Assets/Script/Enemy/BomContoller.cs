@@ -19,7 +19,7 @@ public class BomContoller : MonoBehaviour
         m_rigidbody = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
 
-        m_player = GameObject.Find("player").gameObject;
+        
         m_hitColliderOb = transform.GetChild(0).gameObject;
         m_hitColliderOb.SetActive(false);
         
@@ -58,6 +58,7 @@ public class BomContoller : MonoBehaviour
 
     private Vector2 ProjectileMotion(Vector2 vector)
     {
+        m_player = GameObject.Find("Player").gameObject;
         float v0 = 5;
         float x = m_player.transform.position.x - this.transform.position.x;
         float t = 3;

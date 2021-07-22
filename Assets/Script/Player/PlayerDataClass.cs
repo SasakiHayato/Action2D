@@ -6,8 +6,6 @@ public class PlayerDataClass : MonoBehaviour
 {
     public static PlayerDataClass Instance = new PlayerDataClass();
 
-    public float m_speed = 7;
-
     [System.NonSerialized] public int m_attackPower = 1;
     [System.NonSerialized] public int m_magicPower = 1;
     [System.NonSerialized] public int m_shieldPower = 1;
@@ -17,7 +15,7 @@ public class PlayerDataClass : MonoBehaviour
     [System.NonSerialized] public int m_Hp = 100;
     [System.NonSerialized] public int m_maxHp = 100;
 
-    [System.NonSerialized] public bool m_freeze = false;
+    public bool m_freeze { get; set; }
 
     private static bool m_cureated = false;
 
