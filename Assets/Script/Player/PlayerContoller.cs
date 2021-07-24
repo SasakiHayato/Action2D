@@ -28,13 +28,12 @@ public class PlayerContoller : MonoBehaviour
     [System.NonSerialized] public int m_itemSeve = 0;
     public Rigidbody2D m_rigidbody { get; set; }
     private Animator m_animator;
-    //private PlayerMoveClass m_moveClass = new PlayerMoveClass();
 
     void Start()
     {
         m_animator = GetComponent<Animator>();
         m_rigidbody = GetComponent<Rigidbody2D>();
-        //m_animator = GetComponent<Animator>();
+        
         m_shield = GameObject.Find("ShieldCollider").gameObject;
         m_shield.SetActive(m_shieldBool);
 

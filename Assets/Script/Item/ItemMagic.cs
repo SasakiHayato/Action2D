@@ -4,16 +4,32 @@ using UnityEngine;
 
 public class ItemMagic : ItemBase
 {
-    private void OnTriggerStay2D(Collider2D collision)
+    private bool m_check = false;
+
+    void Update()
+    {
+        if (!m_check) return;
+        if (Input.GetButtonDown("Submit1"))
+        {
+            CheckEnum();
+            
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (Input.GetButtonDown("Submit1"))
-            {
-                CheckEnum();
-                //m_playerData.ItemCheck(1);
-                Destroy(this.gameObject);
-            }
+            m_check = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            m_check = false;
         }
     }
 }

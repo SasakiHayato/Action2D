@@ -241,8 +241,6 @@ public class CreateMap : MonoBehaviour
         {
             m_xEndCellList.Add(x);
             m_yEndCellList.Add(y);
-
-            Debug.Log("END is" + " X" + m_xEndCellList.Last() + " Y" + m_yEndCellList.Last());
         }
         else if (count > 1)
         {
@@ -461,7 +459,7 @@ public class CreateMap : MonoBehaviour
         {
             set = SetMapTip(x, y);
             setVec = new Vector3(vector.x, vector.y, 1);
-            Instantiate(m_player, new Vector3 (vector.x, vector.y, 0), Quaternion.identity);
+            //Instantiate(m_player, new Vector3 (vector.x, vector.y, 0), Quaternion.identity);
         }
         if (m_maps[x, y] == MapStatus.Goal)
         {
@@ -485,30 +483,22 @@ public class CreateMap : MonoBehaviour
 
     private void SetEnemy()
     {
-        //Vector2 vector = new Vector2(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2);
-
         for (int count = 0; count < m_xEnemySetList.Count; count++)
         {
-            int randomBool = Random.Range(0, 4);
-            if (randomBool < 2)
+            int randomBool = Random.Range(0, 20);
+            if (randomBool > 9)
             {
-
+                
             }
 
             int x = m_xEnemySetList.First();
             int y = m_yEnemySetList.First();
+            
+            int random = Random.Range(0, m_enemy.Length);
+            Instantiate(m_enemy[random], new Vector3(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2, 0), Quaternion.identity);
 
             m_xEnemySetList.Remove(m_xEnemySetList.First());
             m_yEnemySetList.Remove(m_yEnemySetList.First());
-
-            int random = Random.Range(0, m_enemy.Length - 1);
-            Instantiate(m_enemy[random], new Vector3 (x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2, 0), Quaternion.identity);
         }
-
-        //if (m_maps[x, y] == MapStatus.Load && randomBool < 2)
-        //{
-        //    int random = Random.Range(0, m_enemy.Length - 1);
-        //    Instantiate(m_enemy[random], new Vector3(vector.x, vector.y, 1), Quaternion.identity);
-        //}
     }
 }

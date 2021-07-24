@@ -570,8 +570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9b95f022ab50545a5da410cc211adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0
-  m_hp: 0
+  m_speed: 1
+  m_hp: 10
   m_attackPower: 0
   m_playerRay: {x: 8, y: 0}
   m_playerLayer:

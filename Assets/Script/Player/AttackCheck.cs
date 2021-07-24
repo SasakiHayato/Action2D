@@ -9,8 +9,7 @@ public class AttackCheck : MonoBehaviour
         IDamage iDmage = collision.GetComponent<IDamage>();
         
         if (iDmage != null)
-        {
-            Debug.Log("a");
+        { 
             iDmage.AddDamage(PlayerDataClass.Instance.m_attackPower * 10);
         }
     }

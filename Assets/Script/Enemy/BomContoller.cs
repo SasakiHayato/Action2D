@@ -64,17 +64,11 @@ public class BomContoller : MonoBehaviour
         float t = 3;
 
         float cos = x / (v0 * t);
-
-        Debug.Log(Mathf.Acos(cos));
         float angle = Mathf.Acos(cos) * (180 / Mathf.PI);
-
-        Debug.Log(angle);
 
         float rad = angle * Mathf.Deg2Rad;
 
         vector = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
-        Debug.Log("Th" + vector);
-
 
         return vector;
     }

@@ -8,7 +8,6 @@ public class ItemBase : MonoBehaviour
     { 
         Magic,
         Shield,
-
         StatusUp,
         Heel,
     }
