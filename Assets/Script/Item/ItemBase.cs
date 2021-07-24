@@ -73,4 +73,18 @@ public class ItemBase : MonoBehaviour
 
         m_ui.m_slectCanvas.SetActive(false);
     }
+
+    public Vector2 SetTextPos(Vector2 vector, Transform player)
+    {
+        if (player.position.x < transform.position.x)
+        {
+            vector = new Vector2(transform.position.x + 1, transform.position.y + 1);
+        }
+        else
+        {
+            vector = new Vector2(transform.position.x - 1, transform.position.y + 1);
+        }
+
+        return vector;
+    }
 }
