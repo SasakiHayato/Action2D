@@ -7,6 +7,8 @@ public class PlayerContoller : MonoBehaviour
     private bool m_attackActive = false;
     private bool m_shieldBool = false;
 
+    private bool m_isPlay = false;
+
     [SerializeField] private float m_jumpPower = 0;
     private float m_speed = 7;
     private int m_avoidance = 1;
@@ -28,11 +30,12 @@ public class PlayerContoller : MonoBehaviour
     [System.NonSerialized] public int m_itemSeve = 0;
     public Rigidbody2D m_rigidbody { get; set; }
     private Animator m_animator;
-
+    
     void Start()
     {
         m_animator = GetComponent<Animator>();
         m_rigidbody = GetComponent<Rigidbody2D>();
+        
         
         m_shield = GameObject.Find("ShieldCollider").gameObject;
         m_shield.SetActive(m_shieldBool);
@@ -45,7 +48,7 @@ public class PlayerContoller : MonoBehaviour
     }
 
     void Update()
-    {
+    { 
         Move();
 
         if (Input.GetButtonDown("Jump"))
@@ -107,7 +110,7 @@ public class PlayerContoller : MonoBehaviour
                 m_avoidance = 2;
             }
         }
-        if (v < 0)
+        if (v < 0 && h == 0)
         {
             m_animator.Play("Player_Crouch");
             m_crouch = true;
@@ -138,6 +141,7 @@ public class PlayerContoller : MonoBehaviour
             m_groundChack.plyerJumpCount--;
         }
     }
+
     void Attack()
     {
         switch (m_attackCombo)
@@ -180,14 +184,14 @@ public class PlayerContoller : MonoBehaviour
         }
     }
 
-
-
     public void PlayerDamage(int damage)
     {
         PlayerDataClass.Instance.m_Hp -= damage;
         m_animator.Play("Player_Damage");
+
         if (PlayerDataClass.Instance.m_Hp <= 0)
         {
+            PlayerDataClass.Instance.m_Hp = 0;
             Destroy(this.gameObject);
         }
     }

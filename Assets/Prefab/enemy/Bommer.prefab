@@ -572,7 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 1
   m_hp: 10
-  m_attackPower: 0
+  m_attackPower: 30
   m_playerRay: {x: 8, y: 0}
   m_playerLayer:
     serializedVersion: 2

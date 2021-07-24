@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game/Midway.unity
     guid: 0c396d5cf929fa246a8989c6c1a8facd
+  - enabled: 1
+    path: Assets/Scenes/Game/BossRoom.unity
+    guid: 11860af7d20c4c84e89497892514134c
   m_configObjects: {}

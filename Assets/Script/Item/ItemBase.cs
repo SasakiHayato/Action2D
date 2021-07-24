@@ -14,9 +14,9 @@ public class ItemBase : MonoBehaviour
 
     [SerializeField] private ItemStatus m_status;
 
-    [System.NonSerialized] public Uicontroller m_ui;
+    public Uicontroller m_ui { get; set; }
 
-    void Start()
+    private void Awake()
     {
         m_ui = FindObjectOfType<Uicontroller>();
     }

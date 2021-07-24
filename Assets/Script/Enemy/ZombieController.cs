@@ -70,7 +70,7 @@ public class ZombieController : EnemyBase, IDamage
         {
             player = collision.GetComponent<PlayerContoller>();
             player.m_rigidbody.AddForce(transform.up * 2, ForceMode2D.Impulse);
-            //player.PlayerDamage(m_attackPower);
+            player.PlayerDamage(m_attackPower);
         }
     }
 

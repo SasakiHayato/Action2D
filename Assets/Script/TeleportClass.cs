@@ -27,7 +27,7 @@ public class TeleportClass : MonoBehaviour
             }
             else if (m_status == Status.Goal)
             {
-                m_manager.LoadG();
+                m_manager.LoadM();
             }
         }
     }
