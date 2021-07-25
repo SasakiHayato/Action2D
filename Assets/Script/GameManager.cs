@@ -9,9 +9,14 @@ public class GameManager : MonoBehaviour
 
     private static int m_count = 0;
     private static bool m_cureated = false;
-    private static bool m_isPlay = false;
-
+    
     public void IsPlay()
+    {
+        Invoke("LoadS", 2.5f);
+        
+    }
+
+    private void LoadS()
     {
         SceneManager.LoadScene("Start");
     }
