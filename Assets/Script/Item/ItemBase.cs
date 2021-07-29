@@ -36,7 +36,7 @@ public class ItemBase : MonoBehaviour
         else if (m_status == ItemStatus.StatusUp)
         {
             m_ui.m_slectCanvas.SetActive(true);
-            m_ui.m_freeze = true;
+            //m_ui.m_freeze = true;
             PlayerDataClass.Instance.m_freeze = true;
         }
         else if (m_status == ItemStatus.Heel)
@@ -69,7 +69,6 @@ public class ItemBase : MonoBehaviour
         set = 0;
 
         PlayerDataClass.Instance.m_freeze = false;
-        m_ui.m_freeze = false;
 
         m_ui.m_slectCanvas.SetActive(false);
     }

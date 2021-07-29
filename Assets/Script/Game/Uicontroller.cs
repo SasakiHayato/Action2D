@@ -21,11 +21,7 @@ public class Uicontroller : MonoBehaviour
 
     private Slider m_slider;
 
-    [System.NonSerialized] public GameObject m_slectCanvas;
-
-    private float m_seconds = 0;
-
-    [System.NonSerialized] public bool m_freeze = false;
+    public GameObject m_slectCanvas { get; set; }
 
     void Start()
     {
@@ -50,11 +46,8 @@ public class Uicontroller : MonoBehaviour
     }
 
     private void Timer()
-    {
-        if (m_freeze) return;
-        m_seconds += Time.deltaTime;
-        
-        timeText.text = m_seconds.ToString("0s");
+    {   
+        timeText.text = GameManager.Instance.GameTime() .ToString("0s");
     }
 
     private void StatuUp()

@@ -9,18 +9,38 @@ public class GameManager : MonoBehaviour
 
     private static int m_count = 0;
     private static bool m_cureated = false;
-    
+    private static bool m_isPlay = false;
+
+    private static float m_timer = 0;
+
     public void IsPlay()
     {
         Invoke("LoadS", 2.5f);
-        
+        m_isPlay = true;
     }
 
     private void LoadS()
     {
         SceneManager.LoadScene("Start");
     }
-    
+
+    public bool CureatPlay()
+    {
+        return m_isPlay;
+    }
+
+    private bool EndPlay()
+    {
+        m_isPlay = false;
+        return m_isPlay;
+    }
+
+    public float GameTime()
+    {
+        m_timer += Time.deltaTime;
+        return m_timer;
+    }
+
     public void LoadD()
     {
         CountCheck();
@@ -55,6 +75,5 @@ public class GameManager : MonoBehaviour
     private void CountCheck()
     {
         m_count++;
-        Debug.Log(m_count);
     }
 }

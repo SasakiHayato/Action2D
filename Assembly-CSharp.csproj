@@ -63,8 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\AudioClass.cs" />
-    <Compile Include="Assets\Script\CreateMap.cs" />
     <Compile Include="Assets\Script\Enemy\ArcheryController.cs" />
     <Compile Include="Assets\Script\Enemy\BomContoller.cs" />
     <Compile Include="Assets\Script\Enemy\BommerController.cs" />
@@ -72,7 +70,10 @@
     <Compile Include="Assets\Script\Enemy\EnemyBulletController.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />
     <Compile Include="Assets\Script\Enemy\ZombieController.cs" />
-    <Compile Include="Assets\Script\GameManager.cs" />
+    <Compile Include="Assets\Script\Game\AudioClass.cs" />
+    <Compile Include="Assets\Script\Game\CreateMap.cs" />
+    <Compile Include="Assets\Script\Game\GameManager.cs" />
+    <Compile Include="Assets\Script\Game\Uicontroller.cs" />
     <Compile Include="Assets\Script\Interface.cs" />
     <Compile Include="Assets\Script\Item\ItemBase.cs" />
     <Compile Include="Assets\Script\Item\ItemHeel.cs" />
@@ -87,7 +88,6 @@
     <Compile Include="Assets\Script\Player\PlayerContoller.cs" />
     <Compile Include="Assets\Script\Player\PlayerDataClass.cs" />
     <Compile Include="Assets\Script\TeleportClass.cs" />
-    <Compile Include="Assets\Script\Uicontroller.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -270,6 +270,9 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>C:/Users/vantan/OneDrive/ドキュメント/Action2D/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -704,7 +707,12 @@
       <HintPath>C:/Users/vantan/OneDrive/ドキュメント/Action2D/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{19CB262A-2508-F488-679E-26B0BC873D4A}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

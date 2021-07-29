@@ -7,8 +7,6 @@ public class PlayerContoller : MonoBehaviour
     private bool m_attackActive = false;
     private bool m_shieldBool = false;
 
-    private bool m_isPlay = false;
-
     [SerializeField] private float m_jumpPower = 0;
     private float m_speed = 7;
     private int m_avoidance = 1;
@@ -48,7 +46,8 @@ public class PlayerContoller : MonoBehaviour
     }
 
     void Update()
-    { 
+    {
+        if (!GameManager.Instance.CureatPlay()) return;
         Move();
 
         if (Input.GetButtonDown("Jump"))
@@ -206,7 +205,6 @@ public class PlayerContoller : MonoBehaviour
         else
         {
             Debug.Log("アイテムあり");
-            
         }
     }
 
