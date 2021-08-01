@@ -90,6 +90,7 @@
     <Compile Include="Assets\Script\Player\PlayerDataClass.cs" />
     <Compile Include="Assets\Script\Player\PlayerManager.cs" />
     <Compile Include="Assets\Script\TeleportClass.cs" />
+    <Compile Include="Assets\ShieldClass.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

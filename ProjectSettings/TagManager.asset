@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Attack2
   - Gem
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX

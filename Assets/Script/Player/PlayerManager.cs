@@ -6,17 +6,23 @@ public class PlayerManager : MonoBehaviour
 {
     public int m_itemSeve { get; set; }
     public Animator m_animator { get; set; }
+    public bool m_shield { get; set; }
 
     public void PlayerDamage(int damage)
     {
-        PlayerDataClass.Instance.m_Hp -= damage;
-        m_animator.Play("Player_Damage");
+        if (!m_shield)
+        {
+            PlayerDataClass.Instance.m_Hp -= damage;
+            m_animator.Play("Player_Damage");
+        }
+        
 
         if (PlayerDataClass.Instance.m_Hp <= 0)
         {
             PlayerDataClass.Instance.m_Hp = 0;
             Destroy(this.gameObject);
         }
+        m_shield = false;
     }
 
     public void ItemCheck(int item)

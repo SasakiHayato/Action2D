@@ -68,10 +68,12 @@ public class PlayerContoller : PlayerManager
                 if (!m_shieldBool)
                 {
                     m_shieldBool = true;
+                    m_shield.SetActive(m_shieldBool);
                 }
                 else
                 {
                     m_shieldBool = false;
+                    m_shield.SetActive(m_shieldBool);
                 }
             }
         }
@@ -84,6 +86,7 @@ public class PlayerContoller : PlayerManager
 
     private void Move(float h, float v)
     {
+        if (PlayerDataClass.Instance.m_freeze) return;
         if (h == 0 && v == 0)
         {
             m_animator.Play("Player_Idle_anim");
@@ -113,7 +116,7 @@ public class PlayerContoller : PlayerManager
     {
         if (m_groundChack.isGround == true || m_groundChack.plyerJumpCount > 0)
         {
-            m_rigidbody.AddForce(transform.up * m_jumpPower, ForceMode2D.Force);
+            m_rigidbody.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
             m_groundChack.plyerJumpCount--;
         }
     }
