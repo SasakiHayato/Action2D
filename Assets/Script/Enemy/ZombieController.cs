@@ -28,7 +28,6 @@ public class ZombieController : EnemyBase, IDamage
         if (m_freeze) return;
         Move();
 
-        
         WallCheck();
         PlayerCheck();
     }

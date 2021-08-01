@@ -72,6 +72,7 @@
     <Compile Include="Assets\Script\Enemy\ZombieController.cs" />
     <Compile Include="Assets\Script\Game\AudioClass.cs" />
     <Compile Include="Assets\Script\Game\CreateMap.cs" />
+    <Compile Include="Assets\Script\Game\FadeClass.cs" />
     <Compile Include="Assets\Script\Game\GameManager.cs" />
     <Compile Include="Assets\Script\Game\Uicontroller.cs" />
     <Compile Include="Assets\Script\Interface.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Assets\Script\Player\GroundChack.cs" />
     <Compile Include="Assets\Script\Player\PlayerContoller.cs" />
     <Compile Include="Assets\Script\Player\PlayerDataClass.cs" />
+    <Compile Include="Assets\Script\Player\PlayerManager.cs" />
     <Compile Include="Assets\Script\TeleportClass.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

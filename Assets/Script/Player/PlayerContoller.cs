@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerContoller : MonoBehaviour
+public class PlayerContoller : PlayerManager
 {   
     private bool m_attackActive = false;
     private bool m_shieldBool = false;
@@ -15,7 +15,6 @@ public class PlayerContoller : MonoBehaviour
 
     public bool m_crouch { get; private set; }
 
-
     private int m_attackCombo = 1;
     
     private GameObject[] m_attack = new GameObject[3];
@@ -25,15 +24,13 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] private Transform m_crouchNuzzle = null;
 
     [SerializeField] private GameObject m_bulletPlefab = null;
-    [System.NonSerialized] public int m_itemSeve = 0;
+    
     public Rigidbody2D m_rigidbody { get; set; }
-    private Animator m_animator;
     
     void Start()
     {
         m_animator = GetComponent<Animator>();
         m_rigidbody = GetComponent<Rigidbody2D>();
-        
         
         m_shield = GameObject.Find("ShieldCollider").gameObject;
         m_shield.SetActive(m_shieldBool);
@@ -47,8 +44,11 @@ public class PlayerContoller : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.Instance.CureatPlay()) return;
-        Move();
+        //if (!GameManager.Instance.CureatPlay()) return;
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+
+        Move(h, v);
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -78,17 +78,12 @@ public class PlayerContoller : MonoBehaviour
 
         if (Input.GetButtonDown("Fire3"))
         {
-           Avoidance();
+           Avoidance(h);
         }
     }
 
-    public void Move()
+    private void Move(float h, float v)
     {
-        if (PlayerDataClass.Instance.m_freeze) return;
-
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-
         if (h == 0 && v == 0)
         {
             m_animator.Play("Player_Idle_anim");
@@ -98,16 +93,7 @@ public class PlayerContoller : MonoBehaviour
         if (h != 0)
         {
             m_animator.Play("Player_Run");
-            if (h > 0)
-            {
-                transform.localScale = new Vector2(0.15f, 0.15f);
-                m_avoidance = 1;
-            }
-            if (h < 0)
-            {
-                transform.localScale = new Vector2(-0.15f, 0.15f);
-                m_avoidance = 2;
-            }
+            transform.localScale = new Vector2(0.15f * h, 0.15f);
         }
         if (v < 0 && h == 0)
         {
@@ -118,25 +104,16 @@ public class PlayerContoller : MonoBehaviour
         m_rigidbody.velocity = new Vector2(h * m_speed, m_rigidbody.velocity.y);
     }
 
-    public void Avoidance()
+    private void Avoidance(float h)
     {
-        switch (m_avoidance)
-        {
-            case 1:
-                transform.Translate(4, 0, 0);
-                break;
-
-            case 2:
-                transform.Translate(-4, 0, 0);
-                break;
-        }
+        transform.Translate(4 * h, 0, 0);
     }
 
-    public void Jump()
+    private void Jump()
     {
         if (m_groundChack.isGround == true || m_groundChack.plyerJumpCount > 0)
         {
-            m_rigidbody.AddForce(transform.up * m_jumpPower, ForceMode2D.Impulse);
+            m_rigidbody.AddForce(transform.up * m_jumpPower, ForceMode2D.Force);
             m_groundChack.plyerJumpCount--;
         }
     }
@@ -181,46 +158,6 @@ public class PlayerContoller : MonoBehaviour
                 m_animator.Play("Player_Magic");
                 break;
         }
-    }
-
-    public void PlayerDamage(int damage)
-    {
-        PlayerDataClass.Instance.m_Hp -= damage;
-        m_animator.Play("Player_Damage");
-
-        if (PlayerDataClass.Instance.m_Hp <= 0)
-        {
-            PlayerDataClass.Instance.m_Hp = 0;
-            Destroy(this.gameObject);
-        }
-    }
-
-    public void ItemCheck(int item)
-    {
-        if (m_itemSeve == 0)
-        {
-            m_itemSeve = item;
-            Debug.Log(m_itemSeve);
-        }
-        else
-        {
-            Debug.Log("アイテムあり");
-        }
-    }
-
-    //攻撃中に入力をうけつけない
-    private bool Freeze()
-    {
-        if (PlayerDataClass.Instance.m_freeze)
-        {
-           PlayerDataClass.Instance.m_freeze = false;
-        }
-        else
-        {
-           PlayerDataClass.Instance.m_freeze = true;
-        }
-
-        return PlayerDataClass.Instance.m_freeze;
     }
 
     // 攻撃時の Collider の SetActive

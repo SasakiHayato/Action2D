@@ -33,7 +33,6 @@ public class CreateMap : MonoBehaviour
     [SerializeField] private GameObject m_goal = null;
     [SerializeField] private GameObject m_teleport = null;
 
-    [SerializeField] private GameObject m_player = null;
     [SerializeField] private GameObject[] m_enemy = null;
 
     private const int m_mapHeight = 15;

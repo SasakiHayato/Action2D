@@ -289,7 +289,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7375254052850806322, guid: 528987546483e774e8af9536f08fa3d8,
+      - m_Target: {fileID: 5789147066665704577, guid: 528987546483e774e8af9536f08fa3d8,
           type: 3}
         m_MethodName: IsPlay
         m_Mode: 1
@@ -574,8 +574,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293994822}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.895053, y: 5.554002, z: 1}
+  m_LocalPosition: {x: 2.352, y: 1.263, z: 0}
+  m_LocalScale: {x: 8.463059, y: 6.81704, z: 1.2274104}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1274,7 +1274,7 @@ PrefabInstance:
     - target: {fileID: 2099760284755475529, guid: eb78d0dfa141bb7418eb07bbe8c97a17,
         type: 3}
       propertyPath: m_volume
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2099760284755475529, guid: eb78d0dfa141bb7418eb07bbe8c97a17,
         type: 3}

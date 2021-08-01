@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
 
     public void IsPlay()
     {
-        Invoke("LoadS", 2.5f);
         m_isPlay = true;
+        LoadS();
     }
 
     private void LoadS()
