@@ -73,7 +73,7 @@ public class ZombieController : EnemyBase, IDamage
         }
     }
 
-    public void PlayerCheck()
+    private void PlayerCheck()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, m_playerRay, m_playerRay.magnitude, m_playerLayer);
 

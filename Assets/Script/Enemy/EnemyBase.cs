@@ -6,9 +6,8 @@ public class EnemyBase : MonoBehaviour
 {
     [SerializeField] public float m_speed = 0;
     [SerializeField] public float m_hp = 0;
-    [System.NonSerialized] public float m_nowHp = 0;
     [SerializeField] public int m_attackPower = 0;
-    [System.NonSerialized] public float m_dSpeed;
+    public float m_dSpeed { get; set; }
 
     [SerializeField] public Vector2 m_playerRay = Vector2.zero;
     [SerializeField] public LayerMask m_playerLayer = 0;
@@ -16,7 +15,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] Vector2 m_wallRay = Vector2.zero;
     [SerializeField] LayerMask m_wallLayer = 0;
 
-   [SerializeField] private GameObject m_bloodPrefub;
+    [SerializeField] private GameObject m_bloodPrefub;
 
     public bool m_freeze = false;
 
@@ -64,12 +63,12 @@ public class EnemyBase : MonoBehaviour
         if (transform.localScale.x < 0)
         {
             transform.localScale = new Vector2(0.15f, 0.15f);
-            m_speed = -m_dSpeed;
+            m_speed = m_dSpeed;
         }
         else
         {
             transform.localScale = new Vector2(-0.15f, 0.15f);
-            m_speed = m_dSpeed;
+            m_speed = -m_dSpeed;
         }
     }
 

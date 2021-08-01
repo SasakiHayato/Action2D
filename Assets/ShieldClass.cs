@@ -10,7 +10,6 @@ public class ShieldClass : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EnemyAttack"))
         {
-            Debug.Log("a");
             m_player.m_shield = true;
         }
     }

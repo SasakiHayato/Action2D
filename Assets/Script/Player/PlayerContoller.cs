@@ -9,7 +9,6 @@ public class PlayerContoller : PlayerManager
 
     [SerializeField] private float m_jumpPower = 0;
     private float m_speed = 7;
-    private int m_avoidance = 1;
 
     [SerializeField] GroundChack m_groundChack;
 
