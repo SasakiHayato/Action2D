@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 2
-  m_hp: 0
+  m_hp: 20
   m_attackPower: 0
   m_playerRay: {x: 0, y: 0}
   m_playerLayer:
@@ -290,7 +290,8 @@ MonoBehaviour:
   m_wallLayer:
     serializedVersion: 2
     m_Bits: 0
-  m_bloodPrefub: {fileID: 0}
+  m_bloodPrefub: {fileID: 2747617401634751992, guid: 324cfdfe08761574ba2f20263579feba,
+    type: 3}
   m_freeze: 0
 --- !u!1 &6487180214085539423
 GameObject:

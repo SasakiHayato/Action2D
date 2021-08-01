@@ -6,10 +6,13 @@ public class ShielderController : EnemyBase, IDamage
 {
     private Animator m_animator;
 
+    private GameObject game = null; 
+
     void Start()
     {
         m_animator = GetComponent<Animator>();
         m_rigidbody = GetComponent<Rigidbody2D>();
+
         m_dSpeed = m_speed;
     }
 
