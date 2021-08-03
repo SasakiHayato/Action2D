@@ -174,8 +174,6 @@ MonoBehaviour:
   m_goal: {fileID: 7854122389216636070, guid: 404bff6d4d27f29468e6221a083dfbd9, type: 3}
   m_teleport: {fileID: 2898806459412491750, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
-  m_player: {fileID: 9095490895291973861, guid: 8e300500929a0aa4dbf12876d9c63a85,
-    type: 3}
   m_enemy:
   - {fileID: 7253916151901160660, guid: f2e8da33f391222449f4e5646f4d623f, type: 3}
   - {fileID: 5612574671708056806, guid: 4b6b9bce8eaefc24ea41a6ee3d06e7d4, type: 3}
@@ -396,7 +394,7 @@ PrefabInstance:
     - target: {fileID: 5017568985972674370, guid: fa378a9262d3a1c4e85b469e6c252fb2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5017568987025838691, guid: fa378a9262d3a1c4e85b469e6c252fb2,
         type: 3}
@@ -511,7 +509,7 @@ PrefabInstance:
     - target: {fileID: 5017568987212979598, guid: fa378a9262d3a1c4e85b469e6c252fb2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5017568987267024219, guid: fa378a9262d3a1c4e85b469e6c252fb2,
         type: 3}
@@ -526,7 +524,7 @@ PrefabInstance:
     - target: {fileID: 5017568987374610916, guid: fa378a9262d3a1c4e85b469e6c252fb2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa378a9262d3a1c4e85b469e6c252fb2, type: 3}

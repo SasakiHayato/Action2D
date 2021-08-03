@@ -439,7 +439,7 @@ public class CreateMap : MonoBehaviour
 
     private void CreateMapCell(int x, int y)
     {
-        GameObject set = default; // new GameObject();
+        GameObject set = default;
         Vector2 vector = new Vector2(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2);
 
         Vector3 setVec = new Vector3();
@@ -458,7 +458,6 @@ public class CreateMap : MonoBehaviour
         {
             set = SetMapTip(x, y);
             setVec = new Vector3(vector.x, vector.y, 1);
-            //Instantiate(m_player, new Vector3 (vector.x, vector.y, 0), Quaternion.identity);
         }
         if (m_maps[x, y] == MapStatus.Goal)
         {
@@ -482,19 +481,18 @@ public class CreateMap : MonoBehaviour
 
     private void SetEnemy()
     {
-        for (int count = 0; count < m_xEnemySetList.Count; count++)
+        int setCount = m_xEnemySetList.Count;
+        for (int count = 1; count <= setCount; count++)
         {
-            int randomBool = Random.Range(0, 20);
-            if (randomBool > 9)
-            {
-                
-            }
-
             int x = m_xEnemySetList.First();
             int y = m_yEnemySetList.First();
-            
-            int random = Random.Range(0, m_enemy.Length);
-            Instantiate(m_enemy[random], new Vector3(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2, 0), Quaternion.identity);
+
+            int setRandom = Random.Range(0, 15);
+            if (setRandom > 5)
+            {
+                int random = Random.Range(0, m_enemy.Length);
+                Instantiate(m_enemy[random], new Vector3(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2, 0), Quaternion.identity);
+            }
 
             m_xEnemySetList.Remove(m_xEnemySetList.First());
             m_yEnemySetList.Remove(m_yEnemySetList.First());
