@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916151401878931}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Breast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916151661098454}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Left_Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916151758407487}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ====Bone====
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7253916151901160681}
   - component: {fileID: 7253916151901160682}
   - component: {fileID: 7253916151901160683}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7253916151932888063}
   - component: {fileID: 7253916151932888062}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916152229318930}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Right_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916152342926241}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Left_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916152446313553}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Loot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916152675681434}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Waist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916152696774984}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Left_Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916152790145769}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Right_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916153115007920}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Left_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916153208717004}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Right_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916153237727303}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +629,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7253916153286304256}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Right_Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
