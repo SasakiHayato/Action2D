@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 6487180213908778914}
   - component: {fileID: 3737206654258091799}
   m_Layer: 11
-  m_Name: Shielder2
+  m_Name: Shielder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
     m_Center: {x: 2.8670707, y: 0.14353466, z: 0}
     m_Extent: {x: 5.9579163, y: 6.2499857, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
+  m_AlwaysUpdate: 0
 --- !u!95 &6487180213908778918
 Animator:
   serializedVersion: 3

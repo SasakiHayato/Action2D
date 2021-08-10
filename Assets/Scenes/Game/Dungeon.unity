@@ -176,8 +176,9 @@ MonoBehaviour:
     type: 3}
   m_enemy:
   - {fileID: 7253916151901160660, guid: f2e8da33f391222449f4e5646f4d623f, type: 3}
-  - {fileID: 5612574671708056806, guid: 4b6b9bce8eaefc24ea41a6ee3d06e7d4, type: 3}
+  - {fileID: 5612574671708056806, guid: 8115b2178aa043648931a884e463ac8a, type: 3}
   - {fileID: 9110643881165171475, guid: 7a0ef4cf22f7c724aa027bfd6f9e17c8, type: 3}
+  - {fileID: 6487180213908778919, guid: b400c19a3696f0b4282071d95e10cf26, type: 3}
 --- !u!4 &87207911
 Transform:
   m_ObjectHideFlags: 0

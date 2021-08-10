@@ -9,7 +9,6 @@ public class ZombieController : EnemyBase, IDamage
     Animator m_animator;
 
     GameObject m_attckCollider;
-    
 
     void Start()
     {

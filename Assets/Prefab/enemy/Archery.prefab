@@ -1147,7 +1147,7 @@ MonoBehaviour:
     m_Center: {x: 1.7746396, y: 0.14025164, z: 0}
     m_Extent: {x: 7.995464, y: 6.3857546, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
+  m_AlwaysUpdate: 0
 --- !u!95 &9110643881165171478
 Animator:
   serializedVersion: 3
