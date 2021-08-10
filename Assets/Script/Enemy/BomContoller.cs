@@ -39,7 +39,7 @@ public class BomContoller : MonoBehaviour
    
     private void Explosion()
     {
-        PlayerContoller player = m_player.GetComponent<PlayerContoller>();
+        PlayerMove player = m_player.GetComponent<PlayerMove>();
         Vector2 hitVector = default;
 
 

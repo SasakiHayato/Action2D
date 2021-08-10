@@ -7,13 +7,6 @@ public class PlayerContoller : PlayerManager
     private bool m_attackActive = false;
     private bool m_shieldBool = false;
 
-    [SerializeField] private float m_jumpPower = 0;
-    private float m_speed = 7;
-
-    [SerializeField] GroundChack m_groundChack;
-
-    public bool m_crouch { get; private set; }
-
     private int m_attackCombo = 1;
     
     private GameObject[] m_attack = new GameObject[3];
@@ -23,13 +16,12 @@ public class PlayerContoller : PlayerManager
     [SerializeField] private Transform m_crouchNuzzle = null;
 
     [SerializeField] private GameObject m_bulletPlefab = null;
-    
-    public Rigidbody2D m_rigidbody { get; set; }
+
+    [SerializeField] private PlayerMove m_move;
     
     void Start()
     {
         m_animator = GetComponent<Animator>();
-        m_rigidbody = GetComponent<Rigidbody2D>();
         
         m_shield = GameObject.Find("ShieldCollider").gameObject;
         m_shield.SetActive(m_shieldBool);
@@ -44,15 +36,6 @@ public class PlayerContoller : PlayerManager
     void Update()
     {
         //if (!GameManager.Instance.CureatPlay()) return;
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-
-        Move(h, v);
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -75,48 +58,6 @@ public class PlayerContoller : PlayerManager
                     m_shield.SetActive(m_shieldBool);
                 }
             }
-        }
-
-        if (Input.GetButtonDown("Fire3"))
-        {
-           Avoidance(h);
-        }
-    }
-
-    private void Move(float h, float v)
-    {
-        if (PlayerDataClass.Instance.m_freeze) return;
-        if (h == 0 && v == 0)
-        {
-            m_animator.Play("Player_Idle_anim");
-            m_crouch = false;
-        }
-
-        if (h != 0)
-        {
-            m_animator.Play("Player_Run");
-            transform.localScale = new Vector2(0.15f * h, 0.15f);
-        }
-        if (v < 0 && h == 0)
-        {
-            m_animator.Play("Player_Crouch");
-            m_crouch = true;
-        }
-
-        m_rigidbody.velocity = new Vector2(h * m_speed, m_rigidbody.velocity.y);
-    }
-
-    private void Avoidance(float h)
-    {
-        transform.Translate(4 * h, 0, 0);
-    }
-
-    private void Jump()
-    {
-        if (m_groundChack.isGround == true || m_groundChack.plyerJumpCount > 0)
-        {
-            m_rigidbody.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
-            m_groundChack.plyerJumpCount--;
         }
     }
 
@@ -151,7 +92,7 @@ public class PlayerContoller : PlayerManager
                 break;
 
             case 2:
-                if (m_crouch)
+                if (m_move.m_crouch)
                 {
                     m_animator.Play("Player_Magic_crouch");
                     break;

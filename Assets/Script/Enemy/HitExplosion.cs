@@ -6,7 +6,7 @@ public class HitExplosion : MonoBehaviour
 {
     GameObject m_playerOb;
     
-    PlayerContoller m_player;
+    PlayerMove m_player;
 
     private Vector2 m_vector = new Vector2(10, 10);
 
@@ -27,7 +27,7 @@ public class HitExplosion : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         m_playerOb = GameObject.Find("player").gameObject;
-        m_player = FindObjectOfType<PlayerContoller>();
+        m_player = FindObjectOfType<PlayerMove>();
         Hit();
     }
 }

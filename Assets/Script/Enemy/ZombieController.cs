@@ -63,11 +63,13 @@ public class ZombieController : EnemyBase, IDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        PlayerMove move;
         PlayerContoller player;
         if (collision.gameObject.CompareTag("Player"))
         {
+            move = collision.GetComponent<PlayerMove>();
             player = collision.GetComponent<PlayerContoller>();
-            player.m_rigidbody.AddForce(transform.up * 2, ForceMode2D.Impulse);
+            move.m_rigidbody.AddForce(transform.up * 2, ForceMode2D.Impulse);
             player.PlayerDamage(m_attackPower);
         }
     }
