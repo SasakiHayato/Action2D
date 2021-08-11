@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
     private Animator m_animator;
     public Rigidbody2D m_rigidbody { get; set; }
 
-    private float m_speed = 7;
+    private float m_speed = 9;
     
     public bool m_crouch { get; private set; }
 
@@ -42,11 +42,11 @@ public class PlayerMove : MonoBehaviour
             
             if (h < 0)
             {
-                transform.rotation = Quaternion.Euler(0, -180, 0);
+                transform.localScale = new Vector2(-0.15f, 0.15f);
             }
             else
             {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
+                transform.localScale = new Vector2(0.15f, 0.15f);
             }
         }
 

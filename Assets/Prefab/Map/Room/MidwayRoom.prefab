@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7603034986543880660}
   - component: {fileID: 5950993878569037691}
   m_Layer: 0
-  m_Name: StartRoom 1
+  m_Name: MidwayRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
