@@ -7,11 +7,8 @@ public class PlayerMove : MonoBehaviour
     private Animator m_animator;
     public Rigidbody2D m_rigidbody { get; set; }
 
-    [SerializeField] private GroundChack m_groundChack;
-
     private float m_speed = 7;
-    [SerializeField] private float m_jumpPower = 0;
-
+    
     public bool m_crouch { get; private set; }
 
     void Start()
@@ -28,16 +25,6 @@ public class PlayerMove : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
 
         Move(h, v);
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
-
-        if (Input.GetButtonDown("Fire3"))
-        {
-            Avoidance(h);
-        }
     }
 
     private void Move(float h, float v)
@@ -52,7 +39,15 @@ public class PlayerMove : MonoBehaviour
         if (h != 0)
         {
             m_animator.Play("Player_Run");
-            transform.localScale = new Vector2(0.15f * h, 0.15f);
+            
+            if (h < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, -180, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
         }
 
         if (v < 0 && h == 0)
@@ -62,19 +57,5 @@ public class PlayerMove : MonoBehaviour
         }
 
         m_rigidbody.velocity = new Vector2(h * m_speed, m_rigidbody.velocity.y);
-    }
-
-    private void Jump()
-    {
-        if (m_groundChack.isGround == true || m_groundChack.plyerJumpCount > 0)
-        {
-            m_rigidbody.AddForce(Vector2.up * m_jumpPower, ForceMode2D.Impulse);
-            m_groundChack.plyerJumpCount--;
-        }
-    }
-
-    private void Avoidance(float h)
-    {
-        transform.Translate(4 * h, 0, 0);
     }
 }

@@ -37,7 +37,7 @@ public class PlayerGrvity : MonoBehaviour
     void Update()
     {
         // Jump
-        if (Input.GetKeyDown(KeyCode.Space) && !m_jumpCurreant && m_jumpCount > 0)
+        if (Input.GetButtonDown("Jump") && !m_jumpCurreant && m_jumpCount > 0)
         {
             m_jumpCurreant = true;
             m_jumpStartPosY = transform.position.y;
@@ -75,9 +75,7 @@ public class PlayerGrvity : MonoBehaviour
         m_jumpTime += Time.deltaTime * m_jumpSpeed;
 
         float yPos = v0 * m_jumpTime - (g * m_jumpTime * m_jumpTime) / 2;
-        //Debug.Log($"変位 :{yPos} position.y :{transform.position.y} 合計 :{yPos + transform.position.y}");
-        float setPos = yPos + transform.position.y;
-        //Debug.Log($"Set :{setPos}");
+        
         transform.position = new Vector2(transform.position.x, yPos + m_jumpStartPosY);
     }
 

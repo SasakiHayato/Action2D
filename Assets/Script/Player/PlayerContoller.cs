@@ -10,7 +10,7 @@ public class PlayerContoller : PlayerManager
     private int m_attackCombo = 1;
     
     private GameObject[] m_attack = new GameObject[3];
-    private GameObject m_shield = null;
+    [SerializeField] private GameObject m_shieldOb;
 
     [SerializeField] private Transform m_nozzle = null;
     [SerializeField] private Transform m_crouchNuzzle = null;
@@ -23,8 +23,8 @@ public class PlayerContoller : PlayerManager
     {
         m_animator = GetComponent<Animator>();
         
-        m_shield = GameObject.Find("ShieldCollider").gameObject;
-        m_shield.SetActive(m_shieldBool);
+        
+        m_shieldOb.SetActive(m_shieldBool);
 
         for (int i = 0; i < m_attack.Length; i++)
         {
@@ -50,12 +50,12 @@ public class PlayerContoller : PlayerManager
                 if (!m_shieldBool)
                 {
                     m_shieldBool = true;
-                    m_shield.SetActive(m_shieldBool);
+                    m_shieldOb.SetActive(m_shieldBool);
                 }
                 else
                 {
                     m_shieldBool = false;
-                    m_shield.SetActive(m_shieldBool);
+                    m_shieldOb.SetActive(m_shieldBool);
                 }
             }
         }

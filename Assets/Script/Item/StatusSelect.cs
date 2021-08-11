@@ -11,6 +11,7 @@ public class StatusSelect : MonoBehaviour
     Vector2 m_scale;
 
     private int m_selectNum = 0;
+    private bool m_select = false;
 
     ItemStatus m_item;
 
@@ -29,17 +30,25 @@ public class StatusSelect : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        float h = Input.GetAxisRaw("Horizontal");
+
+        if (h == 0)
+        {
+            m_select = false;
+        }
+        if (h > 0 && !m_select)
         {
             m_selectNum ++;
+            m_select = true;
             if (m_selectNum >= m_selectObject.Length)
             {
                 m_selectNum--;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (h < 0 && !m_select)
         {
             m_selectNum --;
+            m_select = true;
             if (m_selectNum < 0)
             {
                 m_selectNum++;
@@ -47,7 +56,7 @@ public class StatusSelect : MonoBehaviour
         }
         
         Select();
-        if (Input.GetButtonUp("Jump"))
+        if (Input.GetButtonDown("Submit1"))
         {
             m_item.SetStatus(ref m_selectNum);
         }
