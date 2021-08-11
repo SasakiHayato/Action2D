@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private Animator m_animator;
-    //private Rigidbody2D m_rigidbody;
     public Rigidbody2D m_rigidbody { get; set; }
 
     [SerializeField] private GroundChack m_groundChack;

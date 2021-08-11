@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using DG.Tweening;
+//using DG.Tweening;
 
 public class AudioClass : MonoBehaviour
 {
@@ -26,7 +26,7 @@ public class AudioClass : MonoBehaviour
         float vol = 1f;
         float maxVol = 2f;
 
-        m_source.DOFade(vol, maxVol);
+        //m_source.DOFade(vol, maxVol);
 
         if (m_enum == SceneEnum.Title)
         {
