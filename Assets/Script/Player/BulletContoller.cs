@@ -25,7 +25,7 @@ public class BulletContoller : MonoBehaviour
         if (iDamage != null)
         {
             enemy.m_rigidbody.AddForce(transform.up * 3, ForceMode2D.Impulse);
-            iDamage.AddDamage(PlayerDataClass.Instance.m_attackPower);
+            iDamage.GetDamage(PlayerDataClass.Instance.m_attackPower);
             
             Destroy(this.gameObject);
         }

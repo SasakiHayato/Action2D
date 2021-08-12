@@ -66,7 +66,10 @@
     <Compile Include="Assets\Script\Enemy\ArcheryController.cs" />
     <Compile Include="Assets\Script\Enemy\BomContoller.cs" />
     <Compile Include="Assets\Script\Enemy\BommerController.cs" />
-    <Compile Include="Assets\Script\Enemy\BossController.cs" />
+    <Compile Include="Assets\Script\Enemy\Boss\BossAttack.cs" />
+    <Compile Include="Assets\Script\Enemy\Boss\BossBullet.cs" />
+    <Compile Include="Assets\Script\Enemy\Boss\BossController.cs" />
+    <Compile Include="Assets\Script\Enemy\Boss\BossMove.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyBase.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyBulletController.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />

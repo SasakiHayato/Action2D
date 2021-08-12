@@ -59,7 +59,7 @@ public class BommerController : EnemyBase, IDamage
         }
     }
 
-    public void AddDamage(int damage)
+    public void GetDamage(int damage)
     {
         m_animator.Play("Bommer_Damage");
         m_hp -= damage;

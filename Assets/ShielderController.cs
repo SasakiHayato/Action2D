@@ -53,7 +53,7 @@ public class ShielderController : EnemyBase, IDamage
         m_animator.Play("Shielder_Attack");
     }
 
-    public void AddDamage(int damage)
+    public void GetDamage(int damage)
     {
         m_animator.Play("Shielder_Damage");
         m_hp -= damage;

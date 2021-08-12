@@ -45,7 +45,7 @@ public class ZombieController : EnemyBase, IDamage
         }
     }
 
-    public void AddDamage(int damage)
+    public void GetDamage(int damage)
     {
         m_animator.Play("Enemy_Damage");
         m_hp -= damage;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossController : MonoBehaviour
+public class BossMove : MonoBehaviour
 {
     [SerializeField] private Transform[] m_spown = new Transform[0];
     [SerializeField] private float m_activeSetTime = 0;
@@ -44,7 +44,6 @@ public class BossController : MonoBehaviour
     private void ActiveBool()
     {
         m_activeTime -= Time.deltaTime;
-        Debug.Log(m_activeTime);
         if (m_activeTime < 0)
         {
             m_set = false;
