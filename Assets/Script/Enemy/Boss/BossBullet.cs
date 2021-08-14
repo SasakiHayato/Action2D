@@ -47,4 +47,13 @@ public class BossBullet : MonoBehaviour
         Debug.Log(dir);
         return dir;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerManager player = collision.gameObject.GetComponent<PlayerManager>();
+            player.PlayerDamage(10);
+        }
+    }
 }

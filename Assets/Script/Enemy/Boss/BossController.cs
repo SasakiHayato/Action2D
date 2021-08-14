@@ -5,31 +5,30 @@ using UnityEngine.UI;
 
 public class BossController : MonoBehaviour, IDamage
 {
-    [SerializeField] private int m_hp = 0;
+    [SerializeField] public int m_hp = 0;
     [SerializeField] private Slider m_hpSlider;
-
-    [SerializeField] private MobEnemyCreate m_mob;
 
     private Animator m_animator;
 
     private bool m_action = false;
     private bool m_attackAction = false;
 
-    private float m_hpPasent = 0;
+    private Collider2D m_collider;
 
     void Start()
     {
         m_hpSlider = m_hpSlider.GetComponent<Slider>();
         m_animator = GetComponent<Animator>();
-        
+        m_collider = GetComponent<Collider2D>();
+
         m_hpSlider.maxValue = m_hp;
         m_hpSlider.value = m_hp;
-
-        m_hpPasent = m_hp / 100;
     }
 
     void Update()
     {
+        if (m_collider.enabled == false) return;
+
         if (m_action) return;
         if (!m_attackAction)
         {
@@ -45,7 +44,6 @@ public class BossController : MonoBehaviour, IDamage
     private void AttackSelect()
     {
         int random = Random.Range(0, 2);
-        //int random = 1;
         m_attackAction = true;
         switch (random)
         {
@@ -72,16 +70,8 @@ public class BossController : MonoBehaviour, IDamage
     {
         m_hp -= damage;
         m_hpSlider.value = m_hp;
-        HpPasentCheck();
     }
 
-    private void HpPasentCheck()
-    {
-        if (m_hp <= m_hpPasent * 80)
-        {
-            m_mob.SetEnemy();
-        }
-    }
 
     public bool Frezze()
     {
