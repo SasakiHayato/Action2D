@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 4415810178087209422}
   - component: {fileID: 1820815644849109457}
   - component: {fileID: 7880832718558153926}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1007,7 +1007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5970092681551758389}
   - component: {fileID: 8755914025807053644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
