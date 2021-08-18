@@ -13,7 +13,6 @@ public class ActiveInCamera : MonoBehaviour
     {
         m_renderer = GetComponent<Renderer>();
         m_ob = transform.GetChild(0).gameObject;
-        Debug.Log(m_ob);
     }
 
     void Update()

@@ -59,8 +59,12 @@ public class CreateMap : MonoBehaviour
     private int m_xCount = 0;
     private int m_yCount = 0;
 
+    [SerializeField] TeleportClass m_teleClass;
+
     void Start()
     {
+        m_teleClass.SetMap(m_mapHeight, m_mapWide);
+
         MapReset();
 
         SetStartMap();
@@ -470,6 +474,7 @@ public class CreateMap : MonoBehaviour
             set = SetMapTip(x, y);
             setVec = new Vector3(vector.x, vector.y, 2);
             Instantiate(m_teleport, setVec, Quaternion.identity);
+            m_teleClass.AddTeleportPos(x, y);
         }
         if (set == default)
         {
@@ -484,18 +489,15 @@ public class CreateMap : MonoBehaviour
         int setCount = m_xEnemySetList.Count;
         for (int count = 1; count <= setCount; count++)
         {
-            int x = m_xEnemySetList.First();
-            int y = m_yEnemySetList.First();
+            int x = m_xEnemySetList[count - 1] * 8 - m_mapWide / 2;
+            int y = m_yEnemySetList[count - 1] * 8 - m_mapHeight / 2;
 
             int setRandom = Random.Range(0, 15);
             if (setRandom > 5)
             {
                 int random = Random.Range(0, m_enemy.Length);
-                Instantiate(m_enemy[random], new Vector3(x * 8 - m_mapWide / 2, y * 8 - m_mapHeight / 2, 0), Quaternion.identity);
+                Instantiate(m_enemy[random], new Vector3(x, y, 0), Quaternion.identity);
             }
-
-            m_xEnemySetList.Remove(m_xEnemySetList.First());
-            m_yEnemySetList.Remove(m_yEnemySetList.First());
         }
     }
 }
