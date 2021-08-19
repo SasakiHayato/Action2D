@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieController : EnemyBase, IDamage
+public class ZombieController : EnemyClass, IDamage
 {
     private bool m_attackBool = false;
     

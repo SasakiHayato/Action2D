@@ -19,7 +19,7 @@ public class BulletContoller : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        EnemyBase enemy = collision.GetComponent<EnemyBase>();
+        EnemyClass enemy = collision.GetComponent<EnemyClass>();
         IDamage iDamage = collision.GetComponent<IDamage>();
         
         if (iDamage != null)

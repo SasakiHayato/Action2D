@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShielderController : EnemyBase, IDamage
+public class ShielderController : EnemyClass, IDamage
 {
     private Animator m_animator;
 

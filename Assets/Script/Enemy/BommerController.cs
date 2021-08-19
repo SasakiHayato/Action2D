@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BommerController : EnemyBase, IDamage
+public class BommerController : EnemyClass, IDamage
 {
     private Animator m_animator;
 

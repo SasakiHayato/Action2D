@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcheryController : EnemyBase, IDamage
+public class ArcheryController : EnemyClass, IDamage
 {
     [SerializeField] private Transform m_nozzle;
     [SerializeField] private GameObject m_bow;

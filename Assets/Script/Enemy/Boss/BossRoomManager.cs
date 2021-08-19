@@ -60,8 +60,8 @@ public class BossRoomManager : MonoBehaviour
     {
         for (int i = 0; i < m_enemyObs.Count; i++)
         {
-            EnemyBase[] enemy = new EnemyBase[m_enemyObs.Count];
-            enemy[i] = m_enemyObs[i].GetComponent<EnemyBase>();
+            EnemyClass[] enemy = new EnemyClass[m_enemyObs.Count];
+            enemy[i] = m_enemyObs[i].GetComponent<EnemyClass>();
             if (enemy[i].m_hp <= 0)
             {
                 RemoveEnemyActive(i);
