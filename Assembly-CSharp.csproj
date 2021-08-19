@@ -76,8 +76,11 @@
     <Compile Include="Assets\Script\Enemy\EnemyBulletController.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyClass.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />
+    <Compile Include="Assets\Script\Enemy\NewArcheryController.cs" />
     <Compile Include="Assets\Script\Enemy\NewBommerController.cs" />
+    <Compile Include="Assets\Script\Enemy\NewShielderController.cs" />
     <Compile Include="Assets\Script\Enemy\NewZombieController.cs" />
+    <Compile Include="Assets\Script\Enemy\ShielderController.cs" />
     <Compile Include="Assets\Script\Enemy\ZombieController.cs" />
     <Compile Include="Assets\Script\Game\AudioClass.cs" />
     <Compile Include="Assets\Script\Game\CreateMap.cs" />
@@ -102,7 +105,6 @@
     <Compile Include="Assets\Script\TeleportClass.cs" />
     <Compile Include="Assets\SetSlash.cs" />
     <Compile Include="Assets\ShieldClass.cs" />
-    <Compile Include="Assets\ShielderController.cs" />
     <Compile Include="Assets\SlashClass.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
