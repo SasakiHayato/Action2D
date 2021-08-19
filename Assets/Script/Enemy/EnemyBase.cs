@@ -21,7 +21,7 @@ public abstract class EnemyBase : MonoBehaviour
     public abstract void Move();
     public abstract void Attack();
     public abstract void GetDamage(float damage);
-
+    // FindField(), FindToPlayerの呼び出し
 
     public void FindField()
     {
