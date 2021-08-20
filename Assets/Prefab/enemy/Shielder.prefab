@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5891769051459396857}
   - component: {fileID: 7634580720323238669}
   m_Layer: 11
-  m_Name: ShielderTest
+  m_Name: Shielder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5891769051459396860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4512801, y: -0.38397968, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 8281705917796615494}

@@ -19,12 +19,12 @@ public class BossRoomManager : MonoBehaviour
 
     void Start()
     {
-        m_hpPasent = m_boss.m_hp / 100;
+        m_hpPasent = m_boss.ReturnCurrentHp() / 100;
     }
 
     void Update()
     {
-        if (m_boss.m_hp <= m_hpPasent * 75 && !m_action1)
+        if (m_boss.ReturnCurrentHp() <= m_hpPasent * 75 && !m_action1)
         {
             m_action1 = true;
             SetEnemy();
@@ -54,29 +54,6 @@ public class BossRoomManager : MonoBehaviour
     private void SetEnemyActive(GameObject enemy)
     {
         m_enemyObs.Add(enemy);
-    }
-
-    //private void NowEnemyActive()
-    //{
-    //    for (int i = 0; i < m_enemyObs.Count; i++)
-    //    {
-    //        EnemyClass[] enemy = new EnemyClass[m_enemyObs.Count];
-    //        enemy[i] = m_enemyObs[i].GetComponent<EnemyClass>();
-    //        if (enemy[i].m_hp <= 0)
-    //        {
-    //            RemoveEnemyActive(i);
-    //        }
-    //    }
-    //}
-
-    private void RemoveEnemyActive(int x)
-    {
-        m_enemyObs.RemoveAt(x);
-
-        if (m_enemyObs.Count == 0)
-        {
-            Debug.Log("a");
-        }
     }
 
     private void BossActiveFalse()

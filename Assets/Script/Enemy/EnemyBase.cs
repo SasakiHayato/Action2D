@@ -21,6 +21,7 @@ public abstract class EnemyBase : MonoBehaviour
     public abstract void Move();
     public abstract void Attack();
     public abstract void GetDamage(float damage);
+    public int AddDamage() { return m_attackPower; }
     // FindField(), FindToPlayerの呼び出し
 
     public void FindPlayerToAttack()
@@ -82,9 +83,8 @@ public abstract class EnemyBase : MonoBehaviour
         return m_freeze;
     }
 
-    public int AddDamage() { return m_attackPower; }
     public bool ReturnFreeze() { return m_freeze; }
     public float ReturnSpeed() { return m_speed; }
     public float ReturnCurrentHp() { return m_hp; }
-    public float SetHp(float hp) { return m_hp - hp; }
+    public float SetHp(float hp) { return m_hp = hp; }
 }

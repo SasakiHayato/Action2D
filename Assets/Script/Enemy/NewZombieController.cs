@@ -50,10 +50,7 @@ public class NewZombieController : EnemyBase
         hp -= damage;
         SetHp(hp);
         
-        if (ReturnCurrentHp() <= 0)
-        {
-            Dead(gameObject.transform);
-        }
+        if (ReturnCurrentHp() <= 0) { Dead(gameObject.transform); }
     }
 
     public void SetAttack()
