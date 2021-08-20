@@ -175,10 +175,10 @@ MonoBehaviour:
   m_teleport: {fileID: 2898806459412491750, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
   m_enemy:
-  - {fileID: 649082956226015184, guid: 38cf85f5eff5b1a4389423e6d3bffd79, type: 3}
-  - {fileID: 875598676486587442, guid: 0055d31b67a0697488dfc15add3a35c2, type: 3}
-  - {fileID: 5790277746880144490, guid: 6d6953f232df5774a9e0e22423ea4089, type: 3}
-  - {fileID: 9180734020358895780, guid: 391079229e5c16f4bb3d67e5a4ade8ce, type: 3}
+  - {fileID: 3119840757780571648, guid: 7aeea7241e9186e449d316889cc58eeb, type: 3}
+  - {fileID: 5143112988350527811, guid: a024180f6ff58434a959f006c90e77c7, type: 3}
+  - {fileID: 8654951351606531615, guid: 7521be039fdd4244b859d2667fbaa177, type: 3}
+  - {fileID: 827832293437560326, guid: 07c76251a65fd884792fbed67b820754, type: 3}
   m_teleClass: {fileID: 897055841}
 --- !u!4 &87207911
 Transform:

@@ -10,6 +10,7 @@ TagManager:
   - Attack2
   - Gem
   - EnemyAttack
+  - Bone
   layers:
   - Default
   - TransparentFX

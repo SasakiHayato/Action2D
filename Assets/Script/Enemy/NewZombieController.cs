@@ -14,7 +14,7 @@ public class NewZombieController : EnemyBase
     {
         m_anim = GetComponent<Animator>();
         m_rb = GetComponent<Rigidbody2D>();
-
+        
         m_attackCollider = transform.GetChild(0).gameObject;
         m_attackCollider.SetActive(m_colliderBool);
     }
@@ -24,6 +24,11 @@ public class NewZombieController : EnemyBase
         if (ReturnFreeze()) return;
         
         Move();
+    }
+
+    private void FixedUpdate()
+    {
+        if (ReturnFreeze()) return;
 
         FindField();
         FindPlayerToAttack();
@@ -37,10 +42,7 @@ public class NewZombieController : EnemyBase
         else { m_anim.Play("Enemy_Idle"); }
     }
 
-    public override void Attack()
-    {
-        m_anim.Play("Enemy_Attack");
-    }
+    public override void Attack() { m_anim.Play("Enemy_Attack"); }
 
     public override void GetDamage(float damage)
     {
