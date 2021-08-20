@@ -65,9 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\ActiveInCamera.cs" />
     <Compile Include="Assets\EnemyActive.cs" />
-    <Compile Include="Assets\Script\Enemy\ArcheryController.cs" />
     <Compile Include="Assets\Script\Enemy\BomContoller.cs" />
-    <Compile Include="Assets\Script\Enemy\BommerController.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossAttack.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossBullet.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossController.cs" />
@@ -75,14 +73,11 @@
     <Compile Include="Assets\Script\Enemy\Boss\BossRoomManager.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyBase.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyBulletController.cs" />
-    <Compile Include="Assets\Script\Enemy\EnemyClass.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />
     <Compile Include="Assets\Script\Enemy\NewArcheryController.cs" />
     <Compile Include="Assets\Script\Enemy\NewBommerController.cs" />
     <Compile Include="Assets\Script\Enemy\NewShielderController.cs" />
     <Compile Include="Assets\Script\Enemy\NewZombieController.cs" />
-    <Compile Include="Assets\Script\Enemy\ShielderController.cs" />
-    <Compile Include="Assets\Script\Enemy\ZombieController.cs" />
     <Compile Include="Assets\Script\Game\AudioClass.cs" />
     <Compile Include="Assets\Script\Game\CreateMap.cs" />
     <Compile Include="Assets\Script\Game\FadeClass.cs" />

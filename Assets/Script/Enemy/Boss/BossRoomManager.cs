@@ -33,7 +33,7 @@ public class BossRoomManager : MonoBehaviour
 
         if (m_enemyActive)
         {
-            NowEnemyActive();
+            //NowEnemyActive();
         }
     }
 
@@ -56,18 +56,18 @@ public class BossRoomManager : MonoBehaviour
         m_enemyObs.Add(enemy);
     }
 
-    private void NowEnemyActive()
-    {
-        for (int i = 0; i < m_enemyObs.Count; i++)
-        {
-            EnemyClass[] enemy = new EnemyClass[m_enemyObs.Count];
-            enemy[i] = m_enemyObs[i].GetComponent<EnemyClass>();
-            if (enemy[i].m_hp <= 0)
-            {
-                RemoveEnemyActive(i);
-            }
-        }
-    }
+    //private void NowEnemyActive()
+    //{
+    //    for (int i = 0; i < m_enemyObs.Count; i++)
+    //    {
+    //        EnemyClass[] enemy = new EnemyClass[m_enemyObs.Count];
+    //        enemy[i] = m_enemyObs[i].GetComponent<EnemyClass>();
+    //        if (enemy[i].m_hp <= 0)
+    //        {
+    //            RemoveEnemyActive(i);
+    //        }
+    //    }
+    //}
 
     private void RemoveEnemyActive(int x)
     {

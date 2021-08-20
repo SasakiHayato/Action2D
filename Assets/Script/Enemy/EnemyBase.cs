@@ -82,6 +82,7 @@ public abstract class EnemyBase : MonoBehaviour
         return m_freeze;
     }
 
+    public int AddDamage() { return m_attackPower; }
     public bool ReturnFreeze() { return m_freeze; }
     public float ReturnSpeed() { return m_speed; }
     public float ReturnCurrentHp() { return m_hp; }

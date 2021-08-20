@@ -6,11 +6,11 @@ public class EnemyBulletController : MonoBehaviour
 {
     private float m_speed = 3;
 
-    ArcheryController m_archery;
+    NewArcheryController m_archery;
 
     void Start()
     {
-        m_archery = FindObjectOfType<ArcheryController>();
+        m_archery = FindObjectOfType<NewArcheryController>();
         Invoke("DestroyBullet", 2.0f);
     }
 
@@ -30,7 +30,7 @@ public class EnemyBulletController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             player = collision.GetComponent<PlayerContoller>();
-            player.PlayerDamage(m_archery.m_attackPower);
+            player.PlayerDamage(m_archery.AddDamage());
             DestroyBullet();
         }
     }
