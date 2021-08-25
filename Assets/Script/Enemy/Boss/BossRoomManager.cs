@@ -12,32 +12,7 @@ public class BossRoomManager : MonoBehaviour
 
     private List<GameObject> m_enemyObs = new List<GameObject>();
 
-    private float m_hpPasent = 0;
-
-    private bool m_enemyActive = false;
-    private bool m_action1 = false;
-
-    void Start()
-    {
-        m_hpPasent = m_boss.ReturnCurrentHp() / 100;
-    }
-
-    void Update()
-    {
-        if (m_boss.ReturnCurrentHp() <= m_hpPasent * 75 && !m_action1)
-        {
-            m_action1 = true;
-            SetEnemy();
-            BossActiveFalse();
-        }
-
-        if (m_enemyActive)
-        {
-            //NowEnemyActive();
-        }
-    }
-
-    private void SetEnemy()
+    public void SetEnemy()
     {
         for (int i = 0; i < m_setPos.Length; i++)
         {
@@ -47,8 +22,6 @@ public class BossRoomManager : MonoBehaviour
 
             SetEnemyActive(enemy);
         }
-
-        m_enemyActive = true;
     }
 
     private void SetEnemyActive(GameObject enemy)

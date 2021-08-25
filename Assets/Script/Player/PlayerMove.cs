@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
     private Animator m_animator;
     public Rigidbody2D m_rigidbody { get; set; }
 
-    private float m_speed = 9;
+    [SerializeField] private float m_speed = 0;
     
     public bool m_crouch { get; private set; }
 

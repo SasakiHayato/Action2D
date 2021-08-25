@@ -44,7 +44,6 @@ public class BossBullet : MonoBehaviour
     private Vector2 SetSlashDir(GameObject player)
     {
         Vector2 dir = player.transform.position - transform.position;
-        Debug.Log(dir);
         return dir;
     }
 

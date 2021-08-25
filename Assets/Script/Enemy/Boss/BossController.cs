@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BossController : EnemyBase
 {
     [SerializeField] private Slider m_hpSlider;
-
+    
     private Animator m_anim;
     private bool m_attackAction = false;
 
@@ -27,7 +27,7 @@ public class BossController : EnemyBase
         if (m_collider.enabled == false) return;
 
         if (SetFreeze()) return;
-
+        
         Move();
     }
 
@@ -46,6 +46,7 @@ public class BossController : EnemyBase
     {
         int random = Random.Range(0, 2);
         m_attackAction = true;
+        
         switch (random)
         {
             case 0:
@@ -72,7 +73,6 @@ public class BossController : EnemyBase
         float hp = ReturnCurrentHp();
         hp -= damage;
         SetHp(hp);
-        
         m_hpSlider.value = ReturnCurrentHp();
     }
 }

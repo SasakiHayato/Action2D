@@ -25,7 +25,7 @@ public class BossAttack : MonoBehaviour
     }
 
     public void Attack2()
-    {
+    { 
         StartCoroutine(SetBullet());
     }
 

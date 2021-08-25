@@ -175,11 +175,13 @@ MonoBehaviour:
   m_teleport: {fileID: 2898806459412491750, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
   m_enemy:
-  - {fileID: 3119840757780571648, guid: 7aeea7241e9186e449d316889cc58eeb, type: 3}
-  - {fileID: 5143112988350527811, guid: a024180f6ff58434a959f006c90e77c7, type: 3}
-  - {fileID: 8654951351606531615, guid: 7521be039fdd4244b859d2667fbaa177, type: 3}
-  - {fileID: 827832293437560326, guid: 07c76251a65fd884792fbed67b820754, type: 3}
+  - {fileID: 8541547621883512544, guid: 232cd755925aba84a8bd8352fcf63a2b, type: 3}
+  - {fileID: 6058151001963464821, guid: c2129c5cf62a7e4438ecee463a9265fa, type: 3}
+  - {fileID: 5891769051459396860, guid: 679d3ca0f7792b541919af53bb0ec0c2, type: 3}
+  - {fileID: 3269059256366448100, guid: 3d8f081b2e2ba7a4d826d15ab575c373, type: 3}
   m_teleClass: {fileID: 897055841}
+  m_active: {fileID: 5983765948031259428, guid: a448589865d12ce47a84d590fd739288,
+    type: 3}
 --- !u!4 &87207911
 Transform:
   m_ObjectHideFlags: 0
@@ -494,6 +496,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3432209455106671089, guid: 5568c1ce1d696c241b97b7511d700aff,
+        type: 3}
+      propertyPath: m_speed
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5515329091050292458, guid: 5568c1ce1d696c241b97b7511d700aff,
         type: 3}

@@ -13,6 +13,7 @@ public class EnemyActive : MonoBehaviour
 
     void Update()
     {
+        if (m_target == null) return;
         transform.position = m_target.transform.position;
     }
 
