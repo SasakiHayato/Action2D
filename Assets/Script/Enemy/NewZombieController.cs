@@ -7,7 +7,7 @@ public class NewZombieController : EnemyBase
     Animator m_anim;
     Rigidbody2D m_rb;
     GameObject m_attackCollider = default;
-
+  
     bool m_colliderBool = false;
 
     void Start()

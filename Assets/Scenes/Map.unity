@@ -175,11 +175,13 @@ MonoBehaviour:
   m_teleport: {fileID: 2898806459412491750, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
   m_enemy:
-  - {fileID: 649082956226015184, guid: 38cf85f5eff5b1a4389423e6d3bffd79, type: 3}
-  - {fileID: 875598676486587442, guid: 0055d31b67a0697488dfc15add3a35c2, type: 3}
-  - {fileID: 5790277746880144490, guid: 6d6953f232df5774a9e0e22423ea4089, type: 3}
-  - {fileID: 9180734020358895780, guid: 391079229e5c16f4bb3d67e5a4ade8ce, type: 3}
-  m_teleClass: {fileID: 0}
+  - {fileID: 8541547621883512544, guid: 232cd755925aba84a8bd8352fcf63a2b, type: 3}
+  - {fileID: 6058151001963464821, guid: c2129c5cf62a7e4438ecee463a9265fa, type: 3}
+  - {fileID: 5891769051459396860, guid: 679d3ca0f7792b541919af53bb0ec0c2, type: 3}
+  - {fileID: 3269059256366448100, guid: 3d8f081b2e2ba7a4d826d15ab575c373, type: 3}
+  m_teleClass: {fileID: -1347530605163886530, guid: a356e6caf209e584cb0a75872fbe9cd0,
+    type: 3}
+  m_active: {fileID: 673553000}
 --- !u!4 &87207911
 Transform:
   m_ObjectHideFlags: 0
@@ -448,6 +450,51 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &673552999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 673553001}
+  - component: {fileID: 673553000}
+  m_Layer: 0
+  m_Name: ActiveClass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &673553000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673552999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6017cbf4afdfe40479cb85929c36989c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_setActive: {fileID: 4795468543171559856, guid: ec382846fe807e34ea33570ba1d82f83,
+    type: 3}
+--- !u!4 &673553001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673552999}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1140962926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2498293026343908542, guid: 5568c1ce1d696c241b97b7511d700aff,

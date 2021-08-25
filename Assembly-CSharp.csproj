@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ActiveClass.cs" />
     <Compile Include="Assets\ActiveInCamera.cs" />
     <Compile Include="Assets\EnemyActive.cs" />
     <Compile Include="Assets\Script\Enemy\BomContoller.cs" />

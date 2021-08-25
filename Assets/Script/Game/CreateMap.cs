@@ -60,6 +60,7 @@ public class CreateMap : MonoBehaviour
     private int m_yCount = 0;
 
     [SerializeField] TeleportClass m_teleClass;
+    [SerializeField] ActiveClass m_active;
 
     void Start()
     {
@@ -495,8 +496,11 @@ public class CreateMap : MonoBehaviour
             int setRandom = Random.Range(0, 15);
             if (setRandom > 5)
             {
+                Vector3 set = new Vector3(x, y, 0);
                 int random = Random.Range(0, m_enemy.Length);
-                Instantiate(m_enemy[random], new Vector3(x, y, 0), Quaternion.identity);
+                GameObject setEnemy = Instantiate(m_enemy[random], set, Quaternion.identity);
+
+                m_active.GetEnemy(setEnemy);
             }
         }
     }
