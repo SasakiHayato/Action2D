@@ -68,6 +68,7 @@
     <Compile Include="Assets\EnemyActive.cs" />
     <Compile Include="Assets\NewBoss\BehaviorTree.cs" />
     <Compile Include="Assets\NewBoss\NewBossController.cs" />
+    <Compile Include="Assets\Prefab\enemy\BommerClass.cs" />
     <Compile Include="Assets\Prefab\enemy\NewBehaviorTree.cs" />
     <Compile Include="Assets\Prefab\enemy\NewEnemyBase.cs" />
     <Compile Include="Assets\Prefab\enemy\ZombieClass.cs" />

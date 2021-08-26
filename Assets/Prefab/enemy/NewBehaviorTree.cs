@@ -33,7 +33,7 @@ public class NewBehaviorTree : MonoBehaviour
     public void Tree()
     {
         if (m_action == ActionEnum.True) return;
-        Debug.Log("aq");
+        
         ConditionalEnum conditional = Conditional();
         Action(conditional);
     }
