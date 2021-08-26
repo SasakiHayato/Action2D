@@ -703,7 +703,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: fa1f53901fff1e84896fc37e0792d3ec, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -720,8 +720,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56d5f9936b5480499c58af69ffbb10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_attack1Pos: 10
-  m_attack2pos: 10
+  m_attack1PosX: 10
+  m_attack2PosX: 10
+  m_attack1PosMinY: -1
+  m_attack1PosMaxY: 1
+  m_attack2PosMinY: -1
+  m_attack2PosMaxY: 1
   m_enemy: {fileID: 3313184134036742831}
 --- !u!114 &3313184134036742831
 MonoBehaviour:
@@ -735,7 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d641cc97658c4498edf358358d3613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0
+  m_speed: 2
   m_tree: {fileID: 3313184134036742824}
 --- !u!1 &3313184134050060303
 GameObject:

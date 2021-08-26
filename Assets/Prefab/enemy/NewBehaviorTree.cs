@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class NewBehaviorTree : MonoBehaviour
 {
-    [SerializeField] float m_attack1Pos;
-    [SerializeField] float m_attack2pos;
+    [SerializeField] float m_attack1PosX;
+    [SerializeField] float m_attack2PosX;
+
+    [SerializeField] float m_attack1PosMinY;
+    [SerializeField] float m_attack1PosMaxY;
+
+    [SerializeField] float m_attack2PosMinY;
+    [SerializeField] float m_attack2PosMaxY;
 
     [SerializeField] NewEnemyBase m_enemy;
 
@@ -47,15 +53,18 @@ public class NewBehaviorTree : MonoBehaviour
 
         Vector2 playerVec = player.transform.position;
 
-        float setVec = playerVec.x - transform.position.x;
-        float posXAbs = Mathf.Abs(setVec);
+        float setVecX = playerVec.x - transform.position.x;
+        float posXAbs = Mathf.Abs(setVecX);
         
-        if (m_attack1Pos >= posXAbs)
+        float setVecY = playerVec.y - transform.position.y;
+        float posYAbs = Mathf.Abs(setVecY);
+
+        if (m_attack1PosX >= posXAbs && m_attack1PosMinY <= posYAbs && m_attack1PosMaxY > posYAbs)
         {
             conditional = ConditionalEnum.True;
             m_movement = MovementEnum.Attack1;
         }
-        else if (m_attack1Pos < posXAbs && m_attack2pos > posXAbs)
+        else if (m_attack1PosX < posXAbs && m_attack2PosX > posXAbs && m_attack2PosMinY <= posYAbs && m_attack2PosMaxY > posYAbs)
         {
             conditional = ConditionalEnum.True;
             m_movement = MovementEnum.Attack2;
