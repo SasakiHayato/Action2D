@@ -65,28 +65,19 @@
   <ItemGroup>
     <Compile Include="Assets\ActiveClass.cs" />
     <Compile Include="Assets\ActiveInCamera.cs" />
-    <Compile Include="Assets\ArcheryBowClass.cs" />
     <Compile Include="Assets\EnemyActive.cs" />
-    <Compile Include="Assets\NewBoss\BehaviorTree.cs" />
-    <Compile Include="Assets\NewBoss\NewBossController.cs" />
-    <Compile Include="Assets\Prefab\NewEnemy\ArchryClass.cs" />
-    <Compile Include="Assets\Prefab\NewEnemy\BommerClass.cs" />
-    <Compile Include="Assets\Prefab\NewEnemy\ZombieClass.cs" />
-    <Compile Include="Assets\Prefab\enemy\NewBehaviorTree.cs" />
-    <Compile Include="Assets\Prefab\enemy\NewEnemyBase.cs" />
+    <Compile Include="Assets\Script\Enemy\ArcheryBowClass.cs" />
+    <Compile Include="Assets\Script\Enemy\ArchryClass.cs" />
     <Compile Include="Assets\Script\Enemy\BomContoller.cs" />
-    <Compile Include="Assets\Script\Enemy\Boss\BossAttack.cs" />
+    <Compile Include="Assets\Script\Enemy\BommerClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossBullet.cs" />
-    <Compile Include="Assets\Script\Enemy\Boss\BossController.cs" />
-    <Compile Include="Assets\Script\Enemy\Boss\BossMove.cs" />
+    <Compile Include="Assets\Script\Enemy\Boss\BossClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossRoomManager.cs" />
-    <Compile Include="Assets\Script\Enemy\EnemyBase.cs" />
-    <Compile Include="Assets\Script\Enemy\EnemyBulletController.cs" />
+    <Compile Include="Assets\Script\Enemy\Boss\ShielderClass.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />
-    <Compile Include="Assets\Script\Enemy\NewArcheryController.cs" />
-    <Compile Include="Assets\Script\Enemy\NewBommerController.cs" />
-    <Compile Include="Assets\Script\Enemy\NewShielderController.cs" />
-    <Compile Include="Assets\Script\Enemy\NewZombieController.cs" />
+    <Compile Include="Assets\Script\Enemy\NewBehaviorTree.cs" />
+    <Compile Include="Assets\Script\Enemy\NewEnemyBase.cs" />
+    <Compile Include="Assets\Script\Enemy\ZombieClass.cs" />
     <Compile Include="Assets\Script\Game\AudioClass.cs" />
     <Compile Include="Assets\Script\Game\CreateMap.cs" />
     <Compile Include="Assets\Script\Game\FadeClass.cs" />
@@ -111,7 +102,6 @@
     <Compile Include="Assets\Script\TeleportClass.cs" />
     <Compile Include="Assets\SetSlash.cs" />
     <Compile Include="Assets\ShieldClass.cs" />
-    <Compile Include="Assets\ShielderClass.cs" />
     <Compile Include="Assets\SlashClass.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

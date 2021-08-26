@@ -6,10 +6,10 @@ public class AttackCheck : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        EnemyBase enemy = collision.GetComponent<EnemyBase>();
-        if (enemy != null)
-        { 
-            enemy.GetDamage(PlayerDataClass.Instance.m_attackPower * 10);
-        }
+        //EnemyBase enemy = collision.GetComponent<EnemyBase>();
+        //if (enemy != null)
+        //{ 
+        //    enemy.GetDamage(PlayerDataClass.Instance.m_attackPower * 10);
+        //}
     }
 }

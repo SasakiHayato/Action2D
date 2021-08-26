@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BossRoomManager : MonoBehaviour
 {
-    [SerializeField] BossController m_boss;
+    [SerializeField] BossClass m_boss;
 
     [SerializeField] GameObject[] m_enemy = new GameObject[0];
     [SerializeField] Transform[] m_setPos = new Transform[0];
