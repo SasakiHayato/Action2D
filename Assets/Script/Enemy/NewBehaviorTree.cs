@@ -96,5 +96,6 @@ public class NewBehaviorTree : MonoBehaviour
         yield return new WaitForSeconds(time);
         SetFalseToAction();
     }
+
     void SetFalseToAction() { m_action = ActionEnum.False; }
 }

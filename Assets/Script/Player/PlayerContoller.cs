@@ -104,6 +104,7 @@ public class PlayerContoller : PlayerManager, IDamage
 
     public void GetDamage(int damage)
     {
+        Debug.Log(damage);
         m_animator.Play("Player_Damage");
 
         int hp = PlayerDataClass.Instance.SetHp() - damage;

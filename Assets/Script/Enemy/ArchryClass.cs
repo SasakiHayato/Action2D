@@ -24,8 +24,6 @@ public class ArchryClass : NewEnemyBase
 
     public override void Move()
     {
-        Debug.Log("行動中");
-
         if (SetSpeed() != 0) { m_anim.Play("Archery_Walk"); }
         else { m_anim.Play("Archery_Idle"); }
 
@@ -35,8 +33,6 @@ public class ArchryClass : NewEnemyBase
 
     public override void Attack1()
     {
-        Debug.Log("攻撃1");
-        
         m_anim.Play("Archery_Attack");
         FindPlayerToLook();
         m_tree.Interval(0);
