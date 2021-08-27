@@ -41,8 +41,8 @@ public class Uicontroller : MonoBehaviour
 
     private void SliderHp()
     {
-        m_slider.value = PlayerDataClass.Instance.m_Hp;
-        hpText.text = PlayerDataClass.Instance.m_Hp.ToString("00" + "/１００");
+        m_slider.value = PlayerDataClass.Instance.SetHp();
+        hpText.text = PlayerDataClass.Instance.SetHp().ToString("00" + "/１００");
     }
 
     private void Timer()
@@ -53,7 +53,7 @@ public class Uicontroller : MonoBehaviour
     private void StatuUp()
     {
         m_magicText.text = PlayerDataClass.Instance.m_magicPower.ToString();
-        m_attackText.text = PlayerDataClass.Instance.m_attackPower.ToString();
+        m_attackText.text = PlayerDataClass.Instance.SetAttack().ToString();
         m_shieldText.text = PlayerDataClass.Instance.m_shieldPower.ToString();
     }
 

@@ -6,10 +6,27 @@ public interface IDamage { void GetDamage(int damege); }
 
 public abstract class NewEnemyBase : MonoBehaviour
 {
+    [SerializeField] int m_hp;
     [SerializeField] float m_speed;
+    [SerializeField] int m_attackPower;
+    [SerializeField] GameObject m_diedSprite = default;
+
     float m_defaultSpeed;
     bool m_setSpeed = false;
     
+    public int SetAttackPower() { return m_attackPower; }
+    public int RetuneCrreantHp() { return m_hp; }
+    public int SetHp(int set, GameObject parent) 
+    { 
+        if (set <= 0) { Died(parent); }
+        return m_hp = set;
+    }
+    void Died(GameObject parent)
+    {
+        GameObject set = Instantiate(m_diedSprite);
+        set.transform.position = transform.position;
+        Destroy(parent);
+    }
     public void FieldCheck()
     {
         WallCheck();

@@ -34,8 +34,6 @@ public class BommerClass : NewEnemyBase
         {
             m_anim.Play("Bommer_Idle");
         }
-
-        m_tree.SetFalseToAction();
     }
 
     public override void Attack1()
@@ -43,13 +41,7 @@ public class BommerClass : NewEnemyBase
         Debug.Log("攻撃１");
         m_anim.Play("Bommer_Attack");
         FindPlayerToLook();
-        StartCoroutine(SetFale());
-    }
-
-    IEnumerator SetFale()
-    {
-        yield return new WaitForSeconds(4);
-        m_tree.SetFalseToAction();
+        m_tree.Interval(0);
     }
 
     public override void Attack2() { Attack1(); }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerContoller : PlayerManager
+public class PlayerContoller : PlayerManager, IDamage
 {   
     private bool m_attackActive = false;
     private bool m_shieldBool = false;
@@ -81,7 +81,6 @@ public class PlayerContoller : PlayerManager
                 break;
         }
     }
-
     private void SubAttack()
     {
         switch (PlayerDataClass.Instance.m_subAttack)
@@ -103,6 +102,14 @@ public class PlayerContoller : PlayerManager
         }
     }
 
+    public void GetDamage(int damage)
+    {
+        m_animator.Play("Player_Damage");
+
+        int hp = PlayerDataClass.Instance.SetHp() - damage;
+        PlayerDataClass.Instance.GetHp(hp);
+    }
+
     // 攻撃時の Collider の SetActive
     private void SetCollider()
     {
@@ -117,13 +124,6 @@ public class PlayerContoller : PlayerManager
         m_attack[m_attackCombo - 1].SetActive(m_attackActive);
     }
 
-    private void SetBullet()
-    {
-        Instantiate(m_bulletPlefab, m_nozzle);
-    }
-
-    private void SetBulletCrouch()
-    {
-        Instantiate(m_bulletPlefab, m_crouchNuzzle);
-    }
+    private void SetBullet() { Instantiate(m_bulletPlefab, m_nozzle); }
+    private void SetBulletCrouch() { Instantiate(m_bulletPlefab, m_crouchNuzzle); }
 }

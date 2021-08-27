@@ -10,7 +10,7 @@ public class ItemHeel : ItemBase
         {
             if (Input.GetButtonDown("Submit1"))
             {
-                if (PlayerDataClass.Instance.m_Hp == 100)
+                if (PlayerDataClass.Instance.SetHp() == 100)
                 {
                     Debug.Log("無理");
                 }

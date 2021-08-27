@@ -36,7 +36,7 @@ public class BossClass : NewEnemyBase
 
         transform.position = new Vector2(posX, posY);
 
-        m_tree.SetFalseToAction();
+        m_tree.Interval(0);
     }
 
     public override void Attack1()
@@ -53,7 +53,7 @@ public class BossClass : NewEnemyBase
         m_anim.Play("Boss_Attack_1");
         GameObject slash = Instantiate(m_slashing);
         slash.transform.position = transform.position;
-        StartCoroutine(SetFalse(5));
+        m_tree.Interval(5);
     }
 
     private IEnumerator SetBullet()
@@ -68,13 +68,7 @@ public class BossClass : NewEnemyBase
             m_count--;
         }
         m_count = 15;
-        m_tree.SetFalseToAction();
-    }
-
-    IEnumerator SetFalse(float time)
-    {
-        yield return new WaitForSeconds(time);
-        m_tree.SetFalseToAction();
+        m_tree.Interval(0);
     }
 
     bool Interval(float time)

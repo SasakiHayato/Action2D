@@ -90,5 +90,11 @@ public class NewBehaviorTree : MonoBehaviour
         else { m_enemy.Attack2(); }
     }
 
-    public void SetFalseToAction() { m_action = ActionEnum.False; }
+    public void Interval(float time) { StartCoroutine(WaitTime(time)); }
+    IEnumerator WaitTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SetFalseToAction();
+    }
+    void SetFalseToAction() { m_action = ActionEnum.False; }
 }

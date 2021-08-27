@@ -6,10 +6,7 @@ public class EnemyActive : MonoBehaviour
 {
     GameObject m_target;
     
-    public GameObject SetTarget(GameObject set)
-    {
-        return m_target = set;
-    }
+    public GameObject SetTarget(GameObject set) { return m_target = set; }
 
     void Update()
     {

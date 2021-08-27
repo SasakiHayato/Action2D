@@ -47,12 +47,12 @@ public class BossBullet : MonoBehaviour
         return dir;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerManager player = collision.gameObject.GetComponent<PlayerManager>();
-            player.PlayerDamage(10);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        PlayerManager player = collision.gameObject.GetComponent<PlayerManager>();
+    //        player.PlayerDamage(10);
+    //    }
+    //}
 }

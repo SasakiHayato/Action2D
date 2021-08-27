@@ -27,7 +27,6 @@ public class ShielderClass : NewEnemyBase
         if (SetSpeed() != 0) { m_anim.Play("Shielder_Walk"); }
         else { m_anim.Play("Shielder_Idle"); }
         FieldCheck();
-        m_tree.SetFalseToAction();
     }
 
     public override void Attack1()
@@ -35,7 +34,7 @@ public class ShielderClass : NewEnemyBase
         Debug.Log("攻撃１");
         m_anim.Play("Shielder_Attack");
         FindPlayerToLook();
-        StartCoroutine(SetFales(2.5f));
+        m_tree.Interval(2.5f);
     }
 
     public override void Attack2()
@@ -44,7 +43,7 @@ public class ShielderClass : NewEnemyBase
         FindPlayerToLook();
         m_rb.AddForce(new Vector2(RetuneStepFloat() * -1, 0) * 15, ForceMode2D.Impulse);
 
-        StartCoroutine(SetFales(4));
+        m_tree.Interval(4);
     }
 
     float RetuneStepFloat()
@@ -57,11 +56,4 @@ public class ShielderClass : NewEnemyBase
 
         return stepPower;
     }
-
-    IEnumerator SetFales(float time)
-    {
-        yield return new WaitForSeconds(time);
-        m_tree.SetFalseToAction();
-    }
-
 }

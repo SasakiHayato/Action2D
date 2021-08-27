@@ -31,21 +31,15 @@ public class ArchryClass : NewEnemyBase
 
         FieldCheck();
         m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
-        m_tree.SetFalseToAction();
     }
 
     public override void Attack1()
     {
         Debug.Log("攻撃1");
+        
         m_anim.Play("Archery_Attack");
         FindPlayerToLook();
-        StartCoroutine(SetFalse());
-    }
-
-    IEnumerator SetFalse()
-    {
-        yield return new WaitForSeconds(3.5f);
-        m_tree.SetFalseToAction();
+        m_tree.Interval(0);
     }
 
     public override void Attack2() { Attack1(); }
@@ -56,6 +50,6 @@ public class ArchryClass : NewEnemyBase
         GameObject set = Instantiate(m_bowClass.gameObject);
         set.transform.position = m_muzzle.position;
         ArcheryBowClass bow = set.GetComponent<ArcheryBowClass>();
-        bow.SetDir();
+        bow.SetDir(gameObject.transform);
     }
 }

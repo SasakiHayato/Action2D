@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieClass : NewEnemyBase
+public class ZombieClass : NewEnemyBase, IDamage
 {
     [SerializeField] NewBehaviorTree m_tree;
     Animator m_anim;
     Rigidbody2D m_rb;
 
+    GameObject m_collider = default;
+    bool m_attackCheck = false;
+
     void Start()
     {
         m_anim = GetComponent<Animator>();
         m_rb = GetComponent<Rigidbody2D>();
+
+        m_collider = transform.GetChild(0).gameObject;
     }
 
-    void Update()
-    {
-        m_tree.Tree();    
-    }
+    void Update() { m_tree.Tree(); }
 
     public override void Move()
     {
-        Debug.Log("移動");
         FieldCheck();
 
         if (SetSpeed() != 0) { m_anim.Play("Enemy_Walk"); }
@@ -32,18 +33,16 @@ public class ZombieClass : NewEnemyBase
 
     public override void Attack1()
     {
-        Debug.Log("攻撃１");
         FindPlayerToLook();
         m_anim.Play("Enemy_Attack");
     }
 
     public override void Attack2()
     {
-        Debug.Log("Attack2");
         FindPlayerToLook();
         m_rb.AddForce(new Vector2(RetuneStepFloat() * -6, 3), ForceMode2D.Impulse);
         m_anim.Play("Enemy_Attack");
-        StartCoroutine(SetFalse(5));
+        m_tree.Interval(5);
     }
 
     float RetuneStepFloat()
@@ -61,12 +60,29 @@ public class ZombieClass : NewEnemyBase
     public void BackStep()
     {
         m_rb.AddForce(new Vector2(RetuneStepFloat() * 6, 3), ForceMode2D.Impulse);
-        StartCoroutine(SetFalse(5));
+        m_tree.Interval(5);
     }
 
-    IEnumerator SetFalse(float time)
+    // AnimetionIventで呼び出し
+    public void AttackCollider()
     {
-        yield return new WaitForSeconds(time);
-        m_tree.SetFalseToAction();
+        if (!m_attackCheck)
+        {
+            m_attackCheck = true;
+            m_collider.SetActive(true);
+        }
+        else 
+        {
+            m_attackCheck = false;
+            m_collider.SetActive(false);
+        }
+    }
+
+    public void GetDamage(int damage)
+    {
+        int hp = RetuneCrreantHp() - damage;
+        m_rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
+        m_anim.Play("Enemy_Damage");
+        SetHp(hp, gameObject);
     }
 }

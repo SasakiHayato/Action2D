@@ -41,12 +41,13 @@ public class ItemBase : MonoBehaviour
         }
         else if (m_status == ItemStatus.Heel)
         {
-            if (PlayerDataClass.Instance.m_Hp < PlayerDataClass.Instance.m_maxHp)
+            if (PlayerDataClass.Instance.SetHp() < PlayerDataClass.Instance.m_maxHp)
             {
-                PlayerDataClass.Instance.m_Hp += 30;
-                if (PlayerDataClass.Instance.m_Hp > 100)
+                int heel = PlayerDataClass.Instance.SetHp() + 30;
+                PlayerDataClass.Instance.GetHp(heel);
+                if (PlayerDataClass.Instance.SetHp() > 100)
                 {
-                    PlayerDataClass.Instance.m_Hp = 100;
+                    PlayerDataClass.Instance.GetHp(100);
                 }
             }
         }
@@ -64,7 +65,7 @@ public class ItemBase : MonoBehaviour
         }
         else if (set == 2)
         {
-            PlayerDataClass.Instance.m_attackPower ++;
+            PlayerDataClass.Instance.AttackPowerUp(1);
         }
         set = 0;
 

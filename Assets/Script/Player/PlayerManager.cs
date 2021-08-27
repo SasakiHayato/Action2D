@@ -8,22 +8,22 @@ public class PlayerManager : MonoBehaviour
     public Animator m_animator { get; set; }
     public bool m_shield { get; set; }
 
-    public void PlayerDamage(int damage)
-    {
-        if (!m_shield)
-        {
-            PlayerDataClass.Instance.m_Hp -= damage;
-            m_animator.Play("Player_Damage");
-        }
+    //public void PlayerDamage(int damage)
+    //{
+    //    if (!m_shield)
+    //    {
+    //        PlayerDataClass.Instance.m_hp -= damage;
+    //        m_animator.Play("Player_Damage");
+    //    }
         
 
-        if (PlayerDataClass.Instance.m_Hp <= 0)
-        {
-            PlayerDataClass.Instance.m_Hp = 0;
-            Destroy(this.gameObject);
-        }
-        m_shield = false;
-    }
+    //    if (PlayerDataClass.Instance.m_hp <= 0)
+    //    {
+    //        PlayerDataClass.Instance.m_hp = 0;
+    //        Destroy(this.gameObject);
+    //    }
+    //    m_shield = false;
+    //}
 
     public void ItemCheck(int item)
     {

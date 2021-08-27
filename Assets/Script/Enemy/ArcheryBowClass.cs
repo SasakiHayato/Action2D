@@ -6,18 +6,14 @@ public class ArcheryBowClass : MonoBehaviour
 {
     [SerializeField] float m_shotPower;
 
-    public void SetDir()
+    public void SetDir(Transform archery)
     {
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-        if (transform.position.x > player.position.x)
+        if (archery.localScale.x < 0)
         {
             transform.Rotate(0, 180, 0);
             Shot(-1);
         }
-        else
-        {
-            Shot(1);
-        }
+        else { Shot(1); }
     }
 
     void Shot(int x)
