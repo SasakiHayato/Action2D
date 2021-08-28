@@ -5,6 +5,8 @@ using UnityEngine;
 public class BommerClass : NewEnemyBase
 {
     [SerializeField] NewBehaviorTree m_tree;
+    [SerializeField] GameObject m_bom;
+    [SerializeField] Transform m_muzzle;
 
     Rigidbody2D m_rb;
     Animator m_anim;
@@ -26,14 +28,8 @@ public class BommerClass : NewEnemyBase
 
         m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
         
-        if (SetSpeed() != 0)
-        {
-            m_anim.Play("Bommer_Walk");
-        }
-        else
-        {
-            m_anim.Play("Bommer_Idle");
-        }
+        if (SetSpeed() != 0) { m_anim.Play("Bommer_Walk"); }
+        else { m_anim.Play("Bommer_Idle"); }
     }
 
     public override void Attack1()
@@ -41,8 +37,16 @@ public class BommerClass : NewEnemyBase
         Debug.Log("攻撃１");
         m_anim.Play("Bommer_Attack");
         FindPlayerToLook();
-        m_tree.Interval(0);
+        m_tree.Interval(6);
     }
+
+    // animetionIventで呼び出し
+    public void SetBom()
+    {
+        GameObject bom = Instantiate(m_bom);
+        bom.transform.position = m_muzzle.transform.position;
+    }
+
 
     public override void Attack2() { Attack1(); }
 }

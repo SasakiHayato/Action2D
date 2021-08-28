@@ -36,20 +36,12 @@ public class BomContoller : MonoBehaviour
    
     private void Explosion()
     {
-        PlayerMove player = m_player.GetComponent<PlayerMove>();
-        Vector2 hitVector = default;
-
-        Vector2 force = ExplosionAngle(hitVector) * 8;
-        //player.m_rigidbody.AddForce(force, ForceMode2D.Impulse);
-        
         DestroyBom();
     }
 
     private void DestroyBom()
     {
-        //m_bommer.SetFreeze();
-        m_anim.Play("Bom_Explosion");
-        //Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
 
     private Vector2 ProjectileMotion(Vector2 vector)
