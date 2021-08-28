@@ -23,11 +23,7 @@ public class AudioClass : MonoBehaviour
     private void Start()
     {
         m_source = GetComponent<AudioSource>();
-        float vol = 1f;
-        float maxVol = 2f;
-
-        //m_source.DOFade(vol, maxVol);
-
+        
         if (m_enum == SceneEnum.Title)
         {
             m_source.clip = m_bgm[0];

@@ -7,15 +7,11 @@ public class BomContoller : MonoBehaviour
     GameObject m_player;
     GameObject m_hitColliderOb;
 
-    Animator m_anim;
     Rigidbody2D m_rb;
-    //NewBommerController m_bommer;
 
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
-        m_anim = GetComponent<Animator>();
-        //m_bommer = FindObjectOfType<NewBommerController>();
 
         m_hitColliderOb = transform.GetChild(0).gameObject;
         m_hitColliderOb.SetActive(false);

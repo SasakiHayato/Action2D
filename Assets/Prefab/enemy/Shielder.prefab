@@ -119,8 +119,8 @@ MonoBehaviour:
   - {fileID: 4108733327338958290}
   - {fileID: 4108733328262997556}
   m_Bounds:
-    m_Center: {x: 2.8670707, y: 0.14353466, z: 0}
-    m_Extent: {x: 5.9579163, y: 6.249985, z: 0}
+    m_Center: {x: 2.8670805, y: 0.17556667, z: 0}
+    m_Extent: {x: 5.957893, y: 6.2820196, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 0
 --- !u!95 &4108733326733081615
@@ -627,6 +627,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4108733328262997556}
+  - component: {fileID: 5160611006766617995}
   m_Layer: 11
   m_Name: Shield
   m_TagString: Untagged
@@ -648,6 +649,32 @@ Transform:
   m_Father: {fileID: 4108733326733081618}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -99.644005}
+--- !u!61 &5160611006766617995
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4108733328262997559}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 5.6, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 12.74, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &4108733328506136816
 GameObject:
   m_ObjectHideFlags: 0

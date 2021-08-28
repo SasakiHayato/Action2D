@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BommerClass : NewEnemyBase
+public class BommerClass : NewEnemyBase, IDamage
 {
     [SerializeField] NewBehaviorTree m_tree;
     [SerializeField] GameObject m_bom;
@@ -49,4 +49,12 @@ public class BommerClass : NewEnemyBase
 
 
     public override void Attack2() { Attack1(); }
+
+    public void GetDamage(int damage)
+    {
+        int hp = RetuneCrreantHp() - damage;
+        m_rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
+        m_anim.Play("Bommer_Damage");
+        SetHp(hp, gameObject);
+    }
 }

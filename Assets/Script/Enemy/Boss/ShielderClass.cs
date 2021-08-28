@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShielderClass : NewEnemyBase
+public class ShielderClass : NewEnemyBase, IDamage
 {
     [SerializeField] NewBehaviorTree m_tree;
     Animator m_anim;
@@ -10,6 +10,8 @@ public class ShielderClass : NewEnemyBase
 
     GameObject m_attackCollider = default;
     bool m_attackBool = false;
+
+    Collider2D m_shieldCollider;
     
     void Start()
     {
@@ -18,6 +20,8 @@ public class ShielderClass : NewEnemyBase
 
         m_attackCollider = transform.GetChild(0).gameObject;
         m_attackCollider.SetActive(false);
+
+        m_shieldCollider = transform.Find("Shield").gameObject.GetComponent<Collider2D>();
     }
 
     void Update() { m_tree.Tree(); }
@@ -63,12 +67,22 @@ public class ShielderClass : NewEnemyBase
         if (!m_attackBool)
         {
             m_attackBool = true;
+            m_shieldCollider.enabled = false;
             m_attackCollider.SetActive(true);
         }
         else
         {
             m_attackBool = false;
+            m_shieldCollider.enabled = true;
             m_attackCollider.SetActive(false);
         }
+    }
+
+    public void GetDamage(int damage)
+    {
+        int hp = RetuneCrreantHp() - damage;
+        m_rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
+        m_anim.Play("Shielder_Damage");
+        SetHp(hp, gameObject);
     }
 }

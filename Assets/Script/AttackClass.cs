@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SetParent
+{
+    Player,
+    Enemy,
+}
+
 public class AttackClass : MonoBehaviour
 {
-    private enum SetParent
-    {
-        Player,
-        Enemy,
-    }
-
     [SerializeField] SetParent m_parentEnum;
     [SerializeField] GameObject m_parent;
 
@@ -17,16 +17,14 @@ public class AttackClass : MonoBehaviour
     {
         IDamage get = collision.GetComponent<IDamage>();
         if (get == null) return;
-       
+
         if (m_parentEnum == SetParent.Player) { get.GetDamage(PlayerDataClass.Instance.SetAttack() * 10); }
         if (m_parentEnum == SetParent.Enemy) { EnemyAttack(get); }
     }
 
     void EnemyAttack(IDamage get)
     {
-        Debug.Log(m_parent);
         NewEnemyBase enemyBase = m_parent.GetComponent<NewEnemyBase>();
-        Debug.Log(enemyBase);
         get.GetDamage(enemyBase.SetAttackPower());
     }
 }

@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class FadeClass : MonoBehaviour
 {
     private GameObject m_canvas = null;
-    private GameObject m_imageOb = null;
+    //private GameObject m_imageOb = null;
 
     private Image m_image = null;
 
-    private float m_fadeSpeed = 0.02f;
+    //private float m_fadeSpeed = 0.02f;
 
     private bool m_isOut = false;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArchryClass : NewEnemyBase
+public class ArchryClass : NewEnemyBase, IDamage
 {
     [SerializeField] NewBehaviorTree m_tree;
     [SerializeField] ArcheryBowClass m_bowClass;
@@ -39,6 +39,14 @@ public class ArchryClass : NewEnemyBase
     }
 
     public override void Attack2() { Attack1(); }
+
+    public void GetDamage(int damage)
+    {
+        int hp = RetuneCrreantHp() - damage;
+        m_rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
+        m_anim.Play("Archery_Damage");
+        SetHp(hp, gameObject);
+    }
 
     // animetionIventで呼び出し
     public void SetBow()
