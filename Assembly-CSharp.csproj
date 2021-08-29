@@ -95,6 +95,7 @@
     <Compile Include="Assets\Script\Item\StatusSelect.cs" />
     <Compile Include="Assets\Script\Player\BulletContoller.cs" />
     <Compile Include="Assets\Script\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\Script\Player\PlayerClass.cs" />
     <Compile Include="Assets\Script\Player\PlayerContoller.cs" />
     <Compile Include="Assets\Script\Player\PlayerDataClass.cs" />
     <Compile Include="Assets\Script\Player\PlayerGravity.cs" />

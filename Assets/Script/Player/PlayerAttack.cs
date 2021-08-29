@@ -37,7 +37,6 @@ public class PlayerAttack : MonoBehaviour
         switch (PlayerDataClass.Instance.m_subAttack)
         {
             case 1:
-                //Freeze();
                 if (!m_shieldBool)
                 {
                     m_shieldBool = true;
