@@ -88,19 +88,6 @@ public class PlayerGravity : MonoBehaviour
         m_fallTime += Time.deltaTime;
         m_velocity.y = (Physics2D.gravity.y * m_fallTime) * m_fallSpeed;
         m_rb.velocity = new Vector2(m_rb.velocity.x, m_velocity.y);
-
-        //IsGround();
-    }
-
-    private void IsGround()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, m_ray, m_ray.magnitude, m_layer);
-
-        if (hit.collider)
-        {
-            m_fallTime = 0;
-            m_jumpCount = m_maxJumpCount;
-        }
     }
 
     public bool JumpCurreant() { return m_jumpCurreant; } 

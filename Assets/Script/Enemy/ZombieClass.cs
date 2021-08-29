@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZombieClass : NewEnemyBase, IDamage
 {
-    [SerializeField] NewBehaviorTree m_tree;
+    [SerializeField] BehaviorTree m_tree;
     Animator m_anim;
     Rigidbody2D m_rb;
 

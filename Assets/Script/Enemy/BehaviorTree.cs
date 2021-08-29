@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviorTree : MonoBehaviour
+public class BehaviorTree : MonoBehaviour
 {
     [SerializeField] float m_attack1PosX;
     [SerializeField] float m_attack2PosX;

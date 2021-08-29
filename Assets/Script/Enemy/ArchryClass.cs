@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArchryClass : NewEnemyBase, IDamage
 {
-    [SerializeField] NewBehaviorTree m_tree;
+    [SerializeField] BehaviorTree m_tree;
     [SerializeField] ArcheryBowClass m_bowClass;
     [SerializeField] Transform m_muzzle;
 

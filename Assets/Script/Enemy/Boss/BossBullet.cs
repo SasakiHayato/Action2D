@@ -25,7 +25,7 @@ public class BossBullet : MonoBehaviour
         }
         else if (m_shot == Shot.Slash)
         {
-            GameObject player = GameObject.Find("Player");
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
             Vector2 dir = SetSlashDir(player);
             m_rb.AddForce(dir, ForceMode2D.Impulse);
         }
@@ -46,13 +46,4 @@ public class BossBullet : MonoBehaviour
         Vector2 dir = player.transform.position - transform.position;
         return dir;
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        PlayerManager player = collision.gameObject.GetComponent<PlayerManager>();
-    //        player.PlayerDamage(10);
-    //    }
-    //}
 }

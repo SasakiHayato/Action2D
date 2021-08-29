@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BommerClass : NewEnemyBase, IDamage
 {
-    [SerializeField] NewBehaviorTree m_tree;
+    [SerializeField] BehaviorTree m_tree;
     [SerializeField] GameObject m_bom;
     [SerializeField] Transform m_muzzle;
 
