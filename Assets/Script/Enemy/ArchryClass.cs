@@ -35,7 +35,7 @@ public class ArchryClass : NewEnemyBase, IDamage
     {
         m_anim.Play("Archery_Attack");
         FindPlayerToLook();
-        m_tree.Interval(0);
+        m_tree.Interval(4);
     }
 
     public override void Attack2() { Attack1(); }

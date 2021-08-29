@@ -12,16 +12,16 @@ public class HitExplosion : MonoBehaviour
 
     public void Hit()
     {
-        if (m_playerOb.transform.position.x < this.transform.position.x)
-        {
-            Debug.Log("左");
-            m_player.m_rigidbody.AddForce(new Vector2(-m_vector.x, m_vector.y), ForceMode2D.Impulse);
-        }
-        else
-        {
-            Debug.Log("右");
-            m_player.m_rigidbody.AddForce(m_vector, ForceMode2D.Impulse);
-        }
+        //if (m_playerOb.transform.position.x < this.transform.position.x)
+        //{
+        //    Debug.Log("左");
+        //    m_player.m_rigidbody.AddForce(new Vector2(-m_vector.x, m_vector.y), ForceMode2D.Impulse);
+        //}
+        //else
+        //{
+        //    Debug.Log("右");
+        //    m_player.m_rigidbody.AddForce(m_vector, ForceMode2D.Impulse);
+        //}
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

@@ -620,8 +620,8 @@ MonoBehaviour:
   m_attack2PosX: 10
   m_attack1PosMinY: -1
   m_attack1PosMaxY: 1
-  m_attack2PosMinY: 0
-  m_attack2PosMaxY: 0
+  m_attack2PosMinY: -1
+  m_attack2PosMaxY: 1
   m_enemy: {fileID: 1662087769399787071}
 --- !u!1 &1662087769498666190
 GameObject:

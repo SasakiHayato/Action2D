@@ -8,23 +8,6 @@ public class PlayerManager : MonoBehaviour
     public Animator m_animator { get; set; }
     public bool m_shield { get; set; }
 
-    //public void PlayerDamage(int damage)
-    //{
-    //    if (!m_shield)
-    //    {
-    //        PlayerDataClass.Instance.m_hp -= damage;
-    //        m_animator.Play("Player_Damage");
-    //    }
-        
-
-    //    if (PlayerDataClass.Instance.m_hp <= 0)
-    //    {
-    //        PlayerDataClass.Instance.m_hp = 0;
-    //        Destroy(this.gameObject);
-    //    }
-    //    m_shield = false;
-    //}
-
     public void ItemCheck(int item)
     {
         if (m_itemSeve == 0)
@@ -39,18 +22,18 @@ public class PlayerManager : MonoBehaviour
     }
 
     //攻撃中に入力をうけつけない
-    public bool Freeze()
-    {
-        if (PlayerDataClass.Instance.m_freeze)
-        {
-            PlayerDataClass.Instance.m_freeze = false;
-        }
-        else
-        {
-            PlayerDataClass.Instance.m_freeze = true;
-        }
+    //public bool Freeze()
+    //{
+    //    if (PlayerDataClass.Instance.m_freeze)
+    //    {
+    //        PlayerDataClass.Instance.m_freeze = false;
+    //    }
+    //    else
+    //    {
+    //        PlayerDataClass.Instance.m_freeze = true;
+    //    }
 
-        return PlayerDataClass.Instance.m_freeze;
-    }
+    //    return PlayerDataClass.Instance.m_freeze;
+    //}
 
 }

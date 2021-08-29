@@ -83,23 +83,23 @@ public class PlayerContoller : PlayerManager, IDamage
     }
     private void SubAttack()
     {
-        switch (PlayerDataClass.Instance.m_subAttack)
-        {
-            case 1:
-                Freeze();
-                m_animator.Play("Player_Shield");
-                break;
+        //switch (PlayerDataClass.Instance.m_subAttack)
+        //{
+        //    case 1:
+        //        //Freeze();
+        //        m_animator.Play("Player_Shield");
+        //        break;
 
-            case 2:
-                if (m_move.m_crouch)
-                {
-                    m_animator.Play("Player_Magic_crouch");
-                    break;
-                }
+        //    case 2:
+        //        if (m_move.m_crouch)
+        //        {
+        //            m_animator.Play("Player_Magic_crouch");
+        //            break;
+        //        }
 
-                m_animator.Play("Player_Magic");
-                break;
-        }
+        //        m_animator.Play("Player_Magic");
+        //        break;
+        //}
     }
 
     public void GetDamage(int damage)

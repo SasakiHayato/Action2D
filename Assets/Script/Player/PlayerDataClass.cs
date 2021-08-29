@@ -15,13 +15,16 @@ public class PlayerDataClass : MonoBehaviour
     int m_hp = 100;
     [System.NonSerialized] public int m_maxHp = 100;
 
+    bool m_freeze = false;
+    
     public int SetAttack() { return m_attackPower; }
     public int AttackPowerUp(int power) { return m_attackPower += power; }
 
     public int SetHp() { return m_hp; }
     public int GetHp(int hp) { return m_hp = hp; }
 
-    public bool m_freeze { get; set; }
+    public bool SetFreeze(bool set) { return m_freeze = set; }
+    public bool GetFreeze() { return m_freeze; }
 
     private static bool m_cureated = false;
 
