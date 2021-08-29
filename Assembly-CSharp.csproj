@@ -64,9 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ActiveClass.cs" />
-    <Compile Include="Assets\ActiveInCamera.cs" />
-    <Compile Include="Assets\EnemyActive.cs" />
+    <Compile Include="Assets\Prefab\enemy\ActiveClass.cs" />
     <Compile Include="Assets\Script\AttackClass.cs" />
     <Compile Include="Assets\Script\Enemy\ArcheryBowClass.cs" />
     <Compile Include="Assets\Script\Enemy\ArchryClass.cs" />
@@ -75,7 +73,10 @@
     <Compile Include="Assets\Script\Enemy\Boss\BossBullet.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossRoomManager.cs" />
+    <Compile Include="Assets\Script\Enemy\Boss\SetSlash.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\ShielderClass.cs" />
+    <Compile Include="Assets\Script\Enemy\Boss\SlashClass.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyActive.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />
     <Compile Include="Assets\Script\Enemy\NewBehaviorTree.cs" />
     <Compile Include="Assets\Script\Enemy\NewEnemyBase.cs" />
@@ -94,17 +95,12 @@
     <Compile Include="Assets\Script\Item\ItemStatus.cs" />
     <Compile Include="Assets\Script\Item\StatusSelect.cs" />
     <Compile Include="Assets\Script\Player\BulletContoller.cs" />
+    <Compile Include="Assets\Script\Player\FloorCheck.cs" />
     <Compile Include="Assets\Script\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Script\Player\PlayerClass.cs" />
-    <Compile Include="Assets\Script\Player\PlayerContoller.cs" />
     <Compile Include="Assets\Script\Player\PlayerDataClass.cs" />
     <Compile Include="Assets\Script\Player\PlayerGravity.cs" />
-    <Compile Include="Assets\Script\Player\PlayerGrvity.cs" />
-    <Compile Include="Assets\Script\Player\PlayerManager.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
-    <Compile Include="Assets\SetSlash.cs" />
-    <Compile Include="Assets\ShieldClass.cs" />
-    <Compile Include="Assets\SlashClass.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

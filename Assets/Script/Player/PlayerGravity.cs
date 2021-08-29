@@ -89,7 +89,7 @@ public class PlayerGravity : MonoBehaviour
         m_velocity.y = (Physics2D.gravity.y * m_fallTime) * m_fallSpeed;
         m_rb.velocity = new Vector2(m_rb.velocity.x, m_velocity.y);
 
-        IsGround();
+        //IsGround();
     }
 
     private void IsGround()
@@ -108,4 +108,7 @@ public class PlayerGravity : MonoBehaviour
     public float SetPosY(float set) { return m_jumpStartPosY = set; }
     public int SetJumpCount() { return m_jumpCount -= 1; }
     public int JumpCurreantCount() { return m_jumpCount; }
+
+    public void ResetCount() => m_jumpCount = m_maxJumpCount;
+    public void ResetFall() => m_fallTime = 0;
 }

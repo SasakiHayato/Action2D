@@ -15,6 +15,7 @@ public class AttackClass : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision);
         IDamage get = collision.GetComponent<IDamage>();
         if (get == null) return;
 

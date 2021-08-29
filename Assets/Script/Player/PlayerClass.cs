@@ -8,6 +8,7 @@ public class PlayerClass : MonoBehaviour
     [SerializeField] PlayerAttack m_attack;
     [SerializeField] PlayerGravity m_gravity;
     [SerializeField] GameObject m_bullet;
+    [SerializeField] FloorCheck m_floor;
 
     Rigidbody2D m_rb;
     Animator m_anim;
@@ -40,12 +41,16 @@ public class PlayerClass : MonoBehaviour
 
         if (!m_freeze) { m_move.Move(h, v, m_rb, m_anim); }
 
-        if (Input.GetButtonDown("Jump") && !m_gravity.JumpCurreant() && m_gravity.JumpCurreantCount() > 0)
+        if (Input.GetButtonDown("Jump") && !m_move.CrreantCrouch())
         {
-            m_gravity.SetJump(true);
-            m_gravity.SetPosY(transform.position.y);
-            m_gravity.SetJumpCount();
+            if(!m_gravity.JumpCurreant() && m_gravity.JumpCurreantCount() > 0)
+            {
+                m_gravity.SetJump(true);
+                m_gravity.SetPosY(transform.position.y);
+                m_gravity.SetJumpCount();
+            }
         }
+        else if (Input.GetButtonDown("Jump") && m_move.CrreantCrouch()) { m_floor.SetTriger(); }
 
         if (Input.GetButtonDown("Fire1")) { m_attack.Attack(m_anim); }
         if (Input.GetButtonDown("Fire2")) { m_attack.SubAttack(m_anim, m_move, ref m_freeze); }
