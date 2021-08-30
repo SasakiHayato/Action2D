@@ -20,7 +20,7 @@ public class BossBullet : MonoBehaviour
         
         if (m_shot == Shot.Bullet)
         {
-            float randomY = Random.Range(1, 5);
+            float randomY = Random.Range(1, 10);
             m_rb.AddForce(new Vector2(0, -randomY), ForceMode2D.Impulse);
         }
         else if (m_shot == Shot.Slash)
@@ -29,7 +29,6 @@ public class BossBullet : MonoBehaviour
             Vector2 dir = SetSlashDir(player);
             m_rb.AddForce(dir, ForceMode2D.Impulse);
         }
-        
     }
 
     void Update()

@@ -91,7 +91,6 @@ public class BossBehevior : MonoBehaviour
     }
 
     public ActionEnum CrreantEnum() => m_actionEnum;
-
     public void SetActionFalse(float time) => StartCoroutine(WaitTime(time));
     IEnumerator WaitTime(float time)
     {

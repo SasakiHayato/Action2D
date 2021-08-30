@@ -9,13 +9,10 @@ public class BossClass : NewEnemyBase, IDamage
     [SerializeField] Transform m_minPos;
     [SerializeField] Transform m_maxPos;
 
-    [SerializeField] GameObject m_slashing;
-    [SerializeField] GameObject m_bullet;
-    [SerializeField] Transform[] m_spownPos = new Transform[0];
+    [SerializeField] NewBossBulletClass m_bulletClass;
     [SerializeField] Transform m_bossAttackPos;
 
     float m_time;
-    int m_count = 15;
     int m_hpPasent;
 
     Animator m_anim;
@@ -50,34 +47,22 @@ public class BossClass : NewEnemyBase, IDamage
     }
     public override void Attack1()
     {
-        Debug.Log("攻撃１");
         m_anim.Play("Boss_Attack_2");
-        StartCoroutine(SetBullet());
+        m_bulletClass.SetEnum(BulletKind.Diamond);
+        m_bulletClass.SetPosToDiamond();
+        m_tree.Interval(8);
     }
     public override void Attack2()
     {
-        Debug.Log("攻撃２");
-        
+       
         m_anim.Play("Boss_Attack_1");
-        GameObject slash = Instantiate(m_slashing);
-        slash.transform.position = transform.position;
+        
+        m_bulletClass.SetEnum(BulletKind.Slash);
+        m_bulletClass.SetDirToFindPlayer(gameObject.transform);
+
         m_tree.Interval(5);
     }
-    private IEnumerator SetBullet()
-    {
-        while (m_count != 0)
-        {
-            yield return new WaitForSeconds(0.5f);
-            float randomX = Random.Range(m_spownPos[0].position.x, m_spownPos[1].position.x);
-
-            GameObject bullet = Instantiate(m_bullet);
-            bullet.transform.position = new Vector2(randomX, 12);
-            m_count--;
-        }
-        m_count = 15;
-        m_tree.Interval(0);
-    }
-
+    
     public void SpecialAttack1()
     {
         Debug.Log("a");
@@ -119,6 +104,5 @@ public class BossClass : NewEnemyBase, IDamage
     }
 
     public float SetHp() { return m_hpPasent; }
-
     public void SetPos() => transform.position = m_bossAttackPos.position;
 }

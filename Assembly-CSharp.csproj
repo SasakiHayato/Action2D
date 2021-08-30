@@ -76,6 +76,7 @@
     <Compile Include="Assets\Script\Enemy\Boss\BossClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossRoomManager.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\NewBehaviourTree.cs" />
+    <Compile Include="Assets\Script\Enemy\Boss\NewBossBulletClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\SetSlash.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\ShielderClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\SlashClass.cs" />
