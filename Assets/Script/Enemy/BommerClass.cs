@@ -33,7 +33,7 @@ public class BommerClass : NewEnemyBase, IDamage
     }
     public override void Attack()
     {
-        if (GetStatus() == SetAttackStatus.NormalAttack1)
+        if (SetAttack == SetAttackStatus.NormalAttack1)
         {
             m_anim.Play("Bommer_Attack");
             FindPlayerToLook();

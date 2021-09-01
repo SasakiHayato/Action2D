@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossClass : NewEnemyBase, IDamage
 {
     BehaviorTree m_tree;
-    BossBehevior m_bossTree;
+    //BossBehevior m_bossTree;
     NewBossBulletClass m_bulletClass;
 
     [SerializeField] Transform m_minPos;
@@ -21,7 +21,7 @@ public class BossClass : NewEnemyBase, IDamage
     {
         m_bulletClass = GetComponent<NewBossBulletClass>();
         m_tree = GetComponent<BehaviorTree>();
-        m_bossTree = GetComponent<BossBehevior>();
+        //m_bossTree = GetComponent<BossBehevior>();
         m_anim = GetComponent<Animator>();
 
         m_hpPasent = RetuneCrreantHp() / 100;
@@ -29,8 +29,9 @@ public class BossClass : NewEnemyBase, IDamage
 
     void Update()
     {
-        if (m_bossTree.CrreantEnum() == ActionEnum.False) { m_tree.Tree(); }
-        m_bossTree.Tree();
+        m_tree.Tree();
+        //if (m_bossTree.CrreantEnum() == ActionEnum.False) { m_tree.Tree(); }
+        //m_bossTree.Tree();
     }
 
     public void GetDamage(int damage)
@@ -53,14 +54,14 @@ public class BossClass : NewEnemyBase, IDamage
     
     public override void Attack()
     {
-        if (GetStatus() == SetAttackStatus.NormalAttack1)
+        if (SetAttack == SetAttackStatus.NormalAttack1)
         {
             m_anim.Play("Boss_Attack_2");
             m_bulletClass.SetEnum(BulletKind.Diamond);
             m_bulletClass.SetPosToDiamond();
             m_tree.Interval(8);
         }
-        else if (GetStatus() == SetAttackStatus.NormalAttack2)
+        else if (SetAttack == SetAttackStatus.NormalAttack2)
         {
             m_anim.Play("Boss_Attack_1");
 
@@ -71,12 +72,16 @@ public class BossClass : NewEnemyBase, IDamage
 
             m_tree.Interval(5);
         }
+        else if (SetAttack == SetAttackStatus.SpAttack1)
+        {
+            StartCoroutine(Set(0));
+        }
     }
     int m_count = 0;
-    public void SpecialAttack1()
-    {
-        StartCoroutine(Set(0));
-    }
+    //public void SpecialAttack1()
+    //{
+    //    StartCoroutine(Set(0));
+    //}
     IEnumerator Set(int set)
     {
         m_anim.Play("Boss_Attack_1");
@@ -93,17 +98,17 @@ public class BossClass : NewEnemyBase, IDamage
         }
         else
         {
-            m_bossTree.SetActionFalse(0);
+            m_tree.Interval(0);
         }
     }
-    public void SpecialAttack2()
-    {
-        Debug.Log("b");
-    }
-    public void SpecialAttack3()
-    {
-        Debug.Log("c");
-    }
+    //public void SpecialAttack2()
+    //{
+    //    Debug.Log("b");
+    //}
+    //public void SpecialAttack3()
+    //{
+    //    Debug.Log("c");
+    //}
 
     bool Interval(float time)
     {

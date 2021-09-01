@@ -71,16 +71,15 @@
     <Compile Include="Assets\Script\Enemy\BehaviorTree.cs" />
     <Compile Include="Assets\Script\Enemy\BomContoller.cs" />
     <Compile Include="Assets\Script\Enemy\BommerClass.cs" />
-    <Compile Include="Assets\Script\Enemy\Boss\BossBehevior.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossRoomManager.cs" />
-    <Compile Include="Assets\Script\Enemy\Boss\NewBehaviourTree.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\NewBossBulletClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\SetSlash.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\ShielderClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\SlashClass.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyActive.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />
+    <Compile Include="Assets\Script\Enemy\NewBehaviourTree.cs" />
     <Compile Include="Assets\Script\Enemy\NewEnemyBase.cs" />
     <Compile Include="Assets\Script\Enemy\ZombieClass.cs" />
     <Compile Include="Assets\Script\Game\AudioClass.cs" />

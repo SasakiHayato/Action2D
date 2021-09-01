@@ -9,10 +9,13 @@ public abstract class NewEnemyBase : MonoBehaviour
     [SerializeField] int m_hp;
     [SerializeField] float m_speed;
     [SerializeField] int m_attackPower;
-    [SerializeField] GameObject m_diedSprite = default;
+    [SerializeField] GameObject m_deadSprite = default;
 
-    public SetAttackStatus SetAttack { get => GetStatus(); set { m_set = value; } }
+    public SetAttackStatus SetAttack { get => m_set; set { m_set = value; } }
     SetAttackStatus m_set;
+    
+    public int MaxHp { get => m_maxHp; set { m_maxHp = m_hp; } }
+    int m_maxHp;
 
     float m_defaultSpeed;
     bool m_setSpeed = false;
@@ -26,7 +29,7 @@ public abstract class NewEnemyBase : MonoBehaviour
     }
     void Died(GameObject parent)
     {
-        GameObject set = Instantiate(m_diedSprite);
+        GameObject set = Instantiate(m_deadSprite);
         set.transform.position = transform.position;
         Destroy(parent);
     }
@@ -104,5 +107,4 @@ public abstract class NewEnemyBase : MonoBehaviour
 
     public abstract void Move();
     public abstract void Attack();
-    public SetAttackStatus GetStatus() => m_set;
 }

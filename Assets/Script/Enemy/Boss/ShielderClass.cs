@@ -38,12 +38,12 @@ public class ShielderClass : NewEnemyBase, IDamage
     public override void Attack()
     {
         FindPlayerToLook();
-        if (GetStatus() == SetAttackStatus.NormalAttack1)
+        if (SetAttack == SetAttackStatus.NormalAttack1)
         {
             m_anim.Play("Shielder_Attack");
             m_tree.Interval(2.5f);
         }
-        else if (GetStatus() == SetAttackStatus.NormalAttack2)
+        else if (SetAttack == SetAttackStatus.NormalAttack2)
         {
             m_rb.AddForce(new Vector2(RetuneStepFloat() * -1, 0) * 15, ForceMode2D.Impulse);
             m_tree.Interval(4);

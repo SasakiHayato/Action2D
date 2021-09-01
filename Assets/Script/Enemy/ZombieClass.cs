@@ -35,8 +35,8 @@ public class ZombieClass : NewEnemyBase, IDamage
     {
         m_anim.Play("Enemy_Attack");
         FindPlayerToLook();
-        if (GetStatus() == SetAttackStatus.NormalAttack1) return;
-        else if (GetStatus() == SetAttackStatus.NormalAttack2)
+        if (SetAttack == SetAttackStatus.NormalAttack1) return;
+        else if (SetAttack == SetAttackStatus.NormalAttack2)
         {
             m_rb.AddForce(new Vector2(RetuneStepFloat() * -6, 3), ForceMode2D.Impulse);
             m_tree.Interval(5);

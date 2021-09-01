@@ -32,19 +32,28 @@ public class BehaviorTree : MonoBehaviour
         False,
     }
 
-    private enum MovementEnum
-    {
-        Attack1,
-        Attack2,
-    }
-
     private enum ActionEnum
     {
         True,
         False,
     }
 
-    MovementEnum m_movement;
+    private enum Distance
+    {
+        Near,
+        Far,
+    }
+
+    private enum RemainingHp
+    {
+        Remaining75,
+        Remaining50,
+        Remaining30,
+
+        False,
+    }
+
+    Distance m_distance;
     ActionEnum m_action = ActionEnum.False;
 
     public void Tree()
@@ -73,12 +82,12 @@ public class BehaviorTree : MonoBehaviour
         if (m_attack1PosX >= posXAbs && m_attack1PosMinY <= posYAbs && m_attack1PosMaxY > posYAbs)
         {
             conditional = ConditionalEnum.True;
-            m_movement = MovementEnum.Attack1;
+            m_distance = Distance.Near;
         }
         else if (m_attack1PosX < posXAbs && m_attack2PosX > posXAbs && m_attack2PosMinY <= posYAbs && m_attack2PosMaxY > posYAbs)
         {
             conditional = ConditionalEnum.True;
-            m_movement = MovementEnum.Attack2;
+            m_distance = Distance.Far;
         }
         else { conditional = ConditionalEnum.False; }
 
@@ -87,18 +96,43 @@ public class BehaviorTree : MonoBehaviour
 
     void Action(ConditionalEnum conditional)
     {
-        if (conditional == ConditionalEnum.True) { Attack(); }
+        RemainingHp remaining = RemainingHp.False;
+        if (conditional == ConditionalEnum.True) 
+        {
+            Attack(Remaining(remaining));
+        }
         else 
         {
-            SetFalseToAction();
             m_enemy.Move();
+            SetFalseToAction();
         }
     }
 
-    void Attack()
+    RemainingHp Remaining(RemainingHp set)
     {
-        if (m_movement == MovementEnum.Attack1) { m_enemy.SetAttack = SetAttackStatus.NormalAttack1; }
-        if (m_movement == MovementEnum.Attack2) { m_enemy.SetAttack = SetAttackStatus.NormalAttack2; }
+        Debug.Log($"MaxHp :{m_enemy.MaxHp} NowHp :{m_enemy.RetuneCrreantHp()}");
+        if ((m_enemy.MaxHp / 100) * 75 >= m_enemy.RetuneCrreantHp()) set = RemainingHp.Remaining75;
+        if ((m_enemy.MaxHp / 100) * 50 >= m_enemy.RetuneCrreantHp()) set = RemainingHp.Remaining50;
+        if ((m_enemy.MaxHp / 100) * 30 >= m_enemy.RetuneCrreantHp()) set = RemainingHp.Remaining30;
+        else set = RemainingHp.False;
+
+        return set;
+    }
+
+    void Attack(RemainingHp set)
+    {
+        if (set == RemainingHp.False)
+        {
+            if (m_distance == Distance.Near) { m_enemy.SetAttack = SetAttackStatus.NormalAttack1; }
+            if (m_distance == Distance.Far) { m_enemy.SetAttack = SetAttackStatus.NormalAttack2; }
+        }
+        else
+        {
+            if (set == RemainingHp.Remaining75) { m_enemy.SetAttack = SetAttackStatus.SpAttack1; }
+            if (set == RemainingHp.Remaining50) { m_enemy.SetAttack = SetAttackStatus.SpAttack2; }
+            if (set == RemainingHp.Remaining30) { m_enemy.SetAttack = SetAttackStatus.SpAttack3; }
+        }
+        
         m_enemy.Attack();
     }
 
@@ -108,6 +142,5 @@ public class BehaviorTree : MonoBehaviour
         yield return new WaitForSeconds(time);
         SetFalseToAction();
     }
-
     void SetFalseToAction() { m_action = ActionEnum.False; }
 }
