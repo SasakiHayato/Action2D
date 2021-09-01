@@ -20,26 +20,27 @@ public class NewBossBulletClass : MonoBehaviour
 
     float m_count = 15;
 
-    public void SetDirToFindPlayer(Transform parent)
-    {
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-        Shot(player.position.x, player.position.y, parent);
-    }
-    public void SetPosToDiamond() => Shot(0, 0, null);
+    public void SetDir(Transform parent, float x, float y, float power) => Shot(x, y, parent, power);
 
-    void Shot(float x, float y, Transform parent)
+    public void SetPosToDiamond() => Shot(0, 0, null, 1);
+
+    void Shot(float x, float y, Transform parent, float power)
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (m_kind == BulletKind.Slash)
         {
             GameObject set = Instantiate(m_slash);
+            Rigidbody2D rb = set.GetComponent<Rigidbody2D>();
             set.transform.position = parent.position;
-            rb.AddForce(new Vector2(x, y), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(x, y) * power, ForceMode2D.Impulse);
+            StartCoroutine(DesBullet(set));
         }
-        else
-        {
-            StartCoroutine(SetDiamond());
-        }
+        else { StartCoroutine(SetDiamond()); }
+    }
+
+    IEnumerator DesBullet(GameObject set)
+    {
+        yield return new WaitForSeconds(6f);
+        Destroy(set);
     }
 
     IEnumerator SetDiamond()
@@ -50,6 +51,7 @@ public class NewBossBulletClass : MonoBehaviour
             float x = Random.Range(m_minPos.position.x, m_maxPos.position.x);
             GameObject set = Instantiate(m_diamond);
             set.transform.position = new Vector2(x, 12);
+            StartCoroutine(DesBullet(set));
             m_count--;
         }
         m_count = 15;

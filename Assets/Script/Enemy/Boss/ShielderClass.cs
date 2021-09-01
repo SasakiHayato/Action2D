@@ -35,19 +35,19 @@ public class ShielderClass : NewEnemyBase, IDamage
         FieldCheck();
     }
 
-    public override void Attack1()
-    {
-        m_anim.Play("Shielder_Attack");
-        FindPlayerToLook();
-        m_tree.Interval(2.5f);
-    }
-
-    public override void Attack2()
+    public override void Attack()
     {
         FindPlayerToLook();
-        m_rb.AddForce(new Vector2(RetuneStepFloat() * -1, 0) * 15, ForceMode2D.Impulse);
-
-        m_tree.Interval(4);
+        if (GetStatus() == SetAttackStatus.NormalAttack1)
+        {
+            m_anim.Play("Shielder_Attack");
+            m_tree.Interval(2.5f);
+        }
+        else if (GetStatus() == SetAttackStatus.NormalAttack2)
+        {
+            m_rb.AddForce(new Vector2(RetuneStepFloat() * -1, 0) * 15, ForceMode2D.Impulse);
+            m_tree.Interval(4);
+        }
     }
 
     float RetuneStepFloat()

@@ -21,6 +21,7 @@ public class AttackClass : MonoBehaviour
         if (m_parentEnum == SetParent.Player) { get.GetDamage(PlayerDataClass.Instance.SetAttack() * 10); }
         if (m_parentEnum == SetParent.Enemy) { EnemyAttack(get); }
     }
+
     void EnemyAttack(IDamage get)
     {
         NewEnemyBase enemyBase = m_parent.GetComponent<NewEnemyBase>();

@@ -31,18 +31,16 @@ public class ZombieClass : NewEnemyBase, IDamage
         m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
     }
 
-    public override void Attack1()
+    public override void Attack()
     {
-        FindPlayerToLook();
         m_anim.Play("Enemy_Attack");
-    }
-
-    public override void Attack2()
-    {
         FindPlayerToLook();
-        m_rb.AddForce(new Vector2(RetuneStepFloat() * -6, 3), ForceMode2D.Impulse);
-        m_anim.Play("Enemy_Attack");
-        m_tree.Interval(5);
+        if (GetStatus() == SetAttackStatus.NormalAttack1) return;
+        else if (GetStatus() == SetAttackStatus.NormalAttack2)
+        {
+            m_rb.AddForce(new Vector2(RetuneStepFloat() * -6, 3), ForceMode2D.Impulse);
+            m_tree.Interval(5);
+        }
     }
 
     float RetuneStepFloat()

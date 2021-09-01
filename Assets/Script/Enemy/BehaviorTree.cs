@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SetAttackStatus
+{ 
+    NormalAttack1,
+    NormalAttack2,
+
+    SpAttack1,
+    SpAttack2,
+    SpAttack3,
+}
+
+
 public class BehaviorTree : MonoBehaviour
 {
     [SerializeField] float m_attack1PosX;
@@ -86,8 +97,9 @@ public class BehaviorTree : MonoBehaviour
 
     void Attack()
     {
-        if (m_movement == MovementEnum.Attack1) { m_enemy.Attack1(); }
-        else { m_enemy.Attack2(); }
+        if (m_movement == MovementEnum.Attack1) { m_enemy.SetAttack = SetAttackStatus.NormalAttack1; }
+        if (m_movement == MovementEnum.Attack2) { m_enemy.SetAttack = SetAttackStatus.NormalAttack2; }
+        m_enemy.Attack();
     }
 
     public void Interval(float time) { StartCoroutine(WaitTime(time)); }

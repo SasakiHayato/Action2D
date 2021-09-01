@@ -31,13 +31,14 @@ public class BommerClass : NewEnemyBase, IDamage
         if (SetSpeed() != 0) { m_anim.Play("Bommer_Walk"); }
         else { m_anim.Play("Bommer_Idle"); }
     }
-
-    public override void Attack1()
+    public override void Attack()
     {
-        Debug.Log("攻撃１");
-        m_anim.Play("Bommer_Attack");
-        FindPlayerToLook();
-        m_tree.Interval(6);
+        if (GetStatus() == SetAttackStatus.NormalAttack1)
+        {
+            m_anim.Play("Bommer_Attack");
+            FindPlayerToLook();
+            m_tree.Interval(6);
+        }
     }
 
     // animetionIventで呼び出し
@@ -46,9 +47,6 @@ public class BommerClass : NewEnemyBase, IDamage
         GameObject bom = Instantiate(m_bom);
         bom.transform.position = m_muzzle.transform.position;
     }
-
-
-    public override void Attack2() { Attack1(); }
 
     public void GetDamage(int damage)
     {

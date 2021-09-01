@@ -31,14 +31,15 @@ public class ArchryClass : NewEnemyBase, IDamage
         m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
     }
 
-    public override void Attack1()
+    public override void Attack()
     {
-        m_anim.Play("Archery_Attack");
-        FindPlayerToLook();
-        m_tree.Interval(4);
+        if (GetStatus() == SetAttackStatus.NormalAttack1)
+        {
+            m_anim.Play("Archery_Attack");
+            FindPlayerToLook();
+            m_tree.Interval(4);
+        }
     }
-
-    public override void Attack2() { Attack1(); }
 
     public void GetDamage(int damage)
     {

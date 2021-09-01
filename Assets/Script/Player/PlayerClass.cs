@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerClass : MonoBehaviour
+public class PlayerClass : MonoBehaviour, IDamage
 {
     [SerializeField] PlayerMove m_move;
     [SerializeField] PlayerAttack m_attack;
@@ -54,6 +54,11 @@ public class PlayerClass : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1")) { m_attack.Attack(m_anim); }
         if (Input.GetButtonDown("Fire2")) { m_attack.SubAttack(m_anim, m_move, ref m_freeze); }
+    }
+
+    public void GetDamage(int damage)
+    {
+        m_anim.Play("Player_Damage");
     }
 
     // AnimetionIventで呼び出し

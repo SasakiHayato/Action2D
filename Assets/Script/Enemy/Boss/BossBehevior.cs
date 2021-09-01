@@ -43,6 +43,7 @@ public class BossBehevior : MonoBehaviour
     ConditionalEnum Conditional()
     {
         ConditionalEnum conditional = ConditionalEnum.False;
+        
         if (m_boss.SetHp() * 75 >= m_boss.RetuneCrreantHp() && !m_action1)
         {
             conditional = ConditionalEnum.True;

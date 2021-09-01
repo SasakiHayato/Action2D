@@ -11,6 +11,9 @@ public abstract class NewEnemyBase : MonoBehaviour
     [SerializeField] int m_attackPower;
     [SerializeField] GameObject m_diedSprite = default;
 
+    public SetAttackStatus SetAttack { get => GetStatus(); set { m_set = value; } }
+    SetAttackStatus m_set;
+
     float m_defaultSpeed;
     bool m_setSpeed = false;
     
@@ -100,6 +103,6 @@ public abstract class NewEnemyBase : MonoBehaviour
     }
 
     public abstract void Move();
-    public abstract void Attack1();
-    public abstract void Attack2();
+    public abstract void Attack();
+    public SetAttackStatus GetStatus() => m_set;
 }
