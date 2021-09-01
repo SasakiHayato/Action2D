@@ -175,11 +175,12 @@ MonoBehaviour:
   m_teleport: {fileID: 2898806459412491750, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
   m_enemy:
-  - {fileID: 1662087769399787069, guid: c72b9ac44fdde8f4b81d0da515c5dabb, type: 3}
-  - {fileID: 4251159916557008054, guid: 9677842e1f6d6494aa69d9cfcb2c8851, type: 3}
-  - {fileID: 8339554750523575704, guid: 24d1c6f7f8297974389fbde95a4c9312, type: 3}
-  - {fileID: 4108733326733081610, guid: 6de8591418c80504bbffb0454d0f08c4, type: 3}
-  m_teleClass: {fileID: 897055841}
+  - {fileID: 1321655782015174293, guid: c72b9ac44fdde8f4b81d0da515c5dabb, type: 3}
+  - {fileID: 5199733711518500034, guid: 9677842e1f6d6494aa69d9cfcb2c8851, type: 3}
+  - {fileID: 3508226740641177857, guid: 6de8591418c80504bbffb0454d0f08c4, type: 3}
+  - {fileID: 806285874816837312, guid: 24d1c6f7f8297974389fbde95a4c9312, type: 3}
+  m_teleClass: {fileID: -1347530605163886530, guid: a356e6caf209e584cb0a75872fbe9cd0,
+    type: 3}
   m_active: {fileID: 5983765948031259428, guid: a448589865d12ce47a84d590fd739288,
     type: 3}
 --- !u!4 &87207911

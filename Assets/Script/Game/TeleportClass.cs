@@ -77,7 +77,7 @@ public class TeleportClass : MonoBehaviour
 
     private void Teleport()
     {
-        GameObject player = GameObject.Find("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         
         int random = Random.Range(0, m_xTelePos.Count);
         player.transform.position = new Vector3(m_xTelePos[random] * 8 - m_hight / 2, m_yTelePos[random] * 8 - m_wide / 2, 0);

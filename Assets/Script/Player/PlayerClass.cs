@@ -9,11 +9,14 @@ public class PlayerClass : MonoBehaviour, IDamage
     [SerializeField] PlayerGravity m_gravity;
     [SerializeField] GameObject m_bullet;
     [SerializeField] FloorCheck m_floor;
+    [SerializeField] Sprite m_avoid;
+    [SerializeField] Sprite m_player;
 
     Rigidbody2D m_rb;
     Animator m_anim;
     Transform m_muzzlePos1;
     Transform m_muzzlePos2;
+    Collider2D m_collision;
 
     bool m_freeze;
 
@@ -21,6 +24,7 @@ public class PlayerClass : MonoBehaviour, IDamage
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
+        m_collision = GetComponent<Collider2D>();
 
         for (int get = 0; get < 3; get++) { m_attack.SetAttackObject(get); }
         m_attack.SetShieldCollision();
@@ -52,13 +56,21 @@ public class PlayerClass : MonoBehaviour, IDamage
         }
         else if (Input.GetButtonDown("Jump") && m_move.CrreantCrouch()) { m_floor.SetTriger(); }
 
+        if (m_move.CrreantAvoid()) return;
         if (Input.GetButtonDown("Fire1")) { m_attack.Attack(m_anim); }
         if (Input.GetButtonDown("Fire2")) { m_attack.SubAttack(m_anim, m_move, ref m_freeze); }
+        if (Input.GetButtonDown("Fire3")) { m_move.Avoidance(m_player, m_avoid, m_collision, m_rb, h); }
     }
 
     public void GetDamage(int damage)
     {
         m_anim.Play("Player_Damage");
+        int hp = PlayerDataClass.Instance.SetHp() - damage;
+        PlayerDataClass.Instance.GetHp(hp);
+        if (PlayerDataClass.Instance.SetHp() <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // AnimetionIventで呼び出し

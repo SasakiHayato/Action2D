@@ -9,6 +9,8 @@ public class BomContoller : MonoBehaviour
 
     Rigidbody2D m_rb;
 
+    float m_time = 0;
+
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
@@ -22,6 +24,15 @@ public class BomContoller : MonoBehaviour
         m_rb.AddForce(force, ForceMode2D.Impulse);
 
         StartCoroutine(SetCollider(2.0f));
+    }
+
+    void Update()
+    {
+        m_time += Time.deltaTime;
+        if (m_time > 3)
+        {
+            Explosion();
+        }
     }
 
     private IEnumerator SetCollider(float time)
