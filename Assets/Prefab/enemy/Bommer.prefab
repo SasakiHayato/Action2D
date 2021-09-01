@@ -754,10 +754,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d641cc97658c4498edf358358d3613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hp: 0
+  m_hp: 10
   m_speed: 2
   m_attackPower: 10
-  m_diedSprite: {fileID: 2747617401634751992, guid: 324cfdfe08761574ba2f20263579feba,
+  m_deadSprite: {fileID: 2747617401634751992, guid: 324cfdfe08761574ba2f20263579feba,
     type: 3}
   m_tree: {fileID: 5199733711518499901}
   m_bom: {fileID: 4818675307171512477, guid: 4c3929bc552212941a92f2e2f275cbda, type: 3}

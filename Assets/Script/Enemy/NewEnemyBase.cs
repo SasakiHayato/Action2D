@@ -15,6 +15,7 @@ public abstract class NewEnemyBase : MonoBehaviour
     SetAttackStatus m_set;
     
     public int MaxHp { get => m_maxHp; set { m_maxHp = m_hp; } }
+    public int GetMaxHp() => m_maxHp = m_hp;
     int m_maxHp;
 
     float m_defaultSpeed;

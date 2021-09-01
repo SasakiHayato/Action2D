@@ -56,8 +56,24 @@ public class BehaviorTree : MonoBehaviour
     Distance m_distance;
     ActionEnum m_action = ActionEnum.False;
 
+    bool m_phase1 = false;
+    bool m_phase2 = false;
+    bool m_phase3 = false;
+
+
     public void Tree()
     {
+        RemainingHp remaining = RemainingHp.False;
+        RemainingHp set = Remaining(ref remaining);
+        if (set !=  RemainingHp.False)
+        {
+            m_action = ActionEnum.True;
+            Attack(remaining);
+        }
+        else
+        {
+            Debug.Log("条件なし");
+        }
         if (m_action == ActionEnum.True) return;
         
         ConditionalEnum conditional = Conditional();
@@ -99,7 +115,7 @@ public class BehaviorTree : MonoBehaviour
         RemainingHp remaining = RemainingHp.False;
         if (conditional == ConditionalEnum.True) 
         {
-            Attack(Remaining(remaining));
+            Attack(remaining);
         }
         else 
         {
@@ -108,13 +124,24 @@ public class BehaviorTree : MonoBehaviour
         }
     }
 
-    RemainingHp Remaining(RemainingHp set)
+    RemainingHp Remaining(ref RemainingHp set)
     {
-        Debug.Log($"MaxHp :{m_enemy.MaxHp} NowHp :{m_enemy.RetuneCrreantHp()}");
-        if ((m_enemy.MaxHp / 100) * 75 >= m_enemy.RetuneCrreantHp()) set = RemainingHp.Remaining75;
-        if ((m_enemy.MaxHp / 100) * 50 >= m_enemy.RetuneCrreantHp()) set = RemainingHp.Remaining50;
-        if ((m_enemy.MaxHp / 100) * 30 >= m_enemy.RetuneCrreantHp()) set = RemainingHp.Remaining30;
-        else set = RemainingHp.False;
+        if ((m_enemy.MaxHp / 100) * 75 >= m_enemy.RetuneCrreantHp() && !m_phase1)
+        {
+            m_phase1 = true;
+            set = RemainingHp.Remaining75;
+        }
+        if ((m_enemy.MaxHp / 100) * 50 >= m_enemy.RetuneCrreantHp() && !m_phase2)
+        {
+            m_phase2 = true;
+            set = RemainingHp.Remaining50;
+        }
+        if ((m_enemy.MaxHp / 100) * 30 >= m_enemy.RetuneCrreantHp() && !m_phase3)
+        {
+            m_phase3 = true;
+            set = RemainingHp.Remaining30;
+        }
+        //else set = RemainingHp.False;
 
         return set;
     }

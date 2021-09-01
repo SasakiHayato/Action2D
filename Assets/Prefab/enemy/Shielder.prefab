@@ -344,10 +344,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00affb8dd65f16b40ad58f17e23f8147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hp: 0
+  m_hp: 10
   m_speed: 1
   m_attackPower: 10
-  m_diedSprite: {fileID: 2747617401634751992, guid: 324cfdfe08761574ba2f20263579feba,
+  m_deadSprite: {fileID: 2747617401634751992, guid: 324cfdfe08761574ba2f20263579feba,
     type: 3}
   m_tree: {fileID: 3508226740641177870}
 --- !u!114 &3508226740641177870
