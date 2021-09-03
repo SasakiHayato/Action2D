@@ -14,7 +14,7 @@ public class TeleportClass : MonoBehaviour
 
     [SerializeField] private Status m_status;
 
-    GameManager m_manager = new GameManager();
+    //GameManager m_manager = new GameManager();
     private bool m_check = false;
 
     static List<int> m_xTelePos = new List<int>();
@@ -31,12 +31,12 @@ public class TeleportClass : MonoBehaviour
         {
             if (m_status == Status.Start)
             {
-                m_manager.LoadD();
+                GameManager.getInstance().SetScene("Dungeon");
                 RemoveList();
             }
             else if (m_status == Status.Goal)
             {
-                m_manager.LoadM();
+                GameManager.getInstance().SetScene("Midway");
                 RemoveList();
             }
             else if (m_status == Status.Teleport)

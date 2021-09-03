@@ -83,10 +83,12 @@
     <Compile Include="Assets\Script\Enemy\NewEnemyBase.cs" />
     <Compile Include="Assets\Script\Enemy\ZombieClass.cs" />
     <Compile Include="Assets\Script\Game\AudioClass.cs" />
+    <Compile Include="Assets\Script\Game\ButtonClass.cs" />
     <Compile Include="Assets\Script\Game\CreateMap.cs" />
     <Compile Include="Assets\Script\Game\FadeClass.cs" />
     <Compile Include="Assets\Script\Game\GameManager.cs" />
     <Compile Include="Assets\Script\Game\MoveBackGround.cs" />
+    <Compile Include="Assets\Script\Game\SceneClass.cs" />
     <Compile Include="Assets\Script\Game\TeleportClass.cs" />
     <Compile Include="Assets\Script\Game\Uicontroller.cs" />
     <Compile Include="Assets\Script\Item\ItemBase.cs" />

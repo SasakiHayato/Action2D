@@ -19,14 +19,10 @@ public class BulletContoller : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamage iDamage = collision.GetComponent<IDamage>();
         
-        if (iDamage != null)
+        if (collision.gameObject.layer == 10)
         {
-            //enemy.m_rigidbody.AddForce(transform.up * 3, ForceMode2D.Impulse);
-            //iDamage.GetDamage(PlayerDataClass.Instance.m_attackPower);
-            
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

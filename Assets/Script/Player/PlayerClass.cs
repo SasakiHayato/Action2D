@@ -19,6 +19,7 @@ public class PlayerClass : MonoBehaviour, IDamage
     Collider2D m_collision;
 
     bool m_freeze;
+    [SerializeField] bool m_isDebug;
 
     void Start()
     {
@@ -31,10 +32,14 @@ public class PlayerClass : MonoBehaviour, IDamage
 
         m_muzzlePos1 = transform.Find("Nozzle");
         m_muzzlePos2 = transform.Find("NozzleCrouch");
+        GameManager.getInstance().SetCrreantPlay(m_isDebug);
     }
 
     void Update()
     {
+        //if (PlayerDataClass.Instance.GetFreeze()) return;
+        if (!GameManager.getInstance().GetCrreantPlay()) return;
+        
         PlayerControl();
     }
 
@@ -44,6 +49,7 @@ public class PlayerClass : MonoBehaviour, IDamage
         float v = Input.GetAxisRaw("Vertical");
 
         if (!m_freeze) { m_move.Move(h, v, m_rb, m_anim); }
+        if (m_move.CrreantAvoid()) return;
 
         if (Input.GetButtonDown("Jump") && !m_move.CrreantCrouch())
         {
@@ -56,7 +62,7 @@ public class PlayerClass : MonoBehaviour, IDamage
         }
         else if (Input.GetButtonDown("Jump") && m_move.CrreantCrouch()) { m_floor.SetTriger(); }
 
-        if (m_move.CrreantAvoid()) return;
+        
         if (Input.GetButtonDown("Fire1")) { m_attack.Attack(m_anim); }
         if (Input.GetButtonDown("Fire2")) { m_attack.SubAttack(m_anim, m_move, ref m_freeze); }
         if (Input.GetButtonDown("Fire3")) { m_move.Avoidance(m_player, m_avoid, m_collision, m_rb, h); }
@@ -69,7 +75,9 @@ public class PlayerClass : MonoBehaviour, IDamage
         PlayerDataClass.Instance.GetHp(hp);
         if (PlayerDataClass.Instance.SetHp() <= 0)
         {
-            Destroy(gameObject);
+            PlayerDataClass.Instance.GetHp(100);
+            GameManager.getInstance().ResetDungeonCount();
+            GameManager.getInstance().SetScene("Start");
         }
     }
 

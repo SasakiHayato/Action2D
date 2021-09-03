@@ -1,79 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager
 {
-    public static GameManager Instance = new GameManager();
+    static GameManager instance = new GameManager();
+    static public GameManager getInstance() => instance;
+    private GameManager() { }
 
-    private static int m_count = 0;
-    private static bool m_cureated = false;
-    private static bool m_isPlay = false;
+    SceneClass scene = new SceneClass();
 
-    private static float m_timer = 0;
+    bool m_isPlay = false;
+    int m_dungeonCount = 0;
+    float m_timer = 0;
 
-    public void IsPlay()
-    {
-        m_isPlay = true;
-        LoadS();
-    }
+    
 
-    private void LoadS()
-    {
-        SceneManager.LoadScene("Start");
-    }
+    public void SetCrreantPlay(bool set) => m_isPlay = set;
+    public bool GetCrreantPlay() => m_isPlay;
 
-    public bool CureatPlay()
-    {
-        return m_isPlay;
-    }
+    public int SetDungeonCount() => m_dungeonCount + 1;
+    public int GetDungeonCount() => m_dungeonCount;
+    public int ResetDungeonCount() => m_dungeonCount = 0;
 
-    private bool EndPlay()
-    {
-        m_isPlay = false;
-        return m_isPlay;
-    }
+    public float SetTime() => m_timer += Time.deltaTime;
 
-    public float GameTime()
-    {
-        m_timer += Time.deltaTime;
-        return m_timer;
-    }
-
-    public void LoadD()
-    {
-        CountCheck();
-        
-        if (m_count == 3)
-        {
-            SceneManager.LoadScene("BossRoom");
-            return;
-        }
-
-        SceneManager.LoadScene("Dungeon");
-    }
-
-    public void LoadM()
-    {
-        SceneManager.LoadScene("Midway");
-    }
-
-    void Awake()
-    {
-        if (!m_cureated)
-        {
-            DontDestroyOnLoad(Instance);
-            m_cureated = true;
-        }
-        else
-        {
-            Destroy(Instance);
-        }
-    }
-
-    private void CountCheck()
-    {
-        m_count++;
-    }
+    public void SetScene(string set) => scene.OnLoadScene(set);
 }

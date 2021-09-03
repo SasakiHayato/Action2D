@@ -44,6 +44,10 @@ public class BossClass : NewEnemyBase, IDamage
         int hp = RetuneCrreantHp() - damage;
         SetHp(hp, gameObject);
         m_hpSlider.value = RetuneCrreantHp();
+        if (RetuneCrreantHp() <= 0)
+        {
+            GameManager.getInstance().SetScene("Start");
+        }
     }
     public override void Move()
     {

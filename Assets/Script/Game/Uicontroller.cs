@@ -46,8 +46,8 @@ public class Uicontroller : MonoBehaviour
     }
 
     private void Timer()
-    {   
-        timeText.text = GameManager.Instance.GameTime() .ToString("0s");
+    {
+        timeText.text = GameManager.getInstance().SetTime().ToString("0s");
     }
 
     private void StatuUp()
