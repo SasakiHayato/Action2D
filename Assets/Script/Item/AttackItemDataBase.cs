@@ -20,5 +20,8 @@ public class AttackItems
     [SerializeField] Sprite m_sprite;
 
     public string GetName() => m_name;
+    public string GetAnimName(int num) => m_animName[num];
+    public int GetAnimLength() => m_animName.Length;
     public Sprite GetSprite() => m_sprite;
+    public int GetId() => m_id;
 }

@@ -10,13 +10,19 @@ public class PlayerDataClass : MonoBehaviour
     [System.NonSerialized] public int m_magicPower = 1;
     [System.NonSerialized] public int m_shieldPower = 1;
 
-    [System.NonSerialized] public int m_subAttack = 0;
+    int m_attackIdFirst = 0;
+    public int SetAttackIdFirst 
+    {
+        get => m_attackIdFirst; 
+        set { m_attackIdFirst = value; } 
+    }
 
-    int m_attackId = 0;
-    public int SetAttackId { get => m_attackId; set { m_attackId = value; } }
-
-    int m_subAttackId = 0;
-    public int SetSubAttackId { get => m_subAttackId; set { m_subAttackId = value; } }
+    int m_attackIdSecond = 0;
+    public int SetAttackIdSecond 
+    {
+        get => m_attackIdSecond; 
+        set { m_attackIdSecond = value; }
+    }
 
     int m_hp = 100;
     [System.NonSerialized] public int m_maxHp = 100;

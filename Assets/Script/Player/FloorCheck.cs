@@ -15,7 +15,6 @@ public class FloorCheck : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dir.magnitude, m_layer);
         if (hit.collider)
         {
-            Debug.Log("a");
             m_collision.enabled = false;
             StartCoroutine(ResetTriger());
         }

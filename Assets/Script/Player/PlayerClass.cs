@@ -21,6 +21,8 @@ public class PlayerClass : MonoBehaviour, IDamage
     Transform m_muzzlePos2;
     Collider2D m_collision;
 
+    Collider2D m_attackCollision;
+
     bool m_freeze;
     [SerializeField] bool m_isDebug;
 
@@ -34,8 +36,10 @@ public class PlayerClass : MonoBehaviour, IDamage
         m_attack = GetComponent<PlayerAttack>();
         m_gravity = GetComponent<PlayerGravity>();
 
-        for (int get = 0; get < 3; get++) { m_attack.SetAttackObject(get); }
-        m_attack.SetShieldCollision();
+        m_attackCollision = GameObject.Find("bone_12").GetComponent<Collider2D>();
+        m_attackCollision.enabled = false;
+
+        //m_attack.SetShieldCollision();
 
         m_muzzlePos1 = transform.Find("Nozzle");
         m_muzzlePos2 = transform.Find("NozzleCrouch");
@@ -74,8 +78,8 @@ public class PlayerClass : MonoBehaviour, IDamage
         else if (Input.GetButtonDown("Jump") && m_move.CrreantCrouch()) { m_floor.SetTriger(); }
 
         
-        if (Input.GetButtonDown("Fire1")) { m_attack.Attack(m_anim); }
-        if (Input.GetButtonDown("Fire2")) { m_attack.SubAttack(m_anim, m_move, ref m_freeze); }
+        if (Input.GetButtonDown("Fire1")) { m_attack.AttackFirst(m_anim, m_attackData); }
+        if (Input.GetButtonDown("Fire2")) { m_attack.AttackSecond(m_anim, m_move, ref m_freeze); }
         if (Input.GetButtonDown("Fire3")) { m_move.Avoidance(m_player, m_avoid, m_collision, m_rb, h); }
     }
 
@@ -102,5 +106,10 @@ public class PlayerClass : MonoBehaviour, IDamage
     {
         if(!m_move.CrreantCrouch()) { Instantiate(m_bullet, m_muzzlePos1); }
         else { Instantiate(m_bullet, m_muzzlePos2); }
+    }
+    public void SetCollison()
+    {
+        if (!m_attackCollision.enabled) m_attackCollision.enabled = true;
+        else m_attackCollision.enabled = false;
     }
 }

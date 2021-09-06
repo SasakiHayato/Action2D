@@ -4219,14 +4219,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.016666668
-    functionName: SetCollision
+    functionName: SetCollison
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.083333336
-    functionName: SetCollision
+  - time: 0.11666667
+    functionName: SetCollison
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

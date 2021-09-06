@@ -19,21 +19,21 @@ MonoBehaviour:
     - Player_Attack2
     - Player_Attack3
     m_id: 1
-    m_object: {fileID: 6914013245373628512, guid: fa9886ea4b452e24f91d3bfa1b20902a,
+    m_object: {fileID: 976856245909861665, guid: fa9886ea4b452e24f91d3bfa1b20902a,
       type: 3}
     m_sprite: {fileID: 21300000, guid: aad44bc04006c0e40bd33cbd3897bfb9, type: 3}
   - m_name: Magic
     m_animName:
     - Player_Magic
     - Player_Magic_crouch
-    m_id: 2
-    m_object: {fileID: 7729341240631877882, guid: cfba9f27d39da6e408380056dc2606fc,
+    m_id: 1
+    m_object: {fileID: 912218466956444237, guid: 9e774b1651271be40a8c170293097fbc,
       type: 3}
     m_sprite: {fileID: 21300000, guid: 096bb31bc7190fe48916e83415c9c6ce, type: 3}
   - m_name: Shield
     m_animName:
     - Player_Shield
-    m_id: 3
-    m_object: {fileID: 6327240864865633651, guid: 3100bb9c1ca4ede439dc9c0fd65d275f,
+    m_id: 1
+    m_object: {fileID: 5136068313943876656, guid: 6cf896d010f5cd84296f858ff17c6919,
       type: 3}
     m_sprite: {fileID: 21300000, guid: 612548a10014dbe4e94a487dd75cc558, type: 3}

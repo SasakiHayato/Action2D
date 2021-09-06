@@ -11,32 +11,45 @@ public class PlayerAttack : MonoBehaviour
     GameObject[] m_attackCollider = new GameObject[3];
     GameObject m_shieldCollsion = default;
 
-    public void Attack(Animator anim)
+    public void AttackFirst(Animator anim, AttackItemDataBase dataBase)
     {
-        switch (m_attackCombo)
+        if (PlayerDataClass.Instance.SetAttackIdFirst == 1)
         {
-            case 1:
-                anim.Play("Player_Attack");
-                m_attackCombo = 2;
-                break;
+            //int id = PlayerDataClass.Instance.SetAttackIdFirst;
+            //string set = dataBase.GetItemId(id - 1).GetAnimName(m_attackCombo);
+            //anim.Play(set);
+            //m_attackCombo++;
 
-            case 2:
-                anim.Play("Player_Attack2");
-                m_attackCombo = 3;
-                break;
+            //if (m_attackCombo >= dataBase.GetItemId(id - 1).GetAnimLength())
+            //{
+            //    m_attackCombo = 0;
+            //}
+            switch (m_attackCombo)
+            {
+                case 1:
+                    anim.Play("Player_Attack");
+                    m_attackCombo = 2;
+                    break;
 
-            case 3:
-                anim.Play("Player_Attack3");
-                m_attackCombo = 1;
-                break;
+                case 2:
+                    anim.Play("Player_Attack2");
+                    m_attackCombo = 3;
+                    break;
+
+                case 3:
+                    anim.Play("Player_Attack3");
+                    m_attackCombo = 1;
+                    break;
+            }
         }
+        
     }
 
-    public void SubAttack(Animator anim, PlayerMove move,ref bool freeze)
+    public void AttackSecond(Animator anim, PlayerMove move,ref bool freeze)
     {
-        switch (PlayerDataClass.Instance.m_subAttack)
+        switch (PlayerDataClass.Instance.SetAttackIdSecond)
         {
-            case 1:
+            case 3:
                 if (!m_shieldBool)
                 {
                     m_shieldBool = true;
@@ -64,21 +77,6 @@ public class PlayerAttack : MonoBehaviour
                 break;
         }
     }
-
-    public void SetCollision()
-    {
-        if (!m_attackBool)
-        {
-            m_attackBool = true;
-            m_attackCollider[m_attackCombo - 1].SetActive(m_attackBool);
-        }
-        else
-        {
-            m_attackBool = false;
-            m_attackCollider[m_attackCombo - 1].SetActive(m_attackBool);
-        }
-    }
-
     public void SetAttackObject(int get)
     {
         m_attackCollider[get] = transform.GetChild(get).gameObject;

@@ -15,6 +15,9 @@ public class Uicontroller : MonoBehaviour
     [SerializeField] private Image m_image;
     static Sprite m_set;
 
+    [SerializeField] private Image m_subImage;
+    static Sprite m_subSet;
+
     private Slider m_slider;
 
     public GameObject m_slectCanvas { get; set; }
@@ -27,6 +30,7 @@ public class Uicontroller : MonoBehaviour
         m_slectCanvas.SetActive(false);
 
         if (m_set != null) SetSprite(m_set);
+        if (m_subSet != null) SetSprite(m_subSet);
     }
 
     void Update()
@@ -53,7 +57,16 @@ public class Uicontroller : MonoBehaviour
 
     public void SetSprite(Sprite set)
     {
-        m_set = set;
-        m_image.sprite = m_set;
+        if (m_set == null)
+        {
+            m_set = set;
+            m_image.sprite = m_set;
+        }
+        else
+        {
+            m_subSet = set;
+            m_subImage.sprite = m_subSet;
+        }
+
     }
 }

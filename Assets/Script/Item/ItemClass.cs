@@ -24,11 +24,29 @@ public class ItemClass : NewItemBase
         if (Input.GetButtonDown("Submit1") && m_active)
         {
             SetItem();
-
+            SetAttackId();
             Destroy(gameObject);
         }
 
         SetVec();
+    }
+
+    void SetAttackId()
+    {
+        int first = PlayerDataClass.Instance.SetAttackIdFirst;
+        int second = PlayerDataClass.Instance.SetAttackIdSecond;
+
+        if (first != 0 && second != 0) return;
+
+        if (PlayerDataClass.Instance.SetAttackIdFirst == 0)
+        {
+            PlayerDataClass.Instance.SetAttackIdFirst = DataBase.GetItemId(ItemId).GetId();
+        }
+        else
+        {
+            PlayerDataClass.Instance.SetAttackIdSecond = DataBase.GetItemId(ItemId).GetId();
+        }
+        
     }
 
     public void SetVec()
@@ -53,7 +71,6 @@ public class ItemClass : NewItemBase
     {
         if (collision.gameObject.CompareTag("Player")) m_active = true;
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player")) m_active = false;
