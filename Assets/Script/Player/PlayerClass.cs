@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerClass : MonoBehaviour, IDamage
 {
-    [SerializeField] PlayerMove m_move;
-    [SerializeField] PlayerAttack m_attack;
-    [SerializeField] PlayerGravity m_gravity;
     [SerializeField] GameObject m_bullet;
     [SerializeField] FloorCheck m_floor;
     [SerializeField] Sprite m_avoid;
@@ -14,6 +11,12 @@ public class PlayerClass : MonoBehaviour, IDamage
 
     Rigidbody2D m_rb;
     Animator m_anim;
+
+    PlayerMove m_move;
+    PlayerAttack m_attack;
+    PlayerGravity m_gravity;
+    [SerializeField] AttackItemDataBase m_attackData;
+
     Transform m_muzzlePos1;
     Transform m_muzzlePos2;
     Collider2D m_collision;
@@ -27,12 +30,20 @@ public class PlayerClass : MonoBehaviour, IDamage
         m_anim = GetComponent<Animator>();
         m_collision = GetComponent<Collider2D>();
 
+        m_move = GetComponent<PlayerMove>();
+        m_attack = GetComponent<PlayerAttack>();
+        m_gravity = GetComponent<PlayerGravity>();
+
         for (int get = 0; get < 3; get++) { m_attack.SetAttackObject(get); }
         m_attack.SetShieldCollision();
 
         m_muzzlePos1 = transform.Find("Nozzle");
         m_muzzlePos2 = transform.Find("NozzleCrouch");
-        GameManager.getInstance().SetCrreantPlay(m_isDebug);
+
+        if (m_isDebug)
+        {
+            GameManager.getInstance().SetCrreantPlay(m_isDebug);
+        }
     }
 
     void Update()

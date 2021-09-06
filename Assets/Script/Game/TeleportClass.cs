@@ -14,7 +14,6 @@ public class TeleportClass : MonoBehaviour
 
     [SerializeField] private Status m_status;
 
-    //GameManager m_manager = new GameManager();
     private bool m_check = false;
 
     static List<int> m_xTelePos = new List<int>();

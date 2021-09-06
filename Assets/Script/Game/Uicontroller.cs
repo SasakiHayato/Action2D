@@ -12,12 +12,8 @@ public class Uicontroller : MonoBehaviour
     [SerializeField] Text m_attackText;
     [SerializeField] Text m_shieldText;
 
-    [SerializeField] public Sprite m_magicSprite;
-    [SerializeField] public Sprite m_shieldSprite;
-
     [SerializeField] private Image m_image;
-
-    [System.NonSerialized] public Sprite m_setSprite = null;
+    static Sprite m_set;
 
     private Slider m_slider;
 
@@ -29,6 +25,8 @@ public class Uicontroller : MonoBehaviour
         
         m_slectCanvas = GameObject.Find("SelectCanvas");
         m_slectCanvas.SetActive(false);
+
+        if (m_set != null) SetSprite(m_set);
     }
 
     void Update()
@@ -36,7 +34,6 @@ public class Uicontroller : MonoBehaviour
         SliderHp();
         Timer();
         StatuUp();
-        SetSprite();
     }
 
     private void SliderHp()
@@ -45,10 +42,7 @@ public class Uicontroller : MonoBehaviour
         hpText.text = PlayerDataClass.Instance.SetHp().ToString("00" + "/１００");
     }
 
-    private void Timer()
-    {
-        timeText.text = GameManager.getInstance().SetTime().ToString("0s");
-    }
+    private void Timer() => timeText.text = GameManager.getInstance().SetTime().ToString("0s");
 
     private void StatuUp()
     {
@@ -57,8 +51,9 @@ public class Uicontroller : MonoBehaviour
         m_shieldText.text = PlayerDataClass.Instance.m_shieldPower.ToString();
     }
 
-    private void SetSprite()
+    public void SetSprite(Sprite set)
     {
-        m_image.sprite = m_setSprite;
+        m_set = set;
+        m_image.sprite = m_set;
     }
 }
