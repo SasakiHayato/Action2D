@@ -87,6 +87,7 @@
     <Compile Include="Assets\Script\Game\CreateMap.cs" />
     <Compile Include="Assets\Script\Game\FadeClass.cs" />
     <Compile Include="Assets\Script\Game\GameManager.cs" />
+    <Compile Include="Assets\Script\Game\ItemSelectClass.cs" />
     <Compile Include="Assets\Script\Game\MoveBackGround.cs" />
     <Compile Include="Assets\Script\Game\SceneClass.cs" />
     <Compile Include="Assets\Script\Game\TeleportClass.cs" />
@@ -95,8 +96,6 @@
     <Compile Include="Assets\Script\Item\ItemBase.cs" />
     <Compile Include="Assets\Script\Item\ItemClass.cs" />
     <Compile Include="Assets\Script\Item\ItemHeel.cs" />
-    <Compile Include="Assets\Script\Item\ItemMagic.cs" />
-    <Compile Include="Assets\Script\Item\ItemShield.cs" />
     <Compile Include="Assets\Script\Item\ItemStatus.cs" />
     <Compile Include="Assets\Script\Item\NewItemBase.cs" />
     <Compile Include="Assets\Script\Item\StatusItemDataBase.cs" />

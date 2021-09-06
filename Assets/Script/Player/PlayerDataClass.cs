@@ -16,12 +16,24 @@ public class PlayerDataClass : MonoBehaviour
         get => m_attackIdFirst; 
         set { m_attackIdFirst = value; } 
     }
+    bool m_idFirst = false;
+    public bool SetIdBoolFirst
+    {
+        get => m_idFirst;
+        set { m_idFirst = value; }
+    }
 
     int m_attackIdSecond = 0;
     public int SetAttackIdSecond 
     {
         get => m_attackIdSecond; 
         set { m_attackIdSecond = value; }
+    }
+    bool m_idSecond = false;
+    public bool SetIdBoolSecond
+    {
+        get => m_idSecond;
+        set { m_idSecond = value; }
     }
 
     int m_hp = 100;

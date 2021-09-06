@@ -77,9 +77,19 @@ public class PlayerClass : MonoBehaviour, IDamage
         }
         else if (Input.GetButtonDown("Jump") && m_move.CrreantCrouch()) { m_floor.SetTriger(); }
 
-        
-        if (Input.GetButtonDown("Fire1")) { m_attack.AttackFirst(m_anim, m_attackData); }
-        if (Input.GetButtonDown("Fire2")) { m_attack.AttackSecond(m_anim, m_move, ref m_freeze); }
+        if (Input.GetButtonDown("Fire1")) 
+        {
+            int attackId = 1;
+            int id = PlayerDataClass.Instance.SetAttackIdFirst;
+            m_attack.Attack(m_anim, m_attackData, id, attackId);
+        }
+        if (Input.GetButtonDown("Fire2")) 
+        {
+            int attackId = 2;
+            int id = PlayerDataClass.Instance.SetAttackIdSecond;
+            m_attack.Attack(m_anim, m_attackData, id, attackId);
+        }
+
         if (Input.GetButtonDown("Fire3")) { m_move.Avoidance(m_player, m_avoid, m_collision, m_rb, h); }
     }
 

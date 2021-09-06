@@ -18,7 +18,7 @@ MonoBehaviour:
     - Player_Attack
     - Player_Attack2
     - Player_Attack3
-    m_id: 1
+    m_id: 0
     m_object: {fileID: 976856245909861665, guid: fa9886ea4b452e24f91d3bfa1b20902a,
       type: 3}
     m_sprite: {fileID: 21300000, guid: aad44bc04006c0e40bd33cbd3897bfb9, type: 3}
@@ -33,7 +33,7 @@ MonoBehaviour:
   - m_name: Shield
     m_animName:
     - Player_Shield
-    m_id: 1
+    m_id: 2
     m_object: {fileID: 5136068313943876656, guid: 6cf896d010f5cd84296f858ff17c6919,
       type: 3}
     m_sprite: {fileID: 21300000, guid: 612548a10014dbe4e94a487dd75cc558, type: 3}

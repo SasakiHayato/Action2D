@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemEnum
+{
+    Attack,
+    Magic,
+    Shield,
+}
+
 [CreateAssetMenu (fileName = "AttackItems")]
 public class AttackItemDataBase : ScriptableObject
 {

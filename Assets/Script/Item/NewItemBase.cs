@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class NewItemBase : MonoBehaviour
 {
-    private enum Item
-    {
-        Attack,
-        Magic,
-        Shield,
-    }
-
-    [SerializeField] Item m_enum;
+    [SerializeField] ItemEnum m_enum;
     [SerializeField] AttackItemDataBase m_dataBase;
     Uicontroller m_ui;
 
@@ -20,4 +13,6 @@ public class NewItemBase : MonoBehaviour
 
     private void Awake() => m_ui = FindObjectOfType<Uicontroller>();
     public void SetItem() => m_ui.SetSprite(m_dataBase.GetItemId(ItemId).GetSprite());
+
+    public void Select() => m_ui.SetCanvasActive(m_dataBase.GetItemId(ItemId).GetSprite());
 }

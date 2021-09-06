@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class ItemClass : NewItemBase
 {
     [SerializeField] Text m_text;
-
     GameObject m_canvas;
 
     bool m_active = false;
@@ -21,24 +20,22 @@ public class ItemClass : NewItemBase
     {
         m_canvas.SetActive(m_active);
 
-        if (Input.GetButtonDown("Submit1") && m_active)
-        {
-            SetItem();
-            SetAttackId();
-            Destroy(gameObject);
-        }
-
+        if (Input.GetButtonDown("Submit1") && m_active) SetAttackId();
         SetVec();
     }
 
     void SetAttackId()
     {
-        int first = PlayerDataClass.Instance.SetAttackIdFirst;
-        int second = PlayerDataClass.Instance.SetAttackIdSecond;
+        bool first = PlayerDataClass.Instance.SetIdBoolFirst;
+        bool second = PlayerDataClass.Instance.SetIdBoolSecond;
 
-        if (first != 0 && second != 0) return;
+        if (first && second)
+        {
+            Select();
+            return;
+        }
 
-        if (PlayerDataClass.Instance.SetAttackIdFirst == 0)
+        if (!first)
         {
             PlayerDataClass.Instance.SetAttackIdFirst = DataBase.GetItemId(ItemId).GetId();
         }
@@ -46,7 +43,9 @@ public class ItemClass : NewItemBase
         {
             PlayerDataClass.Instance.SetAttackIdSecond = DataBase.GetItemId(ItemId).GetId();
         }
-        
+
+        SetItem();
+        Destroy(gameObject);
     }
 
     public void SetVec()
