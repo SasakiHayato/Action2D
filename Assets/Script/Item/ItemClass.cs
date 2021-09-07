@@ -32,6 +32,8 @@ public class ItemClass : NewItemBase
         if (first && second)
         {
             Select();
+            SetId();
+            Destroy(this.gameObject);
             return;
         }
 
@@ -45,7 +47,7 @@ public class ItemClass : NewItemBase
         }
 
         SetItem();
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     public void SetVec()

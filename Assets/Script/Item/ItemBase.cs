@@ -6,8 +6,6 @@ public class ItemBase : MonoBehaviour
 {
     private enum ItemStatus
     { 
-        Magic,
-        Shield,
         StatusUp,
         Heel,
     }
@@ -23,17 +21,7 @@ public class ItemBase : MonoBehaviour
 
     public void CheckEnum()
     {
-        if (m_status == ItemStatus.Magic)
-        {
-            //PlayerDataClass.Instance.m_subAttack = 2;
-            //m_ui.m_setSprite = m_ui.m_magicSprite;
-        }
-        else if (m_status == ItemStatus.Shield)
-        {
-            //PlayerDataClass.Instance.m_subAttack = 1;
-            //m_ui.m_setSprite = m_ui.m_shieldSprite;
-        }
-        else if (m_status == ItemStatus.StatusUp)
+        if (m_status == ItemStatus.StatusUp)
         {
             m_ui.m_slectCanvas.SetActive(true);
             PlayerDataClass.Instance.SetFreeze(true);

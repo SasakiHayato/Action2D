@@ -31,4 +31,5 @@ public class AttackItems
     public int GetAnimLength() => m_animName.Length;
     public Sprite GetSprite() => m_sprite;
     public int GetId() => m_id;
+    public GameObject GetObject() => m_object; 
 }

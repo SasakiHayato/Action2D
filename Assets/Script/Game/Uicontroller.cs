@@ -72,7 +72,7 @@ public class Uicontroller : MonoBehaviour
             m_image.sprite = m_set;
             m_setFire1.sprite = m_set;
         }
-        if (!PlayerDataClass.Instance.SetIdBoolSecond)
+        else if (!PlayerDataClass.Instance.SetIdBoolSecond)
         {
             PlayerDataClass.Instance.SetIdBoolSecond = true;
             m_subSet = set;
@@ -86,4 +86,6 @@ public class Uicontroller : MonoBehaviour
         m_setFire3.sprite = set;
         m_setCanvas.SetActive(true);
     }
+
+    public void SetCanvasFalse() => m_setCanvas.SetActive(false);
 }

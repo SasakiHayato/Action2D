@@ -20,15 +20,20 @@ public class ItemSelectClass : MonoBehaviour
 
     [SerializeField] int m_setCount = 0;
     List<GameObject> m_imageObjects = new List<GameObject>();
+    Uicontroller m_ui;
+    AttackItemDataBase m_dataBase;
 
     bool m_selectBool = false;
     int m_crreantNum = 0;
+    int m_saveId = 0;
+    int m_getId = 0;
 
     Vector2 m_defaultScale = Vector2.zero;
     Vector2 m_selectScale = Vector2.zero;
 
     void Start()
     {
+        m_ui = FindObjectOfType<Uicontroller>();
         for (int i = 0; i < m_setCount; i++)
         {
             GameObject set = transform.GetChild(i).gameObject;
@@ -62,14 +67,30 @@ public class ItemSelectClass : MonoBehaviour
     {
         if (m_crreantNum == 0)
         {
-
+            m_saveId = PlayerDataClass.Instance.SetAttackIdFirst;
+            PlayerDataClass.Instance.SetAttackIdFirst = m_dataBase.GetItemId(m_getId).GetId();
+            PlayerDataClass.Instance.SetIdBoolFirst = false;
         }
         else if (m_crreantNum == 1)
         {
-
+            m_saveId = PlayerDataClass.Instance.SetAttackIdSecond;
+            PlayerDataClass.Instance.SetAttackIdSecond = m_dataBase.GetItemId(m_getId).GetId();
+            PlayerDataClass.Instance.SetIdBoolSecond = false;
         }
+
+        m_ui.SetSprite(m_dataBase.GetItemId(m_getId).GetSprite());
+        m_ui.SetCanvasFalse();
+
+        GameObject set = Instantiate(m_dataBase.GetItemId(m_saveId).GetObject());
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        set.transform.position = player.position;
     }
 
+    public void GetData(AttackItemDataBase dataBase, int id)
+    {
+        m_dataBase = dataBase;
+        m_getId = id;
+    }
     void Select(float num)
     {
         if (num == 0)
