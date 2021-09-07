@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemClass : NewItemBase
+public class ItemClass : ItemBase
 {
     [SerializeField] Text m_text;
     GameObject m_canvas;
@@ -26,6 +26,7 @@ public class ItemClass : NewItemBase
 
     void SetStatus()
     {
+        PlayerDataClass.Instance.SetFreeze(true);
         if (DataBase.GetItemId(ItemId).GetStatuId() == 2)
         {
             SelectStatus();

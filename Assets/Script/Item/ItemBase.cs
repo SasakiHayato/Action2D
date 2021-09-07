@@ -4,74 +4,23 @@ using UnityEngine;
 
 public class ItemBase : MonoBehaviour
 {
-    private enum ItemStatus
-    { 
-        StatusUp,
-        Heel,
-    }
+    [SerializeField] ItemEnum m_enum;
+    [SerializeField] ItemDataBase m_dataBase;
+    Uicontroller m_ui;
+    ItemSelectClass m_select;
 
-    [SerializeField] private ItemStatus m_status;
+    public ItemDataBase DataBase { get => m_dataBase; }
+    public int ItemId { get => (int)m_enum;}
 
-    public Uicontroller m_ui { get; set; }
+    private void Awake() => m_ui = FindObjectOfType<Uicontroller>();
 
-    private void Awake()
+    public void SetItem() => m_ui.SetSprite(m_dataBase.GetItemId(ItemId).GetSprite());
+
+    public void Select() => m_ui.SetCanvasActive(m_dataBase.GetItemId(ItemId).GetSprite());
+    public void SelectStatus() => m_ui.SetSelectCanvasActive();
+    public void SetId()
     {
-        m_ui = FindObjectOfType<Uicontroller>();
-    }
-
-    public void CheckEnum()
-    {
-        if (m_status == ItemStatus.StatusUp)
-        {
-            //m_ui.m_slectCanvas.SetActive(true);
-            PlayerDataClass.Instance.SetFreeze(true);
-        }
-        else if (m_status == ItemStatus.Heel)
-        {
-            if (PlayerDataClass.Instance.SetHp() < PlayerDataClass.Instance.m_maxHp)
-            {
-                int heel = PlayerDataClass.Instance.SetHp() + 30;
-                PlayerDataClass.Instance.GetHp(heel);
-                if (PlayerDataClass.Instance.SetHp() > 100)
-                {
-                    PlayerDataClass.Instance.GetHp(100);
-                }
-            }
-        }
-    }
-
-    public void SetStatus(ref int set)
-    {
-        if (set == 0)
-        {
-           // PlayerDataClass.Instance.m_magicPower ++;
-        }
-        else if (set == 1)
-        {
-            //PlayerDataClass.Instance.m_shieldPower ++;
-        }
-        else if (set == 2)
-        {
-            PlayerDataClass.Instance.AttackPowerUp(1);
-        }
-        set = 0;
-
-        PlayerDataClass.Instance.SetFreeze(false);
-
-        //m_ui.m_slectCanvas.SetActive(false);
-    }
-
-    public Vector2 SetTextPos(Vector2 vector, Transform player)
-    {
-        if (player.position.x < transform.position.x)
-        {
-            vector = new Vector2(transform.position.x + 1, transform.position.y + 1);
-        }
-        else
-        {
-            vector = new Vector2(transform.position.x - 1, transform.position.y + 1);
-        }
-
-        return vector;
+        m_select = FindObjectOfType<ItemSelectClass>();
+        m_select.GetData(m_dataBase, ItemId);
     }
 }

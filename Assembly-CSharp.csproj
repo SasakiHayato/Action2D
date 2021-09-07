@@ -64,8 +64,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Prefab\enemy\ActiveClass.cs" />
     <Compile Include="Assets\Script\AttackClass.cs" />
+    <Compile Include="Assets\Script\Enemy\ActiveClass.cs" />
     <Compile Include="Assets\Script\Enemy\ArcheryBowClass.cs" />
     <Compile Include="Assets\Script\Enemy\ArchryClass.cs" />
     <Compile Include="Assets\Script\Enemy\BehaviorTree.cs" />
@@ -95,10 +95,6 @@
     <Compile Include="Assets\Script\Item\ItemBase.cs" />
     <Compile Include="Assets\Script\Item\ItemClass.cs" />
     <Compile Include="Assets\Script\Item\ItemDataBase.cs" />
-    <Compile Include="Assets\Script\Item\ItemHeel.cs" />
-    <Compile Include="Assets\Script\Item\ItemStatus.cs" />
-    <Compile Include="Assets\Script\Item\NewItemBase.cs" />
-    <Compile Include="Assets\Script\Item\StatusSelect.cs" />
     <Compile Include="Assets\Script\Player\BulletContoller.cs" />
     <Compile Include="Assets\Script\Player\FloorCheck.cs" />
     <Compile Include="Assets\Script\Player\PlayerAttack.cs" />

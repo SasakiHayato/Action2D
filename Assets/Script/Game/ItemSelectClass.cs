@@ -57,6 +57,7 @@ public class ItemSelectClass : MonoBehaviour
         {
             if (m_status == Status.ItemSelect) SetItem();
             else if (m_status == Status.StatusUp) StatusUp();
+            PlayerDataClass.Instance.SetFreeze(false);
         }
     }
 
