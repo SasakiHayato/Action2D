@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     int m_seveAttackId = 0;
    
 
-    public void Attack(Animator anim, AttackItemDataBase dataBase, int id, int attackId)
+    public void Attack(Animator anim, ItemDataBase dataBase, int id, int attackId)
     {
         if (m_seveAttackId != attackId)
         {

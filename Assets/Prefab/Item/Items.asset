@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 876d54bf062992f4383b90351a59a218, type: 3}
-  m_Name: AttackItems
+  m_Script: {fileID: 11500000, guid: f8066fa851ddab542a7d765e0967ee1b, type: 3}
+  m_Name: Items
   m_EditorClassIdentifier: 
   m_items:
   - m_name: Attack
@@ -19,6 +19,7 @@ MonoBehaviour:
     - Player_Attack2
     - Player_Attack3
     m_id: 0
+    m_statusId: 1
     m_object: {fileID: 976856245909861665, guid: fa9886ea4b452e24f91d3bfa1b20902a,
       type: 3}
     m_sprite: {fileID: 21300000, guid: aad44bc04006c0e40bd33cbd3897bfb9, type: 3}
@@ -27,13 +28,30 @@ MonoBehaviour:
     - Player_Magic
     - Player_Magic_crouch
     m_id: 1
+    m_statusId: 1
     m_object: {fileID: 912218466956444237, guid: 9e774b1651271be40a8c170293097fbc,
       type: 3}
     m_sprite: {fileID: 21300000, guid: 096bb31bc7190fe48916e83415c9c6ce, type: 3}
   - m_name: Shield
     m_animName:
     - Player_Shield
+    - Player_Idle_anim
     m_id: 2
+    m_statusId: 1
     m_object: {fileID: 5136068313943876656, guid: 6cf896d010f5cd84296f858ff17c6919,
       type: 3}
     m_sprite: {fileID: 21300000, guid: 612548a10014dbe4e94a487dd75cc558, type: 3}
+  - m_name: StatusAll
+    m_animName: []
+    m_id: 3
+    m_statusId: 2
+    m_object: {fileID: 5710672727117966605, guid: 7b0e5314cfd8643408cccad940050d4d,
+      type: 3}
+    m_sprite: {fileID: 21300000, guid: 239e721e29a410c42aed5539a24fc09c, type: 3}
+  - m_name: Heel
+    m_animName: []
+    m_id: 4
+    m_statusId: 3
+    m_object: {fileID: 6013584595260892170, guid: 3df5e55299385d54eb429887eae267e2,
+      type: 3}
+    m_sprite: {fileID: 21300000, guid: 89a6613577620094085b3c60576818d3, type: 3}

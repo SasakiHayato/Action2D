@@ -7,8 +7,8 @@ public class PlayerDataClass : MonoBehaviour
     public static PlayerDataClass Instance = new PlayerDataClass();
 
     int m_attackPower = 1;
-    [System.NonSerialized] public int m_magicPower = 1;
-    [System.NonSerialized] public int m_shieldPower = 1;
+    int m_magicPower = 1;
+    int m_shieldPower = 1;
 
     int m_attackIdFirst = 0;
     public int SetAttackIdFirst 
@@ -43,6 +43,12 @@ public class PlayerDataClass : MonoBehaviour
     
     public int SetAttack() { return m_attackPower; }
     public int AttackPowerUp(int power) { return m_attackPower += power; }
+
+    public int SetMagic() => m_magicPower;
+    public int MagicPowerUp(int power) => m_magicPower += power;
+
+    public int SetShield() => m_shieldPower;
+    public int ShieldPowerUp(int power) => m_shieldPower += power;
 
     public int SetHp() { return m_hp; }
     public int GetHp(int hp) { return m_hp = hp; }

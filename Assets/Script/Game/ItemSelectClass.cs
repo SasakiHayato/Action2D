@@ -13,7 +13,7 @@ public class ItemSelectClass : MonoBehaviour
 
     private enum Status
     {
-        ItemSelece,
+        ItemSelect,
         StatusUp,
     }
     [SerializeField] Status m_status;
@@ -21,7 +21,7 @@ public class ItemSelectClass : MonoBehaviour
     [SerializeField] int m_setCount = 0;
     List<GameObject> m_imageObjects = new List<GameObject>();
     Uicontroller m_ui;
-    AttackItemDataBase m_dataBase;
+    ItemDataBase m_dataBase;
 
     bool m_selectBool = false;
     int m_crreantNum = 0;
@@ -38,7 +38,6 @@ public class ItemSelectClass : MonoBehaviour
         {
             GameObject set = transform.GetChild(i).gameObject;
             m_imageObjects.Add(set);
-
             m_defaultScale = m_imageObjects[i].transform.localScale;
         }
 
@@ -56,10 +55,8 @@ public class ItemSelectClass : MonoBehaviour
 
         if (Input.GetButtonDown("Submit1"))
         {
-            if (m_status == Status.ItemSelece)
-            {
-                SetItem();
-            }
+            if (m_status == Status.ItemSelect) SetItem();
+            else if (m_status == Status.StatusUp) StatusUp();
         }
     }
 
@@ -86,7 +83,16 @@ public class ItemSelectClass : MonoBehaviour
         set.transform.position = player.position;
     }
 
-    public void GetData(AttackItemDataBase dataBase, int id)
+    void StatusUp()
+    {
+        if (m_crreantNum == 0) PlayerDataClass.Instance.MagicPowerUp(1);
+        else if (m_crreantNum == 1) PlayerDataClass.Instance.ShieldPowerUp(1);
+        else if (m_crreantNum == 2) PlayerDataClass.Instance.AttackPowerUp(1);
+
+        m_ui.SetSelectCanvasActive();
+    }
+
+    public void GetData(ItemDataBase dataBase, int id)
     {
         m_dataBase = dataBase;
         m_getId = id;

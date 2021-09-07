@@ -24,15 +24,16 @@ public class Uicontroller : MonoBehaviour
 
     private Slider m_slider;
 
-    public GameObject m_slectCanvas { get; set; }
+    GameObject m_selectCanvas;
+    bool m_canvasActive = false;
     GameObject m_setCanvas;
 
     void Start()
     {
         m_slider = GameObject.Find("Slider").GetComponent<Slider>();
         
-        m_slectCanvas = GameObject.Find("SelectCanvas");
-        m_slectCanvas.SetActive(false);
+        m_selectCanvas = GameObject.Find("SelectCanvas");
+        m_selectCanvas.SetActive(m_canvasActive);
 
         m_setCanvas = GameObject.Find("ItemSetCanvas");
         m_setCanvas.SetActive(false);
@@ -58,9 +59,9 @@ public class Uicontroller : MonoBehaviour
 
     private void StatuUp()
     {
-        m_magicText.text = PlayerDataClass.Instance.m_magicPower.ToString();
+        m_magicText.text = PlayerDataClass.Instance.SetMagic().ToString();
         m_attackText.text = PlayerDataClass.Instance.SetAttack().ToString();
-        m_shieldText.text = PlayerDataClass.Instance.m_shieldPower.ToString();
+        m_shieldText.text = PlayerDataClass.Instance.SetShield().ToString();
     }
 
     public void SetSprite(Sprite set)
@@ -85,6 +86,13 @@ public class Uicontroller : MonoBehaviour
     {
         m_setFire3.sprite = set;
         m_setCanvas.SetActive(true);
+    }
+    public void SetSelectCanvasActive()
+    {
+        if (!m_canvasActive) m_canvasActive = true;
+        else m_canvasActive = false;
+
+        m_selectCanvas.SetActive(m_canvasActive);
     }
 
     public void SetCanvasFalse() => m_setCanvas.SetActive(false);

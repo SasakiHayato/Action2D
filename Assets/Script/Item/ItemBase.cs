@@ -23,7 +23,7 @@ public class ItemBase : MonoBehaviour
     {
         if (m_status == ItemStatus.StatusUp)
         {
-            m_ui.m_slectCanvas.SetActive(true);
+            //m_ui.m_slectCanvas.SetActive(true);
             PlayerDataClass.Instance.SetFreeze(true);
         }
         else if (m_status == ItemStatus.Heel)
@@ -44,11 +44,11 @@ public class ItemBase : MonoBehaviour
     {
         if (set == 0)
         {
-            PlayerDataClass.Instance.m_magicPower ++;
+           // PlayerDataClass.Instance.m_magicPower ++;
         }
         else if (set == 1)
         {
-            PlayerDataClass.Instance.m_shieldPower ++;
+            //PlayerDataClass.Instance.m_shieldPower ++;
         }
         else if (set == 2)
         {
@@ -58,7 +58,7 @@ public class ItemBase : MonoBehaviour
 
         PlayerDataClass.Instance.SetFreeze(false);
 
-        m_ui.m_slectCanvas.SetActive(false);
+        //m_ui.m_slectCanvas.SetActive(false);
     }
 
     public Vector2 SetTextPos(Vector2 vector, Transform player)

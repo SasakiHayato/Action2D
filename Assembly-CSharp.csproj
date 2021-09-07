@@ -92,13 +92,12 @@
     <Compile Include="Assets\Script\Game\SceneClass.cs" />
     <Compile Include="Assets\Script\Game\TeleportClass.cs" />
     <Compile Include="Assets\Script\Game\Uicontroller.cs" />
-    <Compile Include="Assets\Script\Item\AttackItemDataBase.cs" />
     <Compile Include="Assets\Script\Item\ItemBase.cs" />
     <Compile Include="Assets\Script\Item\ItemClass.cs" />
+    <Compile Include="Assets\Script\Item\ItemDataBase.cs" />
     <Compile Include="Assets\Script\Item\ItemHeel.cs" />
     <Compile Include="Assets\Script\Item\ItemStatus.cs" />
     <Compile Include="Assets\Script\Item\NewItemBase.cs" />
-    <Compile Include="Assets\Script\Item\StatusItemDataBase.cs" />
     <Compile Include="Assets\Script\Item\StatusSelect.cs" />
     <Compile Include="Assets\Script\Player\BulletContoller.cs" />
     <Compile Include="Assets\Script\Player\FloorCheck.cs" />

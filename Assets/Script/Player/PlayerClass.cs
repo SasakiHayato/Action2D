@@ -15,7 +15,7 @@ public class PlayerClass : MonoBehaviour, IDamage
     PlayerMove m_move;
     PlayerAttack m_attack;
     PlayerGravity m_gravity;
-    [SerializeField] AttackItemDataBase m_attackData;
+    [SerializeField] ItemDataBase m_attackData;
 
     Transform m_muzzlePos1;
     Transform m_muzzlePos2;
@@ -77,19 +77,26 @@ public class PlayerClass : MonoBehaviour, IDamage
         }
         else if (Input.GetButtonDown("Jump") && m_move.CrreantCrouch()) { m_floor.SetTriger(); }
 
-        if (Input.GetButtonDown("Fire1")) 
+        if (PlayerDataClass.Instance.SetIdBoolFirst)
         {
-            int attackId = 1;
-            int id = PlayerDataClass.Instance.SetAttackIdFirst;
-            m_attack.Attack(m_anim, m_attackData, id, attackId);
-        }
-        if (Input.GetButtonDown("Fire2")) 
-        {
-            int attackId = 2;
-            int id = PlayerDataClass.Instance.SetAttackIdSecond;
-            m_attack.Attack(m_anim, m_attackData, id, attackId);
+            if (Input.GetButtonDown("Fire1"))
+            {
+                int attackId = 1;
+                int id = PlayerDataClass.Instance.SetAttackIdFirst;
+                m_attack.Attack(m_anim, m_attackData, id, attackId);
+            }
         }
 
+        if (PlayerDataClass.Instance.SetIdBoolSecond)
+        {
+            if (Input.GetButtonDown("Fire2"))
+            {
+                int attackId = 2;
+                int id = PlayerDataClass.Instance.SetAttackIdSecond;
+                m_attack.Attack(m_anim, m_attackData, id, attackId);
+            }
+        }
+        
         if (Input.GetButtonDown("Fire3")) { m_move.Avoidance(m_player, m_avoid, m_collision, m_rb, h); }
     }
 
