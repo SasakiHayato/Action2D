@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 7678558579292484740}
   - component: {fileID: 5439147565157849704}
   - component: {fileID: 902700394446988396}
-  - component: {fileID: 4434971769149512147}
+  - component: {fileID: 1388518938222736599}
   m_Layer: 0
   m_Name: ItemHeelPotion
   m_TagString: Untagged
@@ -268,7 +268,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
---- !u!114 &4434971769149512147
+--- !u!114 &1388518938222736599
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_enum: 4
-  m_dataBase: {fileID: 11400000, guid: bd231ebabc8d64d4b8cdd9ea694170b4, type: 2}
+  m_dataBase: {fileID: 11400000, guid: 9f4a6a609a97a8249a314a892034d498, type: 2}
   m_text: {fileID: 4715889771931906261}
 --- !u!1 &7386858147785374732
 GameObject:
