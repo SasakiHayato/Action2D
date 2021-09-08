@@ -911,5 +911,5 @@ MonoBehaviour:
   m_floor: {fileID: 5731372964522277264}
   m_avoid: {fileID: 21300000, guid: 936708ac1e90d6e48b153f292ee97ed6, type: 3}
   m_player: {fileID: 21300000, guid: 20eb4cb2640e4b54a8dec3a6e702bff6, type: 3}
-  m_attackData: {fileID: 0}
+  m_attackData: {fileID: 11400000, guid: bd231ebabc8d64d4b8cdd9ea694170b4, type: 2}
   m_isDebug: 1

@@ -179,9 +179,9 @@ GameObject:
   - component: {fileID: 9132677586513261758}
   - component: {fileID: 6866241603919469138}
   - component: {fileID: 1780461724283233366}
-  - component: {fileID: 1780461724283233367}
+  - component: {fileID: 1910443976341355926}
   m_Layer: 0
-  m_Name: AttackItem
+  m_Name: ItemShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
---- !u!114 &1780461724283233367
+--- !u!114 &1910443976341355926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,11 +277,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5136068313943876656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26962b387a0bed64cb32400df6424561, type: 3}
+  m_Script: {fileID: 11500000, guid: d94ffd4750b845045a7601f61bbc637d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_enum: 2
-  m_dataBase: {fileID: 11400000, guid: bd231ebabc8d64d4b8cdd9ea694170b4, type: 2}
+  m_dataBase: {fileID: 11400000, guid: 9f4a6a609a97a8249a314a892034d498, type: 2}
   m_text: {fileID: 6142986283740098799}
 --- !u!1 &8264410850425093174
 GameObject:
