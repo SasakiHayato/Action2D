@@ -20,18 +20,22 @@ public class NewBossBulletClass : MonoBehaviour
 
     float m_count = 15;
 
-    public void SetDir(Transform parent, float x, float y, float power) => Shot(x, y, parent, power);
+    public void SetDir(Transform parent, float x, float y, float power)
+    {
+        Vector2 set = new Vector2(x, y);
+        Shot(set, parent, power);
+    }
 
-    public void SetPosToDiamond() => Shot(0, 0, null, 1);
+    public void SetPosToDiamond() => Shot(Vector2.zero, null, 1);
 
-    void Shot(float x, float y, Transform parent, float power)
+    void Shot(Vector2 setVec, Transform parent, float power)
     {
         if (m_kind == BulletKind.Slash)
         {
             GameObject set = Instantiate(m_slash);
             Rigidbody2D rb = set.GetComponent<Rigidbody2D>();
             set.transform.position = parent.position;
-            rb.AddForce(new Vector2(x, y) * power, ForceMode2D.Impulse);
+            rb.AddForce(setVec * power, ForceMode2D.Impulse);
             StartCoroutine(DesBullet(set));
         }
         else { StartCoroutine(SetDiamond()); }

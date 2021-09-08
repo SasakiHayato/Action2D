@@ -23,7 +23,6 @@ public class BommerClass : NewEnemyBase, IDamage
 
     public override void Move()
     {
-        Debug.Log("行動中");
         FieldCheck();
 
         m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);

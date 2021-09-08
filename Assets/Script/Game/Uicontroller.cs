@@ -38,6 +38,8 @@ public class Uicontroller : MonoBehaviour
         m_setCanvas = GameObject.Find("ItemSetCanvas");
         m_setCanvas.SetActive(false);
 
+        PlayerDataClass.Instance.SetIdBoolFirst = false;
+        PlayerDataClass.Instance.SetIdBoolSecond = false;
         if (m_set != null) SetSprite(m_set);
         if (m_subSet != null) SetSprite(m_subSet);
     }
@@ -55,9 +57,16 @@ public class Uicontroller : MonoBehaviour
         hpText.text = PlayerDataClass.Instance.SetHp().ToString("00" + "/１００");
     }
 
-    private void Timer() => timeText.text = GameManager.getInstance().SetTime().ToString("0s");
+    private void Timer()
+    {
+        if (!GameManager.getInstance().IsDungeon())
+        {
+            timeText.text = GameManager.getInstance().CrreantTime().ToString("0s");
+        }
+        else timeText.text = GameManager.getInstance().SetTime().ToString("0s");
+    }
 
-    private void StatuUp()
+        private void StatuUp()
     {
         m_magicText.text = PlayerDataClass.Instance.SetMagic().ToString();
         m_attackText.text = PlayerDataClass.Instance.SetAttack().ToString();

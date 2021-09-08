@@ -39,8 +39,6 @@ public class PlayerClass : MonoBehaviour, IDamage
         m_attackCollision = GameObject.Find("bone_12").GetComponent<Collider2D>();
         m_attackCollision.enabled = false;
 
-        //m_attack.SetShieldCollision();
-
         m_muzzlePos1 = transform.Find("Nozzle");
         m_muzzlePos2 = transform.Find("NozzleCrouch");
 

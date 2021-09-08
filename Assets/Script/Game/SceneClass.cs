@@ -10,17 +10,21 @@ public class SceneClass : MonoBehaviour
         switch (setName)
         {
             case "Dungeon":
+                GameManager.getInstance().SetDungeonBool(true);
                 if (GameManager.getInstance().GetDungeonCount() == 3) SceneManager.LoadScene("BossRoom");
                 else
                 {
-                    GameManager.getInstance().SetDungeonCount();
+                    int a = GameManager.getInstance().SetDungeonCount(1);
+                    Debug.Log(GameManager.getInstance().GetDungeonCount());
                     SceneManager.LoadScene(setName);
                 }
                 break;
             case "Midway":
+                GameManager.getInstance().SetDungeonBool(false);
                 SceneManager.LoadScene(setName);
                 break;
             case "Start":
+                GameManager.getInstance().SetDungeonBool(false);
                 SceneManager.LoadScene(setName);
                 break;
         }

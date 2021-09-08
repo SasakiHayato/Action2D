@@ -49,6 +49,7 @@ public class ItemClass : ItemBase
                 Debug.Log("Max");
                 return;
             }
+            PlayerDataClass.Instance.SetFreeze(false);
             Destroy(this.gameObject);
             return;
         }
@@ -73,6 +74,7 @@ public class ItemClass : ItemBase
         }
 
         SetItem();
+        PlayerDataClass.Instance.SetFreeze(false);
         Destroy(this.gameObject);
     }
 

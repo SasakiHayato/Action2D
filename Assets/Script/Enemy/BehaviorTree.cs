@@ -72,7 +72,7 @@ public class BehaviorTree : MonoBehaviour
         }
         else
         {
-            Debug.Log("条件なし");
+
         }
         if (m_action == ActionEnum.True) return;
         

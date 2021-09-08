@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CameraPostion.cs" />
     <Compile Include="Assets\Script\AttackClass.cs" />
     <Compile Include="Assets\Script\Enemy\ActiveClass.cs" />
     <Compile Include="Assets\Script\Enemy\ArcheryBowClass.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Script\Enemy\Boss\NewBossBulletClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\SetSlash.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\ShielderClass.cs" />
+    <Compile Include="Assets\Script\Enemy\Boss\SlashAdd.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\SlashClass.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyActive.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />
