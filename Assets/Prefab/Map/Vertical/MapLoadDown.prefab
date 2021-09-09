@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6447557824120904654}
   - component: {fileID: 9006081029388397440}
   - component: {fileID: 5181747150750833967}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: MapLoadDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,8 +815,8 @@ GameObject:
   - component: {fileID: 1687220688267780479}
   - component: {fileID: 1324637532495526839}
   - component: {fileID: 434975953372588096}
-  m_Layer: 8
-  m_Name: Ground
+  m_Layer: 12
+  m_Name: Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,7 +873,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0

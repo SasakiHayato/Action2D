@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShielderClass : NewEnemyBase, IDamage
+public class ShielderClass : EnemyBase, IDamage
 {
     [SerializeField] BehaviorTree m_tree;
     Animator m_anim;
@@ -25,7 +25,14 @@ public class ShielderClass : NewEnemyBase, IDamage
     }
 
     void Update() { m_tree.Tree(); }
-
+    public override void NewMove(SetActionType set)
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void NewAttack(SetActionType set)
+    {
+        throw new System.NotImplementedException();
+    }
     public override void Move()
     {
         m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);

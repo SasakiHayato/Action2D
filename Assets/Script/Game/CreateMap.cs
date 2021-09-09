@@ -484,7 +484,7 @@ public class CreateMap : MonoBehaviour
         GameObject cell = Instantiate(set, setVec, Quaternion.identity);
         cell.transform.SetParent(this.transform);
     }
-
+    int m_enemyCount = 1;
     private void SetEnemy()
     {
         int setCount = m_xEnemySetList.Count;
@@ -499,7 +499,8 @@ public class CreateMap : MonoBehaviour
                 Vector3 set = new Vector3(x, y, 0);
                 int random = Random.Range(0, m_enemy.Length);
                 GameObject setEnemy = Instantiate(m_enemy[random], set, Quaternion.identity);
-
+                setEnemy.name = $"Enemy{m_enemyCount}";
+                m_enemyCount++;
                 m_active.GetEnemy(setEnemy);
             }
         }

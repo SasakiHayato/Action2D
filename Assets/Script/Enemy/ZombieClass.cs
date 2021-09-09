@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieClass : NewEnemyBase, IDamage
+public class ZombieClass : EnemyBase, IDamage
 {
     [SerializeField] BehaviorTree m_tree;
     Animator m_anim;
     Rigidbody2D m_rb;
+
+    [SerializeField] NewBehaviourTree m_newTree;
 
     GameObject m_collider = default;
     bool m_attackCheck = false;
@@ -19,8 +21,24 @@ public class ZombieClass : NewEnemyBase, IDamage
         m_collider = transform.GetChild(0).gameObject;
     }
 
-    void Update() { m_tree.Tree(); }
+    void Update() 
+    {
+        //m_tree.Tree();
+        m_newTree.Repeter(this, this.name);
+    }
+    public override void NewMove(SetActionType set)
+    {
+        FieldCheck();
+        if (set == SetActionType.Move1)
+        {
+            if (SetSpeed() != 0) { m_anim.Play("Enemy_Walk"); }
+            else { m_anim.Play("Enemy_Idle"); }
 
+            m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
+        }
+
+        m_newTree.IntervalSetFalse(0);
+    }
     public override void Move()
     {
         FieldCheck();
@@ -30,7 +48,20 @@ public class ZombieClass : NewEnemyBase, IDamage
 
         m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
     }
-
+    public override void NewAttack(SetActionType set)
+    {
+        m_anim.Play("Enemy_Attack");
+        FindPlayerToLook();
+        if (set == SetActionType.NoamalAttack1)
+        {
+            return;
+        }
+        else if (set == SetActionType.NoamalAttack2)
+        {
+            m_rb.AddForce(new Vector2(RetuneStepFloat() * -6, 3), ForceMode2D.Impulse);
+            //m_tree.Interval(5);
+        }
+    }
     public override void Attack()
     {
         m_anim.Play("Enemy_Attack");
@@ -39,7 +70,7 @@ public class ZombieClass : NewEnemyBase, IDamage
         else if (SetAttack == SetAttackStatus.NormalAttack2)
         {
             m_rb.AddForce(new Vector2(RetuneStepFloat() * -6, 3), ForceMode2D.Impulse);
-            m_tree.Interval(5);
+            //m_tree.Interval(5);
         }
     }
 
@@ -58,7 +89,7 @@ public class ZombieClass : NewEnemyBase, IDamage
     public void BackStep()
     {
         m_rb.AddForce(new Vector2(RetuneStepFloat() * 6, 3), ForceMode2D.Impulse);
-        m_tree.Interval(5);
+        //m_tree.Interval(5);
     }
 
     // AnimetionIventで呼び出し

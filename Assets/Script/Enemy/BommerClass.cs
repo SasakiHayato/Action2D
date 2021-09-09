@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BommerClass : NewEnemyBase, IDamage
+public class BommerClass : EnemyBase, IDamage
 {
     [SerializeField] BehaviorTree m_tree;
     [SerializeField] GameObject m_bom;
@@ -20,7 +20,14 @@ public class BommerClass : NewEnemyBase, IDamage
     {
         m_tree.Tree();
     }
-
+    public override void NewAttack(SetActionType set)
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void NewMove(SetActionType set)
+    {
+        throw new System.NotImplementedException();
+    }
     public override void Move()
     {
         FieldCheck();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IDamage { void GetDamage(int damege); }
 
-public abstract class NewEnemyBase : MonoBehaviour
+public abstract class EnemyBase : MonoBehaviour
 {
     [SerializeField] int m_hp;
     [SerializeField] float m_speed;
@@ -108,4 +108,7 @@ public abstract class NewEnemyBase : MonoBehaviour
 
     public abstract void Move();
     public abstract void Attack();
+
+    public abstract void NewAttack(SetActionType set);
+    public abstract void NewMove(SetActionType set);
 }

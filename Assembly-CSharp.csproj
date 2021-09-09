@@ -80,9 +80,9 @@
     <Compile Include="Assets\Script\Enemy\Boss\SlashAdd.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\SlashClass.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyActive.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyBase.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />
     <Compile Include="Assets\Script\Enemy\NewBehaviourTree.cs" />
-    <Compile Include="Assets\Script\Enemy\NewEnemyBase.cs" />
     <Compile Include="Assets\Script\Enemy\ZombieClass.cs" />
     <Compile Include="Assets\Script\Game\AudioClass.cs" />
     <Compile Include="Assets\Script\Game\ButtonClass.cs" />

@@ -24,7 +24,7 @@ public class AttackClass : MonoBehaviour
 
     void EnemyAttack(IDamage get)
     {
-        NewEnemyBase enemyBase = m_parent.GetComponent<NewEnemyBase>();
+        EnemyBase enemyBase = m_parent.GetComponent<EnemyBase>();
         get.GetDamage(enemyBase.SetAttackPower());
     }
 }

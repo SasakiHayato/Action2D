@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArchryClass : NewEnemyBase, IDamage
+public class ArchryClass : EnemyBase, IDamage
 {
     [SerializeField] BehaviorTree m_tree;
     [SerializeField] ArcheryBowClass m_bowClass;
@@ -21,7 +21,14 @@ public class ArchryClass : NewEnemyBase, IDamage
     {
         m_tree.Tree();
     }
-
+    public override void NewAttack(SetActionType set)
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void NewMove(SetActionType set)
+    {
+        throw new System.NotImplementedException();
+    }
     public override void Move()
     {
         if (SetSpeed() != 0) { m_anim.Play("Archery_Walk"); }

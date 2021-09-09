@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossClass : NewEnemyBase, IDamage
+public class BossClass : EnemyBase, IDamage
 {
     BehaviorTree m_tree;
     
@@ -38,7 +38,14 @@ public class BossClass : NewEnemyBase, IDamage
     {
         m_tree.Tree();
     }
-
+    public override void NewAttack(SetActionType set)
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void NewMove(SetActionType set)
+    {
+        throw new System.NotImplementedException();
+    }
     public void GetDamage(int damage)
     {
         int hp = RetuneCrreantHp() - damage;

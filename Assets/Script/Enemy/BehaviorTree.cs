@@ -24,7 +24,7 @@ public class BehaviorTree : MonoBehaviour
     [SerializeField] float m_attack2PosMinY;
     [SerializeField] float m_attack2PosMaxY;
 
-    [SerializeField] NewEnemyBase m_enemy;
+    [SerializeField] EnemyBase m_enemy;
 
     private enum ConditionalEnum
     {
