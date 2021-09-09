@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BossClass : EnemyBase, IDamage
 {
-    BehaviorTree m_tree;
+    [SerializeField] BehaviourTree m_newTree;
     
     NewBossBulletClass m_bulletClass;
     [SerializeField] BossRoomManager m_roomManager;
@@ -26,7 +26,6 @@ public class BossClass : EnemyBase, IDamage
     void Start()
     {
         m_bulletClass = GetComponent<NewBossBulletClass>();
-        m_tree = GetComponent<BehaviorTree>();
      
         m_anim = GetComponent<Animator>();
         Debug.Log(GetMaxHp());
@@ -36,15 +35,56 @@ public class BossClass : EnemyBase, IDamage
 
     void Update()
     {
-        m_tree.Tree();
+        m_newTree.Repeter(this, this.name);
     }
     public override void NewAttack(SetActionType set)
     {
-        throw new System.NotImplementedException();
+        if (set == SetActionType.NoamalAttack1)
+        {
+            m_anim.Play("Boss_Attack_2");
+            m_bulletClass.SetEnum(BulletKind.Diamond);
+            m_bulletClass.SetPosToDiamond();
+            m_newTree.IntervalSetFalse(8);
+        }
+        else if (set == SetActionType.NoamalAttack2)
+        {
+            m_anim.Play("Boss_Attack_1");
+
+            m_bulletClass.SetEnum(BulletKind.Slash);
+
+            Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+            m_bulletClass.SetDir(gameObject.transform, player.position.x, player.position.y, 1);
+
+            m_newTree.IntervalSetFalse(0);
+        }
+        else if (set == SetActionType.SpAttack1)
+        {
+            gameObject.transform.position = m_bossAttackPos.transform.position;
+            StartCoroutine(SetSlash(0));
+        }
+        else if (set == SetActionType.SpAttack2)
+        {
+            m_roomManager.SetEnemy();
+        }
+        else if (set == SetActionType.SpAttack3)
+        {
+            StartCoroutine(SetBullet());
+        }
     }
     public override void NewMove(SetActionType set)
     {
-        throw new System.NotImplementedException();
+        if (set == SetActionType.Move1)
+        {
+            LookToPlayer();
+
+            //if (!Interval(2)) return;
+            float posX = Random.Range(m_minPos.position.x, m_maxPos.position.x);
+            float posY = Random.Range(m_minPos.position.y, m_maxPos.position.y);
+
+            transform.position = new Vector2(posX, posY);
+
+            m_newTree.IntervalSetFalse(3);
+        }
     }
     public void GetDamage(int damage)
     {
@@ -56,55 +96,7 @@ public class BossClass : EnemyBase, IDamage
             GameManager.getInstance().SetScene("Start");
         }
     }
-    public override void Move()
-    {
-        LookToPlayer();
-        
-        if (!Interval(2)) return;
-        float posX = Random.Range(m_minPos.position.x, m_maxPos.position.x);
-        float posY = Random.Range(m_minPos.position.y, m_maxPos.position.y);
-
-        transform.position = new Vector2(posX, posY);
-
-        m_tree.Interval(0);
-    }
     
-    public override void Attack()
-    {
-        if (SetAttack == SetAttackStatus.NormalAttack1)
-        {
-            m_anim.Play("Boss_Attack_2");
-            m_bulletClass.SetEnum(BulletKind.Diamond);
-            m_bulletClass.SetPosToDiamond();
-            m_tree.Interval(8);
-        }
-        else if (SetAttack == SetAttackStatus.NormalAttack2)
-        {
-            m_anim.Play("Boss_Attack_1");
-
-            m_bulletClass.SetEnum(BulletKind.Slash);
-
-            Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-            m_bulletClass.SetDir(gameObject.transform, player.position.x, player.position.y, 1);
-
-            m_tree.Interval(5);
-        }
-        else if (SetAttack == SetAttackStatus.SpAttack1)
-        {
-            gameObject.transform.position = m_bossAttackPos.transform.position;
-            StartCoroutine(SetSlash(0));
-        }
-        else if (SetAttack == SetAttackStatus.SpAttack2)
-        {
-            m_roomManager.SetEnemy();
-        }
-        else if (SetAttack == SetAttackStatus.SpAttack3)
-        {
-            StartCoroutine(SetBullet());
-        }
-    }
-    
-
     IEnumerator SetSlash(int set)
     {
         m_anim.Play("Boss_Attack_1");
@@ -122,7 +114,7 @@ public class BossClass : EnemyBase, IDamage
         }
         else
         {
-            m_tree.Interval(0);
+            m_newTree.IntervalSetFalse(0);
             m_count = 0;
         }
     }
@@ -140,7 +132,7 @@ public class BossClass : EnemyBase, IDamage
         }
         else
         {
-            m_tree.Interval(0);
+            m_newTree.IntervalSetFalse(0);
             m_count = 0;
         }
     }

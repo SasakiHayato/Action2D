@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShielderClass : EnemyBase, IDamage
 {
-    [SerializeField] BehaviorTree m_tree;
+    [SerializeField] BehaviourTree m_newTree;
     Animator m_anim;
     Rigidbody2D m_rb;
 
@@ -24,36 +24,35 @@ public class ShielderClass : EnemyBase, IDamage
         m_shieldCollider = transform.Find("Shield").gameObject.GetComponent<Collider2D>();
     }
 
-    void Update() { m_tree.Tree(); }
+    void Update() 
+    {
+        //m_tree.Tree(); 
+        m_newTree.Repeter(this, this.name);
+    }
     public override void NewMove(SetActionType set)
     {
-        throw new System.NotImplementedException();
+        if (set == SetActionType.Move1)
+        {
+            m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
+            if (SetSpeed() != 0) { m_anim.Play("Shielder_Walk"); }
+            else { m_anim.Play("Shielder_Idle"); }
+
+            FieldCheck();
+            m_newTree.IntervalSetFalse(0);
+        }
     }
     public override void NewAttack(SetActionType set)
     {
-        throw new System.NotImplementedException();
-    }
-    public override void Move()
-    {
-        m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
-        if (SetSpeed() != 0) { m_anim.Play("Shielder_Walk"); }
-        else { m_anim.Play("Shielder_Idle"); }
-
-        FieldCheck();
-    }
-
-    public override void Attack()
-    {
         FindPlayerToLook();
-        if (SetAttack == SetAttackStatus.NormalAttack1)
+        if (set == SetActionType.NoamalAttack1)
         {
             m_anim.Play("Shielder_Attack");
-            m_tree.Interval(2.5f);
+            m_newTree.IntervalSetFalse(2.5f);
         }
-        else if (SetAttack == SetAttackStatus.NormalAttack2)
+        else if (set == SetActionType.NoamalAttack2)
         {
             m_rb.AddForce(new Vector2(RetuneStepFloat() * -1, 0) * 15, ForceMode2D.Impulse);
-            m_tree.Interval(4);
+            m_newTree.IntervalSetFalse(4);
         }
     }
 

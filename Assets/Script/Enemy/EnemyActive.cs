@@ -8,6 +8,7 @@ public class EnemyActive : MonoBehaviour
     Transform m_player;
 
     [SerializeField] Vector2 m_activeVec = Vector2.zero;
+    bool m_active = false;
 
     void Start()
     {
@@ -29,16 +30,17 @@ public class EnemyActive : MonoBehaviour
         float absX = Mathf.Abs(transform.position.x - m_player.position.x);
         float absY = Mathf.Abs(transform.position.y - m_player.position.y);
 
-        if (absX < m_activeVec.x && absY < m_activeVec.y)
+        if (absX < m_activeVec.x && absY < m_activeVec.y && !m_active)
         {
             m_target.SetActive(true);
+            BehaviourTree tree = m_target.GetComponent<BehaviourTree>();
+            tree.IntervalSetFalse(0);
+            m_active = true;
         }
-        else
+        if (absX > m_activeVec.x && absY > m_activeVec.y && m_active)
         {
             m_target.SetActive(false);
+            m_active = false;
         }
     }
-
-    //private void OnBecameVisible() { m_target.SetActive(true); }
-    //private void OnBecameInvisible() { m_target.SetActive(false); }
 }

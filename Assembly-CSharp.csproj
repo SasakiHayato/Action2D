@@ -64,12 +64,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CameraPostion.cs" />
     <Compile Include="Assets\Script\AttackClass.cs" />
     <Compile Include="Assets\Script\Enemy\ActiveClass.cs" />
     <Compile Include="Assets\Script\Enemy\ArcheryBowClass.cs" />
     <Compile Include="Assets\Script\Enemy\ArchryClass.cs" />
-    <Compile Include="Assets\Script\Enemy\BehaviorTree.cs" />
+    <Compile Include="Assets\Script\Enemy\BehaviourTree.cs" />
     <Compile Include="Assets\Script\Enemy\BomContoller.cs" />
     <Compile Include="Assets\Script\Enemy\BommerClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\BossClass.cs" />
@@ -82,10 +81,10 @@
     <Compile Include="Assets\Script\Enemy\EnemyActive.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyBase.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />
-    <Compile Include="Assets\Script\Enemy\NewBehaviourTree.cs" />
     <Compile Include="Assets\Script\Enemy\ZombieClass.cs" />
     <Compile Include="Assets\Script\Game\AudioClass.cs" />
     <Compile Include="Assets\Script\Game\ButtonClass.cs" />
+    <Compile Include="Assets\Script\Game\CameraPostion.cs" />
     <Compile Include="Assets\Script\Game\CreateMap.cs" />
     <Compile Include="Assets\Script\Game\FadeClass.cs" />
     <Compile Include="Assets\Script\Game\GameManager.cs" />

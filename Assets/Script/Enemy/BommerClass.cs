@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BommerClass : EnemyBase, IDamage
 {
-    [SerializeField] BehaviorTree m_tree;
+    [SerializeField] BehaviourTree m_newTree;
     [SerializeField] GameObject m_bom;
     [SerializeField] Transform m_muzzle;
 
@@ -18,35 +18,31 @@ public class BommerClass : EnemyBase, IDamage
 
     void Update()
     {
-        m_tree.Tree();
+        m_newTree.Repeter(this, this.name);
     }
     public override void NewAttack(SetActionType set)
     {
-        throw new System.NotImplementedException();
-    }
-    public override void NewMove(SetActionType set)
-    {
-        throw new System.NotImplementedException();
-    }
-    public override void Move()
-    {
-        FieldCheck();
-
-        m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
-        
-        if (SetSpeed() != 0) { m_anim.Play("Bommer_Walk"); }
-        else { m_anim.Play("Bommer_Idle"); }
-    }
-    public override void Attack()
-    {
-        if (SetAttack == SetAttackStatus.NormalAttack1)
+        if (set == SetActionType.NoamalAttack1)
         {
             m_anim.Play("Bommer_Attack");
             FindPlayerToLook();
-            m_tree.Interval(6);
+            m_newTree.IntervalSetFalse(6);
         }
     }
+    public override void NewMove(SetActionType set)
+    {
+        if (set == SetActionType.Move1)
+        {
+            FieldCheck();
 
+            m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
+
+            if (SetSpeed() != 0) { m_anim.Play("Bommer_Walk"); }
+            else { m_anim.Play("Bommer_Idle"); }
+            m_newTree.IntervalSetFalse(0);
+        }
+    }
+    
     // animetionIventで呼び出し
     public void SetBom()
     {

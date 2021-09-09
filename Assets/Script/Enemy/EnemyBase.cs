@@ -11,9 +11,6 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] int m_attackPower;
     [SerializeField] GameObject m_deadSprite = default;
 
-    public SetAttackStatus SetAttack { get => m_set; set { m_set = value; } }
-    SetAttackStatus m_set;
-    
     public int MaxHp { get => m_maxHp; set { m_maxHp = m_hp; } }
     public int GetMaxHp() => m_maxHp = m_hp;
     int m_maxHp;
@@ -105,9 +102,6 @@ public abstract class EnemyBase : MonoBehaviour
         if (get < 0) { transform.localScale = new Vector2(-0.15f, 0.15f); }
         else if (get > 0){ transform.localScale = new Vector2(0.15f, 0.15f); }
     }
-
-    public abstract void Move();
-    public abstract void Attack();
 
     public abstract void NewAttack(SetActionType set);
     public abstract void NewMove(SetActionType set);

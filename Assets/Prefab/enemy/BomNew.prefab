@@ -215,5 +215,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_parentEnum: 1
-  m_parent: {fileID: 5199733711518500034, guid: 9677842e1f6d6494aa69d9cfcb2c8851,
+  m_parent: {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2,
     type: 3}

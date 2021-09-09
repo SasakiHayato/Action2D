@@ -14,7 +14,7 @@ public enum SetActionType
     Move1,
 }
 
-public class NewBehaviourTree : MonoBehaviour
+public class BehaviourTree : MonoBehaviour
 {
     private enum Running
     {
@@ -31,7 +31,7 @@ public class NewBehaviourTree : MonoBehaviour
     {
         if (m_running == Running.True) return;
         else m_running = Running.True;
-
+        Debug.Log(thisName);
         SelectorNode selector = new SelectorNode();
         SequenceNode sequence = new SequenceNode();
 
@@ -46,18 +46,14 @@ public class NewBehaviourTree : MonoBehaviour
 
         selector.Select(m_conditionalSets);
         sequence.Sequence(selector.Bool, m_conditionalSets, enemyBase);
-
-        
     }
 
-    public void IntervalSetFalse(float time)
+    public void IntervalSetFalse(float time) => StartCoroutine(Interval(time));
+    
+    IEnumerator Interval(float time)
     {
-        m_intervalTime += Time.deltaTime;
-        if (m_intervalTime > time)
-        {
-            m_running = Running.False;
-            m_intervalTime = 0;
-        }
+        yield return new WaitForSeconds(time);
+        m_running = Running.False;
     }
 }
 

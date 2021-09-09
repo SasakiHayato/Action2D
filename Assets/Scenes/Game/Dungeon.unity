@@ -175,10 +175,10 @@ MonoBehaviour:
   m_teleport: {fileID: 2898806459412491750, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
   m_enemy:
-  - {fileID: 1321655782015174293, guid: c72b9ac44fdde8f4b81d0da515c5dabb, type: 3}
-  - {fileID: 5199733711518500034, guid: 9677842e1f6d6494aa69d9cfcb2c8851, type: 3}
-  - {fileID: 3508226740641177857, guid: 6de8591418c80504bbffb0454d0f08c4, type: 3}
-  - {fileID: 806285874816837312, guid: 24d1c6f7f8297974389fbde95a4c9312, type: 3}
+  - {fileID: 7556875420137796808, guid: ba097d003b6f8ff41b693072993170fe, type: 3}
+  - {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2, type: 3}
+  - {fileID: 10286366019730813, guid: 3d37b210d9bbc4a49b1a6ffec660b6f0, type: 3}
+  - {fileID: 7334885445736080073, guid: f7b61ae9fa672a643976452ef81630b2, type: 3}
   m_teleClass: {fileID: -1347530605163886530, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
   m_active: {fileID: 5983765948031259428, guid: a448589865d12ce47a84d590fd739288,

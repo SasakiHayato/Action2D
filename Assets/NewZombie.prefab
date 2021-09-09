@@ -111,7 +111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7334885444610062427
 Transform:
   m_ObjectHideFlags: 0
@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 7334885445736080069}
   - component: {fileID: 7334885445736080068}
   - component: {fileID: 7334885445736080075}
-  - component: {fileID: 5242542032638697206}
+  - component: {fileID: 6990982435549485846}
   m_Layer: 11
   m_Name: NewZombie
   m_TagString: Enemy
@@ -627,9 +627,8 @@ MonoBehaviour:
   m_attackPower: 10
   m_deadSprite: {fileID: 2747617401634751992, guid: 324cfdfe08761574ba2f20263579feba,
     type: 3}
-  m_tree: {fileID: 0}
-  m_newTree: {fileID: 5242542032638697206}
---- !u!114 &5242542032638697206
+  m_newTree: {fileID: 6990982435549485846}
+--- !u!114 &6990982435549485846
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -638,12 +637,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7334885445736080073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a45b20afa7fe2242a6684aecad63b2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8674501475f8907478496fdfcaf44404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_conditionalSets:
-    m_findMinVec: {x: 3, y: 2}
-    m_findMaxVec: {x: 6, y: 8}
+    m_findMinVec: {x: 3, y: 1}
+    m_findMaxVec: {x: 6, y: 1}
 --- !u!1 &7334885445907476326
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArchryClass : EnemyBase, IDamage
 {
-    [SerializeField] BehaviorTree m_tree;
+    [SerializeField] BehaviourTree m_newTree;
     [SerializeField] ArcheryBowClass m_bowClass;
     [SerializeField] Transform m_muzzle;
 
@@ -19,32 +19,27 @@ public class ArchryClass : EnemyBase, IDamage
 
     void Update()
     {
-        m_tree.Tree();
+        m_newTree.Repeter(this, this.name);
     }
     public override void NewAttack(SetActionType set)
     {
-        throw new System.NotImplementedException();
-    }
-    public override void NewMove(SetActionType set)
-    {
-        throw new System.NotImplementedException();
-    }
-    public override void Move()
-    {
-        if (SetSpeed() != 0) { m_anim.Play("Archery_Walk"); }
-        else { m_anim.Play("Archery_Idle"); }
-
-        FieldCheck();
-        m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
-    }
-
-    public override void Attack()
-    {
-        if (SetAttack == SetAttackStatus.NormalAttack1)
+        if (set == SetActionType.NoamalAttack1)
         {
             m_anim.Play("Archery_Attack");
             FindPlayerToLook();
-            m_tree.Interval(4);
+            m_newTree.IntervalSetFalse(4);
+        }
+    }
+    public override void NewMove(SetActionType set)
+    {
+        if (set == SetActionType.Move1)
+        {
+            if (SetSpeed() != 0) { m_anim.Play("Archery_Walk"); }
+            else { m_anim.Play("Archery_Idle"); }
+
+            FieldCheck();
+            m_rb.velocity = new Vector2(SetSpeed(), m_rb.velocity.y);
+            m_newTree.IntervalSetFalse(0);
         }
     }
 
