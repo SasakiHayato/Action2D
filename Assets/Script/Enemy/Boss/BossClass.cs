@@ -16,8 +16,8 @@ public class BossClass : EnemyBase, IDamage
     [SerializeField] Transform[] m_phase3Pos = new Transform[0];
 
     [SerializeField] Slider m_hpSlider;
+    [SerializeField] GameObject m_slash;
 
-    float m_time;
     int m_count = 0;
 
     Animator m_anim;
@@ -63,10 +63,13 @@ public class BossClass : EnemyBase, IDamage
         else if (set == SetActionType.SpAttack2)
         {
             m_roomManager.SetEnemy();
+            m_newTree.IntervalSetFalse(0);
         }
         else if (set == SetActionType.SpAttack3)
         {
+            m_roomManager.SetEnemy();
             StartCoroutine(SetBullet());
+            m_newTree.IntervalSetFalse(0);
         }
     }
     public override void NewMove(SetActionType set)

@@ -47,8 +47,9 @@ public class BehaviourTree : MonoBehaviour
         sequence.Sequence(selector.Bool, m_conditionalSets, enemyBase);
     }
 
+
+
     public void IntervalSetFalse(float time) => StartCoroutine(Interval(time));
-    
     IEnumerator Interval(float time)
     {
         yield return new WaitForSeconds(time);
@@ -59,11 +60,23 @@ public class BehaviourTree : MonoBehaviour
 // 行動
 class ActionNode
 {
-    public void Action(ConditionalNode cn, SequenceNode.Result rslt, EnemyBase eb)
+    public void Action(ConditionalNode cn, EnemyBase eb)
     {
-        if (cn.Phase1) eb.NewAttack(SetActionType.SpAttack1);
-        else if (cn.Phase2) eb.NewAttack(SetActionType.SpAttack2);
-        else if (cn.Phase3) eb.NewAttack(SetActionType.SpAttack3);
+        if (cn.Execution1)
+        {
+            cn.Execution1 = false;
+            eb.NewAttack(SetActionType.SpAttack1);
+        }
+        else if (cn.Execution2)
+        {
+            cn.Execution2 = false;
+            eb.NewAttack(SetActionType.SpAttack2);
+        }
+        else if (cn.Execution3)
+        {
+            cn.Execution3 = false;
+            eb.NewAttack(SetActionType.SpAttack3);
+        }
         else
         {
             if (cn.Attack1) eb.NewAttack(SetActionType.NoamalAttack1);
@@ -71,7 +84,7 @@ class ActionNode
         }
     }
 
-    public void Move(SequenceNode.Result result, EnemyBase eb)
+    public void Move(EnemyBase eb)
     {
         eb.NewMove(SetActionType.Move1);
     }
@@ -94,13 +107,13 @@ class ConditionalNode
     public bool Attack2 { get; private set; }
 
     bool m_phase1 = false;
-    public bool Phase1 { get => m_phase1; private set { } }
+    public bool Execution1 { get; set; }
 
     bool m_phase2 = false;
-    public bool Phase2 { get => m_phase2; private set { } }
+    public bool Execution2 { get; set; }
 
     bool m_phase3 = false;
-    public bool Phase3 { get => m_phase3; private set { } }
+    public bool Execution3 { get; set; }
 
     public void Condition(ConditionalNode conditional, SelectorNode selector)
     {
@@ -108,9 +121,9 @@ class ConditionalNode
         conditional.Attack2 = false;
         SelectorNode.Result result = SelectorNode.Result.False;
 
-        PlayerCheck(conditional,ref result);
+        
         CrreantHpCheck(conditional, ref result);
-
+        PlayerCheck(conditional, ref result);
         selector.Bool = result;
     }
 
@@ -148,18 +161,22 @@ class ConditionalNode
         if (percent * 75 >= conditional.GetHp && !conditional.m_phase1)
         {
             conditional.m_phase1 = true;
+            conditional.Execution1 = true;
+            Debug.Log($"Check後 :{conditional.m_phase1}");
             result = SelectorNode.Result.True;
             return;
         }
-        else if (percent * 50 >= conditional.GetHp && conditional.m_phase2)
+        else if (percent * 50 >= conditional.GetHp && !conditional.m_phase2)
         {
             conditional.m_phase2 = true;
+            conditional.Execution2 = true;
             result = SelectorNode.Result.True;
             return;
         }
-        else if (percent * 25 >= conditional.GetHp && conditional.m_phase3)
+        else if (percent * 25 >= conditional.GetHp && !conditional.m_phase3)
         {
             conditional.m_phase3 = true;
+            conditional.Execution3 = true;
             result = SelectorNode.Result.True;
             return;
         }
@@ -212,7 +229,7 @@ class SequenceNode
         Bool = Result.True;
         ActionNode action = new ActionNode();
         
-        if (rslt == SelectorNode.Result.True) action.Action(cn, Bool, eb);
-        else action.Move(Bool, eb);
+        if (rslt == SelectorNode.Result.True) action.Action(cn, eb);
+        else action.Move(eb);
     }
 }

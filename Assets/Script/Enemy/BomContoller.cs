@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BomContoller : MonoBehaviour
 {
-    GameObject m_player;
-    GameObject m_hitColliderOb;
+    Collider2D m_hitCollider;
 
     Rigidbody2D m_rb;
 
@@ -15,12 +14,10 @@ public class BomContoller : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
 
-        m_hitColliderOb = transform.GetChild(0).gameObject;
-        m_hitColliderOb.SetActive(false);
-        
-        Vector2 vector = new Vector2();
+        m_hitCollider = transform.GetChild(0).gameObject.GetComponent<Collider2D>();
+        m_hitCollider.enabled = false;
 
-        Vector2 force = ProjectileMotion(vector) * 8.5f;
+        Vector2 force = ProjectileMotion() * 8.5f;
         m_rb.AddForce(force, ForceMode2D.Impulse);
 
         StartCoroutine(SetCollider(2.0f));
@@ -29,33 +26,26 @@ public class BomContoller : MonoBehaviour
     void Update()
     {
         m_time += Time.deltaTime;
-        if (m_time > 3)
-        {
-            Explosion();
-        }
+        if (m_time > 3) Explosion();
     }
 
     private IEnumerator SetCollider(float time)
     {
         yield return new WaitForSeconds(time);
-        m_hitColliderOb.SetActive(true);
+        m_hitCollider.enabled = true;
     }
    
     private void Explosion()
     {
-        DestroyBom();
-    }
 
-    private void DestroyBom()
-    {
         Destroy(this.gameObject);
     }
 
-    private Vector2 ProjectileMotion(Vector2 vector)
+    private Vector2 ProjectileMotion()
     {
-        m_player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         float v0 = 5;
-        float x = m_player.transform.position.x - this.transform.position.x;
+        float x = player.transform.position.x - this.transform.position.x;
         float t = 3;
 
         float cos = x / (v0 * t);
@@ -63,25 +53,8 @@ public class BomContoller : MonoBehaviour
 
         float rad = angle * Mathf.Deg2Rad;
 
-        vector = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+        Vector2 vector = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
 
         return vector;
-    }
-
-    private Vector2 ExplosionAngle(Vector2 vector)
-    {
-        float angle;
-        if (this.transform.position.x < m_player.transform.position.x) { angle = 45; }
-        else { angle = 135; }
-        float rad = angle * Mathf.Deg2Rad;
-
-        vector = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
-
-        return vector;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player")) { Explosion(); }
     }
 }

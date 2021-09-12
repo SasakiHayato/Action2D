@@ -32,10 +32,12 @@ public class NewBossBulletClass : MonoBehaviour
     {
         if (m_kind == BulletKind.Slash)
         {
-            GameObject set = Instantiate(m_slash);
+            Vector2 parentVec = parent.position;
+            GameObject set = Instantiate(m_slash, parent.position, Quaternion.identity);
             Rigidbody2D rb = set.GetComponent<Rigidbody2D>();
+            Vector2 shot = setVec - parentVec;
             set.transform.position = parent.position;
-            rb.AddForce(setVec * power, ForceMode2D.Impulse);
+            rb.AddForce(shot * power, ForceMode2D.Impulse);
             StartCoroutine(DesBullet(set));
         }
         else { StartCoroutine(SetDiamond()); }
