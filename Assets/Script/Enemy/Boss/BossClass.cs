@@ -18,7 +18,6 @@ public class BossClass : EnemyBase, IDamage
     [SerializeField] Slider m_hpSlider;
 
     float m_time;
-    int m_hpPasent;
     int m_count = 0;
 
     Animator m_anim;
@@ -30,7 +29,6 @@ public class BossClass : EnemyBase, IDamage
         m_anim = GetComponent<Animator>();
         Debug.Log(GetMaxHp());
         m_hpSlider.value = RetuneCrreantHp();
-        m_hpPasent = RetuneCrreantHp() / 100;
     }
 
     void Update()
@@ -55,7 +53,7 @@ public class BossClass : EnemyBase, IDamage
             Transform player = GameObject.FindGameObjectWithTag("Player").transform;
             m_bulletClass.SetDir(gameObject.transform, player.position.x, player.position.y, 1);
 
-            m_newTree.IntervalSetFalse(0);
+            m_newTree.IntervalSetFalse(5);
         }
         else if (set == SetActionType.SpAttack1)
         {
@@ -77,7 +75,6 @@ public class BossClass : EnemyBase, IDamage
         {
             LookToPlayer();
 
-            //if (!Interval(2)) return;
             float posX = Random.Range(m_minPos.position.x, m_maxPos.position.x);
             float posY = Random.Range(m_minPos.position.y, m_maxPos.position.y);
 
@@ -137,23 +134,6 @@ public class BossClass : EnemyBase, IDamage
         }
     }
 
-    bool Interval(float time)
-    {
-        bool interval;
-
-        m_time += Time.deltaTime;
-        if (m_time > time)
-        {
-            interval = true;
-            m_time = 0;
-        }
-        else
-        {
-            interval = false;
-        }
-
-        return interval;
-    }
     void LookToPlayer()
     {
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -161,6 +141,5 @@ public class BossClass : EnemyBase, IDamage
         if (transform.position.x > player.position.x) { transform.localScale = new Vector2(-0.3f, 0.3f); }
         else { transform.localScale = new Vector2(0.3f, 0.3f); }
     }
-    public float SetHp() => m_hpPasent;
     public void SetPos() => transform.position = m_bossAttackPos.position;
 }

@@ -26,6 +26,33 @@ public class ItemClass : ItemBase
 
     void SetStatus()
     {
+        PlayerDataClass.Instance.SetFreeze(true);
+        if (DataBase.GetItemId(ItemId).GetStatuId() == 2)
+        {
+            SelectStatus();
+            Destroy(this.gameObject);
+            return;
+        }
+        else if (DataBase.GetItemId(ItemId).GetStatuId() == 3)
+        {
+            if (PlayerDataClass.Instance.SetHp() < PlayerDataClass.Instance.m_maxHp)
+            {
+                int heel = PlayerDataClass.Instance.SetHp() + 30;
+                PlayerDataClass.Instance.GetHp(heel);
+                if (PlayerDataClass.Instance.SetHp() > 100)
+                {
+                    PlayerDataClass.Instance.GetHp(100);
+                }
+            }
+            else
+            {
+                Debug.Log("Max");
+                return;
+            }
+            PlayerDataClass.Instance.SetFreeze(false);
+            Destroy(this.gameObject);
+            return;
+        }
         bool first = PlayerDataClass.Instance.SetIdBoolFirst;
         bool second = PlayerDataClass.Instance.SetIdBoolSecond;
 
@@ -47,6 +74,7 @@ public class ItemClass : ItemBase
         }
 
         SetItem();
+        PlayerDataClass.Instance.SetFreeze(false);
         Destroy(this.gameObject);
     }
 

@@ -75,12 +75,12 @@
     <Compile Include="Assets\Script\Enemy\Boss\BossRoomManager.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\NewBossBulletClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\SetSlash.cs" />
-    <Compile Include="Assets\Script\Enemy\Boss\ShielderClass.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\SlashAdd.cs" />
     <Compile Include="Assets\Script\Enemy\Boss\SlashClass.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyActive.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyBase.cs" />
     <Compile Include="Assets\Script\Enemy\HitExplosion.cs" />
+    <Compile Include="Assets\Script\Enemy\ShielderClass.cs" />
     <Compile Include="Assets\Script\Enemy\ZombieClass.cs" />
     <Compile Include="Assets\Script\Game\AudioClass.cs" />
     <Compile Include="Assets\Script\Game\ButtonClass.cs" />
@@ -103,6 +103,7 @@
     <Compile Include="Assets\Script\Player\PlayerDataClass.cs" />
     <Compile Include="Assets\Script\Player\PlayerGravity.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Script\ShieldClass.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

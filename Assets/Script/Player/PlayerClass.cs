@@ -22,6 +22,7 @@ public class PlayerClass : MonoBehaviour, IDamage
     Collider2D m_collision;
 
     Collider2D m_attackCollision;
+    Collider2D m_shieldCollision;
 
     bool m_freeze;
     [SerializeField] bool m_isDebug;
@@ -39,13 +40,13 @@ public class PlayerClass : MonoBehaviour, IDamage
         m_attackCollision = GameObject.Find("bone_12").GetComponent<Collider2D>();
         m_attackCollision.enabled = false;
 
+        m_shieldCollision = GameObject.Find("ShieldCollider").GetComponent<Collider2D>();
+        m_shieldCollision.enabled = false;
+
         m_muzzlePos1 = transform.Find("Nozzle");
         m_muzzlePos2 = transform.Find("NozzleCrouch");
 
-        if (m_isDebug)
-        {
-            GameManager.getInstance().SetCrreantPlay(m_isDebug);
-        }
+        if (m_isDebug) GameManager.getInstance().SetCrreantPlay(m_isDebug);
     }
 
     void Update()
@@ -126,5 +127,10 @@ public class PlayerClass : MonoBehaviour, IDamage
     {
         if (!m_attackCollision.enabled) m_attackCollision.enabled = true;
         else m_attackCollision.enabled = false;
+    }
+    public void SetShield()
+    {
+        if (!m_shieldCollision.enabled) m_shieldCollision.enabled = true;
+        else m_shieldCollision.enabled = false;
     }
 }

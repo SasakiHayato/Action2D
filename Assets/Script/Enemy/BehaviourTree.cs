@@ -25,13 +25,12 @@ public class BehaviourTree : MonoBehaviour
 
     [SerializeField] ConditionalNode m_conditionalSets;
     bool m_firstBool = false;
-    float m_intervalTime = 0;
 
     public void Repeter(EnemyBase enemyBase, string thisName)
     {
         if (m_running == Running.True) return;
         else m_running = Running.True;
-        Debug.Log(thisName);
+     
         SelectorNode selector = new SelectorNode();
         SequenceNode sequence = new SequenceNode();
 
