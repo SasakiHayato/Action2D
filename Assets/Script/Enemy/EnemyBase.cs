@@ -17,7 +17,9 @@ public abstract class EnemyBase : MonoBehaviour
 
     float m_defaultSpeed;
     bool m_setSpeed = false;
-    
+
+    Transform m_player;
+
     public int SetAttackPower() { return m_attackPower; }
     public int RetuneCrreantHp() { return m_hp; }
     public int SetHp(int set, GameObject parent) 
@@ -29,6 +31,8 @@ public abstract class EnemyBase : MonoBehaviour
     {
         GameObject set = Instantiate(m_deadSprite);
         set.transform.position = transform.position;
+        int randomAngle = Random.Range(0, 360);
+        set.transform.localRotation = Quaternion.Euler(0, 0, randomAngle);
         Destroy(parent);
     }
     public void FieldCheck()
@@ -85,12 +89,10 @@ public abstract class EnemyBase : MonoBehaviour
     }
     public void FindPlayerToLook()
     {
-        Vector2 ray = new Vector2(SetSpeed() * 10, 0);
-        LayerMask layer = LayerMask.GetMask("Player");
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, ray, ray.magnitude, layer);
+        if (m_player == null) m_player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        if (!hit.collider)
-        { transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y); }
+        if (m_player.position.x < transform.position.x) transform.localScale = new Vector2(-0.15f, 0.15f);
+        else transform.localScale = new Vector2(0.15f, 0.15f);
     }
     public float SetSpeed() 
     {
