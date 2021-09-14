@@ -452,7 +452,7 @@ public class CreateMap : MonoBehaviour
         if (m_maps[x, y] == MapStatus.Wall)
         {
             set = m_mapWall;
-            setVec = new Vector3(vector.x, vector.y, 0);
+            setVec = new Vector3(vector.x, vector.y, -1);
         }
         if (m_maps[x, y] == MapStatus.Load)
         {

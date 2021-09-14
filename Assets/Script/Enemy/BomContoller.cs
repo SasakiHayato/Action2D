@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BomContoller : MonoBehaviour
 {
+    [SerializeField] GameObject m_explosionObject;
     Collider2D m_hitCollider;
-
     Rigidbody2D m_rb;
 
     float m_time = 0;
@@ -20,7 +20,7 @@ public class BomContoller : MonoBehaviour
         Vector2 force = ProjectileMotion() * 8.5f;
         m_rb.AddForce(force, ForceMode2D.Impulse);
 
-        StartCoroutine(SetCollider(2.0f));
+        StartCoroutine(SetCollider(2.9f));
     }
 
     void Update()
@@ -37,7 +37,8 @@ public class BomContoller : MonoBehaviour
    
     private void Explosion()
     {
-
+        GameObject set = Instantiate(m_explosionObject);
+        set.transform.position = new Vector3(transform.position.x, transform.position.y, 0.5f);
         Destroy(this.gameObject);
     }
 

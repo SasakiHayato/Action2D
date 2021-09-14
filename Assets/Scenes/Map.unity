@@ -175,10 +175,10 @@ MonoBehaviour:
   m_teleport: {fileID: 2898806459412491750, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
   m_enemy:
-  - {fileID: 1321655782015174293, guid: c72b9ac44fdde8f4b81d0da515c5dabb, type: 3}
-  - {fileID: 5199733711518500034, guid: 9677842e1f6d6494aa69d9cfcb2c8851, type: 3}
-  - {fileID: 3508226740641177857, guid: 6de8591418c80504bbffb0454d0f08c4, type: 3}
-  - {fileID: 806285874816837312, guid: 24d1c6f7f8297974389fbde95a4c9312, type: 3}
+  - {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2, type: 3}
+  - {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2, type: 3}
+  - {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2, type: 3}
+  - {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2, type: 3}
   m_teleClass: {fileID: -1347530605163886530, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
   m_active: {fileID: 673553000}
@@ -231,8 +231,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 1705761174}
+  m_Follow: {fileID: 1705761174}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 9.52
@@ -487,6 +487,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1495799866
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407089149667811968, guid: 391d4c22c50c9d442afdc90a46204bb4,
+        type: 3}
+      propertyPath: m_Name
+      value: TestNewPlayerNewNew
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 391d4c22c50c9d442afdc90a46204bb4, type: 3}
+--- !u!4 &1705761174 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3407089149667811961, guid: 391d4c22c50c9d442afdc90a46204bb4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1495799866}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5983765947626735948
 PrefabInstance:
   m_ObjectHideFlags: 0
