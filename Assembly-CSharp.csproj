@@ -88,14 +88,17 @@
     <Compile Include="Assets\Script\Game\CreateMap.cs" />
     <Compile Include="Assets\Script\Game\FadeClass.cs" />
     <Compile Include="Assets\Script\Game\GameManager.cs" />
+    <Compile Include="Assets\Script\Game\GameUiClass.cs" />
     <Compile Include="Assets\Script\Game\ItemSelectClass.cs" />
     <Compile Include="Assets\Script\Game\MoveBackGround.cs" />
     <Compile Include="Assets\Script\Game\SceneClass.cs" />
     <Compile Include="Assets\Script\Game\TeleportClass.cs" />
+    <Compile Include="Assets\Script\Game\TextManager.cs" />
     <Compile Include="Assets\Script\Game\Uicontroller.cs" />
     <Compile Include="Assets\Script\Item\ItemBase.cs" />
     <Compile Include="Assets\Script\Item\ItemClass.cs" />
     <Compile Include="Assets\Script\Item\ItemDataBase.cs" />
+    <Compile Include="Assets\Script\NewMapClass.cs" />
     <Compile Include="Assets\Script\Player\BulletContoller.cs" />
     <Compile Include="Assets\Script\Player\FloorCheck.cs" />
     <Compile Include="Assets\Script\Player\PlayerAttack.cs" />

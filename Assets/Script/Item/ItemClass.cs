@@ -46,7 +46,7 @@ public class ItemClass : ItemBase
             }
             else
             {
-                Debug.Log("Max");
+                GameUi.TextObjectActive(true);
                 return;
             }
             PlayerDataClass.Instance.SetFreeze(false);

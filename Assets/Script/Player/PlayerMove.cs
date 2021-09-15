@@ -50,7 +50,6 @@ public class PlayerMove : MonoBehaviour
         sprite.sprite = set;
     }
 
-
     public bool CrreantCrouch() { return m_crouch; }
     public bool CrreantAvoid() { return m_avoid; }
 }
