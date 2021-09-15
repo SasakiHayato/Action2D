@@ -86,6 +86,7 @@
     <Compile Include="Assets\Script\Game\AudioClass.cs" />
     <Compile Include="Assets\Script\Game\CameraPostion.cs" />
     <Compile Include="Assets\Script\Game\CreateMap.cs" />
+    <Compile Include="Assets\Script\Game\FadeClass.cs" />
     <Compile Include="Assets\Script\Game\GameManager.cs" />
     <Compile Include="Assets\Script\Game\GameUiClass.cs" />
     <Compile Include="Assets\Script\Game\MoveBackGround.cs" />
