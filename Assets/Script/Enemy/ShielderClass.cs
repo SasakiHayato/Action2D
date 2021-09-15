@@ -29,7 +29,7 @@ public class ShielderClass : EnemyBase, IDamage
         //m_tree.Tree(); 
         m_newTree.Repeter(this, this.name);
     }
-    public override void NewMove(SetActionType set)
+    public override void Move(SetActionType set)
     {
         if (set == SetActionType.Move1)
         {
@@ -41,7 +41,7 @@ public class ShielderClass : EnemyBase, IDamage
             m_newTree.IntervalSetFalse(0);
         }
     }
-    public override void NewAttack(SetActionType set)
+    public override void Attack(SetActionType set)
     {
         FindPlayerToLook();
         if (set == SetActionType.NoamalAttack1)

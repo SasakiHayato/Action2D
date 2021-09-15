@@ -6,12 +6,16 @@ public interface IDamage { void GetDamage(int damege); }
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    [SerializeField] int m_hp;
+    int m_attackPower;
+    int m_hp;
     [SerializeField] float m_speed;
-    [SerializeField] int m_attackPower;
     [SerializeField] GameObject m_deadSprite = default;
+    [SerializeField] ItemDataBase m_itemData;
 
+    public int GetAttackPower { get => m_attackPower; set { m_attackPower = value; } }
+    public int GetHp { get => m_hp; set { m_hp = value; } }
     public int MaxHp { get => m_maxHp; set { m_maxHp = m_hp; } }
+
     public int GetMaxHp() => m_maxHp = m_hp;
     int m_maxHp;
 
@@ -30,10 +34,34 @@ public abstract class EnemyBase : MonoBehaviour
     void Died(GameObject parent)
     {
         GameObject set = Instantiate(m_deadSprite);
-        set.transform.position = transform.position;
+        set.transform.position = new Vector3(transform.position.x, transform.position.y, -1);
         int randomAngle = Random.Range(0, 360);
         set.transform.localRotation = Quaternion.Euler(0, 0, randomAngle);
+        DropItem();
         Destroy(parent);
+    }
+    void DropItem()
+    {
+        bool setBool = false;
+        int id = 0;
+        int random = Random.Range(0, 10);
+        switch (random)
+        {
+            case 1:
+                id = (int)ItemEnum.Heel;
+                setBool = true;
+                break;
+            case 2:
+                id = (int)ItemEnum.Status;
+                setBool = true;
+                break;
+        }
+
+        if (setBool)
+        {
+            GameObject set = Instantiate(m_itemData.GetItemId(id).GetObject());
+            set.transform.position = transform.position;
+        }
     }
     public void FieldCheck()
     {
@@ -105,6 +133,6 @@ public abstract class EnemyBase : MonoBehaviour
         else if (get > 0){ transform.localScale = new Vector2(0.15f, 0.15f); }
     }
 
-    public abstract void NewAttack(SetActionType set);
-    public abstract void NewMove(SetActionType set);
+    public abstract void Attack(SetActionType set);
+    public abstract void Move(SetActionType set);
 }

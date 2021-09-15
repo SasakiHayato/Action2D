@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 7556875420137796854}
   - component: {fileID: 7018532747537545129}
   m_Layer: 11
-  m_Name: NewArchery
+  m_Name: Archery
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,11 +287,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fd35daed6438c4e957cf5363903eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hp: 10
   m_speed: -2
-  m_attackPower: 10
   m_deadSprite: {fileID: 2747617401634751992, guid: 324cfdfe08761574ba2f20263579feba,
     type: 3}
+  m_itemData: {fileID: 11400000, guid: bd231ebabc8d64d4b8cdd9ea694170b4, type: 2}
   m_newTree: {fileID: 7018532747537545129}
   m_bowClass: {fileID: 1241961983823739946, guid: a0968c85bbd333942bd97805ed796848,
     type: 3}
@@ -309,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_conditionalSets:
+    m_isSpecial: 0
     m_findMinVec: {x: 10, y: 1}
     m_findMaxVec: {x: 0, y: 0}
 --- !u!1 &7556875420181000126

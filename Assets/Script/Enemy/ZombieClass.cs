@@ -24,7 +24,7 @@ public class ZombieClass : EnemyBase, IDamage
     {
         m_newTree.Repeter(this, this.name);
     }
-    public override void NewMove(SetActionType set)
+    public override void Move(SetActionType set)
     {
         FieldCheck();
         if (set == SetActionType.Move1)
@@ -38,12 +38,15 @@ public class ZombieClass : EnemyBase, IDamage
         m_newTree.IntervalSetFalse(0);
     }
     
-    public override void NewAttack(SetActionType set)
+    public override void Attack(SetActionType set)
     {
+        Debug.Log(set);
         m_anim.Play("Enemy_Attack");
         FindPlayerToLook();
         if (set == SetActionType.NoamalAttack1)
         {
+            Debug.Log(m_newTree);
+            m_newTree.IntervalSetFalse(5);
             return;
         }
         else if (set == SetActionType.NoamalAttack2)

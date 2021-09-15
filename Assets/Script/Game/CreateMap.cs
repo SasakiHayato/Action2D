@@ -32,9 +32,7 @@ public class CreateMap : MonoBehaviour
 
     [SerializeField] private GameObject m_goal = null;
     [SerializeField] private GameObject m_teleport = null;
-
-    [SerializeField] private GameObject[] m_enemy = null;
-
+    
     private const int m_mapHeight = 15;
     private const int m_mapWide = 15;
 
@@ -61,6 +59,8 @@ public class CreateMap : MonoBehaviour
 
     [SerializeField] TeleportClass m_teleClass;
     [SerializeField] ActiveClass m_active;
+
+    [SerializeField] EnemyDataBase m_enemyData;
 
     void Start()
     {
@@ -484,7 +484,7 @@ public class CreateMap : MonoBehaviour
         GameObject cell = Instantiate(set, setVec, Quaternion.identity);
         cell.transform.SetParent(this.transform);
     }
-    int m_enemyCount = 1;
+    
     private void SetEnemy()
     {
         int setCount = m_xEnemySetList.Count;
@@ -496,13 +496,23 @@ public class CreateMap : MonoBehaviour
             int setRandom = Random.Range(0, 15);
             if (setRandom > 5)
             {
-                Vector3 set = new Vector3(x, y, 0);
-                int random = Random.Range(0, m_enemy.Length);
-                GameObject setEnemy = Instantiate(m_enemy[random], set, Quaternion.identity);
-                setEnemy.name = $"Enemy{m_enemyCount}";
-                m_enemyCount++;
-                m_active.GetEnemy(setEnemy);
+                int randomId = Random.Range(0, m_enemyData.GetEnemyLength);
+                SetEnemyData(randomId, x, y);
             }
         }
+    }
+
+    private void SetEnemyData(int setId, int x, int y)
+    {
+        Vector2 setVec = new Vector2(x, y);
+        GameObject setEnemy = Instantiate(m_enemyData.GetEnemyData(setId).EnemyObject, setVec, Quaternion.identity);
+        setEnemy.name = m_enemyData.GetEnemyData(setId).Name;
+
+        EnemyBase enemyBase = setEnemy.GetComponent<EnemyBase>();
+        enemyBase.GetHp = m_enemyData.GetEnemyData(setId).Hp;
+        enemyBase.GetAttackPower = m_enemyData.GetEnemyData(setId).AttackPower;
+        Debug.Log($"HP :{enemyBase.GetHp} AttackPower :{enemyBase.GetAttackPower}");
+
+        m_active.GetEnemy(setEnemy);
     }
 }

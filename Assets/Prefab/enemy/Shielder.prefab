@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4452477516599239021}
   - component: {fileID: 6097702691631987335}
   m_Layer: 11
-  m_Name: NewShielder 1
+  m_Name: Shielder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,11 +284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00affb8dd65f16b40ad58f17e23f8147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hp: 10
   m_speed: 1
-  m_attackPower: 10
   m_deadSprite: {fileID: 2747617401634751992, guid: 324cfdfe08761574ba2f20263579feba,
     type: 3}
+  m_itemData: {fileID: 11400000, guid: bd231ebabc8d64d4b8cdd9ea694170b4, type: 2}
   m_newTree: {fileID: 6097702691631987335}
 --- !u!114 &6097702691631987335
 MonoBehaviour:
@@ -303,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_conditionalSets:
+    m_isSpecial: 0
     m_findMinVec: {x: 3, y: 1}
     m_findMaxVec: {x: 8, y: 1}
 --- !u!1 &4452477516683850422

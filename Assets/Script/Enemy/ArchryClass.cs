@@ -21,16 +21,16 @@ public class ArchryClass : EnemyBase, IDamage
     {
         m_newTree.Repeter(this, this.name);
     }
-    public override void NewAttack(SetActionType set)
+    public override void Attack(SetActionType set)
     {
         if (set == SetActionType.NoamalAttack1)
         {
             m_anim.Play("Archery_Attack");
             FindPlayerToLook();
-            m_newTree.IntervalSetFalse(4);
+            m_newTree.IntervalSetFalse(5);
         }
     }
-    public override void NewMove(SetActionType set)
+    public override void Move(SetActionType set)
     {
         if (set == SetActionType.Move1)
         {

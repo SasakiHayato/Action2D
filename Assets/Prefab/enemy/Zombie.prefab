@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 7334885445736080075}
   - component: {fileID: 6990982435549485846}
   m_Layer: 11
-  m_Name: NewZombie
+  m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -622,11 +622,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef51731e70d0e7e41b9340f65e0fe19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hp: 100
   m_speed: 2
-  m_attackPower: 10
   m_deadSprite: {fileID: 2747617401634751992, guid: 324cfdfe08761574ba2f20263579feba,
     type: 3}
+  m_itemData: {fileID: 11400000, guid: bd231ebabc8d64d4b8cdd9ea694170b4, type: 2}
   m_newTree: {fileID: 6990982435549485846}
 --- !u!114 &6990982435549485846
 MonoBehaviour:
@@ -641,6 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_conditionalSets:
+    m_isSpecial: 0
     m_findMinVec: {x: 3, y: 1}
     m_findMaxVec: {x: 6, y: 1}
 --- !u!1 &7334885445907476326

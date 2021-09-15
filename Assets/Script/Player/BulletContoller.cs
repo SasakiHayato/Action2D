@@ -11,7 +11,7 @@ public class BulletContoller : MonoBehaviour
     {
         transform.Translate(speed / 8, 0, 0);
         m_time += Time.deltaTime;
-        if (m_time > 1)
+        if (m_time > 0.5f)
         {
             Destroy(this.gameObject);
         }

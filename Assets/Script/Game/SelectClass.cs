@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class ItemSelectClass : MonoBehaviour
+public class SelectClass : MonoBehaviour
 {
     private enum Type
     {
@@ -15,10 +16,14 @@ public class ItemSelectClass : MonoBehaviour
     {
         ItemSelect,
         StatusUp,
+
+        Button,
     }
     [SerializeField] Status m_status;
 
     [SerializeField] int m_setCount = 0;
+    [SerializeField] UnityEvent[] m_events;
+
     List<GameObject> m_imageObjects = new List<GameObject>();
     Uicontroller m_ui;
     ItemDataBase m_dataBase;
@@ -57,9 +62,12 @@ public class ItemSelectClass : MonoBehaviour
         {
             if (m_status == Status.ItemSelect) SetItem();
             else if (m_status == Status.StatusUp) StatusUp();
+            else if (m_status == Status.Button) SetEvent();
             PlayerDataClass.Instance.SetFreeze(false);
         }
     }
+
+    void SetEvent() => m_events[m_crreantNum].Invoke();
 
     void SetItem()
     {

@@ -174,15 +174,11 @@ MonoBehaviour:
   m_goal: {fileID: 7854122389216636070, guid: 404bff6d4d27f29468e6221a083dfbd9, type: 3}
   m_teleport: {fileID: 2898806459412491750, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
-  m_enemy:
-  - {fileID: 7556875420137796808, guid: ba097d003b6f8ff41b693072993170fe, type: 3}
-  - {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2, type: 3}
-  - {fileID: 10286366019730813, guid: 3d37b210d9bbc4a49b1a6ffec660b6f0, type: 3}
-  - {fileID: 7334885445736080073, guid: f7b61ae9fa672a643976452ef81630b2, type: 3}
   m_teleClass: {fileID: -1347530605163886530, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
   m_active: {fileID: 5983765948031259428, guid: a448589865d12ce47a84d590fd739288,
     type: 3}
+  m_enemyData: {fileID: 11400000, guid: 6d1c05cd01b23584d82e159ae9bd0169, type: 2}
 --- !u!4 &87207911
 Transform:
   m_ObjectHideFlags: 0

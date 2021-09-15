@@ -146,7 +146,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87207909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 759d1f46d7a790d498453148c6f6d0e9, type: 3}
   m_Name: 
@@ -175,14 +175,10 @@ MonoBehaviour:
   m_goal: {fileID: 7854122389216636070, guid: 404bff6d4d27f29468e6221a083dfbd9, type: 3}
   m_teleport: {fileID: 2898806459412491750, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
-  m_enemy:
-  - {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2, type: 3}
-  - {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2, type: 3}
-  - {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2, type: 3}
-  - {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2, type: 3}
   m_teleClass: {fileID: -1347530605163886530, guid: a356e6caf209e584cb0a75872fbe9cd0,
     type: 3}
   m_active: {fileID: 673553000}
+  m_enemyData: {fileID: 11400000, guid: 6d1c05cd01b23584d82e159ae9bd0169, type: 2}
 --- !u!4 &87207911
 Transform:
   m_ObjectHideFlags: 0
@@ -204,11 +200,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87207909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f69bb379a1ce56249ac31ce71b8bbb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_wall: {fileID: 0}
+  m_load: {fileID: 0}
 --- !u!1 &490549478
 GameObject:
   m_ObjectHideFlags: 0

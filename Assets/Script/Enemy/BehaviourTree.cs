@@ -30,7 +30,7 @@ public class BehaviourTree : MonoBehaviour
     {
         if (m_running == Running.True) return;
         else m_running = Running.True;
-     
+        
         SelectorNode selector = new SelectorNode();
         SequenceNode sequence = new SequenceNode();
 
@@ -46,8 +46,6 @@ public class BehaviourTree : MonoBehaviour
         selector.Select(m_conditionalSets);
         sequence.Sequence(selector.Bool, m_conditionalSets, enemyBase);
     }
-
-
 
     public void IntervalSetFalse(float time) => StartCoroutine(Interval(time));
     IEnumerator Interval(float time)
@@ -65,28 +63,28 @@ class ActionNode
         if (cn.Execution1)
         {
             cn.Execution1 = false;
-            eb.NewAttack(SetActionType.SpAttack1);
+            eb.Attack(SetActionType.SpAttack1);
         }
         else if (cn.Execution2)
         {
             cn.Execution2 = false;
-            eb.NewAttack(SetActionType.SpAttack2);
+            eb.Attack(SetActionType.SpAttack2);
         }
         else if (cn.Execution3)
         {
             cn.Execution3 = false;
-            eb.NewAttack(SetActionType.SpAttack3);
+            eb.Attack(SetActionType.SpAttack3);
         }
         else
         {
-            if (cn.Attack1) eb.NewAttack(SetActionType.NoamalAttack1);
-            else if (cn.Attack2) eb.NewAttack(SetActionType.NoamalAttack2);
+            if (cn.Attack1) eb.Attack(SetActionType.NoamalAttack1);
+            else if (cn.Attack2) eb.Attack(SetActionType.NoamalAttack2);
         }
     }
 
     public void Move(EnemyBase eb)
     {
-        eb.NewMove(SetActionType.Move1);
+        eb.Move(SetActionType.Move1);
     }
 }
 
@@ -94,6 +92,8 @@ class ActionNode
 [System.Serializable]
 class ConditionalNode
 {
+    [SerializeField] bool m_isSpecial;
+
     [SerializeField] Vector2 m_findMinVec = Vector2.zero;
     [SerializeField] Vector2 m_findMaxVec = Vector2.zero;
 
@@ -157,12 +157,12 @@ class ConditionalNode
     {
         conditional.m_hpPercent = conditional.GetMaxHp / 100;
         float percent = conditional.m_hpPercent;
-        
+
+        if (!m_isSpecial) return;
         if (percent * 75 >= conditional.GetHp && !conditional.m_phase1)
         {
             conditional.m_phase1 = true;
             conditional.Execution1 = true;
-            Debug.Log($"Check後 :{conditional.m_phase1}");
             result = SelectorNode.Result.True;
             return;
         }

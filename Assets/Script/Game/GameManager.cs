@@ -8,7 +8,7 @@ public class GameManager
     static public GameManager getInstance() => instance;
     private GameManager() { }
 
-    SceneClass scene = new SceneClass();
+    SceneManager scene = new SceneManager();
 
     bool m_isPlay = false;
     bool m_isDungeon = false;

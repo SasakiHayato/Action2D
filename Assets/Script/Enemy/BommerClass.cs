@@ -20,7 +20,7 @@ public class BommerClass : EnemyBase, IDamage
     {
         m_newTree.Repeter(this, this.name);
     }
-    public override void NewAttack(SetActionType set)
+    public override void Attack(SetActionType set)
     {
         if (set == SetActionType.NoamalAttack1)
         {
@@ -29,7 +29,7 @@ public class BommerClass : EnemyBase, IDamage
             m_newTree.IntervalSetFalse(6);
         }
     }
-    public override void NewMove(SetActionType set)
+    public override void Move(SetActionType set)
     {
         if (set == SetActionType.Move1)
         {

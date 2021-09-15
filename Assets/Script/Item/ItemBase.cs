@@ -8,7 +8,7 @@ public class ItemBase : MonoBehaviour
     [SerializeField] ItemDataBase m_dataBase;
     Uicontroller m_ui;
     GameUiClass m_gameUi;
-    ItemSelectClass m_select;
+    SelectClass m_select;
 
     public GameUiClass GameUi { get => m_gameUi; }
     public ItemDataBase DataBase { get => m_dataBase; }
@@ -26,7 +26,7 @@ public class ItemBase : MonoBehaviour
     public void SelectStatus() => m_ui.SetSelectCanvasActive();
     public void SetId()
     {
-        m_select = FindObjectOfType<ItemSelectClass>();
+        m_select = FindObjectOfType<SelectClass>();
         m_select.GetData(m_dataBase, ItemId);
     }
 }
