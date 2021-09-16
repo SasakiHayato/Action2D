@@ -12,11 +12,14 @@ public class BomContoller : MonoBehaviour
 
     void Start()
     {
-        m_rb = GetComponent<Rigidbody2D>();
+        
 
         m_hitCollider = transform.GetChild(0).gameObject.GetComponent<Collider2D>();
         m_hitCollider.enabled = false;
-
+        if (m_rb == null)
+        {
+            m_rb = GetComponent<Rigidbody2D>();
+        }
         Vector2 force = ProjectileMotion() * 8.5f;
         m_rb.AddForce(force, ForceMode2D.Impulse);
 

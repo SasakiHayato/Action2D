@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_conditionalSets:
     m_isSpecial: 0
-    m_findMinVec: {x: 10, y: 1}
+    m_findMinVec: {x: 10, y: 2}
     m_findMaxVec: {x: 0, y: 0}
 --- !u!1 &7556875420181000126
 GameObject:

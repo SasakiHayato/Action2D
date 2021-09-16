@@ -9,6 +9,7 @@ public class AudioClass : MonoBehaviour
         Title,
         Start,
         Dungeon,
+        Boss,
     }
     [SerializeField] private SceneEnum m_enum;
 
@@ -33,6 +34,10 @@ public class AudioClass : MonoBehaviour
         if (m_enum == SceneEnum.Dungeon)
         {
             m_source.clip = m_bgm[2];
+        }
+        if (m_enum == SceneEnum.Boss)
+        {
+            m_source.clip = m_bgm[3];
         }
         m_source.volume = m_volume;
         m_source.Play();

@@ -19,11 +19,14 @@ public class BossClass : EnemyBase, IDamage
     [SerializeField] GameObject m_slash;
 
     int m_count = 0;
+    [SerializeField] int m_hp;
 
     Animator m_anim;
 
     void Start()
     {
+        GetHp = m_hp;
+        MaxHp = m_hp;
         m_bulletClass = GetComponent<NewBossBulletClass>();
      
         m_anim = GetComponent<Animator>();
@@ -104,6 +107,7 @@ public class BossClass : EnemyBase, IDamage
         {
             float rad = angle * Mathf.Deg2Rad;
             m_bulletClass.SetEnum(BulletKind.Slash);
+            m_bulletClass.IsSpcial = true;
             m_bulletClass.SetDir(gameObject.transform, Mathf.Sin(rad), Mathf.Cos(rad), 3);
         }
         yield return new WaitForSeconds(4f);

@@ -502,12 +502,13 @@ public class CreateMap : MonoBehaviour
         }
     }
 
+    int m_count = 0;
     private void SetEnemyData(int setId, int x, int y)
     {
         Vector2 setVec = new Vector2(x, y);
         GameObject setEnemy = Instantiate(m_enemyData.GetEnemyData(setId).EnemyObject, setVec, Quaternion.identity);
-        setEnemy.name = m_enemyData.GetEnemyData(setId).Name;
-
+        setEnemy.name = $"{m_enemyData.GetEnemyData(setId).Name} :number {m_count}";
+        m_count++;
         EnemyBase enemyBase = setEnemy.GetComponent<EnemyBase>();
         enemyBase.GetHp = m_enemyData.GetEnemyData(setId).Hp;
         enemyBase.GetAttackPower = m_enemyData.GetEnemyData(setId).AttackPower;

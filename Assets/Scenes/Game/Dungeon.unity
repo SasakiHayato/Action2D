@@ -916,6 +916,11 @@ PrefabInstance:
       propertyPath: m_enum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2099760284755475529, guid: eb78d0dfa141bb7418eb07bbe8c97a17,
+        type: 3}
+      propertyPath: m_volume
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb78d0dfa141bb7418eb07bbe8c97a17, type: 3}
 --- !u!4 &1804041084 stripped

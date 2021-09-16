@@ -158,7 +158,7 @@ class ConditionalNode
         conditional.m_hpPercent = conditional.GetMaxHp / 100;
         float percent = conditional.m_hpPercent;
 
-        if (!m_isSpecial) return;
+        if (!conditional.m_isSpecial) return;
         if (percent * 75 >= conditional.GetHp && !conditional.m_phase1)
         {
             conditional.m_phase1 = true;

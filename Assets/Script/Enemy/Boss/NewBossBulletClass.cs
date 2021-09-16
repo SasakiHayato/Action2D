@@ -19,6 +19,8 @@ public class NewBossBulletClass : MonoBehaviour
     [SerializeField] Transform m_maxPos;
 
     float m_count = 15;
+    bool m_isSpcial = false;
+    public bool IsSpcial { get => m_isSpcial; set { m_isSpcial = value; } }
 
     public void SetDir(Transform parent, float x, float y, float power)
     {
@@ -35,7 +37,17 @@ public class NewBossBulletClass : MonoBehaviour
             Vector2 parentVec = parent.position;
             GameObject set = Instantiate(m_slash, parent.position, Quaternion.identity);
             Rigidbody2D rb = set.GetComponent<Rigidbody2D>();
-            Vector2 shot = setVec - parentVec;
+            Vector2 shot = Vector2.zero;
+            if (!m_isSpcial)
+            {
+                shot = setVec - parentVec;
+            }
+            else
+            {
+                shot = setVec;
+                m_isSpcial = false;
+            }
+            
             set.transform.position = parent.position;
             rb.AddForce(shot * power, ForceMode2D.Impulse);
             StartCoroutine(DesBullet(set));

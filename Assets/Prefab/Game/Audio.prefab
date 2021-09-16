@@ -144,6 +144,7 @@ MonoBehaviour:
   m_click: {fileID: 8300000, guid: 259b8db7ce62179499da7a27e17c7060, type: 3}
   m_bgm:
   - {fileID: 8300000, guid: 17cb8eedaab5c204cab056dd7d905d81, type: 3}
-  - {fileID: 8300000, guid: cc0078799728e204ba66248445c44f03, type: 3}
-  - {fileID: 8300000, guid: 4dc4a0a2b96ed1449956a6b8c3d464f4, type: 3}
+  - {fileID: 8300000, guid: da87bc9f494854147a194b899d632175, type: 3}
+  - {fileID: 8300000, guid: c72a366a77e95294c8a5851009ab080e, type: 3}
+  - {fileID: 8300000, guid: 95332e63ad220614e8e9fb035086d61e, type: 3}
   m_volume: 0.5
