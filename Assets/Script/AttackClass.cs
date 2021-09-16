@@ -16,6 +16,9 @@ public class AttackClass : MonoBehaviour
     bool m_isShield = false;
     public bool IsShield { get => m_isShield; set { m_isShield = value; } }
 
+    int m_attackPower;
+    public int AttackPower { get => m_attackPower; set { m_attackPower = value; } }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IDamage get = collision.GetComponent<IDamage>();
@@ -27,7 +30,7 @@ public class AttackClass : MonoBehaviour
             m_isShield = false;
             return;
         }
-        if (m_parentEnum == SetParent.Player) { get.GetDamage(PlayerDataClass.getInstance().SetAttack() * 10); }
+        if (m_parentEnum == SetParent.Player) { get.GetDamage(m_attackPower); }
         if (m_parentEnum == SetParent.Enemy) { EnemyAttack(get); }
     }
 

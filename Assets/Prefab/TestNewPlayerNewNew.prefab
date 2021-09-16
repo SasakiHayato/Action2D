@@ -885,8 +885,8 @@ MonoBehaviour:
   - {fileID: 545386318804796689}
   - {fileID: 545386319566923859}
   m_Bounds:
-    m_Center: {x: 1.192399, y: -0.038722992, z: 0}
-    m_Extent: {x: 7.667104, y: 6.157607, z: 0}
+    m_Center: {x: 1.1923976, y: -0.038722515, z: 0}
+    m_Extent: {x: 7.6671014, y: 6.157607, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &3407089149667811962
@@ -990,6 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d477e286bcd664ea088a32cce5a0c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_attack: {fileID: 545386319704758103}
 --- !u!114 &3407089149667811967
 MonoBehaviour:
   m_ObjectHideFlags: 0
