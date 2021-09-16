@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class GameUiClass : MonoBehaviour
 {
     [SerializeField] GameObject m_textObject;
+    [SerializeField] GameObject m_selectCanvas;
 
     void Start()
     {
         m_textObject.SetActive(false);
+        m_selectCanvas.SetActive(false);
     }
 
     public void TextObjectActive(bool set)

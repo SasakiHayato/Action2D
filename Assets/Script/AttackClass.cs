@@ -27,7 +27,7 @@ public class AttackClass : MonoBehaviour
             m_isShield = false;
             return;
         }
-        if (m_parentEnum == SetParent.Player) { get.GetDamage(PlayerDataClass.Instance.SetAttack() * 10); }
+        if (m_parentEnum == SetParent.Player) { get.GetDamage(PlayerDataClass.getInstance().SetAttack() * 10); }
         if (m_parentEnum == SetParent.Enemy) { EnemyAttack(get); }
     }
 

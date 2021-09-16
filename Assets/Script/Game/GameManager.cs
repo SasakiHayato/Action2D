@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager
+public class GameManager : MonoBehaviour
 {
-    static GameManager instance = new GameManager();
-    static public GameManager getInstance() => instance;
-    private GameManager() { }
+    public static GameManager Instance = new GameManager();
 
-    SceneManager scene = new SceneManager();
+    SceneLoadClass m_loadClass = new SceneLoadClass();
 
     bool m_isPlay = false;
     bool m_isDungeon = false;
     int m_dungeonCount = 0;
     float m_timer = 0;
-
-    
 
     public void SetCrreantPlay(bool set) => m_isPlay = set;
     public bool GetCrreantPlay() => m_isPlay;
@@ -28,7 +24,21 @@ public class GameManager
     public float CrreantTime() => m_timer;
     
     public bool IsDungeon() => m_isDungeon;
-    public bool SetDungeonBool(bool set) => m_isDungeon = set; 
+    public bool SetDungeonBool(bool set) => m_isDungeon = set;
 
-    public void SetScene(string set) => scene.OnLoadScene(set);
+    public void SetScene(string set) => m_loadClass.OnLoadScene(set);
+
+    private static bool m_cureated = false;
+    private void Awake()
+    {
+        if (!m_cureated)
+        {
+            DontDestroyOnLoad(gameObject);
+            m_cureated = true;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }

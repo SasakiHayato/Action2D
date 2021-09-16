@@ -29,7 +29,7 @@ public class TextManager : MonoBehaviour
 
     IEnumerator IndicateText(int id, float time, GameObject parent)
     {
-        PlayerDataClass.Instance.SetFreeze(false);
+        PlayerDataClass.getInstance().SetFreeze(false);
         if (m_text == null)
         {
             m_text = transform.GetChild(0).gameObject.GetComponent<Text>();

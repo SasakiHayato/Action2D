@@ -25,7 +25,7 @@ public class SelectClass : MonoBehaviour
     [SerializeField] UnityEvent[] m_events;
 
     List<GameObject> m_imageObjects = new List<GameObject>();
-    Uicontroller m_ui;
+    PlayerUiClass m_ui;
     ItemDataBase m_dataBase;
 
     bool m_selectBool = false;
@@ -38,7 +38,7 @@ public class SelectClass : MonoBehaviour
 
     void Start()
     {
-        m_ui = FindObjectOfType<Uicontroller>();
+        m_ui = FindObjectOfType<PlayerUiClass>();
         for (int i = 0; i < m_setCount; i++)
         {
             GameObject set = transform.GetChild(i).gameObject;
@@ -63,7 +63,7 @@ public class SelectClass : MonoBehaviour
             if (m_status == Status.ItemSelect) SetItem();
             else if (m_status == Status.StatusUp) StatusUp();
             else if (m_status == Status.Button) SetEvent();
-            PlayerDataClass.Instance.SetFreeze(false);
+            PlayerDataClass.getInstance().SetFreeze(false);
         }
     }
 
@@ -73,15 +73,15 @@ public class SelectClass : MonoBehaviour
     {
         if (m_crreantNum == 0)
         {
-            m_saveId = PlayerDataClass.Instance.SetAttackIdFirst;
-            PlayerDataClass.Instance.SetAttackIdFirst = m_dataBase.GetItemId(m_getId).GetId();
-            PlayerDataClass.Instance.SetIdBoolFirst = false;
+            m_saveId = PlayerDataClass.getInstance().SetAttackIdFirst;
+            PlayerDataClass.getInstance().SetAttackIdFirst = m_dataBase.GetItemId(m_getId).GetId();
+            PlayerDataClass.getInstance().SetIdBoolFirst = false;
         }
         else if (m_crreantNum == 1)
         {
-            m_saveId = PlayerDataClass.Instance.SetAttackIdSecond;
-            PlayerDataClass.Instance.SetAttackIdSecond = m_dataBase.GetItemId(m_getId).GetId();
-            PlayerDataClass.Instance.SetIdBoolSecond = false;
+            m_saveId = PlayerDataClass.getInstance().SetAttackIdSecond;
+            PlayerDataClass.getInstance().SetAttackIdSecond = m_dataBase.GetItemId(m_getId).GetId();
+            PlayerDataClass.getInstance().SetIdBoolSecond = false;
         }
 
         m_ui.SetSprite(m_dataBase.GetItemId(m_getId).GetSprite());
@@ -94,9 +94,9 @@ public class SelectClass : MonoBehaviour
 
     void StatusUp()
     {
-        if (m_crreantNum == 0) PlayerDataClass.Instance.MagicPowerUp(1);
-        else if (m_crreantNum == 1) PlayerDataClass.Instance.ShieldPowerUp(1);
-        else if (m_crreantNum == 2) PlayerDataClass.Instance.AttackPowerUp(1);
+        if (m_crreantNum == 0) PlayerDataClass.getInstance().MagicPowerUp(1);
+        else if (m_crreantNum == 1) PlayerDataClass.getInstance().ShieldPowerUp(1);
+        else if (m_crreantNum == 2) PlayerDataClass.getInstance().AttackPowerUp(1);
 
         m_ui.SetSelectCanvasActive();
     }

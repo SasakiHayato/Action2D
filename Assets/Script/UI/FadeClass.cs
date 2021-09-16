@@ -14,8 +14,8 @@ public class FadeClass : MonoBehaviour
     [SerializeField] State m_state;
 
     [SerializeField] bool m_isStart;
-    [SerializeField] float m_fadeSpeed;
-    [SerializeField] SceneManager m_setScene;
+    [SerializeField] string m_sceneName;
+
     Image m_fadeImage;
     bool m_isFade = false;
     float m_alfa = 0;
@@ -26,8 +26,6 @@ public class FadeClass : MonoBehaviour
 
         if (m_state == State.In) m_alfa = 1;
         else m_alfa = 0;
-
-        m_fadeImage.color = new Color(m_fadeImage.color.r, m_fadeImage.color.g, m_fadeImage.color.b, m_alfa);
     }
 
     void Update()
@@ -37,7 +35,7 @@ public class FadeClass : MonoBehaviour
         m_fadeImage.color = new Color(m_fadeImage.color.r, m_fadeImage.color.g, m_fadeImage.color.b, m_alfa);
         if (m_state == State.In)
         {
-            if (m_alfa > 0) m_alfa -= m_fadeSpeed;
+            if (m_alfa > 0) m_alfa -= 0.02f;
             else
             {
 
@@ -45,17 +43,25 @@ public class FadeClass : MonoBehaviour
         }
         else
         {
-            if (m_alfa < 1) m_alfa += m_fadeSpeed;
-            else
+            if (m_alfa < 1) m_alfa += 0.02f;
+            else if (m_isFade)
             {
-                m_setScene.OnLoadScene("Start");
-            }
+                m_isFade = false;
+                StartCoroutine(GetScene());
+            } 
         }
+    }
+
+    IEnumerator GetScene()
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameManager.Instance.SetScene(m_sceneName);
     }
 
     public void SetIsFade()
     {
         m_fadeImage = GetComponent<Image>();
         m_isFade = true;
+        m_fadeImage.color = new Color(m_fadeImage.color.r, m_fadeImage.color.g, m_fadeImage.color.b, m_alfa);
     }
 }

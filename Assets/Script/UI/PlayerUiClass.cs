@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Uicontroller : MonoBehaviour
+public class PlayerUiClass : MonoBehaviour
 {
     [SerializeField] Text hpText;
     [SerializeField] Text timeText;
@@ -38,8 +38,8 @@ public class Uicontroller : MonoBehaviour
         m_setCanvas = GameObject.Find("ItemSetCanvas");
         m_setCanvas.SetActive(false);
 
-        PlayerDataClass.Instance.SetIdBoolFirst = false;
-        PlayerDataClass.Instance.SetIdBoolSecond = false;
+        PlayerDataClass.getInstance().SetIdBoolFirst = false;
+        PlayerDataClass.getInstance().SetIdBoolSecond = false;
         if (m_set != null) SetSprite(m_set);
         if (m_subSet != null) SetSprite(m_subSet);
     }
@@ -53,38 +53,38 @@ public class Uicontroller : MonoBehaviour
 
     private void SliderHp()
     {
-        m_slider.value = PlayerDataClass.Instance.SetHp();
-        hpText.text = PlayerDataClass.Instance.SetHp().ToString("00" + "/１００");
+        m_slider.value = PlayerDataClass.getInstance().SetHp();
+        hpText.text = PlayerDataClass.getInstance().SetHp().ToString("00" + "/１００");
     }
 
     private void Timer()
     {
-        if (!GameManager.getInstance().IsDungeon())
+        if (!GameManager.Instance.IsDungeon())
         {
-            timeText.text = GameManager.getInstance().CrreantTime().ToString("0s");
+            timeText.text = GameManager.Instance.CrreantTime().ToString("0s");
         }
-        else timeText.text = GameManager.getInstance().SetTime().ToString("0s");
+        else timeText.text = GameManager.Instance.SetTime().ToString("0s");
     }
 
         private void StatuUp()
     {
-        m_magicText.text = PlayerDataClass.Instance.SetMagic().ToString();
-        m_attackText.text = PlayerDataClass.Instance.SetAttack().ToString();
-        m_shieldText.text = PlayerDataClass.Instance.SetShield().ToString();
+        m_magicText.text = PlayerDataClass.getInstance().SetMagic().ToString();
+        m_attackText.text = PlayerDataClass.getInstance().SetAttack().ToString();
+        m_shieldText.text = PlayerDataClass.getInstance().SetShield().ToString();
     }
 
     public void SetSprite(Sprite set)
     {
-        if (!PlayerDataClass.Instance.SetIdBoolFirst)
+        if (!PlayerDataClass.getInstance().SetIdBoolFirst)
         {
-            PlayerDataClass.Instance.SetIdBoolFirst = true;
+            PlayerDataClass.getInstance().SetIdBoolFirst = true;
             m_set = set;
             m_image.sprite = m_set;
             m_setFire1.sprite = m_set;
         }
-        else if (!PlayerDataClass.Instance.SetIdBoolSecond)
+        else if (!PlayerDataClass.getInstance().SetIdBoolSecond)
         {
-            PlayerDataClass.Instance.SetIdBoolSecond = true;
+            PlayerDataClass.getInstance().SetIdBoolSecond = true;
             m_subSet = set;
             m_subImage.sprite = m_subSet;
             m_setFire2.sprite = m_subSet;

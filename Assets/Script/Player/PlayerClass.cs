@@ -46,13 +46,13 @@ public class PlayerClass : MonoBehaviour, IDamage
         m_muzzlePos1 = transform.Find("Nozzle");
         m_muzzlePos2 = transform.Find("NozzleCrouch");
 
-        if (m_isDebug) GameManager.getInstance().SetCrreantPlay(m_isDebug);
+        if (m_isDebug) GameManager.Instance.SetCrreantPlay(m_isDebug);
     }
 
     void Update()
     {
-        if (PlayerDataClass.Instance.GetFreeze()) return;
-        if (!GameManager.getInstance().GetCrreantPlay()) return;
+        if (PlayerDataClass.getInstance().GetFreeze()) return;
+        if (!GameManager.Instance.GetCrreantPlay()) return;
         
         PlayerControl();
     }
@@ -76,22 +76,22 @@ public class PlayerClass : MonoBehaviour, IDamage
         }
         else if (Input.GetButtonDown("Jump") && m_move.CrreantCrouch()) { m_floor.SetTriger(); }
 
-        if (PlayerDataClass.Instance.SetIdBoolFirst)
+        if (PlayerDataClass.getInstance().SetIdBoolFirst)
         {
             if (Input.GetButtonDown("Fire1"))
             {
                 int attackId = 1;
-                int id = PlayerDataClass.Instance.SetAttackIdFirst;
+                int id = PlayerDataClass.getInstance().SetAttackIdFirst;
                 m_attack.Attack(m_anim, m_attackData, id, attackId);
             }
         }
 
-        if (PlayerDataClass.Instance.SetIdBoolSecond)
+        if (PlayerDataClass.getInstance().SetIdBoolSecond)
         {
             if (Input.GetButtonDown("Fire2"))
             {
                 int attackId = 2;
-                int id = PlayerDataClass.Instance.SetAttackIdSecond;
+                int id = PlayerDataClass.getInstance().SetAttackIdSecond;
                 m_attack.Attack(m_anim, m_attackData, id, attackId);
             }
         }
@@ -102,13 +102,13 @@ public class PlayerClass : MonoBehaviour, IDamage
     public void GetDamage(int damage)
     {
         m_anim.Play("Player_Damage");
-        int hp = PlayerDataClass.Instance.SetHp() - damage;
-        PlayerDataClass.Instance.GetHp(hp);
-        if (PlayerDataClass.Instance.SetHp() <= 0)
+        int hp = PlayerDataClass.getInstance().SetHp() - damage;
+        PlayerDataClass.getInstance().GetHp(hp);
+        if (PlayerDataClass.getInstance().SetHp() <= 0)
         {
-            PlayerDataClass.Instance.GetHp(100);
-            GameManager.getInstance().ResetDungeonCount();
-            GameManager.getInstance().SetScene("Start");
+            PlayerDataClass.getInstance().GetHp(100);
+            GameManager.Instance.ResetDungeonCount();
+            GameManager.Instance.SetScene("Start");
         }
     }
 

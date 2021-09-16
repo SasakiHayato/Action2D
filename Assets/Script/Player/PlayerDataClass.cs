@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDataClass : MonoBehaviour
+public class PlayerDataClass
 {
-    public static PlayerDataClass Instance = new PlayerDataClass();
+    static PlayerDataClass instance = new PlayerDataClass();
+    static public PlayerDataClass getInstance() => instance;
+    private PlayerDataClass() { }
 
     int m_attackPower = 1;
     int m_magicPower = 1;
@@ -55,19 +57,4 @@ public class PlayerDataClass : MonoBehaviour
 
     public bool SetFreeze(bool set) { return m_freeze = set; }
     public bool GetFreeze() { return m_freeze; }
-
-    private static bool m_cureated = false;
-
-    void Awake()
-    {
-        if (!m_cureated)
-        {
-            DontDestroyOnLoad(Instance);
-            m_cureated = true;
-        }
-        else
-        {
-            Destroy(Instance);
-        }
-    }
 }

@@ -6,7 +6,7 @@ public class ItemBase : MonoBehaviour
 {
     [SerializeField] ItemEnum m_enum;
     [SerializeField] ItemDataBase m_dataBase;
-    Uicontroller m_ui;
+    PlayerUiClass m_ui;
     GameUiClass m_gameUi;
     SelectClass m_select;
 
@@ -16,7 +16,7 @@ public class ItemBase : MonoBehaviour
 
     private void Awake()
     {
-        m_ui = FindObjectOfType<Uicontroller>();
+        m_ui = FindObjectOfType<PlayerUiClass>();
         m_gameUi = FindObjectOfType<GameUiClass>();
     }
 

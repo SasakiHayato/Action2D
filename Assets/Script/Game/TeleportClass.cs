@@ -30,12 +30,12 @@ public class TeleportClass : MonoBehaviour
         {
             if (m_status == Status.Start)
             {
-                GameManager.getInstance().SetScene("Dungeon");
+                GameManager.Instance.SetScene("Dungeon");
                 RemoveList();
             }
             else if (m_status == Status.Goal)
             {
-                GameManager.getInstance().SetScene("Midway");
+                GameManager.Instance.SetScene("Midway");
                 RemoveList();
             }
             else if (m_status == Status.Teleport)

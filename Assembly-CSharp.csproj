@@ -86,15 +86,10 @@
     <Compile Include="Assets\Script\Game\AudioClass.cs" />
     <Compile Include="Assets\Script\Game\CameraPostion.cs" />
     <Compile Include="Assets\Script\Game\CreateMap.cs" />
-    <Compile Include="Assets\Script\Game\FadeClass.cs" />
     <Compile Include="Assets\Script\Game\GameManager.cs" />
-    <Compile Include="Assets\Script\Game\GameUiClass.cs" />
-    <Compile Include="Assets\Script\Game\MoveBackGround.cs" />
-    <Compile Include="Assets\Script\Game\SceneManager.cs" />
+    <Compile Include="Assets\Script\Game\SceneLoadClass.cs" />
     <Compile Include="Assets\Script\Game\SelectClass.cs" />
     <Compile Include="Assets\Script\Game\TeleportClass.cs" />
-    <Compile Include="Assets\Script\Game\TextManager.cs" />
-    <Compile Include="Assets\Script\Game\Uicontroller.cs" />
     <Compile Include="Assets\Script\Item\ItemBase.cs" />
     <Compile Include="Assets\Script\Item\ItemClass.cs" />
     <Compile Include="Assets\Script\Item\ItemDataBase.cs" />
@@ -107,6 +102,11 @@
     <Compile Include="Assets\Script\Player\PlayerGravity.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
     <Compile Include="Assets\Script\ShieldClass.cs" />
+    <Compile Include="Assets\Script\UI\FadeClass.cs" />
+    <Compile Include="Assets\Script\UI\GameUiClass.cs" />
+    <Compile Include="Assets\Script\UI\MoveBackGround.cs" />
+    <Compile Include="Assets\Script\UI\PlayerUiClass.cs" />
+    <Compile Include="Assets\Script\UI\TextManager.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

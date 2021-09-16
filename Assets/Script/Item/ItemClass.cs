@@ -26,7 +26,7 @@ public class ItemClass : ItemBase
 
     void SetStatus()
     {
-        PlayerDataClass.Instance.SetFreeze(true);
+        PlayerDataClass.getInstance().SetFreeze(true);
         if (DataBase.GetItemId(ItemId).GetStatuId() == 2)
         {
             SelectStatus();
@@ -35,13 +35,13 @@ public class ItemClass : ItemBase
         }
         else if (DataBase.GetItemId(ItemId).GetStatuId() == 3)
         {
-            if (PlayerDataClass.Instance.SetHp() < PlayerDataClass.Instance.m_maxHp)
+            if (PlayerDataClass.getInstance().SetHp() < PlayerDataClass.getInstance().m_maxHp)
             {
-                int heel = PlayerDataClass.Instance.SetHp() + 30;
-                PlayerDataClass.Instance.GetHp(heel);
-                if (PlayerDataClass.Instance.SetHp() > 100)
+                int heel = PlayerDataClass.getInstance().SetHp() + 30;
+                PlayerDataClass.getInstance().GetHp(heel);
+                if (PlayerDataClass.getInstance().SetHp() > 100)
                 {
-                    PlayerDataClass.Instance.GetHp(100);
+                    PlayerDataClass.getInstance().GetHp(100);
                 }
             }
             else
@@ -49,12 +49,12 @@ public class ItemClass : ItemBase
                 GameUi.TextObjectActive(true);
                 return;
             }
-            PlayerDataClass.Instance.SetFreeze(false);
+            PlayerDataClass.getInstance().SetFreeze(false);
             Destroy(this.gameObject);
             return;
         }
-        bool first = PlayerDataClass.Instance.SetIdBoolFirst;
-        bool second = PlayerDataClass.Instance.SetIdBoolSecond;
+        bool first = PlayerDataClass.getInstance().SetIdBoolFirst;
+        bool second = PlayerDataClass.getInstance().SetIdBoolSecond;
 
         if (first && second)
         {
@@ -66,15 +66,15 @@ public class ItemClass : ItemBase
 
         if (!first)
         {
-            PlayerDataClass.Instance.SetAttackIdFirst = DataBase.GetItemId(ItemId).GetId();
+            PlayerDataClass.getInstance().SetAttackIdFirst = DataBase.GetItemId(ItemId).GetId();
         }
         else
         {
-            PlayerDataClass.Instance.SetAttackIdSecond = DataBase.GetItemId(ItemId).GetId();
+            PlayerDataClass.getInstance().SetAttackIdSecond = DataBase.GetItemId(ItemId).GetId();
         }
 
         SetItem();
-        PlayerDataClass.Instance.SetFreeze(false);
+        PlayerDataClass.getInstance().SetFreeze(false);
         Destroy(this.gameObject);
     }
 

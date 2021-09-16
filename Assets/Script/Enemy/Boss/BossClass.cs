@@ -93,7 +93,7 @@ public class BossClass : EnemyBase, IDamage
         m_hpSlider.value = RetuneCrreantHp();
         if (RetuneCrreantHp() <= 0)
         {
-            GameManager.getInstance().SetScene("Start");
+            GameManager.Instance.SetScene("Start");
         }
     }
     

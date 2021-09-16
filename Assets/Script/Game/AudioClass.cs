@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//using DG.Tweening;
-
 public class AudioClass : MonoBehaviour
 {
     private enum SceneEnum
@@ -43,7 +41,6 @@ public class AudioClass : MonoBehaviour
     public void Onclick()
     {
         m_source.Stop();
-        m_source.volume = m_volume;
-        m_source.PlayOneShot(m_click);
+        m_source.PlayOneShot(m_click, m_volume / 4);
     }
 }
