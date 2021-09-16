@@ -18,6 +18,10 @@ public class ZombieClass : EnemyBase, IDamage
         m_rb = GetComponent<Rigidbody2D>();
 
         m_collider = transform.GetChild(0).gameObject;
+        if (SetAttackPower() == 0)
+        {
+            GetAttackPower = 10;
+        }
     }
 
     void Update() 
@@ -45,7 +49,6 @@ public class ZombieClass : EnemyBase, IDamage
         FindPlayerToLook();
         if (set == SetActionType.NoamalAttack1)
         {
-            Debug.Log(m_newTree);
             m_newTree.IntervalSetFalse(5);
             return;
         }

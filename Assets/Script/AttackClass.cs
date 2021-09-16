@@ -37,6 +37,12 @@ public class AttackClass : MonoBehaviour
     void EnemyAttack(IDamage get)
     {
         EnemyBase enemyBase = m_parent.GetComponent<EnemyBase>();
-        get.GetDamage(enemyBase.SetAttackPower());
+        int power = enemyBase.SetAttackPower() - ((PlayerDataClass.getInstance().SetShield() - 1) * 10);
+        if (power <= 0)
+        {
+            power = 5;
+        }
+        
+        get.GetDamage(power);
     }
 }

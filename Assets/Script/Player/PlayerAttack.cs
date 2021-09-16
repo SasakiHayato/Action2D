@@ -25,7 +25,7 @@ public class PlayerAttack : MonoBehaviour
         {
             m_attack.AttackPower *= PlayerDataClass.getInstance().SetMagic();
         }
-        Debug.Log(m_attack.AttackPower);
+        
         string name = dataBase.GetItemId(id).GetAnimName(m_attackCombo);
         anim.Play(name);
 
