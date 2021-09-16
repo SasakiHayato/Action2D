@@ -26,6 +26,7 @@ public class SelectClass : MonoBehaviour
 
     List<GameObject> m_imageObjects = new List<GameObject>();
     PlayerUiClass m_ui;
+    GameUiClass m_gameUi;
     ItemDataBase m_dataBase;
 
     bool m_selectBool = false;
@@ -39,6 +40,7 @@ public class SelectClass : MonoBehaviour
     void Start()
     {
         m_ui = FindObjectOfType<PlayerUiClass>();
+        m_gameUi = FindObjectOfType<GameUiClass>();
         for (int i = 0; i < m_setCount; i++)
         {
             GameObject set = transform.GetChild(i).gameObject;
@@ -85,7 +87,7 @@ public class SelectClass : MonoBehaviour
         }
 
         m_ui.SetSprite(m_dataBase.GetItemId(m_getId).GetSprite());
-        m_ui.SetCanvasFalse();
+        m_gameUi.SetCanvasFalse();
 
         GameObject set = Instantiate(m_dataBase.GetItemId(m_saveId).GetObject());
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -98,7 +100,7 @@ public class SelectClass : MonoBehaviour
         else if (m_crreantNum == 1) PlayerDataClass.getInstance().ShieldPowerUp(1);
         else if (m_crreantNum == 2) PlayerDataClass.getInstance().AttackPowerUp(1);
 
-        m_ui.SetSelectCanvasActive();
+        m_gameUi.SetSelectCanvasActive();
     }
 
     public void GetData(ItemDataBase dataBase, int id)

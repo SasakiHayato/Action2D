@@ -7,11 +7,24 @@ public class GameUiClass : MonoBehaviour
 {
     [SerializeField] GameObject m_textObject;
     [SerializeField] GameObject m_selectCanvas;
+    [SerializeField] GameObject m_setCanvas;
+
+    [SerializeField] Image m_setImage;
+    [SerializeField] Image m_fire1;
+    [SerializeField] Image m_fire2;
+
+    public Image Fire1 { get => m_fire1; set { m_fire1 = value; } }
+    public Image Fire2 { get => m_fire2; set { m_fire2 = value; } }
+
+    bool m_canvasActive = false;
+
+    
 
     void Start()
     {
         m_textObject.SetActive(false);
-        m_selectCanvas.SetActive(false);
+        m_selectCanvas.SetActive(m_canvasActive);
+        m_setCanvas.SetActive(false);
     }
 
     public void TextObjectActive(bool set)
@@ -23,4 +36,20 @@ public class GameUiClass : MonoBehaviour
             text.SetText(TextManager.TextType.HeelText, 0.05f, m_textObject);
         }
     }
+
+    public void SetSelectCanvasActive()
+    {
+        if (!m_canvasActive) m_canvasActive = true;
+        else m_canvasActive = false;
+
+        m_selectCanvas.SetActive(m_canvasActive);
+    }
+
+    public void SetCanvasActive(Sprite set)
+    {
+        m_setImage.sprite = set;
+        m_setCanvas.SetActive(true);
+    }
+
+    public void SetCanvasFalse() => m_setCanvas.SetActive(false);
 }

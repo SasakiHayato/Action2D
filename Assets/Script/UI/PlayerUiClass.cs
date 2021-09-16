@@ -20,23 +20,15 @@ public class PlayerUiClass : MonoBehaviour
 
     [SerializeField] private Image m_setFire1;
     [SerializeField] private Image m_setFire2;
-    [SerializeField] private Image m_setFire3;
+
+    GameUiClass m_gameUi;
 
     private Slider m_slider;
 
-    GameObject m_selectCanvas;
-    bool m_canvasActive = false;
-    GameObject m_setCanvas;
-
     void Start()
     {
+        m_gameUi = FindObjectOfType<GameUiClass>();
         m_slider = GameObject.Find("Slider").GetComponent<Slider>();
-        
-        m_selectCanvas = GameObject.Find("SelectCanvas");
-        m_selectCanvas.SetActive(m_canvasActive);
-
-        m_setCanvas = GameObject.Find("ItemSetCanvas");
-        m_setCanvas.SetActive(false);
 
         PlayerDataClass.getInstance().SetIdBoolFirst = false;
         PlayerDataClass.getInstance().SetIdBoolSecond = false;
@@ -80,29 +72,14 @@ public class PlayerUiClass : MonoBehaviour
             PlayerDataClass.getInstance().SetIdBoolFirst = true;
             m_set = set;
             m_image.sprite = m_set;
-            m_setFire1.sprite = m_set;
+            m_gameUi.Fire1.sprite = m_set;
         }
         else if (!PlayerDataClass.getInstance().SetIdBoolSecond)
         {
             PlayerDataClass.getInstance().SetIdBoolSecond = true;
             m_subSet = set;
             m_subImage.sprite = m_subSet;
-            m_setFire2.sprite = m_subSet;
+            m_gameUi.Fire2.sprite = m_subSet;
         }
     }
-
-    public void SetCanvasActive(Sprite set)
-    {
-        m_setFire3.sprite = set;
-        m_setCanvas.SetActive(true);
-    }
-    public void SetSelectCanvasActive()
-    {
-        if (!m_canvasActive) m_canvasActive = true;
-        else m_canvasActive = false;
-
-        m_selectCanvas.SetActive(m_canvasActive);
-    }
-
-    public void SetCanvasFalse() => m_setCanvas.SetActive(false);
 }
