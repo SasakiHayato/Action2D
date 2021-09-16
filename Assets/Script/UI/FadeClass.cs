@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FadeClass : MonoBehaviour
 {
-    private enum State
+    public enum State
     {
         In,
         Out,
@@ -22,7 +22,7 @@ public class FadeClass : MonoBehaviour
 
     void Start()
     {
-        if (m_isStart) SetIsFade();
+        if (m_isStart) SetIsFade((int)m_state);
 
         if (m_state == State.In) m_alfa = 1;
         else m_alfa = 0;
@@ -38,7 +38,7 @@ public class FadeClass : MonoBehaviour
             if (m_alfa > 0) m_alfa -= 0.02f;
             else
             {
-
+                Debug.Log(m_sceneName);
             }
         }
         else
@@ -58,8 +58,9 @@ public class FadeClass : MonoBehaviour
         GameManager.Instance.SetScene(m_sceneName);
     }
 
-    public void SetIsFade()
+    public void SetIsFade(int num)
     {
+        //m_state = m_state(num);
         m_fadeImage = GetComponent<Image>();
         m_isFade = true;
         m_fadeImage.color = new Color(m_fadeImage.color.r, m_fadeImage.color.g, m_fadeImage.color.b, m_alfa);

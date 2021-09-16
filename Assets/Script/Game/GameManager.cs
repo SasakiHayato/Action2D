@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance = new GameManager();
 
     SceneLoadClass m_loadClass = new SceneLoadClass();
-
+    [SerializeField] NewFadeClass m_fade;
     bool m_isPlay = false;
     bool m_isDungeon = false;
     int m_dungeonCount = 0;
@@ -27,6 +27,13 @@ public class GameManager : MonoBehaviour
     public bool SetDungeonBool(bool set) => m_isDungeon = set;
 
     public void SetScene(string set) => m_loadClass.OnLoadScene(set);
+    public void IsFadeAndSetScene(FadeType type, string sceneName)
+    {
+        GameObject set = Instantiate(m_fade.gameObject);
+        NewFadeClass fade = set.GetComponent<NewFadeClass>();
+        fade.Type = type;
+        fade.Name = sceneName;
+    }
 
     private static bool m_cureated = false;
     private void Awake()

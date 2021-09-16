@@ -105,6 +105,7 @@
     <Compile Include="Assets\Script\UI\FadeClass.cs" />
     <Compile Include="Assets\Script\UI\GameUiClass.cs" />
     <Compile Include="Assets\Script\UI\MoveBackGround.cs" />
+    <Compile Include="Assets\Script\UI\NewFadeClass.cs" />
     <Compile Include="Assets\Script\UI\PlayerUiClass.cs" />
     <Compile Include="Assets\Script\UI\TextManager.cs" />
     <Reference Include="UnityEngine">

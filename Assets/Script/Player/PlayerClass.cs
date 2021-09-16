@@ -51,9 +51,9 @@ public class PlayerClass : MonoBehaviour, IDamage
 
     void Update()
     {
-        if (PlayerDataClass.getInstance().GetFreeze()) return;
         if (!GameManager.Instance.GetCrreantPlay()) return;
-        
+        if (PlayerDataClass.getInstance().GetFreeze()) return;
+
         PlayerControl();
     }
 

@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_enemy:
   - {fileID: 7556875420137796808, guid: ba097d003b6f8ff41b693072993170fe, type: 3}
   - {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2, type: 3}
-  - {fileID: 10286366019730813, guid: 3d37b210d9bbc4a49b1a6ffec660b6f0, type: 3}
+  - {fileID: 4452477516599239011, guid: 5265e5d0fb592bb4fbf4748f28e1a70b, type: 3}
   - {fileID: 7334885445736080073, guid: f7b61ae9fa672a643976452ef81630b2, type: 3}
   m_setPos:
   - {fileID: 1573019688}
@@ -1750,6 +1750,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468968368926976068, guid: a928fbb24ea1fac44a0067c0f6715ddb,
+        type: 3}
+      propertyPath: m_conditionalSets.m_isSpecial
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5468968368926976069, guid: a928fbb24ea1fac44a0067c0f6715ddb,
         type: 3}
