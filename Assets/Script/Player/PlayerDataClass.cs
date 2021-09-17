@@ -9,8 +9,11 @@ public class PlayerDataClass
     private PlayerDataClass() { }
 
     int m_attackPower = 1;
+    public int SetAttackPower { get => m_attackPower; set { m_attackPower = value; } }
     int m_magicPower = 1;
+    public int SetMagicPower { get => m_magicPower; set { m_magicPower = value; } }
     int m_shieldPower = 1;
+    public int SetShieldPower { get => m_shieldPower; set { m_shieldPower = value; } }
 
     int m_attackIdFirst = 0;
     public int SetAttackIdFirst 

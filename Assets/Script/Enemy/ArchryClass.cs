@@ -15,12 +15,15 @@ public class ArchryClass : EnemyBase, IDamage
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
+
+        if (GetAttackPower <= 0)
+        {
+            GetAttackPower = 10;
+        }
     }
 
-    void Update()
-    {
-        m_newTree.Repeter(this, this.name);
-    }
+    void Update() => m_newTree.Repeter(this, this.name);
+
     public override void Attack(SetActionType set)
     {
         if (set == SetActionType.NoamalAttack1)
@@ -58,5 +61,7 @@ public class ArchryClass : EnemyBase, IDamage
         set.transform.position = m_muzzle.position;
         ArcheryBowClass bow = set.GetComponent<ArcheryBowClass>();
         bow.SetDir(gameObject.transform);
+        AttackClass attack = set.GetComponent<AttackClass>();
+        attack.GetPower = GetAttackPower;
     }
 }

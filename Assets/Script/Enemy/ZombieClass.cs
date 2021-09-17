@@ -44,7 +44,6 @@ public class ZombieClass : EnemyBase, IDamage
     
     public override void Attack(SetActionType set)
     {
-        Debug.Log(set);
         m_anim.Play("Enemy_Attack");
         FindPlayerToLook();
         if (set == SetActionType.NoamalAttack1)

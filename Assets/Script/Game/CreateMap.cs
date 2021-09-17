@@ -62,6 +62,8 @@ public class CreateMap : MonoBehaviour
 
     [SerializeField] EnemyDataBase m_enemyData;
 
+    int m_enemyCount = 0;
+
     void Start()
     {
         m_teleClass.SetMap(m_mapHeight, m_mapWide);
@@ -502,17 +504,15 @@ public class CreateMap : MonoBehaviour
         }
     }
 
-    int m_count = 0;
     private void SetEnemyData(int setId, int x, int y)
     {
         Vector2 setVec = new Vector2(x, y);
         GameObject setEnemy = Instantiate(m_enemyData.GetEnemyData(setId).EnemyObject, setVec, Quaternion.identity);
-        setEnemy.name = $"{m_enemyData.GetEnemyData(setId).Name} :number {m_count}";
-        m_count++;
+        setEnemy.name = $"{m_enemyData.GetEnemyData(setId).Name} :number {m_enemyCount}";
+        m_enemyCount++;
         EnemyBase enemyBase = setEnemy.GetComponent<EnemyBase>();
         enemyBase.GetHp = m_enemyData.GetEnemyData(setId).Hp;
         enemyBase.GetAttackPower = m_enemyData.GetEnemyData(setId).AttackPower;
-        Debug.Log($"HP :{enemyBase.GetHp} AttackPower :{enemyBase.GetAttackPower}");
 
         m_active.GetEnemy(setEnemy);
     }

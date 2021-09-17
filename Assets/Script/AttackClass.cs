@@ -19,6 +19,9 @@ public class AttackClass : MonoBehaviour
     int m_attackPower;
     public int AttackPower { get => m_attackPower; set { m_attackPower = value; } }
 
+    int m_power;
+    public int GetPower { get => m_power; set { m_power = value; } }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IDamage get = collision.GetComponent<IDamage>();
@@ -37,12 +40,15 @@ public class AttackClass : MonoBehaviour
     void EnemyAttack(IDamage get)
     {
         EnemyBase enemyBase = m_parent.GetComponent<EnemyBase>();
-        int power = enemyBase.SetAttackPower() - ((PlayerDataClass.getInstance().SetShield() - 1) * 10);
+        if (enemyBase.GetAttackPower <= 0)
+        {
+            enemyBase.GetAttackPower = GetPower;
+        }
+        int power = enemyBase.GetAttackPower - ((PlayerDataClass.getInstance().SetShield() - 1) * 10);
         if (power <= 0)
         {
             power = 5;
         }
-        
         get.GetDamage(power);
     }
 }

@@ -102,7 +102,6 @@
     <Compile Include="Assets\Script\Player\PlayerGravity.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
     <Compile Include="Assets\Script\ShieldClass.cs" />
-    <Compile Include="Assets\Script\UI\FadeClass.cs" />
     <Compile Include="Assets\Script\UI\GameUiClass.cs" />
     <Compile Include="Assets\Script\UI\MoveBackGround.cs" />
     <Compile Include="Assets\Script\UI\NewFadeClass.cs" />

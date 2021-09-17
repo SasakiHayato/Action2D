@@ -106,9 +106,8 @@ public class PlayerClass : MonoBehaviour, IDamage
         PlayerDataClass.getInstance().GetHp(hp);
         if (PlayerDataClass.getInstance().SetHp() <= 0)
         {
-            PlayerDataClass.getInstance().GetHp(100);
             GameManager.Instance.ResetDungeonCount();
-            GameManager.Instance.SetScene("Start");
+            GameManager.Instance.Deid();
         }
     }
 

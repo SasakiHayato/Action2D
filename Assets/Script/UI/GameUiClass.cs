@@ -8,6 +8,7 @@ public class GameUiClass : MonoBehaviour
     [SerializeField] GameObject m_textObject;
     [SerializeField] GameObject m_selectCanvas;
     [SerializeField] GameObject m_setCanvas;
+    [SerializeField] GameObject m_gameOverCanvas;
 
     [SerializeField] Image m_setImage;
     [SerializeField] Image m_fire1;
@@ -18,13 +19,12 @@ public class GameUiClass : MonoBehaviour
 
     bool m_canvasActive = false;
 
-    
-
     void Start()
     {
         m_textObject.SetActive(false);
         m_selectCanvas.SetActive(m_canvasActive);
         m_setCanvas.SetActive(false);
+        m_gameOverCanvas.SetActive(false);
     }
 
     public void TextObjectActive(bool set)
@@ -52,4 +52,9 @@ public class GameUiClass : MonoBehaviour
     }
 
     public void SetCanvasFalse() => m_setCanvas.SetActive(false);
+    public void GameOverCanvasActive(bool set)
+    {
+        Debug.Log(m_gameOverCanvas);
+        m_gameOverCanvas.SetActive(set);
+    }
 }

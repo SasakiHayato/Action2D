@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = new GameManager();
 
-    SceneLoadClass m_loadClass = new SceneLoadClass();
-    [SerializeField] NewFadeClass m_fade;
+    SceneLoadClass m_loadClass;
+    NewFadeClass m_fadeClass;
+    GameUiClass m_gameUi;
+ 
     bool m_isPlay = false;
     bool m_isDungeon = false;
     int m_dungeonCount = 0;
@@ -26,13 +28,39 @@ public class GameManager : MonoBehaviour
     public bool IsDungeon() => m_isDungeon;
     public bool SetDungeonBool(bool set) => m_isDungeon = set;
 
-    public void SetScene(string set) => m_loadClass.OnLoadScene(set);
+    public void SetScene(string set)
+    {
+        m_loadClass = FindObjectOfType<SceneLoadClass>();
+        m_loadClass.OnLoadScene(set);
+    }
+
     public void IsFadeAndSetScene(FadeType type, string sceneName)
     {
-        GameObject set = Instantiate(m_fade.gameObject);
-        NewFadeClass fade = set.GetComponent<NewFadeClass>();
-        fade.Type = type;
-        fade.Name = sceneName;
+        m_fadeClass = FindObjectOfType<NewFadeClass>();
+        m_fadeClass.Type = type;
+        m_fadeClass.Name = sceneName;
+        m_fadeClass.Retune = true;
+    }
+
+    public void IsPlay()
+    {
+        SetCrreantPlay(true);
+        IsFadeAndSetScene(FadeType.Out, "Start");
+    }
+
+    public void Deid()
+    {
+        SetCrreantPlay(false);
+        m_gameUi = FindObjectOfType<GameUiClass>();
+        m_gameUi.GameOverCanvasActive(true);
+    }
+    public void ReStart()
+    {
+        PlayerDataClass.getInstance().GetHp(100);
+
+        PlayerDataClass.getInstance().SetAttackPower = 1;
+        PlayerDataClass.getInstance().SetMagicPower = 1;
+        PlayerDataClass.getInstance().SetShieldPower = 1;
     }
 
     private static bool m_cureated = false;

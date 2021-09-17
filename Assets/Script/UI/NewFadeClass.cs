@@ -23,17 +23,17 @@ public class NewFadeClass : MonoBehaviour
     public string Name { get => m_sceneName; set { m_sceneName = value; } }
 
     float m_alfa;
-    [SerializeField] float m_fadeSpeed;
 
     bool m_isFade = false;
-    bool m_retune = true;
+    bool m_retune = false;
+    public bool Retune { get => m_retune; set { m_retune = value; } }
 
     void Start()
     {
         GetCanvas();
         GetCanvasScaler();
 
-        SetFadeImage();
+        SetFadeImage();   
     }
 
     void Update()
@@ -43,7 +43,7 @@ public class NewFadeClass : MonoBehaviour
 
         if (m_type == FadeType.In)
         {
-            m_alfa -= m_fadeSpeed;
+            m_alfa -= 0.01f;
             if (m_alfa < 0)
             {
                 m_isFade = true;
@@ -51,7 +51,7 @@ public class NewFadeClass : MonoBehaviour
         }
         else if (m_type == FadeType.Out)
         {
-            m_alfa += m_fadeSpeed;
+            m_alfa += 0.01f;
             if (m_alfa > 1)
             {
                 m_isFade = true;
@@ -61,7 +61,10 @@ public class NewFadeClass : MonoBehaviour
         if (m_isFade)
         {
             m_retune = false;
-            GameManager.Instance.SetScene(m_sceneName);
+            if (FadeType.Out == m_type)
+            {
+                GameManager.Instance.SetScene(m_sceneName);
+            }
         }
     }
 
@@ -84,5 +87,7 @@ public class NewFadeClass : MonoBehaviour
 
         if (m_type == FadeType.In) m_alfa = 1;
         else m_alfa = 0;
+
+        m_fadeImage.color = new Color(m_fadeImage.color.r, m_fadeImage.color.g, m_fadeImage.color.b, m_alfa);
     }
 }
