@@ -18,9 +18,6 @@ public class PlayerUiClass : MonoBehaviour
     [SerializeField] private Image m_subImage;
     static Sprite m_subSet;
 
-    [SerializeField] private Image m_setFire1;
-    [SerializeField] private Image m_setFire2;
-
     GameUiClass m_gameUi;
 
     private Slider m_slider;

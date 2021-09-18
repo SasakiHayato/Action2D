@@ -15,11 +15,6 @@ public class ArchryClass : EnemyBase, IDamage
     {
         m_rb = GetComponent<Rigidbody2D>();
         m_anim = GetComponent<Animator>();
-
-        if (GetAttackPower <= 0)
-        {
-            GetAttackPower = 10;
-        }
     }
 
     void Update() => m_newTree.Repeter(this, this.name);

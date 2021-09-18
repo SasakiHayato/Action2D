@@ -21,7 +21,6 @@ public class ShieldClass : MonoBehaviour
     {
         bool result;
         float dir = collision.position.x - m_parent.transform.position.x;
-        Debug.Log(dir);
         if (m_parent.transform.localScale.x > 0)
         {
             Debug.Log("右向き");

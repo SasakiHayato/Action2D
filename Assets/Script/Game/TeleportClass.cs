@@ -36,6 +36,7 @@ public class TeleportClass : MonoBehaviour
             else if (m_status == Status.Goal)
             {
                 GameManager.Instance.SetScene("Midway");
+                //GameManager.Instance.IsFadeAndSetScene(FadeType.Out, "Midway");
                 RemoveList();
             }
             else if (m_status == Status.Teleport)

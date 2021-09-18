@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
         SetCrreantPlay(false);
         m_gameUi = FindObjectOfType<GameUiClass>();
         m_gameUi.GameOverCanvasActive(true);
+        m_gameUi.Fire1.sprite = null;
+        m_gameUi.Fire2.sprite = null;
     }
     public void ReStart()
     {

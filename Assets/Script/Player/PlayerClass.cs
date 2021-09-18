@@ -18,7 +18,6 @@ public class PlayerClass : MonoBehaviour, IDamage
     [SerializeField] ItemDataBase m_attackData;
 
     Transform m_muzzlePos1;
-    Transform m_muzzlePos2;
     Collider2D m_collision;
 
     Collider2D m_attackCollision;
@@ -44,7 +43,6 @@ public class PlayerClass : MonoBehaviour, IDamage
         m_shieldCollision.enabled = false;
 
         m_muzzlePos1 = transform.Find("Nozzle");
-        m_muzzlePos2 = transform.Find("NozzleCrouch");
 
         if (m_isDebug) GameManager.Instance.SetCrreantPlay(m_isDebug);
     }
@@ -52,8 +50,12 @@ public class PlayerClass : MonoBehaviour, IDamage
     void Update()
     {
         if (!GameManager.Instance.GetCrreantPlay()) return;
-        if (PlayerDataClass.getInstance().GetFreeze()) return;
-
+        if (PlayerDataClass.getInstance().GetFreeze())
+        {
+            m_move.Move(0, 0, m_rb, m_anim);
+            return;
+        }
+        
         PlayerControl();
     }
 
@@ -63,6 +65,7 @@ public class PlayerClass : MonoBehaviour, IDamage
         float v = Input.GetAxisRaw("Vertical");
 
         if (!m_freeze) { m_move.Move(h, v, m_rb, m_anim); }
+
         if (m_move.CrreantAvoid()) return;
 
         if (Input.GetButtonDown("Jump") && !m_move.CrreantCrouch())
@@ -119,9 +122,13 @@ public class PlayerClass : MonoBehaviour, IDamage
     }
     public void SetBullet()
     {
-        if(!m_move.CrreantCrouch()) { Instantiate(m_bullet, m_muzzlePos1); }
-        else { Instantiate(m_bullet, m_muzzlePos2); }
+        GameObject set = Instantiate(m_bullet, m_muzzlePos1);
+        AttackClass attack = set.GetComponent<AttackClass>();
+
+        attack.AttackPower = PlayerDataClass.getInstance().SetMagic() * m_attackData.GetItemId(1).GetAttackPower();
+        Debug.Log(attack.AttackPower);
     }
+    
     public void SetCollison()
     {
         if (!m_attackCollision.enabled) m_attackCollision.enabled = true;

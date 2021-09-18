@@ -1031,7 +1031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3845630688610192286
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1426,7 +1426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1160150593908952859
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1854,7 +1854,7 @@ MonoBehaviour:
   m_selectCanvas: {fileID: 4744990504617876137}
   m_setCanvas: {fileID: 8142380316856920317}
   m_gameOverCanvas: {fileID: 6351440987768456502}
-  m_setImage: {fileID: 162444591769873894}
+  m_setImage: {fileID: 4076259258006408373}
   m_fire1: {fileID: 695512996524281639}
   m_fire2: {fileID: 2977101514088865324}
 --- !u!1 &8895502173398659093
@@ -1953,7 +1953,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8895502174571396926
 RectTransform:
   m_ObjectHideFlags: 0
