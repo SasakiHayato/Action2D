@@ -126,7 +126,6 @@ public class PlayerClass : MonoBehaviour, IDamage
         AttackClass attack = set.GetComponent<AttackClass>();
 
         attack.AttackPower = PlayerDataClass.getInstance().SetMagic() * m_attackData.GetItemId(1).GetAttackPower();
-        Debug.Log(attack.AttackPower);
     }
     
     public void SetCollison()

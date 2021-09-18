@@ -91,9 +91,11 @@ public class BossClass : EnemyBase, IDamage
     }
     public void GetDamage(int damage)
     {
+        Debug.Log("aaa");
         int hp = RetuneCrreantHp() - damage;
         SetHp(hp, gameObject);
         m_hpSlider.value = RetuneCrreantHp();
+        Debug.Log(hp);
         if (RetuneCrreantHp() <= 0)
         {
             GameManager.Instance.SetScene("Start");

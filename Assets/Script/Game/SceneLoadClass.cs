@@ -11,10 +11,10 @@ public class SceneLoadClass : MonoBehaviour
         {
             case "Dungeon":
                 GameManager.Instance.SetDungeonBool(true);
+                GameManager.Instance.SetDungeonCount(1);
                 if (GameManager.Instance.GetDungeonCount() == 3) SceneManager.LoadScene("BossRoom");
                 else
                 {
-                    int a = GameManager.Instance.SetDungeonCount(1);
                     Debug.Log(GameManager.Instance.GetDungeonCount());
                     SceneManager.LoadScene(setName);
                 }

@@ -12,7 +12,6 @@ public class ShieldClass : MonoBehaviour
         if (attack != null)
         {
             bool set = CheckPos(collision.gameObject.transform);
-            Debug.Log(set);
             if (set) attack.IsShield = true;
         }
     }
@@ -23,13 +22,11 @@ public class ShieldClass : MonoBehaviour
         float dir = collision.position.x - m_parent.transform.position.x;
         if (m_parent.transform.localScale.x > 0)
         {
-            Debug.Log("右向き");
             if (dir < 0) result = false;
             else result = true;
         }
         else
         {
-            Debug.Log("hidari向き");
             if (dir < 0) result = true;
             else result = false;
         }

@@ -46,7 +46,7 @@ public class ItemClass : ItemBase
             }
             else
             {
-                GameUi.TextObjectActive(true);
+                GameUi.TextObjectActive(true, TextManager.TextType.HeelText);
                 return;
             }
             PlayerDataClass.getInstance().SetFreeze(false);

@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemys:
   - m_name: Zombie
-    m_hp: 30
+    m_hp: 35
     m_attackPower: 30
     m_object: {fileID: 7334885445736080073, guid: f7b61ae9fa672a643976452ef81630b2,
       type: 3}
   - m_name: Archery
-    m_hp: 20
+    m_hp: 30
     m_attackPower: 25
     m_object: {fileID: 7556875420137796808, guid: ba097d003b6f8ff41b693072993170fe,
       type: 3}
   - m_name: Bommer
-    m_hp: 20
+    m_hp: 30
     m_attackPower: 50
     m_object: {fileID: 1149345487101853065, guid: b96e769107728154b8bacc99c17a82a2,
       type: 3}
   - m_name: Shielder
-    m_hp: 30
+    m_hp: 35
     m_attackPower: 30
     m_object: {fileID: 4452477516599239011, guid: 5265e5d0fb592bb4fbf4748f28e1a70b,
       type: 3}

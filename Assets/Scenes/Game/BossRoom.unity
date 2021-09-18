@@ -1641,6 +1641,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8895502174571396927, guid: 213fbf1dec274f848bd6e04319862cfe,
+        type: 3}
+      propertyPath: m_setText.Array.data[1]
+      value: "\u884C\u3063\u3066\u3053\u3044"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 213fbf1dec274f848bd6e04319862cfe, type: 3}
 --- !u!1001 &5468968367001387596
@@ -1650,6 +1655,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5468968368390218153, guid: a928fbb24ea1fac44a0067c0f6715ddb,
+        type: 3}
+      propertyPath: m_hp
+      value: 1200
+      objectReference: {fileID: 0}
     - target: {fileID: 5468968368390218153, guid: a928fbb24ea1fac44a0067c0f6715ddb,
         type: 3}
       propertyPath: m_slash
@@ -1671,6 +1681,12 @@ PrefabInstance:
       propertyPath: m_hpSlider
       value: 
       objectReference: {fileID: 1388318108}
+    - target: {fileID: 5468968368390218153, guid: a928fbb24ea1fac44a0067c0f6715ddb,
+        type: 3}
+      propertyPath: m_itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: bd231ebabc8d64d4b8cdd9ea694170b4,
+        type: 2}
     - target: {fileID: 5468968368390218153, guid: a928fbb24ea1fac44a0067c0f6715ddb,
         type: 3}
       propertyPath: m_roomManager
@@ -1770,6 +1786,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BossNewNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468968368926976075, guid: a928fbb24ea1fac44a0067c0f6715ddb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a928fbb24ea1fac44a0067c0f6715ddb, type: 3}

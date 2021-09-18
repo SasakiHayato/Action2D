@@ -44,7 +44,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         bool setBool = false;
         int id = 0;
-        int random = Random.Range(0, 10);
+        int random = Random.Range(0, 5);
         switch (random)
         {
             case 1:

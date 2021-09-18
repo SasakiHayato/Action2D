@@ -8,7 +8,7 @@ public class TextManager : MonoBehaviour
     public enum TextType
     {
         HeelText,
-        GaolText,
+        StartText,
     }
 
     public TextType Type { get; set; }
@@ -24,11 +24,11 @@ public class TextManager : MonoBehaviour
             m_setBool = true;
             StartCoroutine(IndicateText((int)type, time, parent));
         }
-        
     }
 
     IEnumerator IndicateText(int id, float time, GameObject parent)
     {
+        Debug.Log("aaaa");
         PlayerDataClass.getInstance().SetFreeze(false);
         if (m_text == null)
         {
@@ -36,7 +36,7 @@ public class TextManager : MonoBehaviour
         }
         m_text.text = "";
         yield return new WaitForSeconds(0.5f);
-        
+    
         for (int count = 0; count < m_setText[id].Length; count++)
         {
             m_text.text += m_setText[id][count];

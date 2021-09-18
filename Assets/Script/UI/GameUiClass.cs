@@ -27,13 +27,13 @@ public class GameUiClass : MonoBehaviour
         m_gameOverCanvas.SetActive(false);
     }
 
-    public void TextObjectActive(bool set)
+    public void TextObjectActive(bool set, TextManager.TextType type)
     {
         m_textObject.SetActive(set);
         if (set)
         {
             TextManager text = m_textObject.GetComponent<TextManager>();
-            text.SetText(TextManager.TextType.HeelText, 0.05f, m_textObject);
+            text.SetText(type, 0.05f, m_textObject);
         }
     }
 
@@ -52,9 +52,5 @@ public class GameUiClass : MonoBehaviour
     }
 
     public void SetCanvasFalse() => m_setCanvas.SetActive(false);
-    public void GameOverCanvasActive(bool set)
-    {
-        Debug.Log(m_gameOverCanvas);
-        m_gameOverCanvas.SetActive(set);
-    }
+    public void GameOverCanvasActive(bool set) => m_gameOverCanvas.SetActive(set);
 }

@@ -87,6 +87,7 @@
     <Compile Include="Assets\Script\Game\CameraPostion.cs" />
     <Compile Include="Assets\Script\Game\CreateMap.cs" />
     <Compile Include="Assets\Script\Game\GameManager.cs" />
+    <Compile Include="Assets\Script\Game\RoomManager.cs" />
     <Compile Include="Assets\Script\Game\SceneLoadClass.cs" />
     <Compile Include="Assets\Script\Game\SelectClass.cs" />
     <Compile Include="Assets\Script\Game\TeleportClass.cs" />

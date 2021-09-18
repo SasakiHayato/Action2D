@@ -1,14 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
+    public enum GameDifficulty
+    {
+        Easy,
+        Normal,
+        Hard,
+        Extra,
+    }
+
     public static GameManager Instance = new GameManager();
 
     SceneLoadClass m_loadClass;
     NewFadeClass m_fadeClass;
     GameUiClass m_gameUi;
+
+    GameObject m_select;
+    GameObject m_start;
+
+    static GameDifficulty m_gameType;
+    
+    public GameDifficulty GetGameEnum() => m_gameType;
  
     bool m_isPlay = false;
     bool m_isDungeon = false;
@@ -65,9 +81,32 @@ public class GameManager : MonoBehaviour
         PlayerDataClass.getInstance().SetShieldPower = 1;
     }
 
+    public void SetGameDifficulty(int set)
+    {
+        m_gameType = (GameDifficulty)Enum.ToObject(typeof(GameDifficulty), set);
+        
+        m_select.SetActive(false);
+        m_start.SetActive(true);
+    }
+
+    public void SetSelectActive()
+    {
+        m_select.SetActive(true);
+        m_start.SetActive(false);
+    }
+
     private static bool m_cureated = false;
     private void Awake()
     {
+        if (GameObject.Find("SelectImage") != null && m_select == null)
+        {
+            m_select = GameObject.Find("SelectImage");
+            m_select.SetActive(false);
+        }
+        if (GameObject.Find("ButtonImage") != null && m_start == null)
+        {
+            m_start = GameObject.Find("ButtonImage");
+        }
         if (!m_cureated)
         {
             DontDestroyOnLoad(gameObject);

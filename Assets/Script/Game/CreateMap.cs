@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public enum MapStatus
-{
-    Wall,
-    Load,
-
-    Start,
-    Goal,
-
-    Teleport,
-}
-
-public enum MapCell
-{
-    Open,
-    Close,
-}
-
 public class CreateMap : MonoBehaviour
 {
+    private enum MapStatus
+    {
+        Wall,
+        Load,
+
+        Start,
+        Goal,
+
+        Teleport,
+    }
+
+    private enum MapCell
+    {
+        Open,
+        Close,
+    }
+
     [SerializeField] private GameObject m_mapWall = null;
 
     [SerializeField] private GameObject[] m_horizontal = null;
@@ -511,9 +511,42 @@ public class CreateMap : MonoBehaviour
         setEnemy.name = $"{m_enemyData.GetEnemyData(setId).Name} :number {m_enemyCount}";
         m_enemyCount++;
         EnemyBase enemyBase = setEnemy.GetComponent<EnemyBase>();
-        enemyBase.GetHp = m_enemyData.GetEnemyData(setId).Hp;
-        enemyBase.GetAttackPower = m_enemyData.GetEnemyData(setId).AttackPower;
 
-        m_active.GetEnemy(setEnemy);
+        if (GameManager.Instance.GetDungeonCount() <= 1)
+        {
+            enemyBase.GetHp = m_enemyData.GetEnemyData(setId).Hp;
+            enemyBase.GetAttackPower = m_enemyData.GetEnemyData(setId).AttackPower;
+        }
+        else
+        {
+            int getInt = GameManager.Instance.GetDungeonCount();
+            float set = getInt / 2;
+
+            int hp = m_enemyData.GetEnemyData(setId).Hp * (int)set;
+            int power = m_enemyData.GetEnemyData(setId).AttackPower * (int)set;
+
+            enemyBase.GetHp = hp + m_enemyData.GetEnemyData(setId).Hp;
+            enemyBase.GetAttackPower = power + m_enemyData.GetEnemyData(setId).AttackPower;
+        }
+
+        Debug.Log(GameManager.Instance.GetGameEnum());
+        if (GameManager.Instance.GetGameEnum() == GameManager.GameDifficulty.Easy)
+        {
+            enemyBase.GetHp /= 2;
+            enemyBase.GetAttackPower /= 2;
+        }
+        else if (GameManager.Instance.GetGameEnum() == GameManager.GameDifficulty.Normal) { }
+        else if (GameManager.Instance.GetGameEnum() == GameManager.GameDifficulty.Hard)
+        {
+            enemyBase.GetHp *= 2;
+            enemyBase.GetAttackPower *= 2;
+        }
+        else if (GameManager.Instance.GetGameEnum() == GameManager.GameDifficulty.Extra)
+        {
+            enemyBase.GetHp *= 100;
+            enemyBase.GetAttackPower *= 100;
+        }
+            //Debug.Log($"{setEnemy.name} :{enemyBase.GetHp} :{enemyBase.GetAttackPower}");
+            m_active.GetEnemy(setEnemy);
     }
 }
