@@ -18,6 +18,9 @@ public class ZombieClass : EnemyBase, IDamage
         m_rb = GetComponent<Rigidbody2D>();
 
         m_collider = transform.GetChild(0).gameObject;
+        
+        //SliderMaxValue = GetHp;
+        //SliderValue = GetHp;
     }
 
     void Update() => m_newTree.Repeter(this, this.name);

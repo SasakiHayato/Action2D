@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
         if (id < 0)
         {
             m_attack.AttackPower = 5;
+            Debug.Log(m_attack.AttackPower);
             name = "Player_Kick";
         }
         else

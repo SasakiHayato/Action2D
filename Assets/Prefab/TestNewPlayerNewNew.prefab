@@ -909,6 +909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3184910583771549767}
   - component: {fileID: 8299550323258519549}
+  - component: {fileID: 600925264133702472}
   m_Layer: 0
   m_Name: Kick
   m_TagString: Untagged
@@ -946,3 +947,17 @@ CircleCollider2D:
   m_Offset: {x: 8.19, y: -0.6}
   serializedVersion: 2
   m_Radius: 4.01
+--- !u!114 &600925264133702472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862767644475762364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc385aefc8ad58b438b77fe857a7fce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_parentEnum: 0
+  m_parent: {fileID: 3407089149667811968}

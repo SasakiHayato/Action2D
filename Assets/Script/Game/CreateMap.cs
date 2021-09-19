@@ -546,7 +546,7 @@ public class CreateMap : MonoBehaviour
             enemyBase.GetHp *= 100;
             enemyBase.GetAttackPower *= 100;
         }
-            //Debug.Log($"{setEnemy.name} :{enemyBase.GetHp} :{enemyBase.GetAttackPower}");
-            m_active.GetEnemy(setEnemy);
+           
+        m_active.GetEnemy(setEnemy, enemyBase);
     }
 }
