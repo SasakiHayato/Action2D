@@ -77,8 +77,8 @@ class ActionNode
         }
         else
         {
-            if (cn.Attack1) eb.Attack(SetActionType.NoamalAttack1);
-            else if (cn.Attack2) eb.Attack(SetActionType.NoamalAttack2);
+            if (cn.Attack1) eb.SetAttack(0.5f, SetActionType.NoamalAttack1);
+            else if (cn.Attack2) eb.SetAttack(0.5f, SetActionType.NoamalAttack2);
         }
     }
 

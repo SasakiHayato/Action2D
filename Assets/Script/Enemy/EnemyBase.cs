@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public interface IDamage { void GetDamage(int damege); }
 
@@ -11,6 +12,7 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] float m_speed;
     [SerializeField] GameObject m_deadSprite = default;
     [SerializeField] ItemDataBase m_itemData;
+    Canvas m_set;
 
     public int GetAttackPower { get => m_attackPower; set { m_attackPower = value; } }
     public int GetHp { get => m_hp; set { m_hp = value; } }
@@ -131,6 +133,13 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (get < 0) { transform.localScale = new Vector2(-0.15f, 0.15f); }
         else if (get > 0){ transform.localScale = new Vector2(0.15f, 0.15f); }
+    }
+
+    public void SetAttack(float time, SetActionType set) => StartCoroutine(DiscoverPlayer(time, set));
+    IEnumerator DiscoverPlayer(float time, SetActionType set)
+    {
+        yield return new WaitForSeconds(time);
+        Attack(set);
     }
 
     public abstract void Attack(SetActionType set);

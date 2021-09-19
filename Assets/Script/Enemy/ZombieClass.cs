@@ -18,16 +18,10 @@ public class ZombieClass : EnemyBase, IDamage
         m_rb = GetComponent<Rigidbody2D>();
 
         m_collider = transform.GetChild(0).gameObject;
-        if (SetAttackPower() == 0)
-        {
-            GetAttackPower = 10;
-        }
     }
 
-    void Update() 
-    {
-        m_newTree.Repeter(this, this.name);
-    }
+    void Update() => m_newTree.Repeter(this, this.name);
+
     public override void Move(SetActionType set)
     {
         FieldCheck();
@@ -73,7 +67,6 @@ public class ZombieClass : EnemyBase, IDamage
     public void BackStep()
     {
         m_rb.AddForce(new Vector2(RetuneStepFloat() * 6, 3), ForceMode2D.Impulse);
-        //m_tree.Interval(5);
     }
 
     // AnimetionIventで呼び出し

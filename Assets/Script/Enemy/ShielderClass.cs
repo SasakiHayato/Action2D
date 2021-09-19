@@ -51,10 +51,13 @@ public class ShielderClass : EnemyBase, IDamage
         }
         else if (set == SetActionType.NoamalAttack2)
         {
+            m_attackCollider.SetActive(true);
             m_rb.AddForce(new Vector2(RetuneStepFloat() * -1, 0) * 15, ForceMode2D.Impulse);
+            Invoke("SetAttackFalse", 0.7f);
             m_newTree.IntervalSetFalse(4);
         }
     }
+    void SetAttackFalse() => m_attackCollider.SetActive(false);
 
     float RetuneStepFloat()
     {
