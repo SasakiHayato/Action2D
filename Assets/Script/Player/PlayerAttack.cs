@@ -15,20 +15,31 @@ public class PlayerAttack : MonoBehaviour
             m_seveAttackId = attackId;
             m_attackCombo = 0;
         }
-
-        m_attack.AttackPower = dataBase.GetItemId(id).GetAttackPower();
-        if (dataBase.GetItemId(id).GetId() == 0)
+        string name = null;
+        if (id < 0)
         {
-            m_attack.AttackPower *= PlayerDataClass.getInstance().SetAttack();
+            m_attack.AttackPower = 5;
+            name = "Player_Kick";
         }
-        else if (dataBase.GetItemId(id).GetId() == 1)
+        else
         {
-            m_attack.AttackPower *= PlayerDataClass.getInstance().SetMagic();
+            m_attack.AttackPower = dataBase.GetItemId(id).GetAttackPower();
+            name = dataBase.GetItemId(id).GetAnimName(m_attackCombo);
+        }
+        if (id > 0)
+        {
+            if (dataBase.GetItemId(id).GetId() == 0)
+            {
+                m_attack.AttackPower *= PlayerDataClass.getInstance().SetAttack();
+            }
+            else if (dataBase.GetItemId(id).GetId() == 1)
+            {
+                m_attack.AttackPower *= PlayerDataClass.getInstance().SetMagic();
+            }
         }
         
-        string name = dataBase.GetItemId(id).GetAnimName(m_attackCombo);
         anim.Play(name);
-
+        if (id < 0) return;
         if (dataBase.GetItemId(id).GetAnimLength() - 1 > m_attackCombo) m_attackCombo++;
         else m_attackCombo = 0;
     }

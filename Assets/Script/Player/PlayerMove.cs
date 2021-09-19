@@ -44,6 +44,7 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator ResetAvoid(Collider2D collider, SpriteRenderer sprite, Sprite set)
     {
+        
         yield return new WaitForSeconds(1f);
         collider.enabled = true;
         m_avoid = false;

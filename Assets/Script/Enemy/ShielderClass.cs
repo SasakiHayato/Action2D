@@ -57,6 +57,7 @@ public class ShielderClass : EnemyBase, IDamage
             m_newTree.IntervalSetFalse(4);
         }
     }
+
     void SetAttackFalse() => m_attackCollider.SetActive(false);
 
     float RetuneStepFloat()

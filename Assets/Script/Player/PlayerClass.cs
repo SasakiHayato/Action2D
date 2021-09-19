@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerClass : MonoBehaviour, IDamage
 {
+    [SerializeField] Collider2D m_kick;
     [SerializeField] GameObject m_bullet;
     [SerializeField] FloorCheck m_floor;
     [SerializeField] Sprite m_avoid;
@@ -42,6 +43,8 @@ public class PlayerClass : MonoBehaviour, IDamage
         m_shieldCollision = GameObject.Find("ShieldCollider").GetComponent<Collider2D>();
         m_shieldCollision.enabled = false;
 
+        m_kick.enabled = false;
+
         m_muzzlePos1 = transform.Find("Nozzle");
 
         if (m_isDebug) GameManager.Instance.SetCrreantPlay(m_isDebug);
@@ -78,25 +81,26 @@ public class PlayerClass : MonoBehaviour, IDamage
             }
         }
         else if (Input.GetButtonDown("Jump") && m_move.CrreantCrouch()) { m_floor.SetTriger(); }
+        bool id1 = PlayerDataClass.getInstance().SetIdBoolFirst;
+        bool id2 = PlayerDataClass.getInstance().SetIdBoolSecond;
 
-        if (PlayerDataClass.getInstance().SetIdBoolFirst)
+        if (id1 && Input.GetButtonDown("Fire1"))
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                int attackId = 1;
-                int id = PlayerDataClass.getInstance().SetAttackIdFirst;
-                m_attack.Attack(m_anim, m_attackData, id, attackId);
-            }
+            int attackId = 1;
+            int id = PlayerDataClass.getInstance().SetAttackIdFirst;
+            m_attack.Attack(m_anim, m_attackData, id, attackId);
         }
 
-        if (PlayerDataClass.getInstance().SetIdBoolSecond)
+        if (id2 && Input.GetButtonDown("Fire2"))
         {
-            if (Input.GetButtonDown("Fire2"))
-            {
-                int attackId = 2;
-                int id = PlayerDataClass.getInstance().SetAttackIdSecond;
-                m_attack.Attack(m_anim, m_attackData, id, attackId);
-            }
+            int attackId = 2;
+            int id = PlayerDataClass.getInstance().SetAttackIdSecond;
+            m_attack.Attack(m_anim, m_attackData, id, attackId);
+        }
+
+        if (!id1 && !id2 && Input.GetButtonDown("Fire1"))
+        {
+            m_attack.Attack(m_anim, m_attackData, -1, 0);
         }
         
         if (Input.GetButtonDown("Fire3")) { m_move.Avoidance(m_player, m_avoid, m_collision, m_rb, h); }
@@ -127,7 +131,6 @@ public class PlayerClass : MonoBehaviour, IDamage
 
         attack.AttackPower = PlayerDataClass.getInstance().SetMagic() * m_attackData.GetItemId(1).GetAttackPower();
     }
-    
     public void SetCollison()
     {
         if (!m_attackCollision.enabled) m_attackCollision.enabled = true;
@@ -137,5 +140,10 @@ public class PlayerClass : MonoBehaviour, IDamage
     {
         if (!m_shieldCollision.enabled) m_shieldCollision.enabled = true;
         else m_shieldCollision.enabled = false;
+    }
+    public void SetKickColision()
+    {
+        if (m_kick.enabled == false) m_kick.enabled = true;
+        else m_kick.enabled = false;
     }
 }
