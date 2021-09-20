@@ -13,9 +13,11 @@ public class PlayerUiClass : MonoBehaviour
     [SerializeField] Text m_shieldText;
 
     [SerializeField] private Image m_image;
+    public Sprite Fire1Image { get => m_set; set { m_set = value; } }
     static Sprite m_set;
 
     [SerializeField] private Image m_subImage;
+    public Sprite Fire2Image { get => m_subSet; set { m_subSet = value; } }
     static Sprite m_subSet;
 
     GameUiClass m_gameUi;

@@ -33,7 +33,7 @@ public class AttackClass : MonoBehaviour
             m_isShield = false;
             return;
         }
-        Debug.Log(AttackPower);
+        if (m_attackPower == 0) m_attackPower = 5;
         if (m_parentEnum == SetParent.Player) { get.GetDamage(m_attackPower); }
         if (m_parentEnum == SetParent.Enemy) { EnemyAttack(get); }
     }

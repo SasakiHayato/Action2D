@@ -16,12 +16,7 @@ public class PlayerAttack : MonoBehaviour
             m_attackCombo = 0;
         }
         string name = null;
-        if (id < 0)
-        {
-            m_attack.AttackPower = 5;
-            Debug.Log(m_attack.AttackPower);
-            name = "Player_Kick";
-        }
+        if (id < 0) name = "Player_Kick";
         else
         {
             m_attack.AttackPower = dataBase.GetItemId(id).GetAttackPower();

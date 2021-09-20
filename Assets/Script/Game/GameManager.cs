@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     SceneLoadClass m_loadClass;
     NewFadeClass m_fadeClass;
     GameUiClass m_gameUi;
+    PlayerUiClass m_playerUi;
 
     GameObject m_select;
     GameObject m_start;
@@ -71,6 +72,16 @@ public class GameManager : MonoBehaviour
         m_gameUi.GameOverCanvasActive(true);
         m_gameUi.Fire1.sprite = null;
         m_gameUi.Fire2.sprite = null;
+
+        m_playerUi = FindObjectOfType<PlayerUiClass>();
+        m_playerUi.Fire1Image = null;
+        m_playerUi.Fire2Image = null;
+
+        PlayerDataClass.getInstance().SetAttackIdFirst = 0;
+        PlayerDataClass.getInstance().SetAttackIdSecond = 0;
+        PlayerDataClass.getInstance().SetIdBoolFirst = false;
+        PlayerDataClass.getInstance().SetIdBoolSecond = false;
+
     }
     public void ReStart()
     {

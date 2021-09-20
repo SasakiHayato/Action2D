@@ -17,9 +17,6 @@ public abstract class EnemyBase : MonoBehaviour
     public int GetHp { get => m_hp; set { m_hp = value; } }
     public int MaxHp { get => m_maxHp; set { m_maxHp = m_hp; } }
 
-    //public int SliderMaxValue { get => (int)m_hpSlider.maxValue; set { m_hpSlider.maxValue = value; } }
-    //public int SliderValue { get => (int)m_hpSlider.value; set { m_hpSlider.value = value; } }
-
     public int GetMaxHp() => m_maxHp = m_hp;
     int m_maxHp;
 
@@ -32,7 +29,6 @@ public abstract class EnemyBase : MonoBehaviour
     public int RetuneCrreantHp() { return m_hp; }
     public int SetHp(int set, GameObject parent) 
     {
-        //SliderValue = set;
         if (set <= 0) { Died(parent); }
         return m_hp = set;
     }
@@ -134,18 +130,8 @@ public abstract class EnemyBase : MonoBehaviour
     }
     void GetSpeed(float get)
     {
-        if (get < 0) 
-        {
-            //m_hpSlider.gameObject.transform.parent.localScale = new Vector2(-1, 1);
-            transform.localScale = new Vector2(-0.15f, 0.15f); 
-        }
-        else if (get >= 0)
-        {
-            //m_hpSlider.gameObject.transform.parent.localScale = new Vector2(1, 1);
-            transform.localScale = new Vector2(0.15f, 0.15f);
-        }
-
-        //Debug.Log(m_hpSlider.gameObject.transform.parent.localScale);
+        if (get < 0) transform.localScale = new Vector2(-0.15f, 0.15f);
+        else if (get >= 0) transform.localScale = new Vector2(0.15f, 0.15f);
     }
 
     public void SetAttack(float time, SetActionType set) => StartCoroutine(DiscoverPlayer(time, set));
