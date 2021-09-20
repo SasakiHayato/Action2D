@@ -21,7 +21,7 @@ public class GameUiClass : MonoBehaviour
 
     void Start()
     {
-        m_textObject.SetActive(false);
+        //m_textObject.SetActive(false);
         m_selectCanvas.SetActive(m_canvasActive);
         m_setCanvas.SetActive(false);
         m_gameOverCanvas.SetActive(false);

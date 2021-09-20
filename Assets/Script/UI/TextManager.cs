@@ -9,6 +9,9 @@ public class TextManager : MonoBehaviour
     {
         HeelText,
         StartText,
+        BossText,
+        MidWayText,
+        GameStartText,
     }
 
     public TextType Type { get; set; }
@@ -28,15 +31,12 @@ public class TextManager : MonoBehaviour
 
     IEnumerator IndicateText(int id, float time, GameObject parent)
     {
-        Debug.Log("aaaa");
         PlayerDataClass.getInstance().SetFreeze(false);
         if (m_text == null)
-        {
             m_text = transform.GetChild(0).gameObject.GetComponent<Text>();
-        }
+        
         m_text.text = "";
         yield return new WaitForSeconds(0.5f);
-    
         for (int count = 0; count < m_setText[id].Length; count++)
         {
             m_text.text += m_setText[id][count];
