@@ -43,6 +43,7 @@ public class ArchryClass : EnemyBase, IDamage
 
     public void GetDamage(int damage)
     {
+        Debug.Log($"{gameObject.name} : Get :{damage}");
         int hp = RetuneCrreantHp() - damage;
         m_rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
         m_anim.Play("Archery_Damage");

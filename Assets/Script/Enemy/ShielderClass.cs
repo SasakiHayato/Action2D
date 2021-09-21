@@ -24,11 +24,8 @@ public class ShielderClass : EnemyBase, IDamage
         m_shieldCollider = transform.Find("Shield").gameObject.GetComponent<Collider2D>();
     }
 
-    void Update() 
-    {
-        //m_tree.Tree(); 
-        m_newTree.Repeter(this, this.name);
-    }
+    void Update() => m_newTree.Repeter(this, this.name);
+
     public override void Move(SetActionType set)
     {
         if (set == SetActionType.Move1)
@@ -90,6 +87,7 @@ public class ShielderClass : EnemyBase, IDamage
 
     public void GetDamage(int damage)
     {
+        Debug.Log($"{gameObject.name} : Get :{damage}");
         int hp = RetuneCrreantHp() - damage;
         m_rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
         m_anim.Play("Shielder_Damage");

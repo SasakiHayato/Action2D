@@ -53,6 +53,7 @@ public class BommerClass : EnemyBase, IDamage
 
     public void GetDamage(int damage)
     {
+        Debug.Log($"{gameObject.name} : Get :{damage}");
         int hp = RetuneCrreantHp() - damage;
         m_rb.AddForce(new Vector2(0, 1), ForceMode2D.Impulse);
         m_anim.Play("Bommer_Damage");

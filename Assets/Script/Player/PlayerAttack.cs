@@ -22,11 +22,12 @@ public class PlayerAttack : MonoBehaviour
             m_attack.AttackPower = dataBase.GetItemId(id).GetAttackPower();
             name = dataBase.GetItemId(id).GetAnimName(m_attackCombo);
         }
-        if (id > 0)
+        if (id >= 0)
         {
             if (dataBase.GetItemId(id).GetId() == 0)
             {
                 m_attack.AttackPower *= PlayerDataClass.getInstance().SetAttack();
+                Debug.Log(m_attack.AttackPower);
             }
             else if (dataBase.GetItemId(id).GetId() == 1)
             {
