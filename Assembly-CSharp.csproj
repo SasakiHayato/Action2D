@@ -102,6 +102,7 @@
     <Compile Include="Assets\Script\Player\PlayerDataClass.cs" />
     <Compile Include="Assets\Script\Player\PlayerGravity.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Script\RemoveImage.cs" />
     <Compile Include="Assets\Script\SelectGame.cs" />
     <Compile Include="Assets\Script\ShieldClass.cs" />
     <Compile Include="Assets\Script\UI\GameUiClass.cs" />
