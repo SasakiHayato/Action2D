@@ -67,7 +67,7 @@ public class PlayerGravity : MonoBehaviour
         m_jumpTime += Time.deltaTime * m_jumpSpeed;
 
         float yPos = v0 * m_jumpTime - (g * m_jumpTime * m_jumpTime) / 2;
-        
+
         transform.position = new Vector2(transform.position.x, yPos + m_jumpStartPosY);
     }
 

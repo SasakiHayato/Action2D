@@ -15,15 +15,14 @@ public enum ItemEnum
 public class ItemDataBase : ScriptableObject
 {
     [SerializeField] List<Items> m_items = new List<Items>();
-
     public Items GetItemId(int num) => m_items[num];
 }
 
 [System.Serializable]
 public class Items
 {
-    [SerializeField] int m_attackPower;
     [SerializeField] string m_name;
+    [SerializeField] int m_attackPower;
     [SerializeField] string[] m_animName = new string[0];
     [SerializeField] int m_id;
     [SerializeField] int m_statusId;

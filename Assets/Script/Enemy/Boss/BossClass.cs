@@ -31,7 +31,9 @@ public class BossClass : EnemyBase, IDamage
      
         m_anim = GetComponent<Animator>();
         Debug.Log(GetMaxHp());
-        m_hpSlider.value = RetuneCrreantHp();
+        m_hpSlider.maxValue = GetMaxHp();
+        m_hpSlider.value = GetMaxHp();
+        
     }
 
     void Update()

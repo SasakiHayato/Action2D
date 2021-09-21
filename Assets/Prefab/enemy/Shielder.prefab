@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4452477516444834055}
   - component: {fileID: 4452477516444834049}
   - component: {fileID: 4452477516444834048}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AttackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ MonoBehaviour:
   - {fileID: 4452477517153120340}
   m_Bounds:
     m_Center: {x: 2.8670716, y: 0.14353466, z: 0}
-    m_Extent: {x: 5.9579163, y: 6.249986, z: 0}
+    m_Extent: {x: 5.9579163, y: 6.2499857, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 0
 --- !u!95 &4452477516599239016

@@ -537,12 +537,12 @@ public class CreateMap : MonoBehaviour
         else if (GameManager.Instance.GetGameEnum() == GameManager.GameDifficulty.Normal) { }
         else if (GameManager.Instance.GetGameEnum() == GameManager.GameDifficulty.Hard)
         {
-            enemyBase.GetHp *= 2;
+            enemyBase.GetHp *= 1;
             enemyBase.GetAttackPower *= 2;
         }
         else if (GameManager.Instance.GetGameEnum() == GameManager.GameDifficulty.Extra)
         {
-            enemyBase.GetHp *= 100;
+            enemyBase.GetHp *= 1;
             enemyBase.GetAttackPower *= 100;
         }
            
