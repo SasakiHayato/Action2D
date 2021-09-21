@@ -102,12 +102,14 @@
     <Compile Include="Assets\Script\Player\PlayerDataClass.cs" />
     <Compile Include="Assets\Script\Player\PlayerGravity.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Script\SelectGame.cs" />
     <Compile Include="Assets\Script\ShieldClass.cs" />
     <Compile Include="Assets\Script\UI\GameUiClass.cs" />
     <Compile Include="Assets\Script\UI\MoveBackGround.cs" />
     <Compile Include="Assets\Script\UI\NewFadeClass.cs" />
     <Compile Include="Assets\Script\UI\PlayerUiClass.cs" />
     <Compile Include="Assets\Script\UI\TextManager.cs" />
+    <Compile Include="Assets\Test.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.26f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

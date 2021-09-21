@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour
     GameUiClass m_gameUi;
     PlayerUiClass m_playerUi;
 
-    GameObject m_select;
-    GameObject m_start;
+    static GameObject m_select;
+    static GameObject m_start;
 
     static GameDifficulty m_gameType;
     

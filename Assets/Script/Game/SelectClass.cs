@@ -69,8 +69,10 @@ public class SelectClass : MonoBehaviour
         }
     }
 
-    void SetEvent() => m_events[m_crreantNum].Invoke();
-
+    void SetEvent()
+    {
+        m_events[m_crreantNum].Invoke();
+    }
     void SetItem()
     {
         if (m_crreantNum == 0)
