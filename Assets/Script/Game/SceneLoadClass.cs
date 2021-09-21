@@ -27,6 +27,10 @@ public class SceneLoadClass : MonoBehaviour
                 GameManager.Instance.SetDungeonBool(false);
                 SceneManager.LoadScene(setName);
                 break;
+            case "Title":
+                GameManager.Instance.SetDungeonBool(false);
+                SceneManager.LoadScene(setName);
+                break;
         }
     }
 }

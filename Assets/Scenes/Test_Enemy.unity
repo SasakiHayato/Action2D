@@ -300,7 +300,7 @@ Transform:
   m_LocalScale: {x: 6.99, y: 0.16, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &486232112
 PlatformEffector2D:
@@ -437,12 +437,12 @@ PrefabInstance:
     - target: {fileID: 3008493647194678713, guid: f7b61ae9fa672a643976452ef81630b2,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3008493647194678713, guid: f7b61ae9fa672a643976452ef81630b2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7309077759548195461, guid: f7b61ae9fa672a643976452ef81630b2,
         type: 3}
@@ -508,6 +508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334885445736080073, guid: f7b61ae9fa672a643976452ef81630b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7b61ae9fa672a643976452ef81630b2, type: 3}
@@ -770,7 +775,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396854251
 GameObject:
@@ -968,6 +973,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6351440987768456502, guid: 213fbf1dec274f848bd6e04319862cfe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8895502173217719841, guid: 213fbf1dec274f848bd6e04319862cfe,
         type: 3}
       propertyPath: m_Name
@@ -986,7 +996,7 @@ PrefabInstance:
     - target: {fileID: 8895502173217719845, guid: 213fbf1dec274f848bd6e04319862cfe,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8895502173217719845, guid: 213fbf1dec274f848bd6e04319862cfe,
         type: 3}
@@ -1106,7 +1116,7 @@ PrefabInstance:
     - target: {fileID: 1208570645013050779, guid: 0248071e3ebe5584cac7296f49fbe48a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1208570645013050779, guid: 0248071e3ebe5584cac7296f49fbe48a,
         type: 3}

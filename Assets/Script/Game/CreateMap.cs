@@ -529,7 +529,6 @@ public class CreateMap : MonoBehaviour
             enemyBase.GetAttackPower = power + m_enemyData.GetEnemyData(setId).AttackPower;
         }
 
-        Debug.Log(GameManager.Instance.GetGameEnum());
         if (GameManager.Instance.GetGameEnum() == GameManager.GameDifficulty.Easy)
         {
             enemyBase.GetHp /= 2;
