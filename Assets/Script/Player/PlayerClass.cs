@@ -7,9 +7,7 @@ public class PlayerClass : MonoBehaviour, IDamage
     [SerializeField] Collider2D m_kick;
     [SerializeField] GameObject m_bullet;
     [SerializeField] FloorCheck m_floor;
-    [SerializeField] Sprite m_avoid;
-    [SerializeField] Sprite m_player;
-
+    
     Rigidbody2D m_rb;
     Animator m_anim;
 
@@ -55,7 +53,7 @@ public class PlayerClass : MonoBehaviour, IDamage
         if (!GameManager.Instance.GetCrreantPlay()) return;
         if (PlayerDataClass.getInstance().GetFreeze())
         {
-            m_move.Move(0, 0, m_rb, m_anim);
+            m_move.Move(0, 0, m_anim);
             return;
         }
         
@@ -67,7 +65,7 @@ public class PlayerClass : MonoBehaviour, IDamage
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        if (!m_freeze) { m_move.Move(h, v, m_rb, m_anim); }
+        if (!m_freeze) { m_move.Move(h, v, m_anim); }
 
         if (m_move.CrreantAvoid()) return;
 
@@ -103,7 +101,9 @@ public class PlayerClass : MonoBehaviour, IDamage
             m_attack.Attack(m_anim, m_attackData, -1, 0);
         }
         
-        if (Input.GetButtonDown("Fire3")) { m_move.Avoidance(m_player, m_avoid, m_collision, m_rb, h); }
+        if (Input.GetButtonDown("Fire3")) { m_move.Avoidance(m_collision, h); }
+
+        m_rb.velocity = new Vector2(h * m_move.Speed + m_move.AvoidanceSpeed, m_rb.velocity.y);
     }
 
     public void GetDamage(int damage)

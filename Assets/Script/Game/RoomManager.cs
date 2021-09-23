@@ -11,6 +11,7 @@ public class RoomManager : MonoBehaviour
         MidWay,
         Start,
     }
+
     [SerializeField] RoomType m_type;
     GameUiClass m_gameUi;
 

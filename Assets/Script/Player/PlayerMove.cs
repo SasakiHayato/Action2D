@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float m_speed = 0;
+    public float Speed { get => m_speed; private set { m_speed = value; } }
+    public float AvoidanceSpeed { get; set; }
     bool m_crouch = false;
     bool m_avoid = false;
 
-    public void Move(float h, float v, Rigidbody2D rigidbody, Animator animator)
+    public void Move(float h, float v, Animator animator)
     {
         if (h == 0 && v == 0)
         {
@@ -29,26 +31,25 @@ public class PlayerMove : MonoBehaviour
             animator.Play("Player_Crouch");
             m_crouch = true;
         }
-
-        rigidbody.velocity = new Vector2(h * m_speed, rigidbody.velocity.y);
     }
 
-    public void Avoidance(Sprite player ,Sprite set, Collider2D collider, Rigidbody2D rb, float h)
+    public void Avoidance(Collider2D collider, float h)
     {
-        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        renderer.sprite = set;
         collider.enabled = false;
         m_avoid = true;
-        StartCoroutine(ResetAvoid(collider, renderer, player));
+        if (transform.localScale.x > 0)
+            AvoidanceSpeed = 20;
+        else if (transform.localScale.x < 0)
+            AvoidanceSpeed = -20;
+        StartCoroutine(ResetAvoid(collider, h));
     }
 
-    IEnumerator ResetAvoid(Collider2D collider, SpriteRenderer sprite, Sprite set)
+    IEnumerator ResetAvoid(Collider2D collider, float h)
     {
-        
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         collider.enabled = true;
         m_avoid = false;
-        sprite.sprite = set;
+        AvoidanceSpeed = 0;
     }
 
     public bool CrreantCrouch() { return m_crouch; }
